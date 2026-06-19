@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRetailerRouteImport } from './routes/_authenticated/retailer'
 import { Route as AuthenticatedCoordinatorRouteImport } from './routes/_authenticated/coordinator'
 
 const AuthRoute = AuthRouteImport.update({
@@ -28,6 +29,11 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedRetailerRoute = AuthenticatedRetailerRouteImport.update({
+  id: '/retailer',
+  path: '/retailer',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedCoordinatorRoute =
   AuthenticatedCoordinatorRouteImport.update({
     id: '/coordinator',
@@ -39,11 +45,13 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/coordinator': typeof AuthenticatedCoordinatorRoute
+  '/retailer': typeof AuthenticatedRetailerRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/coordinator': typeof AuthenticatedCoordinatorRoute
+  '/retailer': typeof AuthenticatedRetailerRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -51,18 +59,20 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/_authenticated/coordinator': typeof AuthenticatedCoordinatorRoute
+  '/_authenticated/retailer': typeof AuthenticatedRetailerRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/coordinator'
+  fullPaths: '/' | '/auth' | '/coordinator' | '/retailer'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/coordinator'
+  to: '/' | '/auth' | '/coordinator' | '/retailer'
   id:
     | '__root__'
     | '/'
     | '/_authenticated'
     | '/auth'
     | '/_authenticated/coordinator'
+    | '/_authenticated/retailer'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -94,6 +104,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/retailer': {
+      id: '/_authenticated/retailer'
+      path: '/retailer'
+      fullPath: '/retailer'
+      preLoaderRoute: typeof AuthenticatedRetailerRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/coordinator': {
       id: '/_authenticated/coordinator'
       path: '/coordinator'
@@ -106,10 +123,12 @@ declare module '@tanstack/react-router' {
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedCoordinatorRoute: typeof AuthenticatedCoordinatorRoute
+  AuthenticatedRetailerRoute: typeof AuthenticatedRetailerRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedCoordinatorRoute: AuthenticatedCoordinatorRoute,
+  AuthenticatedRetailerRoute: AuthenticatedRetailerRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
