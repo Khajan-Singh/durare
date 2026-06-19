@@ -1,33 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import {
-  Plus,
-  X,
-  Lightbulb,
-  MoreVertical,
-  Sparkles,
-  Leaf,
-} from "lucide-react";
+import { Plus, X, Lightbulb, MoreVertical, Sparkles, Leaf } from "lucide-react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { useAuth } from "@/hooks/use-auth";
-import {
-  addInventorySnapshot,
-  fetchInventoryForStore,
-  fetchItems,
-  fetchStores,
-} from "@/lib/data";
+import { addInventorySnapshot, fetchInventoryForStore, fetchItems, fetchStores } from "@/lib/data";
 import { cn, daysUntil, formatDate } from "@/lib/utils";
 
 export const Route = createFileRoute("/_authenticated/retailer")({
@@ -80,7 +62,9 @@ function RetailerDashboard() {
         expiry_date: expiry,
       });
       toast.success("Inventory updated");
-      setItemId(""); setQty(""); setExpiry("");
+      setItemId("");
+      setQty("");
+      setExpiry("");
       setDrawerOpen(false);
       qc.invalidateQueries({ queryKey: ["inventory", profile.store_id] });
     } catch (err) {
@@ -94,18 +78,13 @@ function RetailerDashboard() {
     <div className="space-y-8">
       <header className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
         <div>
-          <h1 className="text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">
-            Store Inventory Snapshot
-          </h1>
+          <h1 className="text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">Store Inventory Snapshot</h1>
           <p className="mt-1 text-base text-muted-foreground">
             Foresight &amp; Stewardship for your perishable stock at{" "}
             <span className="font-semibold text-foreground">{myStore?.name ?? "your store"}</span>.
           </p>
         </div>
-        <Button
-          className="h-12 gap-2 rounded-xl px-6 font-bold shadow-sm"
-          onClick={() => setDrawerOpen(true)}
-        >
+        <Button className="h-12 gap-2 rounded-xl px-6 font-bold shadow-sm" onClick={() => setDrawerOpen(true)}>
           <Plus className="h-4 w-4" /> Add Inventory Item
         </Button>
       </header>
@@ -113,9 +92,15 @@ function RetailerDashboard() {
       <section className="card-elevated overflow-hidden">
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-border p-5">
           <div className="flex flex-wrap gap-2">
-            <FilterChip active={filter === "all"} onClick={() => setFilter("all")}>All Items</FilterChip>
-            <FilterChip active={filter === "near"} onClick={() => setFilter("near")}>Near Expiry</FilterChip>
-            <FilterChip active={filter === "produce"} onClick={() => setFilter("produce")}>Produce</FilterChip>
+            <FilterChip active={filter === "all"} onClick={() => setFilter("all")}>
+              All Items
+            </FilterChip>
+            <FilterChip active={filter === "near"} onClick={() => setFilter("near")}>
+              Near Expiry
+            </FilterChip>
+            <FilterChip active={filter === "produce"} onClick={() => setFilter("produce")}>
+              Produce
+            </FilterChip>
           </div>
           <div className="text-xs text-muted-foreground">
             Showing <span className="font-bold text-foreground">{rows.length}</span> items
@@ -146,14 +131,25 @@ function RetailerDashboard() {
               <tbody className="divide-y divide-border">
                 {rows.map((row) => {
                   const d = daysUntil(row.expiry_date);
-                  const tone =
-                    d <= 2 ? "urgent" : d <= 4 ? "warn" : "ok";
+                  const tone = d <= 2 ? "urgent" : d <= 4 ? "warn" : "ok";
                   const styles =
                     tone === "urgent"
-                      ? { chip: "bg-destructive-soft text-destructive-soft-foreground", dot: "bg-destructive", icon: "bg-destructive-soft text-destructive" }
+                      ? {
+                          chip: "bg-destructive-soft text-destructive-soft-foreground",
+                          dot: "bg-destructive",
+                          icon: "bg-destructive-soft text-destructive",
+                        }
                       : tone === "warn"
-                      ? { chip: "bg-warning-soft text-warning-soft-foreground", dot: "bg-warning", icon: "bg-warning-soft text-warning-foreground" }
-                      : { chip: "bg-primary-soft text-primary-soft-foreground", dot: "bg-primary", icon: "bg-primary-soft text-primary-soft-foreground" };
+                        ? {
+                            chip: "bg-warning-soft text-warning-soft-foreground",
+                            dot: "bg-warning",
+                            icon: "bg-warning-soft text-warning-foreground",
+                          }
+                        : {
+                            chip: "bg-primary-soft text-primary-soft-foreground",
+                            dot: "bg-primary",
+                            icon: "bg-primary-soft text-primary-soft-foreground",
+                          };
 
                   return (
                     <tr key={row.id} className="group transition hover:bg-secondary">
@@ -171,7 +167,12 @@ function RetailerDashboard() {
                       <td className="px-6 py-4 font-mono text-sm text-foreground">{row.qty_on_hand} units</td>
                       <td className="px-6 py-4 text-sm">{formatDate(row.expiry_date)}</td>
                       <td className="px-6 py-4">
-                        <span className={cn("inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold", styles.chip)}>
+                        <span
+                          className={cn(
+                            "inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold",
+                            styles.chip,
+                          )}
+                        >
                           <span className={cn("h-2 w-2 rounded-full", styles.dot)} />
                           {d <= 0 ? "Expired" : `${d} ${d === 1 ? "Day" : "Days"} Left`}
                         </span>
@@ -200,8 +201,8 @@ function RetailerDashboard() {
           <div className="flex-1">
             <h3 className="text-lg font-extrabold">Forecast Insight</h3>
             <p className="text-sm opacity-90">
-              Items expiring in 2 days are surfaced to coordinators automatically. Keep
-              entries fresh — better data, sharper predictions, less waste.
+              Items expiring in 2 days are surfaced to coordinators automatically. Keep entries fresh — better data,
+              sharper predictions, less waste.
             </p>
           </div>
           <Button
@@ -217,10 +218,7 @@ function RetailerDashboard() {
       {/* Drawer */}
       {drawerOpen && (
         <div className="fixed inset-0 z-[60]">
-          <div
-            className="absolute inset-0 bg-primary/40 backdrop-blur-sm"
-            onClick={() => setDrawerOpen(false)}
-          />
+          <div className="absolute inset-0 bg-primary/40 backdrop-blur-sm" onClick={() => setDrawerOpen(false)} />
           <aside className="absolute right-0 top-0 flex h-full w-full max-w-md flex-col bg-card shadow-2xl">
             <div className="flex items-center justify-between border-b border-border bg-surface-low p-6">
               <h2 className="text-xl font-extrabold text-primary">Add Inventory Item</h2>
@@ -249,7 +247,9 @@ function RetailerDashboard() {
               </div>
               <div className="grid grid-cols-2 gap-3">
                 <div className="space-y-1.5">
-                  <Label className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Quantity</Label>
+                  <Label className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                    Quantity
+                  </Label>
                   <Input
                     type="number"
                     min={0}
@@ -261,7 +261,9 @@ function RetailerDashboard() {
                   />
                 </div>
                 <div className="space-y-1.5">
-                  <Label className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Expiry Date</Label>
+                  <Label className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                    Expiry Date
+                  </Label>
                   <Input
                     type="date"
                     value={expiry}
@@ -274,7 +276,7 @@ function RetailerDashboard() {
               <div className="flex gap-3 rounded-lg border border-border bg-surface-low p-4">
                 <Lightbulb className="mt-0.5 h-5 w-5 shrink-0 text-warning" />
                 <p className="text-sm italic text-muted-foreground">
-                  Items added here are automatically synced with rescue partner forecasts.
+                  Items added here are automatically synced with partner pickup forecasts.
                 </p>
               </div>
               <div className="flex gap-3 pt-2">
