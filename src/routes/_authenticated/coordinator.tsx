@@ -346,6 +346,15 @@ function Stat({ label, value }: { label: string; value: string }) {
   );
 }
 
+function MiniStat({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-lg bg-secondary/60 p-1.5">
+      <p className="text-[9px] font-bold uppercase tracking-wider text-muted-foreground">{label}</p>
+      <p className="text-sm font-extrabold text-primary leading-tight">{value}</p>
+    </div>
+  );
+}
+
 function SkeletonGrid() {
   return (
     <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
