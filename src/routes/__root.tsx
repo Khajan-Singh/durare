@@ -82,10 +82,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "description", content: "AI-powered food-rescue forecasting that helps food banks plan pickups before surplus is discarded." },
       { name: "author", content: "Durare" },
       { property: "og:title", content: "Durare — Predict surplus, rescue food" },
-      { property: "og:description", content: "Forecast donatable grocery surplus and coordinate pickups with confidence." },
+      { property: "og:description", content: "AI-powered food-rescue forecasting that helps food banks plan pickups before surplus is discarded." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:site", content: "@Lovable" },
+      { name: "twitter:title", content: "Durare — Predict surplus, rescue food" },
+      { name: "twitter:description", content: "AI-powered food-rescue forecasting that helps food banks plan pickups before surplus is discarded." },
+      { property: "og:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/10124666-ceac-4f3b-a1d6-a01920e095be/id-preview-ac2ea530--a431f6f1-dcb4-42d5-a5c4-b2ea541f5a38.lovable.app-1781907023312.png" },
+      { name: "twitter:image", content: "https://pub-bb2e103a32db4e198524a2e9ed8f35b4.r2.dev/10124666-ceac-4f3b-a1d6-a01920e095be/id-preview-ac2ea530--a431f6f1-dcb4-42d5-a5c4-b2ea541f5a38.lovable.app-1781907023312.png" },
     ],
     links: [
       {
