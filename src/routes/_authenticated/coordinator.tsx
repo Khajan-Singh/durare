@@ -386,16 +386,19 @@ function SkeletonGrid() {
   );
 }
 
-function EmptyState() {
+function EmptyState({ selectedStoreName }: { selectedStoreName: string | null }) {
   return (
     <div className="card-elevated flex flex-col items-center justify-center p-12 text-center">
       <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary-soft text-primary-soft-foreground">
         <Sparkles className="h-6 w-6" />
       </div>
-      <h3 className="text-lg font-bold text-primary">No surplus predicted yet</h3>
+      <h3 className="text-lg font-bold text-primary">
+        {selectedStoreName ? `No active forecasts for ${selectedStoreName}` : "No surplus predicted yet"}
+      </h3>
       <p className="mx-auto mt-1 max-w-md text-sm text-muted-foreground">
-        When the forecasting model publishes new predictions, the plan for the
-        coming days will show up here.
+        {selectedStoreName
+          ? "This retailer has no AI-predicted surplus right now. Check back, widen your radius, or select another retailer above."
+          : "When the forecasting model publishes new predictions, the plan for the coming days will show up here."}
       </p>
     </div>
   );
