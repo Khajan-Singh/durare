@@ -284,33 +284,29 @@ function AuthPage() {
                     className="h-12 rounded-lg"
                   />
                 </Field>
-                {role === "retailer" ? (
-                  <Field label="Your store">
-                    <Select value={storeId} onValueChange={setStoreId}>
-                      <SelectTrigger className="h-12 rounded-lg">
-                        <SelectValue placeholder="Pick a store" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {stores.map((s) => (
-                          <SelectItem key={s.id} value={s.id}>{s.name}</SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </Field>
-                ) : (
-                  <Field label="Your food bank">
-                    <Select value={foodBankId} onValueChange={setFoodBankId}>
-                      <SelectTrigger className="h-12 rounded-lg">
-                        <SelectValue placeholder="Pick a food bank" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {foodBanks.map((f) => (
-                          <SelectItem key={f.id} value={f.id}>{f.name}</SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </Field>
-                )}
+                <Field label={role === "retailer" ? "Store name" : "Food bank name"}>
+                  <Input
+                    value={orgName}
+                    onChange={(e) => setOrgName(e.target.value)}
+                    placeholder={
+                      role === "retailer"
+                        ? "e.g. Whole Foods – Mission St"
+                        : "e.g. SF-Marin Food Bank"
+                    }
+                    required
+                    className="h-12 rounded-lg"
+                  />
+                </Field>
+                <Field label={role === "retailer" ? "Store location" : "Food bank location"}>
+                  <LocationPicker
+                    value={location}
+                    onChange={(loc) => {
+                      setLocation(loc);
+                      if (loc && !orgName) setOrgName(loc.name);
+                    }}
+                    placeholder="Search address or place name…"
+                  />
+                </Field>
                 <Button type="submit" disabled={submitting} className="h-12 w-full rounded-lg text-base font-bold">
                   {submitting ? "Creating…" : "Create account"}
                 </Button>
