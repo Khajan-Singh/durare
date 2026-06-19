@@ -11,8 +11,10 @@ import { useAuth } from "@/hooks/use-auth";
 import {
   confirmPickup,
   fetchFoodBanks,
+  fetchStores,
   refreshPredictions,
   type PredictionWithRefs,
+  type Store,
 } from "@/lib/data";
 import { cn, haversineMiles } from "@/lib/utils";
 
@@ -29,6 +31,7 @@ function CoordinatorDashboard() {
   const qc = useQueryClient();
 
   const foodBanksQuery = useQuery({ queryKey: ["food_banks"], queryFn: fetchFoodBanks });
+  const storesQuery = useQuery({ queryKey: ["stores"], queryFn: fetchStores });
   const predictionsQuery = useQuery({ queryKey: ["predictions"], queryFn: refreshPredictions });
 
   const myFoodBank = foodBanksQuery.data?.find((f) => f.id === profile?.food_bank_id) ?? null;
@@ -66,46 +69,48 @@ function CoordinatorDashboard() {
     });
   }, [predictionsQuery.data, myFoodBank, sort, radius, selectedStoreId]);
 
-  // Per-store aggregates within radius (ignores selectedStoreId so all chips remain visible)
-  const nearbyStores = useMemo(() => {
+  // All retailers in the system, with per-store distance + prediction aggregates.
+  // Includes stores with zero forecasts so coordinators can still see who's reachable.
+  type StoreRow = {
+    store: Store;
+    distance: number | null;
+    forecasts: number;
+    units: number;
+    soonest: string | null;
+  };
+  const allStoreRows = useMemo<StoreRow[]>(() => {
+    const stores = storesQuery.data ?? [];
     const preds = predictionsQuery.data ?? [];
-    const byStore = new Map<
-      string,
-      {
-        store: PredictionWithRefs["store"];
-        distance: number | null;
-        forecasts: number;
-        units: number;
-        soonest: string;
-      }
-    >();
-    for (const p of preds) {
+    return stores.map((store) => {
+      const storePreds = preds.filter((p) => p.store.id === store.id);
       const distance = myFoodBank
         ? haversineMiles(
             { lat: myFoodBank.lat, lng: myFoodBank.lng },
-            { lat: p.store.lat, lng: p.store.lng },
+            { lat: store.lat, lng: store.lng },
           )
         : null;
-      if (myFoodBank && distance !== null && distance > radius) continue;
-      const existing = byStore.get(p.store.id);
-      if (existing) {
-        existing.forecasts += 1;
-        existing.units += p.predicted_surplus_qty;
-        if (p.target_date < existing.soonest) existing.soonest = p.target_date;
-      } else {
-        byStore.set(p.store.id, {
-          store: p.store,
-          distance,
-          forecasts: 1,
-          units: p.predicted_surplus_qty,
-          soonest: p.target_date,
-        });
-      }
-    }
-    return Array.from(byStore.values()).sort(
-      (a, b) => (a.distance ?? Infinity) - (b.distance ?? Infinity),
-    );
-  }, [predictionsQuery.data, myFoodBank, radius]);
+      const soonest = storePreds.length
+        ? storePreds.reduce((m, p) => (p.target_date < m ? p.target_date : m), storePreds[0].target_date)
+        : null;
+      return {
+        store,
+        distance,
+        forecasts: storePreds.length,
+        units: storePreds.reduce((s, p) => s + p.predicted_surplus_qty, 0),
+        soonest,
+      };
+    });
+  }, [storesQuery.data, predictionsQuery.data, myFoodBank]);
+
+  const nearbyStores = useMemo(() => {
+    return allStoreRows
+      .filter((r) => !myFoodBank || r.distance === null || r.distance <= radius)
+      .sort((a, b) => (a.distance ?? Infinity) - (b.distance ?? Infinity));
+  }, [allStoreRows, myFoodBank, radius]);
+
+  const selectedStore = selectedStoreId
+    ? allStoreRows.find((r) => r.store.id === selectedStoreId) ?? null
+    : null;
 
   const nearestStoreId = useMemo(() => {
     const withDist = rows.filter((r) => r.distance !== null);
@@ -147,10 +152,22 @@ function CoordinatorDashboard() {
             Predicted Pickup Plan
           </h1>
           <p className="mt-2 text-base text-muted-foreground">
-            AI-generated forecasts for the next 72 hours.
-            {myFoodBank && (
+            {selectedStore ? (
               <>
-                {" "}Distances from <span className="font-semibold text-foreground">{myFoodBank.name}</span>.
+                Viewing <span className="font-semibold text-foreground">{selectedStore.store.name}</span>
+                {selectedStore.distance !== null && (
+                  <> · {selectedStore.distance.toFixed(1)} mi from {myFoodBank?.name ?? "you"}</>
+                )}
+              </>
+            ) : (
+              <>
+                AI-generated forecasts for the next 72 hours.
+                {myFoodBank && (
+                  <>
+                    {" "}Distances measured from{" "}
+                    <span className="font-semibold text-foreground">{myFoodBank.name}</span>.
+                  </>
+                )}
               </>
             )}
           </p>
@@ -229,9 +246,13 @@ function CoordinatorDashboard() {
             </button>
           )}
         </div>
-        {nearbyStores.length === 0 ? (
+        {storesQuery.isLoading ? (
+          <div className="card-elevated p-6 text-sm text-muted-foreground">Loading retailers…</div>
+        ) : nearbyStores.length === 0 ? (
           <div className="card-elevated p-6 text-sm text-muted-foreground">
-            No retailers with forecasts in this radius yet.
+            {(storesQuery.data ?? []).length === 0
+              ? "No retailers registered yet."
+              : `No retailers within ${radius} mi. Try a larger radius.`}
           </div>
         ) : (
           <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
@@ -271,7 +292,7 @@ function CoordinatorDashboard() {
                   <div className="mt-3 grid grid-cols-3 gap-2 text-center">
                     <MiniStat label="Forecasts" value={String(s.forecasts)} />
                     <MiniStat label="Units" value={String(s.units)} />
-                    <MiniStat label="Soonest" value={s.soonest.slice(5)} />
+                    <MiniStat label="Soonest" value={s.soonest ? s.soonest.slice(5) : "—"} />
                   </div>
                 </button>
               );
@@ -283,7 +304,7 @@ function CoordinatorDashboard() {
       {predictionsQuery.isLoading ? (
         <SkeletonGrid />
       ) : rows.length === 0 ? (
-        <EmptyState />
+        <EmptyState selectedStoreName={selectedStore?.store.name ?? null} />
       ) : (
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {rows.map(({ p, distance }) => (
