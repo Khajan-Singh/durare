@@ -315,18 +315,6 @@ function AuthPage() {
           )}
         </div>
 
-        <div className="relative mt-10 h-48 overflow-hidden rounded-3xl">
-          <div className="absolute inset-0 z-10 bg-gradient-to-t from-primary/45 to-transparent" />
-          <img
-            className="h-full w-full object-cover"
-            alt="Fresh produce in warm light"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjtcsyno2EElynUaCpJN0pAqVXh_qlo3Rd7H_0bw3KXUVI_r4slCt6vQ97TCC_qyJMA1k_u6SrkqpI2ddJusCrGIYCeMBtdWe3LNiC8aXylQUWGdWbYN53eDVlmRObkB6_GPVMPQ7dEgZuvFXIWKSZ9LYRocJRvwLJJSyprAW0DW6rnCz3kGxBM4-qpxqijv2L6Tl2gdeYlqnX9q1ysE-bJWEAx4qzrLMPqH0FNBNVzI1HulelWZu5sHx2I_krj-jMsoH5XwqfM7A"
-          />
-          <div className="absolute bottom-4 left-4 z-20 inline-flex items-center gap-1.5 rounded-full bg-card/90 px-3 py-1 text-[10px] font-bold uppercase tracking-widest text-primary shadow-sm backdrop-blur">
-            <Sparkles className="h-3 w-3" />
-            AI-Driven Stewardship
-          </div>
-        </div>
 
         <footer className="mt-8 text-center text-xs text-muted-foreground">
           © {new Date().getFullYear()} Durare Rescue Systems. Foresight &amp; Stewardship.
