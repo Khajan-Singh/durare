@@ -1,6 +1,14 @@
 import type { ReactNode } from "react";
-import { Link, useNavigate } from "@tanstack/react-router";
-import { Leaf, LogOut } from "lucide-react";
+import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
+import {
+  Bell,
+  Leaf,
+  LogOut,
+  Search,
+  LayoutDashboard,
+  Truck,
+  Boxes,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import type { Profile } from "@/hooks/use-auth";
@@ -14,6 +22,7 @@ export function AppShell({
   profile: Profile | null;
 }) {
   const navigate = useNavigate();
+  const path = useRouterState({ select: (s) => s.location.pathname });
   const isCoordinator = profile?.role === "coordinator";
 
   const signOut = async () => {
@@ -21,36 +30,61 @@ export function AppShell({
     navigate({ to: "/auth" });
   };
 
+  const links = isCoordinator
+    ? [
+        { to: "/coordinator", label: "Dashboard", icon: LayoutDashboard },
+        { to: "/pickups", label: "Pickups", icon: Truck },
+      ]
+    : [{ to: "/retailer", label: "Inventory", icon: Boxes }];
+
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <header className="sticky top-0 z-30 border-b border-border bg-background/85 backdrop-blur">
-        <div className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 sm:px-6">
-          <Link to="/" className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-primary text-primary-foreground">
-              <Leaf className="h-4 w-4" />
-            </div>
-            <div>
-              <div className="text-base font-semibold leading-none">Durare</div>
-              <div className="text-[10px] uppercase tracking-wider text-muted-foreground">
-                Forecast → Rescue
+      {/* Top bar */}
+      <header className="sticky top-0 z-40 h-20 border-b border-border bg-card/80 backdrop-blur">
+        <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-4 sm:px-8">
+          <div className="flex items-center gap-8">
+            <Link to="/" className="flex items-center gap-2">
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-primary-foreground">
+                <Leaf className="h-4 w-4" />
               </div>
-            </div>
-          </Link>
-
-          <nav className="flex items-center gap-1 text-sm">
-            {isCoordinator && (
-              <>
-                <NavLink to="/coordinator">Forecast</NavLink>
-                <NavLink to="/pickups">Pickups</NavLink>
-              </>
-            )}
-            {profile?.role === "retailer" && <NavLink to="/retailer">Inventory</NavLink>}
-          </nav>
-
+              <span className="text-xl font-extrabold tracking-tight text-primary">Durare</span>
+            </Link>
+            <nav className="hidden items-center gap-6 md:flex">
+              {links.map(({ to, label }) => {
+                const active = path === to;
+                return (
+                  <Link
+                    key={to}
+                    to={to}
+                    className={cn(
+                      "pb-1 text-sm font-semibold transition-colors",
+                      active
+                        ? "border-b-2 border-primary text-primary"
+                        : "text-muted-foreground hover:text-primary",
+                    )}
+                  >
+                    {label}
+                  </Link>
+                );
+              })}
+            </nav>
+          </div>
           <div className="flex items-center gap-3">
+            <div className="hidden items-center gap-2 rounded-full border border-border bg-secondary px-4 py-2 sm:flex">
+              <Search className="h-4 w-4 text-muted-foreground" />
+              <input
+                type="text"
+                placeholder="Search…"
+                className="w-40 bg-transparent text-sm outline-none placeholder:text-muted-foreground"
+              />
+            </div>
+            <button className="relative rounded-full p-2 text-muted-foreground transition hover:bg-secondary hover:text-primary">
+              <Bell className="h-5 w-5" />
+              <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-warning" />
+            </button>
             {profile && (
               <div className="hidden text-right sm:block">
-                <div className="text-xs font-medium leading-tight">
+                <div className="text-xs font-semibold leading-tight text-primary">
                   {profile.display_name ?? profile.email}
                 </div>
                 <div className="text-[10px] uppercase tracking-wider text-muted-foreground">
@@ -58,27 +92,42 @@ export function AppShell({
                 </div>
               </div>
             )}
-            <Button variant="ghost" size="sm" onClick={signOut} aria-label="Sign out">
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={signOut}
+              aria-label="Sign out"
+              className="rounded-full"
+            >
               <LogOut className="h-4 w-4" />
             </Button>
           </div>
         </div>
       </header>
-      <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6">{children}</main>
-    </div>
-  );
-}
 
-function NavLink({ to, children }: { to: string; children: ReactNode }) {
-  return (
-    <Link
-      to={to}
-      className={cn(
-        "rounded-full px-3 py-1.5 text-muted-foreground transition hover:text-foreground",
-      )}
-      activeProps={{ className: "bg-secondary text-foreground" }}
-    >
-      {children}
-    </Link>
+      <main className="mx-auto max-w-7xl px-4 pb-28 pt-8 sm:px-8 md:pb-12">{children}</main>
+
+      {/* Mobile bottom nav */}
+      <nav className="fixed bottom-0 left-0 z-50 flex w-full items-center justify-around border-t border-border bg-card/95 px-4 py-2 shadow-lg backdrop-blur md:hidden">
+        {links.map(({ to, label, icon: Icon }) => {
+          const active = path === to;
+          return (
+            <Link
+              key={to}
+              to={to}
+              className={cn(
+                "flex flex-col items-center gap-0.5 rounded-full px-4 py-1.5 text-xs transition",
+                active
+                  ? "bg-primary-soft text-primary-soft-foreground"
+                  : "text-muted-foreground",
+              )}
+            >
+              <Icon className="h-5 w-5" />
+              <span className="font-medium">{label}</span>
+            </Link>
+          );
+        })}
+      </nav>
+    </div>
   );
 }

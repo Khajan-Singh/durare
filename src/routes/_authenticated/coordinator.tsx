@@ -1,17 +1,10 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { RefreshCw, Sparkles } from "lucide-react";
+import { RefreshCw, Sparkles, Calendar, ArrowDownNarrowWide, Navigation } from "lucide-react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { PredictionCard } from "@/components/prediction-card";
 import { ConfirmPickupModal } from "@/components/confirm-pickup-modal";
 import { useAuth } from "@/hooks/use-auth";
@@ -21,7 +14,7 @@ import {
   refreshPredictions,
   type PredictionWithRefs,
 } from "@/lib/data";
-import { haversineMiles } from "@/lib/utils";
+import { cn, haversineMiles } from "@/lib/utils";
 
 export const Route = createFileRoute("/_authenticated/coordinator")({
   component: CoordinatorDashboard,
@@ -33,15 +26,8 @@ function CoordinatorDashboard() {
   const { user, profile } = useAuth();
   const qc = useQueryClient();
 
-  const foodBanksQuery = useQuery({
-    queryKey: ["food_banks"],
-    queryFn: fetchFoodBanks,
-  });
-
-  const predictionsQuery = useQuery({
-    queryKey: ["predictions"],
-    queryFn: refreshPredictions,
-  });
+  const foodBanksQuery = useQuery({ queryKey: ["food_banks"], queryFn: fetchFoodBanks });
+  const predictionsQuery = useQuery({ queryKey: ["predictions"], queryFn: refreshPredictions });
 
   const myFoodBank = foodBanksQuery.data?.find((f) => f.id === profile?.food_bank_id) ?? null;
 
@@ -60,7 +46,7 @@ function CoordinatorDashboard() {
           )
         : null,
     }));
-    const sorted = [...withDistance].sort((a, b) => {
+    return [...withDistance].sort((a, b) => {
       if (sort === "qty") return b.p.predicted_surplus_qty - a.p.predicted_surplus_qty;
       if (sort === "distance") {
         const ad = a.distance ?? Infinity;
@@ -69,7 +55,6 @@ function CoordinatorDashboard() {
       }
       return a.p.target_date.localeCompare(b.p.target_date);
     });
-    return sorted;
   }, [predictionsQuery.data, myFoodBank, sort]);
 
   const nearestStoreId = useMemo(() => {
@@ -105,50 +90,61 @@ function CoordinatorDashboard() {
   };
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-8">
       <header className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <div className="inline-flex items-center gap-2 rounded-full bg-secondary px-3 py-1 text-xs text-secondary-foreground">
-            <Sparkles className="h-3.5 w-3.5" /> Predicted pickup plan
-          </div>
-          <h1 className="mt-3 text-3xl font-semibold tracking-tight">
-            ~{totalUnits} units of surplus forecast for the coming days
+          <h1 className="text-4xl font-extrabold tracking-tight text-primary sm:text-5xl">
+            Predicted Pickup Plan
           </h1>
-          <p className="mt-1 text-muted-foreground">
-            {myFoodBank
-              ? `Distances are measured from ${myFoodBank.name}.`
-              : "Set your food bank in your profile to see distances."}
+          <p className="mt-2 text-base text-muted-foreground">
+            AI-generated forecasts for the next 72 hours.
+            {myFoodBank && (
+              <>
+                {" "}Distances from <span className="font-semibold text-foreground">{myFoodBank.name}</span>.
+              </>
+            )}
           </p>
         </div>
-        <div className="flex items-center gap-2">
-          <Select value={sort} onValueChange={(v) => setSort(v as SortKey)}>
-            <SelectTrigger className="w-[180px]">
-              <SelectValue />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="date">Sort: Readiness date</SelectItem>
-              <SelectItem value="qty">Sort: Quantity</SelectItem>
-              <SelectItem value="distance">Sort: Distance</SelectItem>
-            </SelectContent>
-          </Select>
+        <div className="flex flex-wrap items-center gap-2">
+          <SortPill icon={<Calendar className="h-4 w-4" />} label="Readiness" active={sort === "date"} onClick={() => setSort("date")} />
+          <SortPill icon={<ArrowDownNarrowWide className="h-4 w-4" />} label="Quantity" active={sort === "qty"} onClick={() => setSort("qty")} />
+          <SortPill icon={<Navigation className="h-4 w-4" />} label="Distance" active={sort === "distance"} onClick={() => setSort("distance")} />
           <Button
             variant="outline"
+            className="rounded-full"
             onClick={() => {
               qc.invalidateQueries({ queryKey: ["predictions"] });
               toast.message("Refreshing forecasts…");
             }}
           >
-            <RefreshCw className="mr-2 h-4 w-4" /> Refresh forecasts
+            <RefreshCw className="mr-2 h-4 w-4" /> Refresh
           </Button>
         </div>
       </header>
+
+      {/* Summary strip */}
+      <section className="card-elevated durare-glow flex flex-col gap-4 p-6 md:flex-row md:items-center md:justify-between">
+        <div>
+          <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
+            Forecast Window
+          </p>
+          <p className="mt-1 text-2xl font-extrabold text-primary">
+            ~{totalUnits} units of surplus predicted
+          </p>
+        </div>
+        <div className="grid grid-cols-3 gap-4 sm:max-w-md sm:flex-1">
+          <Stat label="Forecasts" value={String(rows.length)} />
+          <Stat label="Stores" value={String(new Set(rows.map((r) => r.p.store.id)).size)} />
+          <Stat label="Coverage" value="72h" />
+        </div>
+      </section>
 
       {predictionsQuery.isLoading ? (
         <SkeletonGrid />
       ) : rows.length === 0 ? (
         <EmptyState />
       ) : (
-        <div className="grid gap-4 md:grid-cols-2">
+        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
           {rows.map(({ p, distance }) => (
             <PredictionCard
               key={p.id}
@@ -172,11 +168,48 @@ function CoordinatorDashboard() {
   );
 }
 
+function SortPill({
+  icon,
+  label,
+  active,
+  onClick,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  active: boolean;
+  onClick: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className={cn(
+        "inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition",
+        active
+          ? "bg-primary text-primary-foreground shadow-sm"
+          : "bg-surface-high text-primary hover:bg-secondary",
+      )}
+    >
+      {icon}
+      {label}
+    </button>
+  );
+}
+
+function Stat({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-xl bg-card/80 p-3 text-center backdrop-blur">
+      <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">{label}</p>
+      <p className="mt-0.5 text-xl font-extrabold text-primary">{value}</p>
+    </div>
+  );
+}
+
 function SkeletonGrid() {
   return (
-    <div className="grid gap-4 md:grid-cols-2">
+    <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
       {Array.from({ length: 4 }).map((_, i) => (
-        <div key={i} className="h-64 animate-pulse rounded-2xl border border-border bg-card/60" />
+        <div key={i} className="h-80 animate-pulse rounded-2xl border border-border bg-card/60" />
       ))}
     </div>
   );
@@ -184,11 +217,11 @@ function SkeletonGrid() {
 
 function EmptyState() {
   return (
-    <div className="rounded-2xl border border-dashed border-border bg-card p-12 text-center">
-      <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-2xl bg-secondary text-secondary-foreground">
-        <Sparkles className="h-5 w-5" />
+    <div className="card-elevated flex flex-col items-center justify-center p-12 text-center">
+      <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary-soft text-primary-soft-foreground">
+        <Sparkles className="h-6 w-6" />
       </div>
-      <h3 className="text-lg font-medium">No surplus predicted yet</h3>
+      <h3 className="text-lg font-bold text-primary">No surplus predicted yet</h3>
       <p className="mx-auto mt-1 max-w-md text-sm text-muted-foreground">
         When the forecasting model publishes new predictions, the plan for the
         coming days will show up here.
