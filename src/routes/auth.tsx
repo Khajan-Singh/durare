@@ -1,6 +1,6 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { ArrowLeft, Leaf, Sparkles, Store as StoreIcon, Route as RouteIcon } from "lucide-react";
+import { ArrowLeft, Leaf, Store as StoreIcon, Route as RouteIcon } from "lucide-react";
 import { toast } from "sonner";
 import { z } from "zod";
 
