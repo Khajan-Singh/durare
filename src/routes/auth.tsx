@@ -118,6 +118,7 @@ function AuthPage() {
       });
       if (pErr) throw pErr;
       toast.success("Account created");
+      navigate({ to: role === "retailer" ? "/retailer" : "/coordinator" });
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Something went wrong");
     } finally {

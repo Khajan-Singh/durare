@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { RefreshCw, Sparkles, Calendar, ArrowDownNarrowWide, Navigation } from "lucide-react";
+import { RefreshCw, Sparkles, Calendar, ArrowDownNarrowWide, Navigation, Store as StoreIcon, X } from "lucide-react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
@@ -21,6 +21,8 @@ export const Route = createFileRoute("/_authenticated/coordinator")({
 });
 
 type SortKey = "qty" | "date" | "distance";
+const RADIUS_OPTIONS = [10, 25, 50, 100] as const;
+type Radius = typeof RADIUS_OPTIONS[number];
 
 function CoordinatorDashboard() {
   const { user, profile } = useAuth();
@@ -32,6 +34,8 @@ function CoordinatorDashboard() {
   const myFoodBank = foodBanksQuery.data?.find((f) => f.id === profile?.food_bank_id) ?? null;
 
   const [sort, setSort] = useState<SortKey>("date");
+  const [radius, setRadius] = useState<Radius>(50);
+  const [selectedStoreId, setSelectedStoreId] = useState<string | null>(null);
   const [selected, setSelected] = useState<PredictionWithRefs | null>(null);
   const [submitting, setSubmitting] = useState(false);
 
@@ -46,7 +50,12 @@ function CoordinatorDashboard() {
           )
         : null,
     }));
-    return [...withDistance].sort((a, b) => {
+    const filtered = withDistance.filter((r) => {
+      if (myFoodBank && r.distance !== null && r.distance > radius) return false;
+      if (selectedStoreId && r.p.store.id !== selectedStoreId) return false;
+      return true;
+    });
+    return filtered.sort((a, b) => {
       if (sort === "qty") return b.p.predicted_surplus_qty - a.p.predicted_surplus_qty;
       if (sort === "distance") {
         const ad = a.distance ?? Infinity;
@@ -55,7 +64,48 @@ function CoordinatorDashboard() {
       }
       return a.p.target_date.localeCompare(b.p.target_date);
     });
-  }, [predictionsQuery.data, myFoodBank, sort]);
+  }, [predictionsQuery.data, myFoodBank, sort, radius, selectedStoreId]);
+
+  // Per-store aggregates within radius (ignores selectedStoreId so all chips remain visible)
+  const nearbyStores = useMemo(() => {
+    const preds = predictionsQuery.data ?? [];
+    const byStore = new Map<
+      string,
+      {
+        store: PredictionWithRefs["store"];
+        distance: number | null;
+        forecasts: number;
+        units: number;
+        soonest: string;
+      }
+    >();
+    for (const p of preds) {
+      const distance = myFoodBank
+        ? haversineMiles(
+            { lat: myFoodBank.lat, lng: myFoodBank.lng },
+            { lat: p.store.lat, lng: p.store.lng },
+          )
+        : null;
+      if (myFoodBank && distance !== null && distance > radius) continue;
+      const existing = byStore.get(p.store.id);
+      if (existing) {
+        existing.forecasts += 1;
+        existing.units += p.predicted_surplus_qty;
+        if (p.target_date < existing.soonest) existing.soonest = p.target_date;
+      } else {
+        byStore.set(p.store.id, {
+          store: p.store,
+          distance,
+          forecasts: 1,
+          units: p.predicted_surplus_qty,
+          soonest: p.target_date,
+        });
+      }
+    }
+    return Array.from(byStore.values()).sort(
+      (a, b) => (a.distance ?? Infinity) - (b.distance ?? Infinity),
+    );
+  }, [predictionsQuery.data, myFoodBank, radius]);
 
   const nearestStoreId = useMemo(() => {
     const withDist = rows.filter((r) => r.distance !== null);
@@ -122,11 +172,32 @@ function CoordinatorDashboard() {
         </div>
       </header>
 
+      {/* Radius selector */}
+      <section className="flex flex-wrap items-center gap-2">
+        <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+          Search radius
+        </span>
+        {RADIUS_OPTIONS.map((r) => (
+          <SortPill
+            key={r}
+            icon={<Navigation className="h-4 w-4" />}
+            label={`${r} mi`}
+            active={radius === r}
+            onClick={() => setRadius(r)}
+          />
+        ))}
+        {!myFoodBank && (
+          <span className="text-xs text-muted-foreground">
+            Set your food bank location to filter by distance.
+          </span>
+        )}
+      </section>
+
       {/* Summary strip */}
       <section className="card-elevated durare-glow flex flex-col gap-4 p-6 md:flex-row md:items-center md:justify-between">
         <div>
           <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
-            Forecast Window
+            Within {radius} mi · next 72h
           </p>
           <p className="mt-1 text-2xl font-extrabold text-primary">
             ~{totalUnits} units of surplus predicted
@@ -134,9 +205,79 @@ function CoordinatorDashboard() {
         </div>
         <div className="grid grid-cols-3 gap-4 sm:max-w-md sm:flex-1">
           <Stat label="Forecasts" value={String(rows.length)} />
-          <Stat label="Stores" value={String(new Set(rows.map((r) => r.p.store.id)).size)} />
+          <Stat label="Retailers" value={String(nearbyStores.length)} />
           <Stat label="Coverage" value="72h" />
         </div>
+      </section>
+
+      {/* Retailers within radius */}
+      <section className="space-y-3">
+        <div className="flex items-center justify-between">
+          <h2 className="text-lg font-extrabold text-primary">
+            Retailers within {radius} mi
+            <span className="ml-2 text-sm font-semibold text-muted-foreground">
+              ({nearbyStores.length})
+            </span>
+          </h2>
+          {selectedStoreId && (
+            <button
+              type="button"
+              onClick={() => setSelectedStoreId(null)}
+              className="inline-flex items-center gap-1 rounded-full bg-secondary px-3 py-1 text-xs font-semibold text-primary hover:bg-secondary/70"
+            >
+              <X className="h-3.5 w-3.5" /> Clear filter
+            </button>
+          )}
+        </div>
+        {nearbyStores.length === 0 ? (
+          <div className="card-elevated p-6 text-sm text-muted-foreground">
+            No retailers with forecasts in this radius yet.
+          </div>
+        ) : (
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {nearbyStores.map((s) => {
+              const active = selectedStoreId === s.store.id;
+              return (
+                <button
+                  key={s.store.id}
+                  type="button"
+                  onClick={() =>
+                    setSelectedStoreId((cur) => (cur === s.store.id ? null : s.store.id))
+                  }
+                  className={cn(
+                    "rounded-2xl border p-4 text-left transition",
+                    active
+                      ? "border-primary bg-primary-soft/40 shadow-sm"
+                      : "border-border bg-card/80 hover:border-primary/60 hover:bg-primary-soft/20",
+                  )}
+                >
+                  <div className="flex items-start justify-between gap-2">
+                    <div className="flex items-center gap-2">
+                      <div className="rounded-lg bg-primary-soft p-2 text-primary-soft-foreground">
+                        <StoreIcon className="h-4 w-4" />
+                      </div>
+                      <div>
+                        <p className="text-sm font-bold text-primary leading-tight">
+                          {s.store.name}
+                        </p>
+                        {s.distance !== null && (
+                          <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+                            {s.distance.toFixed(1)} mi away
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                  <div className="mt-3 grid grid-cols-3 gap-2 text-center">
+                    <MiniStat label="Forecasts" value={String(s.forecasts)} />
+                    <MiniStat label="Units" value={String(s.units)} />
+                    <MiniStat label="Soonest" value={s.soonest.slice(5)} />
+                  </div>
+                </button>
+              );
+            })}
+          </div>
+        )}
       </section>
 
       {predictionsQuery.isLoading ? (
@@ -201,6 +342,15 @@ function Stat({ label, value }: { label: string; value: string }) {
     <div className="rounded-xl bg-card/80 p-3 text-center backdrop-blur">
       <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">{label}</p>
       <p className="mt-0.5 text-xl font-extrabold text-primary">{value}</p>
+    </div>
+  );
+}
+
+function MiniStat({ label, value }: { label: string; value: string }) {
+  return (
+    <div className="rounded-lg bg-secondary/60 p-1.5">
+      <p className="text-[9px] font-bold uppercase tracking-wider text-muted-foreground">{label}</p>
+      <p className="text-sm font-extrabold text-primary leading-tight">{value}</p>
     </div>
   );
 }
