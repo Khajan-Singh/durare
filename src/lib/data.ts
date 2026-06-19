@@ -98,6 +98,35 @@ export async function fetchFoodBanks(): Promise<FoodBank[]> {
   return data ?? [];
 }
 
+export async function createStore(input: {
+  name: string;
+  lat: number;
+  lng: number;
+  type?: string;
+}): Promise<Store> {
+  const { data, error } = await supabase
+    .from("stores")
+    .insert({ name: input.name, lat: input.lat, lng: input.lng, type: input.type ?? "grocery" })
+    .select()
+    .single();
+  if (error) throw error;
+  return data as Store;
+}
+
+export async function createFoodBank(input: {
+  name: string;
+  lat: number;
+  lng: number;
+}): Promise<FoodBank> {
+  const { data, error } = await supabase
+    .from("food_banks")
+    .insert({ name: input.name, lat: input.lat, lng: input.lng, capacity: 0, cold_storage: false })
+    .select()
+    .single();
+  if (error) throw error;
+  return data as FoodBank;
+}
+
 export async function fetchItems(): Promise<Item[]> {
   const { data, error } = await supabase.from("items").select("*").order("name");
   if (error) throw error;

@@ -7,16 +7,10 @@ import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from "@/components/ui/select";
 import { supabase } from "@/integrations/supabase/client";
 import { useAuth } from "@/hooks/use-auth";
-import { fetchFoodBanks, fetchStores, type FoodBank, type Store } from "@/lib/data";
+import { createFoodBank, createStore } from "@/lib/data";
+import { LocationPicker, type PickedLocation } from "@/components/location-picker";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/auth")({
@@ -36,29 +30,21 @@ const signupSchema = z.object({
   password: z.string().min(8).max(72),
   displayName: z.string().trim().min(1).max(80),
   role: z.enum(["retailer", "coordinator"]),
-  store_id: z.string().uuid().optional().nullable(),
-  food_bank_id: z.string().uuid().optional().nullable(),
+  orgName: z.string().trim().min(1).max(120),
 });
 
 function AuthPage() {
   const navigate = useNavigate();
   const { user, profile, loading } = useAuth();
   const [mode, setMode] = useState<Mode>("signin");
-  const [stores, setStores] = useState<Store[]>([]);
-  const [foodBanks, setFoodBanks] = useState<FoodBank[]>([]);
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [displayName, setDisplayName] = useState("");
   const [role, setRole] = useState<"retailer" | "coordinator">("coordinator");
-  const [storeId, setStoreId] = useState<string>("");
-  const [foodBankId, setFoodBankId] = useState<string>("");
+  const [orgName, setOrgName] = useState("");
+  const [location, setLocation] = useState<PickedLocation | null>(null);
   const [submitting, setSubmitting] = useState(false);
-
-  useEffect(() => {
-    fetchStores().then(setStores).catch(() => {});
-    fetchFoodBanks().then(setFoodBanks).catch(() => {});
-  }, []);
 
   useEffect(() => {
     if (loading) return;
@@ -90,12 +76,10 @@ function AuthPage() {
         password,
         displayName,
         role,
-        store_id: role === "retailer" ? storeId || null : null,
-        food_bank_id: role === "coordinator" ? foodBankId || null : null,
+        orgName,
       });
       if (!parsed.success) throw new Error(parsed.error.issues[0]?.message ?? "Invalid input");
-      if (role === "retailer" && !storeId) throw new Error("Pick a store");
-      if (role === "coordinator" && !foodBankId) throw new Error("Pick a food bank");
+      if (!location) throw new Error("Pick a location from the map");
 
       const { data, error } = await supabase.auth.signUp({
         email,
@@ -104,17 +88,35 @@ function AuthPage() {
       });
       if (error) throw error;
       const uid = data.user?.id;
-      if (uid) {
-        const { error: pErr } = await supabase.from("profiles").insert({
-          id: uid,
-          email,
-          display_name: displayName,
-          role,
-          store_id: role === "retailer" ? storeId : null,
-          food_bank_id: role === "coordinator" ? foodBankId : null,
+      if (!uid) throw new Error("Signup did not return a user");
+
+      let newStoreId: string | null = null;
+      let newFoodBankId: string | null = null;
+      if (role === "retailer") {
+        const s = await createStore({
+          name: orgName,
+          lat: location.lat,
+          lng: location.lng,
         });
-        if (pErr) throw pErr;
+        newStoreId = s.id;
+      } else {
+        const f = await createFoodBank({
+          name: orgName,
+          lat: location.lat,
+          lng: location.lng,
+        });
+        newFoodBankId = f.id;
       }
+
+      const { error: pErr } = await supabase.from("profiles").insert({
+        id: uid,
+        email,
+        display_name: displayName,
+        role,
+        store_id: newStoreId,
+        food_bank_id: newFoodBankId,
+      });
+      if (pErr) throw pErr;
       toast.success("Account created");
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Something went wrong");
@@ -282,33 +284,29 @@ function AuthPage() {
                     className="h-12 rounded-lg"
                   />
                 </Field>
-                {role === "retailer" ? (
-                  <Field label="Your store">
-                    <Select value={storeId} onValueChange={setStoreId}>
-                      <SelectTrigger className="h-12 rounded-lg">
-                        <SelectValue placeholder="Pick a store" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {stores.map((s) => (
-                          <SelectItem key={s.id} value={s.id}>{s.name}</SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </Field>
-                ) : (
-                  <Field label="Your food bank">
-                    <Select value={foodBankId} onValueChange={setFoodBankId}>
-                      <SelectTrigger className="h-12 rounded-lg">
-                        <SelectValue placeholder="Pick a food bank" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        {foodBanks.map((f) => (
-                          <SelectItem key={f.id} value={f.id}>{f.name}</SelectItem>
-                        ))}
-                      </SelectContent>
-                    </Select>
-                  </Field>
-                )}
+                <Field label={role === "retailer" ? "Store name" : "Food bank name"}>
+                  <Input
+                    value={orgName}
+                    onChange={(e) => setOrgName(e.target.value)}
+                    placeholder={
+                      role === "retailer"
+                        ? "e.g. Whole Foods – Mission St"
+                        : "e.g. SF-Marin Food Bank"
+                    }
+                    required
+                    className="h-12 rounded-lg"
+                  />
+                </Field>
+                <Field label={role === "retailer" ? "Store location" : "Food bank location"}>
+                  <LocationPicker
+                    value={location}
+                    onChange={(loc) => {
+                      setLocation(loc);
+                      if (loc && !orgName) setOrgName(loc.name);
+                    }}
+                    placeholder="Search address or place name…"
+                  />
+                </Field>
                 <Button type="submit" disabled={submitting} className="h-12 w-full rounded-lg text-base font-bold">
                   {submitting ? "Creating…" : "Create account"}
                 </Button>
