@@ -42,9 +42,6 @@ function Landing() {
           </div>
           <div>
             <div className="text-base font-bold leading-none text-primary">Durare</div>
-            <div className="text-[10px] uppercase tracking-[0.18em] text-muted-foreground">
-              Foresight · Stewardship
-            </div>
           </div>
         </div>
         <Link to="/auth">
@@ -53,10 +50,6 @@ function Landing() {
       </header>
 
       <section className="relative mx-auto max-w-4xl px-6 pt-12 pb-12 text-center">
-        <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-border bg-card/80 px-3 py-1 text-xs font-medium text-muted-foreground backdrop-blur">
-          <Sparkles className="h-3 w-3 text-primary" />
-          AI forecasts · Human decisions
-        </div>
         <h1 className="text-balance text-4xl font-extrabold tracking-tight text-primary sm:text-6xl">
           See the surplus <span className="italic font-serif text-warning-foreground">before</span> it's discarded.
         </h1>
@@ -87,10 +80,6 @@ function Landing() {
             className="h-72 w-full object-cover sm:h-96"
             src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjtcsyno2EElynUaCpJN0pAqVXh_qlo3Rd7H_0bw3KXUVI_r4slCt6vQ97TCC_qyJMA1k_u6SrkqpI2ddJusCrGIYCeMBtdWe3LNiC8aXylQUWGdWbYN53eDVlmRObkB6_GPVMPQ7dEgZuvFXIWKSZ9LYRocJRvwLJJSyprAW0DW6rnCz3kGxBM4-qpxqijv2L6Tl2gdeYlqnX9q1ysE-bJWEAx4qzrLMPqH0FNBNVzI1HulelWZu5sHx2I_krj-jMsoH5XwqfM7A"
           />
-          <div className="absolute bottom-5 left-5 z-20 inline-flex items-center gap-2 rounded-full bg-card/90 px-3 py-1.5 text-xs font-medium uppercase tracking-widest text-primary shadow-sm backdrop-blur">
-            <Sparkles className="h-3 w-3" />
-            AI-Driven Stewardship
-          </div>
         </div>
       </section>
 
