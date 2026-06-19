@@ -9,97 +9,37 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as AuthRouteImport } from './routes/auth'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as AuthenticatedRetailerRouteImport } from './routes/_authenticated/retailer'
-import { Route as AuthenticatedPickupsRouteImport } from './routes/_authenticated/pickups'
-import { Route as AuthenticatedCoordinatorRouteImport } from './routes/_authenticated/coordinator'
 
-const AuthRoute = AuthRouteImport.update({
-  id: '/auth',
-  path: '/auth',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
   id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AuthenticatedRetailerRoute = AuthenticatedRetailerRouteImport.update({
-  id: '/retailer',
-  path: '/retailer',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
-const AuthenticatedPickupsRoute = AuthenticatedPickupsRouteImport.update({
-  id: '/pickups',
-  path: '/pickups',
-  getParentRoute: () => AuthenticatedRouteRoute,
-} as any)
-const AuthenticatedCoordinatorRoute =
-  AuthenticatedCoordinatorRouteImport.update({
-    id: '/coordinator',
-    path: '/coordinator',
-    getParentRoute: () => AuthenticatedRouteRoute,
-  } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
-  '/auth': typeof AuthRoute
-  '/coordinator': typeof AuthenticatedCoordinatorRoute
-  '/pickups': typeof AuthenticatedPickupsRoute
-  '/retailer': typeof AuthenticatedRetailerRoute
+  '/': typeof AuthenticatedRouteRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
-  '/auth': typeof AuthRoute
-  '/coordinator': typeof AuthenticatedCoordinatorRoute
-  '/pickups': typeof AuthenticatedPickupsRoute
-  '/retailer': typeof AuthenticatedRetailerRoute
+  '/': typeof AuthenticatedRouteRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
-  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
-  '/auth': typeof AuthRoute
-  '/_authenticated/coordinator': typeof AuthenticatedCoordinatorRoute
-  '/_authenticated/pickups': typeof AuthenticatedPickupsRoute
-  '/_authenticated/retailer': typeof AuthenticatedRetailerRoute
+  '/_authenticated': typeof AuthenticatedRouteRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/coordinator' | '/pickups' | '/retailer'
+  fullPaths: '/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/coordinator' | '/pickups' | '/retailer'
-  id:
-    | '__root__'
-    | '/'
-    | '/_authenticated'
-    | '/auth'
-    | '/_authenticated/coordinator'
-    | '/_authenticated/pickups'
-    | '/_authenticated/retailer'
+  to: '/'
+  id: '__root__' | '/_authenticated'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
-  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
-  AuthRoute: typeof AuthRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/auth': {
-      id: '/auth'
-      path: '/auth'
-      fullPath: '/auth'
-      preLoaderRoute: typeof AuthRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/_authenticated': {
       id: '/_authenticated'
       path: ''
@@ -107,56 +47,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/_authenticated/retailer': {
-      id: '/_authenticated/retailer'
-      path: '/retailer'
-      fullPath: '/retailer'
-      preLoaderRoute: typeof AuthenticatedRetailerRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/pickups': {
-      id: '/_authenticated/pickups'
-      path: '/pickups'
-      fullPath: '/pickups'
-      preLoaderRoute: typeof AuthenticatedPickupsRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
-    '/_authenticated/coordinator': {
-      id: '/_authenticated/coordinator'
-      path: '/coordinator'
-      fullPath: '/coordinator'
-      preLoaderRoute: typeof AuthenticatedCoordinatorRouteImport
-      parentRoute: typeof AuthenticatedRouteRoute
-    }
   }
 }
 
-interface AuthenticatedRouteRouteChildren {
-  AuthenticatedCoordinatorRoute: typeof AuthenticatedCoordinatorRoute
-  AuthenticatedPickupsRoute: typeof AuthenticatedPickupsRoute
-  AuthenticatedRetailerRoute: typeof AuthenticatedRetailerRoute
-}
-
-const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
-  AuthenticatedCoordinatorRoute: AuthenticatedCoordinatorRoute,
-  AuthenticatedPickupsRoute: AuthenticatedPickupsRoute,
-  AuthenticatedRetailerRoute: AuthenticatedRetailerRoute,
-}
-
-const AuthenticatedRouteRouteWithChildren =
-  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
-
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
-  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
-  AuthRoute: AuthRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
