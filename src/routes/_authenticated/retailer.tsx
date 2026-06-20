@@ -573,7 +573,7 @@ function RetailerDashboard() {
             <div className="flex items-center justify-between border-b border-border bg-surface-low p-6">
               <h2 className="text-xl font-bold text-primary">Bulk Upload Inventory</h2>
               <button
-                onClick={() => setCsvOpen(false)}
+                onClick={closeCsvDrawer}
                 className="rounded-sm p-2 text-muted-foreground transition hover:bg-surface-high"
               >
                 <X className="h-5 w-5" />
