@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useRef, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { Plus, X, Lightbulb, MoreVertical, Sparkles, Leaf, Check, ChevronsUpDown, Upload, Download } from "lucide-react";
+import { Plus, X, Lightbulb, MoreVertical, Sparkles, Leaf, Check, ChevronsUpDown, Upload, Download, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
@@ -12,11 +12,10 @@ import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, Command
 import { useAuth } from "@/hooks/use-auth";
 import {
   addInventorySnapshot,
+  deleteInventorySnapshot,
   fetchInventoryForStore,
   fetchStores,
   findOrCreateItem,
-  logDailySale,
-  fetchDailySalesForStore,
 } from "@/lib/data";
 import { OVERALL_CATEGORIES, itemsForOverall, itemByName } from "@/lib/food-catalog";
 import { cn, daysUntil, formatDate } from "@/lib/utils";
@@ -100,20 +99,6 @@ function RetailerDashboard() {
     setCsvError("");
     if (csvFileRef.current) csvFileRef.current.value = "";
   };
-
-  // Daily sales logging
-  const [salesOpen, setSalesOpen] = useState(false);
-  const [salesOverall, setSalesOverall] = useState("");
-  const [salesItemName, setSalesItemName] = useState("");
-  const [salesUnits, setSalesUnits] = useState("");
-  const [salesDate, setSalesDate] = useState(new Date().toISOString().slice(0, 10));
-  const [savingSale, setSavingSale] = useState(false);
-
-  const salesQuery = useQuery({
-    queryKey: ["daily_sales", profile?.store_id],
-    queryFn: () => fetchDailySalesForStore(profile!.store_id!),
-    enabled: !!profile?.store_id,
-  });
 
   const rows = (inventoryQuery.data ?? []).filter((row) => {
     if (filter === "all") return true;
