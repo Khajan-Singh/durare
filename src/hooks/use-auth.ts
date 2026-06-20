@@ -46,9 +46,19 @@ export function useAuth() {
       setLoading(false);
     });
 
+    const onProfileUpdated = () => {
+      const uid = supabase.auth.getUser ? undefined : undefined;
+      void uid;
+      supabase.auth.getUser().then(({ data }) => {
+        if (data.user) loadProfile(data.user.id);
+      });
+    };
+    window.addEventListener("durare:profile-updated", onProfileUpdated);
+
     return () => {
       mounted = false;
       sub.subscription.unsubscribe();
+      window.removeEventListener("durare:profile-updated", onProfileUpdated);
     };
   }, []);
 
