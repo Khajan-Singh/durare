@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useRef, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { Plus, X, Lightbulb, MoreVertical, Sparkles, Leaf, Check, ChevronsUpDown, Upload, Download, Trash2 } from "lucide-react";
+import { Plus, X, Lightbulb, MoreVertical, Sparkles, Leaf, Check, ChevronsUpDown, Upload, Download, Trash2, CheckCircle2 } from "lucide-react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
@@ -14,9 +14,12 @@ import {
   addInventorySnapshot,
   deleteInventorySnapshot,
   fetchInventoryForStore,
+  fetchPickupsForStore,
   fetchStores,
   findOrCreateItem,
+  type Pickup,
 } from "@/lib/data";
+import { PickupDetailsPopover } from "@/components/pickup-details-popover";
 import { OVERALL_CATEGORIES, itemsForOverall, itemByName } from "@/lib/food-catalog";
 import { cn, daysUntil, formatDate } from "@/lib/utils";
 
@@ -73,6 +76,22 @@ function RetailerDashboard() {
     queryFn: () => fetchInventoryForStore(profile!.store_id!),
     enabled: !!profile?.store_id,
   });
+  const pickupsQuery = useQuery({
+    queryKey: ["pickups_for_store", profile?.store_id],
+    queryFn: () => fetchPickupsForStore(profile!.store_id!),
+    enabled: !!profile?.store_id,
+  });
+
+  // Latest pickup per item_id for this store. Completed rows are filtered out
+  // of the inventory list (they appear on the Deliveries tab); confirmed rows
+  // drive the "Claimed" column.
+  const pickupByItemId = new Map<string, Pickup>();
+  for (const p of pickupsQuery.data ?? []) {
+    const existing = pickupByItemId.get(p.item_id);
+    if (!existing || p.scheduled_date > existing.scheduled_date) {
+      pickupByItemId.set(p.item_id, p);
+    }
+  }
 
   const myStore = storesQuery.data?.find((s) => s.id === profile?.store_id);
 
@@ -100,12 +119,20 @@ function RetailerDashboard() {
     if (csvFileRef.current) csvFileRef.current.value = "";
   };
 
-  const rows = (inventoryQuery.data ?? []).filter((row) => {
-    if (filter === "all") return true;
-    if (filter === "near") return daysUntil(row.expiry_date) <= 2;
-    if (filter === "produce") return row.items?.category?.toLowerCase() === "produce";
-    return true;
-  });
+  const rows = (inventoryQuery.data ?? [])
+    .filter((row) => {
+      // Hide items that have already been delivered — they live on the
+      // Deliveries tab now.
+      const pk = pickupByItemId.get(row.item_id);
+      if (pk?.status === "completed") return false;
+      return true;
+    })
+    .filter((row) => {
+      if (filter === "all") return true;
+      if (filter === "near") return daysUntil(row.expiry_date) <= 2;
+      if (filter === "produce") return row.items?.category?.toLowerCase() === "produce";
+      return true;
+    });
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -290,6 +317,7 @@ function RetailerDashboard() {
                   <th className="px-6 py-3 font-semibold">Qty on Hand</th>
                   <th className="px-6 py-3 font-semibold">Expiry Date</th>
                   <th className="px-6 py-3 font-semibold">Status</th>
+                  <th className="px-6 py-3 font-semibold">Claimed</th>
                   <th className="px-6 py-3"></th>
                 </tr>
               </thead>
@@ -342,6 +370,38 @@ function RetailerDashboard() {
                           {d <= 0 ? "Expired" : `${d} ${d === 1 ? "Day" : "Days"} Left`}
                         </span>
                       </td>
+                      <td className="px-6 py-4">
+                        {(() => {
+                          const pk = pickupByItemId.get(row.item_id);
+                          if (!pk || pk.status !== "confirmed") {
+                            return (
+                              <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-muted-foreground">
+                                <span className="h-2 w-2 rounded-full bg-muted-foreground/40" />
+                                Available
+                              </span>
+                            );
+                          }
+                          const who =
+                            pk.confirmed_by_profile?.display_name ??
+                            pk.food_banks?.name ??
+                            "a coordinator";
+                          return (
+                            <PickupDetailsPopover
+                              pickup={pk}
+                              viewer="retailer"
+                              trigger={
+                                <button
+                                  type="button"
+                                  className="inline-flex items-center gap-1.5 rounded-sm bg-primary-soft px-3 py-1 text-xs font-semibold text-primary-soft-foreground transition hover:bg-primary-soft/80"
+                                >
+                                  <CheckCircle2 className="h-3.5 w-3.5" />
+                                  Claimed by {who}
+                                </button>
+                              }
+                            />
+                          );
+                        })()}
+                      </td>
                       <td className="px-6 py-4 text-right">
                         <Popover>
                           <PopoverTrigger asChild>
@@ -354,10 +414,16 @@ function RetailerDashboard() {
                             </button>
                           </PopoverTrigger>
                           <PopoverContent align="end" className="z-[70] w-44 p-1">
+                            {(() => {
+                              const pk = pickupByItemId.get(row.item_id);
+                              const isClaimed = pk?.status === "confirmed";
+                              return (
                             <button
                               type="button"
+                              disabled={isClaimed}
                               onClick={async () => {
                                 if (!profile?.store_id) return;
+                                if (isClaimed) return;
                                 if (!confirm(`Remove "${row.items?.name}" from inventory? This also clears its forecasts for coordinators.`)) return;
                                 try {
                                   await deleteInventorySnapshot({
@@ -372,10 +438,13 @@ function RetailerDashboard() {
                                   toast.error(err instanceof Error ? err.message : "Could not remove");
                                 }
                               }}
-                              className="flex w-full items-center gap-2 rounded-sm px-3 py-2 text-left text-sm font-semibold text-destructive transition hover:bg-destructive-soft"
+                              className="flex w-full items-center gap-2 rounded-sm px-3 py-2 text-left text-sm font-semibold text-destructive transition hover:bg-destructive-soft disabled:cursor-not-allowed disabled:text-muted-foreground disabled:hover:bg-transparent"
+                              title={isClaimed ? "This item is already claimed by a coordinator" : undefined}
                             >
                               <Trash2 className="h-4 w-4" /> Remove item
                             </button>
+                              );
+                            })()}
                           </PopoverContent>
                         </Popover>
                       </td>

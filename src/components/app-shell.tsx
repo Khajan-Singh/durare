@@ -6,6 +6,7 @@ import {
   LayoutDashboard,
   Truck,
   Boxes,
+  PackageCheck,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
@@ -33,7 +34,10 @@ export function AppShell({
         { to: "/coordinator", label: "Dashboard", icon: LayoutDashboard },
         { to: "/pickups", label: "Pickups", icon: Truck },
       ]
-    : [{ to: "/retailer", label: "Inventory", icon: Boxes }];
+    : [
+        { to: "/retailer", label: "Inventory", icon: Boxes },
+        { to: "/deliveries", label: "Deliveries", icon: PackageCheck },
+      ];
 
   return (
     <div className="min-h-screen bg-background text-foreground">

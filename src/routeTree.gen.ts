@@ -14,6 +14,7 @@ import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRetailerRouteImport } from './routes/_authenticated/retailer'
 import { Route as AuthenticatedPickupsRouteImport } from './routes/_authenticated/pickups'
+import { Route as AuthenticatedDeliveriesRouteImport } from './routes/_authenticated/deliveries'
 import { Route as AuthenticatedCoordinatorRouteImport } from './routes/_authenticated/coordinator'
 
 const AuthRoute = AuthRouteImport.update({
@@ -40,6 +41,11 @@ const AuthenticatedPickupsRoute = AuthenticatedPickupsRouteImport.update({
   path: '/pickups',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedDeliveriesRoute = AuthenticatedDeliveriesRouteImport.update({
+  id: '/deliveries',
+  path: '/deliveries',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedCoordinatorRoute =
   AuthenticatedCoordinatorRouteImport.update({
     id: '/coordinator',
@@ -51,6 +57,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/coordinator': typeof AuthenticatedCoordinatorRoute
+  '/deliveries': typeof AuthenticatedDeliveriesRoute
   '/pickups': typeof AuthenticatedPickupsRoute
   '/retailer': typeof AuthenticatedRetailerRoute
 }
@@ -58,6 +65,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
   '/coordinator': typeof AuthenticatedCoordinatorRoute
+  '/deliveries': typeof AuthenticatedDeliveriesRoute
   '/pickups': typeof AuthenticatedPickupsRoute
   '/retailer': typeof AuthenticatedRetailerRoute
 }
@@ -67,20 +75,28 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
   '/_authenticated/coordinator': typeof AuthenticatedCoordinatorRoute
+  '/_authenticated/deliveries': typeof AuthenticatedDeliveriesRoute
   '/_authenticated/pickups': typeof AuthenticatedPickupsRoute
   '/_authenticated/retailer': typeof AuthenticatedRetailerRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/coordinator' | '/pickups' | '/retailer'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/coordinator'
+    | '/deliveries'
+    | '/pickups'
+    | '/retailer'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/coordinator' | '/pickups' | '/retailer'
+  to: '/' | '/auth' | '/coordinator' | '/deliveries' | '/pickups' | '/retailer'
   id:
     | '__root__'
     | '/'
     | '/_authenticated'
     | '/auth'
     | '/_authenticated/coordinator'
+    | '/_authenticated/deliveries'
     | '/_authenticated/pickups'
     | '/_authenticated/retailer'
   fileRoutesById: FileRoutesById
@@ -128,6 +144,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedPickupsRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/deliveries': {
+      id: '/_authenticated/deliveries'
+      path: '/deliveries'
+      fullPath: '/deliveries'
+      preLoaderRoute: typeof AuthenticatedDeliveriesRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/coordinator': {
       id: '/_authenticated/coordinator'
       path: '/coordinator'
@@ -140,12 +163,14 @@ declare module '@tanstack/react-router' {
 
 interface AuthenticatedRouteRouteChildren {
   AuthenticatedCoordinatorRoute: typeof AuthenticatedCoordinatorRoute
+  AuthenticatedDeliveriesRoute: typeof AuthenticatedDeliveriesRoute
   AuthenticatedPickupsRoute: typeof AuthenticatedPickupsRoute
   AuthenticatedRetailerRoute: typeof AuthenticatedRetailerRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedCoordinatorRoute: AuthenticatedCoordinatorRoute,
+  AuthenticatedDeliveriesRoute: AuthenticatedDeliveriesRoute,
   AuthenticatedPickupsRoute: AuthenticatedPickupsRoute,
   AuthenticatedRetailerRoute: AuthenticatedRetailerRoute,
 }

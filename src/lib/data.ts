@@ -15,6 +15,7 @@ export type FoodBank = {
   lng: number;
   capacity: number;
   cold_storage: boolean;
+  address?: string | null;
 };
 
 export type Item = {
@@ -92,6 +93,12 @@ export type Pickup = {
   created_at: string;
   items?: Item | null;
   stores?: Store | null;
+  food_banks?: FoodBank | null;
+  confirmed_by_profile?: {
+    id: string;
+    display_name: string | null;
+    email: string | null;
+  } | null;
 };
 
 /**
@@ -404,11 +411,55 @@ export async function findOrCreateItem(input: {
 export async function fetchPickupsForFoodBank(foodBankId: string): Promise<Pickup[]> {
   const { data, error } = await supabase
     .from("pickups")
-    .select("*, items(*), stores(*)")
+    .select("*, items(*), stores(*), food_banks(*)")
     .eq("food_bank_id", foodBankId)
     .order("scheduled_date", { ascending: true });
   if (error) throw error;
-  return (data ?? []) as unknown as Pickup[];
+  const pickups = (data ?? []) as unknown as Pickup[];
+  return attachConfirmedByProfiles(pickups);
+}
+
+export async function fetchPickupsForStore(storeId: string): Promise<Pickup[]> {
+  const { data, error } = await supabase
+    .from("pickups")
+    .select("*, items(*), stores(*), food_banks(*)")
+    .eq("store_id", storeId)
+    .order("scheduled_date", { ascending: true });
+  if (error) throw error;
+  const pickups = (data ?? []) as unknown as Pickup[];
+  return attachConfirmedByProfiles(pickups);
+}
+
+/** Bulk-load profile contact info for each pickup's confirmed_by user. */
+async function attachConfirmedByProfiles(pickups: Pickup[]): Promise<Pickup[]> {
+  const ids = Array.from(
+    new Set(pickups.map((p) => p.confirmed_by).filter((v): v is string => !!v)),
+  );
+  if (ids.length === 0) return pickups;
+  const { data, error } = await supabase
+    .from("profiles")
+    .select("id, display_name, email")
+    .in("id", ids);
+  if (error) return pickups;
+  const byId = new Map((data ?? []).map((p) => [p.id, p]));
+  return pickups.map((p) => ({
+    ...p,
+    confirmed_by_profile: p.confirmed_by ? byId.get(p.confirmed_by) ?? null : null,
+  }));
+}
+
+/**
+ * Keys (`storeId|itemId`) of pickups that have already been claimed or
+ * completed. Used by the coordinator dashboard to hide forecasts that are no
+ * longer actionable for any coordinator.
+ */
+export async function fetchActivePickupKeys(): Promise<Set<string>> {
+  const { data, error } = await supabase
+    .from("pickups")
+    .select("store_id, item_id, status")
+    .in("status", ["confirmed", "completed"]);
+  if (error) throw error;
+  return new Set((data ?? []).map((r) => `${r.store_id}|${r.item_id}`));
 }
 
 export async function confirmPickup(input: {
