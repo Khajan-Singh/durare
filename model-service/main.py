@@ -167,10 +167,10 @@ def _predict_quantiles(features: list[dict[str, float]]) -> tuple[np.ndarray, np
         q10, q50, q90 = out[:, 0], out[:, 1], out[:, 2]
 
     # Clamp negatives and enforce monotonic quantiles q10 <= q50 <= q90.
-    q10 = np.maximum(q10, 0.0)
-    q50 = np.maximum(q50, q10)
-    q90 = np.maximum(q90, q50)
-    return q10, q50, q90
+    # Quantile boosters can cross; row-wise sorting preserves the interval
+    # instead of collapsing q90 to q50 whenever the high column is below mid.
+    ordered = np.sort(np.maximum(np.column_stack([q10, q50, q90]), 0.0), axis=1)
+    return ordered[:, 0], ordered[:, 1], ordered[:, 2]
 
 
 def _attribution(row: PredictRow, features: dict[str, float]) -> dict[str, Any]:
