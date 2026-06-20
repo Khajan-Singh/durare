@@ -16,7 +16,7 @@ import {
   fetchStores,
   findOrCreateItem,
 } from "@/lib/data";
-import { OVERALL_CATEGORIES, itemsFor, subcategoriesFor } from "@/lib/food-catalog";
+import { OVERALL_CATEGORIES, itemsForOverall } from "@/lib/food-catalog";
 import { cn, daysUntil, formatDate } from "@/lib/utils";
 
 export const Route = createFileRoute("/_authenticated/retailer")({
@@ -40,7 +40,6 @@ function RetailerDashboard() {
 
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [overall, setOverall] = useState("");
-  const [subcategory, setSubcategory] = useState("");
   const [itemName, setItemName] = useState("");
   const [qty, setQty] = useState("");
   const [expiry, setExpiry] = useState("");
@@ -60,13 +59,13 @@ function RetailerDashboard() {
       toast.error("No store linked to your account");
       return;
     }
-    if (!overall || !subcategory || !itemName || !qty || !expiry) {
-      toast.error("Pick a category, sub-category, and item");
+    if (!overall || !itemName || !qty || !expiry) {
+      toast.error("Pick a category and a specific item");
       return;
     }
     setSaving(true);
     try {
-      const item = await findOrCreateItem({ name: itemName, category: subcategory });
+      const item = await findOrCreateItem({ name: itemName, category: overall });
       await addInventorySnapshot({
         store_id: profile.store_id,
         item_id: item.id,
@@ -75,7 +74,6 @@ function RetailerDashboard() {
       });
       toast.success("Inventory updated");
       setOverall("");
-      setSubcategory("");
       setItemName("");
       setQty("");
       setExpiry("");
@@ -252,29 +250,16 @@ function RetailerDashboard() {
                 options={OVERALL_CATEGORIES}
                 onChange={(v) => {
                   setOverall(v);
-                  setSubcategory("");
                   setItemName("");
                 }}
               />
               <SearchableCombobox
-                label="Specific Category"
-                placeholder={overall ? "Pick a sub-category" : "Pick an overall category first"}
-                searchPlaceholder="Search sub-categories…"
-                value={subcategory}
-                options={overall ? subcategoriesFor(overall) : []}
-                disabled={!overall}
-                onChange={(v) => {
-                  setSubcategory(v);
-                  setItemName("");
-                }}
-              />
-              <SearchableCombobox
-                label="Item"
-                placeholder={subcategory ? "Pick an item" : "Pick a sub-category first"}
+                label="Specific Item"
+                placeholder={overall ? "Pick an item" : "Pick an overall category first"}
                 searchPlaceholder="Search items…"
                 value={itemName}
-                options={overall && subcategory ? itemsFor(overall, subcategory) : []}
-                disabled={!subcategory}
+                options={overall ? itemsForOverall(overall) : []}
+                disabled={!overall}
                 onChange={setItemName}
               />
               <div className="grid grid-cols-2 gap-3">
