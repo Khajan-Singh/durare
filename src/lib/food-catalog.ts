@@ -111,3 +111,11 @@ export function subcategoriesFor(overall: string): string[] {
 export function itemsFor(overall: string, sub: string): string[] {
   return FOOD_CATALOG[overall]?.[sub] ?? [];
 }
+
+export function itemsForOverall(overall: string): string[] {
+  const subs = FOOD_CATALOG[overall];
+  if (!subs) return [];
+  const all = new Set<string>();
+  for (const list of Object.values(subs)) for (const name of list) all.add(name);
+  return Array.from(all).sort();
+}
