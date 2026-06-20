@@ -156,6 +156,39 @@ export async function addInventorySnapshot(input: {
   if (error) throw error;
 }
 
+/**
+ * Look up an item by (name, category). If it doesn't exist, create it.
+ * Used by the retailer "Add Inventory" form so the catalog can grow as
+ * stores log new SKUs from the food-catalog dropdowns.
+ */
+export async function findOrCreateItem(input: {
+  name: string;
+  category: string;
+  shelf_life_days?: number;
+}): Promise<Item> {
+  const { data: existing, error: findErr } = await supabase
+    .from("items")
+    .select("*")
+    .ilike("name", input.name)
+    .ilike("category", input.category)
+    .limit(1)
+    .maybeSingle();
+  if (findErr) throw findErr;
+  if (existing) return existing as Item;
+
+  const { data, error } = await supabase
+    .from("items")
+    .insert({
+      name: input.name,
+      category: input.category,
+      shelf_life_days: input.shelf_life_days ?? 7,
+    })
+    .select()
+    .single();
+  if (error) throw error;
+  return data as Item;
+}
+
 export async function fetchPickupsForFoodBank(foodBankId: string): Promise<Pickup[]> {
   const { data, error } = await supabase
     .from("pickups")
