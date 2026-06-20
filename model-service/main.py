@@ -128,7 +128,6 @@ FEATURE_ORDER = [
     "dow", "is_weekend", "month", "is_holiday", "is_promo", "shelf_life_days",
     "item_id_code", "category_code", "store_id_code", "state_code",
     "days_until_expiry", "is_near_expiry",
-    "lag_1", "lag_7", "roll_7", "roll_28", "roll_std_7",
 ]
 
 
