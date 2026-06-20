@@ -10,6 +10,10 @@ type PredictRow = {
   snapshot_date: string;
   expiry_date: string;
   qty_on_hand: number;
+  model_store_id?: string;
+  model_item_id?: string;
+  model_category?: string;
+  shelf_life_days?: number;
   is_promo?: boolean;
   sales_history?: Array<{ date: string; units: number }>;
 };
@@ -24,6 +28,22 @@ type PredictResult = PredictRow & {
 type PredictResponse = {
   predictions: PredictResult[];
   model_version: string;
+};
+
+const MODEL_ITEM_ALIASES: Record<string, { item_id: string; category: string }> = {
+  Bananas: { item_id: "ripe_banana", category: "Fresh Fruits" },
+  Strawberries: { item_id: "strawberries", category: "Fresh Fruits" },
+  "Romaine Lettuce": { item_id: "romaine_lettuce", category: "Leafy Greens" },
+  Avocados: { item_id: "avocado", category: "Fresh Fruits" },
+  "Whole Wheat Bread": { item_id: "nature_s_own_honey_wheat", category: "Bread" },
+  "Greek Yogurt": { item_id: "chobani_plain_greek_yogurt", category: "Yogurt" },
+};
+
+const MODEL_STORE_ALIASES: Record<string, string> = {
+  "Mission Fresh Market": "store_001",
+  "SoMa Organic Grocers": "store_002",
+  "Sunset Family Market": "store_003",
+  walmart: "store_004",
 };
 
 /**
@@ -46,7 +66,7 @@ export const triggerModelRun = createServerFn({ method: "POST" })
     const { data: inv, error: invErr } = await supabase
       .from("inventory_snapshots")
       .select(
-        "store_id, item_id, qty_on_hand, expiry_date, date, items(id, category), stores(id, state)"
+        "store_id, item_id, qty_on_hand, expiry_date, date, catalog_item_id, catalog_category_id, shelf_life_days, items(id, name, category), stores(id, name, state)"
       );
     if (invErr) throw invErr;
     if (!inv || inv.length === 0) {
@@ -55,17 +75,26 @@ export const triggerModelRun = createServerFn({ method: "POST" })
 
     const rows: PredictRow[] = inv
       .filter((r) => r.items && r.stores && r.expiry_date)
-      .map((r) => ({
-        store_id: r.store_id,
-        item_id: r.item_id,
-        category: (r.items as { category: string }).category,
-        state: (r.stores as { state: string | null }).state ?? "",
-        snapshot_date: r.date,
-        expiry_date: r.expiry_date as string,
-        qty_on_hand: Number(r.qty_on_hand),
-        is_promo: false,
-        sales_history: [],
-      }));
+      .map((r) => {
+        const item = r.items as { name: string; category: string };
+        const store = r.stores as { name: string; state: string | null };
+        const modelItem = MODEL_ITEM_ALIASES[item.name];
+        return {
+          store_id: r.store_id,
+          item_id: r.item_id,
+          category: item.category,
+          state: store.state ?? "",
+          snapshot_date: r.date,
+          expiry_date: r.expiry_date as string,
+          qty_on_hand: Number(r.qty_on_hand),
+          model_store_id: MODEL_STORE_ALIASES[store.name],
+          model_item_id: modelItem?.item_id,
+          model_category: modelItem?.category,
+          shelf_life_days: r.shelf_life_days == null ? undefined : Number(r.shelf_life_days),
+          is_promo: false,
+          sales_history: [],
+        };
+      });
 
     if (rows.length === 0) {
       return { inserted: 0, model_version: null as string | null };

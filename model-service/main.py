@@ -41,6 +41,10 @@ class PredictRow(BaseModel):
     expiry_date: str
     qty_on_hand: float
     model_version: str | None = None
+    model_store_id: str | None = None
+    model_item_id: str | None = None
+    model_category: str | None = None
+    shelf_life_days: float | None = None
     is_promo: bool = False
     sales_history: list[SaleHistoryEntry] = Field(default_factory=list)
 
@@ -74,6 +78,16 @@ def _encode(label: str, value: str) -> int:
     return int(enc.get(value, -1))
 
 
+def _model_value(row: PredictRow, field: str) -> str:
+    if field == "store_id":
+        return row.model_store_id or row.store_id
+    if field == "item_id":
+        return row.model_item_id or row.item_id
+    if field == "category":
+        return row.model_category or row.category
+    raise ValueError(f"unknown model field: {field}")
+
+
 def _build_features(row: PredictRow) -> dict[str, float]:
     snap = datetime.fromisoformat(row.snapshot_date).date()
     expiry = datetime.fromisoformat(row.expiry_date).date()
@@ -92,7 +106,8 @@ def _build_features(row: PredictRow) -> dict[str, float]:
     def roll_std(n: int) -> float:
         return float(units.tail(n).std(ddof=0)) if len(units) > 1 else 0.0
 
-    shelf_life = ARTIFACTS.shelf_life_days.get(row.item_id, 7)
+    model_item_id = _model_value(row, "item_id")
+    shelf_life = row.shelf_life_days or ARTIFACTS.shelf_life_days.get(model_item_id, 7)
 
     return {
         "dow": snap.weekday(),
@@ -101,9 +116,9 @@ def _build_features(row: PredictRow) -> dict[str, float]:
         "is_holiday": int(_is_holiday(snap, row.state)),
         "is_promo": int(row.is_promo),
         "shelf_life_days": shelf_life,
-        "item_id_code": _encode("item_id", row.item_id),
-        "category_code": _encode("category", row.category),
-        "store_id_code": _encode("store_id", row.store_id),
+        "item_id_code": _encode("item_id", model_item_id),
+        "category_code": _encode("category", _model_value(row, "category")),
+        "store_id_code": _encode("store_id", _model_value(row, "store_id")),
         "state_code": _encode("state", row.state),
         "days_until_expiry": days_until_expiry,
         "is_near_expiry": int(days_until_expiry <= 2),
@@ -152,10 +167,10 @@ def _predict_quantiles(features: list[dict[str, float]]) -> tuple[np.ndarray, np
         q10, q50, q90 = out[:, 0], out[:, 1], out[:, 2]
 
     # Clamp negatives and enforce monotonic quantiles q10 <= q50 <= q90.
-    q10 = np.maximum(q10, 0.0)
-    q50 = np.maximum(q50, q10)
-    q90 = np.maximum(q90, q50)
-    return q10, q50, q90
+    # Quantile boosters can cross; row-wise sorting preserves the interval
+    # instead of collapsing q90 to q50 whenever the high column is below mid.
+    ordered = np.sort(np.maximum(np.column_stack([q10, q50, q90]), 0.0), axis=1)
+    return ordered[:, 0], ordered[:, 1], ordered[:, 2]
 
 
 def _attribution(row: PredictRow, features: dict[str, float]) -> dict[str, Any]:

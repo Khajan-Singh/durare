@@ -107,12 +107,15 @@ export async function fetchPredictions(): Promise<PredictionWithRefs[]> {
       "id, store_id, item_id, snapshot_date, expiry_date, qty_on_hand, sales_q10, sales_q50, sales_q90, attribution, model_version, created_at, item:items(*), store:stores(*)",
     )
     .gte("expiry_date", new Date().toISOString().slice(0, 10))
+    .order("created_at", { ascending: false })
     .order("expiry_date", { ascending: true });
   if (error) throw error;
   const raw = (data ?? []) as unknown as RawPrediction[];
+  const latestCreatedAt = raw[0]?.created_at;
   return raw
     .filter(
       (r) =>
+        (!latestCreatedAt || r.created_at === latestCreatedAt) &&
         r.sales_q10 != null &&
         r.sales_q50 != null &&
         r.sales_q90 != null &&
