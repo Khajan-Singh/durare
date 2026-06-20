@@ -1,59 +1,47 @@
-## Predictions: store raw model output, derive display fields on read
+## Goal
 
-The model now writes only **raw** forecast values; the app derives everything the UI shows. All derivation happens in one place — `src/lib/data.ts` — so components keep consuming the same `PredictionWithRefs` shape they do today.
+Add an "Upload CSV" button next to the "Add Item" button on the retailer dashboard so retailers can bulk-add inventory rows from a CSV that follows a fixed template.
 
-### 1. Schema migration (`predictions` table)
+## CSV template
 
-Add raw columns the model will write:
-- `sales_q10 numeric NOT NULL`
-- `sales_q50 numeric NOT NULL`
-- `sales_q90 numeric NOT NULL`
-- `qty_on_hand numeric NOT NULL`
-- `snapshot_date date NOT NULL`
-- `expiry_date date NOT NULL`
-- `category text`
-- `state text`
-- `attribution jsonb NOT NULL DEFAULT '{}'::jsonb`
+I'll publish a downloadable template at `public/inventory-template.csv` with this exact header (one row per inventory item):
 
-Drop reliance on the stored derived columns (`predicted_surplus_qty`, `confidence_low`, `confidence_high`, `target_date`, `drivers`):
-- Make them nullable so the model can stop writing them without breaking inserts.
-- Leave the columns in place for one migration (no data loss); the data layer ignores them.
+```text
+category,item_name,quantity,expiry_date
+Produce,Bananas,12,2026-06-25
+Bakery,Sourdough Loaf,4,2026-06-22
+```
 
-No grant/RLS changes — existing policies still apply.
+Columns:
+- `category` — one of the overall categories used in the app (Produce, Bakery, Dairy, etc.) from `OVERALL_CATEGORIES`.
+- `item_name` — specific item name. If it matches a catalog entry under that category, we attach the catalog ids + shelf life; otherwise we fall back to `findOrCreateItem` like the manual flow.
+- `quantity` — positive integer.
+- `expiry_date` — ISO `YYYY-MM-DD`.
 
-### 2. Data layer (`src/lib/data.ts`)
+## UI changes (retailer.tsx only)
 
-- Add `RawPrediction` type matching the new columns.
-- `fetchPredictions()` selects raw columns + joins, then maps each row through a new `derivePrediction(raw)` that returns the existing `PredictionWithRefs` shape (so `prediction-card.tsx`, `confidence-bar.tsx`, coordinator dashboard, and confirm-pickup modal don't change).
-- `derivePrediction(raw)` computes, per the spec:
-  - `days_to_expiry = expiry_date − snapshot_date` (whole days)
-  - `predicted_surplus_qty = round(qty_on_hand − sales_q50)`
-  - `confidence_low = round(qty_on_hand − sales_q90)`
-  - `confidence_high = round(qty_on_hand − sales_q10)`
-  - `rel_width = (confidence_high − confidence_low) / max(predicted_surplus_qty, 1)`
-  - `buffer`: `<0.6 → 3`, `<1.2 → 2`, `else → 1`
-  - `target_date = expiry_date − buffer`, clamped to `[snapshot_date, expiry_date − 1]`
-  - `confidenceLabel`: high / moderate / low from `rel_width`
-  - `drivers`: assemble the four-part sentence (arithmetic line, causal clauses from `attribution.recent_trend` / `promo_active` / `window_days` only, confidence label, pickup rationale with formatted target date). Skip any causal clause whose attribution field is missing — never invent reasons.
-- All numeric display values rounded to whole units.
-- Existing `Prediction` / `PredictionWithRefs` types updated so `predicted_surplus_qty`, `confidence_low`, `confidence_high`, `target_date`, `drivers` come from the derivation, not the row.
+1. Add an "Upload CSV" button next to "Add Item" (both in the forecast insight section and likely the empty-state / header where Add Item appears) with a matching boxy style.
+2. Button opens a small drawer/modal mirroring the existing Add Item drawer styling, containing:
+   - A short description of the expected format.
+   - A "Download template" link pointing to `/inventory-template.csv`.
+   - A file input accepting `.csv`.
+   - A preview list showing parsed rows with per-row validation status (ok / error reason).
+   - "Import N items" submit button + Cancel.
+3. On submit, iterate valid rows and call the same `findOrCreateItem` + `addInventorySnapshot` pair already used by the manual form, then invalidate the `["inventory", store_id]` query and toast a summary (e.g. "Imported 8 items, 1 skipped").
 
-### 3. Model service (`model-service/`)
+## Parsing
 
-Update `main.py` response contract to match the new table:
-- Output per row: `sales_q10`, `sales_q50`, `sales_q90`, `attribution` (JSON with `recent_trend`, `promo_active`, `window_days`), `model_version`.
-- Remove server-side derivation of `predicted_surplus_qty`, `confidence_low`, `confidence_high`, `target_date`, `days_to_expiry`, `drivers` — the app owns those now.
-- README updated to reflect the new contract and to document that quantiles are TOTAL sales over the snapshot→expiry window.
+- Lightweight inline CSV parser (handles quoted fields, commas, CRLF) — no new dependency.
+- Validate header row matches the template exactly; otherwise show an error and abort.
+- Per-row validation: required fields present, quantity is a positive integer, date parses, category is known.
 
-### 4. Components
+## Out of scope
 
-No changes. They already render `predicted_surplus_qty`, the confidence band, `target_date`, `days_to_expiry`, and `drivers` from `PredictionWithRefs`; only the source changes.
+- No schema/database changes — uses existing `items` and `inventory_snapshots` tables via existing `src/lib/data` helpers.
+- No changes to daily sales, coordinator view, or other routes.
+- No background job — import runs client-side sequentially with a progress toast.
 
-### Worked-example sanity check (matches the spec)
+## Files touched
 
-Raw: `qty=60, q10=30.5, q50=41.2, q90=49.8, snapshot=06-19, expiry=06-25`
-→ surplus 19, band 10–30, rel_width ≈ 1.03 → moderate → buffer 2 → target_date 06-23, days_to_expiry 6. ✓
-
-### Open question
-
-The current `predictions` columns `predicted_surplus_qty`, `confidence_low`, `confidence_high`, `target_date`, `drivers` are `NOT NULL`. Plan is to make them nullable now and drop them in a later cleanup migration. Say "drop them now" if you'd rather remove them in this same migration.
+- `src/routes/_authenticated/retailer.tsx` — new button, new drawer, parser, import handler.
+- `public/inventory-template.csv` — new downloadable template.

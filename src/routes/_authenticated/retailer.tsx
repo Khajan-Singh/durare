@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { Plus, X, Lightbulb, MoreVertical, Sparkles, Leaf, Check, ChevronsUpDown } from "lucide-react";
+import { Plus, X, Lightbulb, MoreVertical, Sparkles, Leaf, Check, ChevronsUpDown, Upload, Download } from "lucide-react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
@@ -27,6 +27,43 @@ export const Route = createFileRoute("/_authenticated/retailer")({
 
 type FilterKey = "all" | "near" | "produce";
 
+type ParsedCsvRow = {
+  category: string;
+  item_name: string;
+  quantity: string;
+  expiry_date: string;
+  error?: string;
+};
+
+const CSV_TEMPLATE = `category,item_name,quantity,expiry_date
+Produce,Bananas,12,2026-06-25
+Bakery,Sourdough Loaf,4,2026-06-22
+`;
+
+function parseCsv(text: string): string[][] {
+  const rows: string[][] = [];
+  let cur: string[] = [];
+  let field = "";
+  let inQuotes = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (inQuotes) {
+      if (c === '"') {
+        if (text[i + 1] === '"') { field += '"'; i++; } else { inQuotes = false; }
+      } else field += c;
+    } else if (c === '"') inQuotes = true;
+    else if (c === ",") { cur.push(field); field = ""; }
+    else if (c === "\n" || c === "\r") {
+      if (c === "\r" && text[i + 1] === "\n") i++;
+      cur.push(field); field = "";
+      if (cur.some((v) => v.trim() !== "")) rows.push(cur);
+      cur = [];
+    } else field += c;
+  }
+  if (field !== "" || cur.length) { cur.push(field); if (cur.some((v) => v.trim() !== "")) rows.push(cur); }
+  return rows;
+}
+
 function RetailerDashboard() {
   const { profile } = useAuth();
   const qc = useQueryClient();
@@ -47,6 +84,13 @@ function RetailerDashboard() {
   const [expiry, setExpiry] = useState("");
   const [saving, setSaving] = useState(false);
   const [filter, setFilter] = useState<FilterKey>("all");
+
+  // CSV import
+  const [csvOpen, setCsvOpen] = useState(false);
+  const [csvRows, setCsvRows] = useState<ParsedCsvRow[]>([]);
+  const [csvFileName, setCsvFileName] = useState("");
+  const [csvError, setCsvError] = useState("");
+  const [importing, setImporting] = useState(false);
 
   // Daily sales logging
   const [salesOpen, setSalesOpen] = useState(false);
@@ -135,6 +179,88 @@ function RetailerDashboard() {
     }
   };
 
+  const downloadTemplate = () => {
+    const blob = new Blob([CSV_TEMPLATE], { type: "text/csv;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "inventory-template.csv";
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const onCsvFile = async (file: File) => {
+    setCsvFileName(file.name);
+    setCsvError("");
+    setCsvRows([]);
+    const text = await file.text();
+    const rows = parseCsv(text);
+    if (rows.length === 0) { setCsvError("CSV is empty"); return; }
+    const header = rows[0].map((h) => h.trim().toLowerCase());
+    const expected = ["category", "item_name", "quantity", "expiry_date"];
+    if (expected.some((h, i) => header[i] !== h)) {
+      setCsvError(`Header must be: ${expected.join(",")}`);
+      return;
+    }
+    const parsed: ParsedCsvRow[] = rows.slice(1).map((r) => {
+      const row: ParsedCsvRow = {
+        category: (r[0] ?? "").trim(),
+        item_name: (r[1] ?? "").trim(),
+        quantity: (r[2] ?? "").trim(),
+        expiry_date: (r[3] ?? "").trim(),
+      };
+      if (!row.category || !row.item_name || !row.quantity || !row.expiry_date) {
+        row.error = "Missing field";
+      } else if (!OVERALL_CATEGORIES.includes(row.category)) {
+        row.error = `Unknown category "${row.category}"`;
+      } else if (!/^\d+$/.test(row.quantity) || Number(row.quantity) <= 0) {
+        row.error = "Quantity must be a positive integer";
+      } else if (isNaN(Date.parse(row.expiry_date))) {
+        row.error = "Invalid date (use YYYY-MM-DD)";
+      }
+      return row;
+    });
+    setCsvRows(parsed);
+  };
+
+  const onImportCsv = async () => {
+    if (!profile?.store_id) return toast.error("No store linked");
+    const valid = csvRows.filter((r) => !r.error);
+    if (valid.length === 0) return toast.error("No valid rows to import");
+    setImporting(true);
+    let ok = 0;
+    let fail = 0;
+    for (const r of valid) {
+      try {
+        const catalogEntry = itemByName(r.category, r.item_name);
+        const item = await findOrCreateItem({
+          name: r.item_name,
+          category: r.category,
+          shelf_life_days: catalogEntry?.shelf_life_days,
+        });
+        await addInventorySnapshot({
+          store_id: profile.store_id,
+          item_id: item.id,
+          qty_on_hand: Number(r.quantity),
+          expiry_date: r.expiry_date,
+          catalog_item_id: catalogEntry?.item_id,
+          catalog_category_id: catalogEntry?.category_id,
+          shelf_life_days: catalogEntry?.shelf_life_days,
+        });
+        ok++;
+      } catch {
+        fail++;
+      }
+    }
+    setImporting(false);
+    const skipped = csvRows.length - valid.length;
+    toast.success(`Imported ${ok} item${ok === 1 ? "" : "s"}${fail ? `, ${fail} failed` : ""}${skipped ? `, ${skipped} skipped` : ""}`);
+    qc.invalidateQueries({ queryKey: ["inventory", profile.store_id] });
+    setCsvOpen(false);
+    setCsvRows([]);
+    setCsvFileName("");
+  };
+
   return (
     <div className="space-y-8">
       <header className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
@@ -145,9 +271,18 @@ function RetailerDashboard() {
             <span className="font-semibold text-foreground">{myStore?.name ?? "your store"}</span>.
           </p>
         </div>
-        <Button className="h-12 gap-2 rounded-xl px-6 font-bold shadow-sm" onClick={() => setDrawerOpen(true)}>
-          <Plus className="h-4 w-4" /> Add Inventory Item
-        </Button>
+        <div className="flex flex-wrap gap-2">
+          <Button
+            variant="outline"
+            className="h-12 gap-2 rounded-sm px-5 font-bold"
+            onClick={() => setCsvOpen(true)}
+          >
+            <Upload className="h-4 w-4" /> Upload CSV
+          </Button>
+          <Button className="h-12 gap-2 rounded-sm px-6 font-bold shadow-sm" onClick={() => setDrawerOpen(true)}>
+            <Plus className="h-4 w-4" /> Add Inventory Item
+          </Button>
+        </div>
       </header>
 
       {/* Daily sales logging */}
@@ -417,6 +552,118 @@ function RetailerDashboard() {
                 </Button>
               </div>
             </form>
+          </aside>
+        </div>
+      )}
+
+      {/* CSV Upload Drawer */}
+      {csvOpen && (
+        <div className="fixed inset-0 z-[60]">
+          <div className="absolute inset-0 bg-primary/40 backdrop-blur-sm" onClick={() => setCsvOpen(false)} />
+          <aside className="absolute right-0 top-0 flex h-full w-full max-w-lg flex-col bg-card shadow-2xl">
+            <div className="flex items-center justify-between border-b border-border bg-surface-low p-6">
+              <h2 className="text-xl font-bold text-primary">Bulk Upload Inventory</h2>
+              <button
+                onClick={() => setCsvOpen(false)}
+                className="rounded-sm p-2 text-muted-foreground transition hover:bg-surface-high"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+            <div className="flex-1 overflow-y-auto p-6 space-y-5">
+              <div className="rounded-sm border border-border bg-surface-low p-4 text-sm">
+                <p className="font-semibold text-foreground">Expected columns</p>
+                <p className="mt-1 font-mono text-xs text-muted-foreground">category, item_name, quantity, expiry_date</p>
+                <p className="mt-2 text-xs text-muted-foreground">
+                  Dates use YYYY-MM-DD. Category must match an existing app category (e.g. Produce, Bakery).
+                </p>
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="mt-3 h-9 gap-2 rounded-sm font-semibold"
+                  onClick={downloadTemplate}
+                >
+                  <Download className="h-4 w-4" /> Download template
+                </Button>
+              </div>
+
+              <div className="space-y-1.5">
+                <Label className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">CSV file</Label>
+                <Input
+                  type="file"
+                  accept=".csv,text/csv"
+                  className="h-12 rounded-sm"
+                  onChange={(e) => {
+                    const f = e.target.files?.[0];
+                    if (f) onCsvFile(f);
+                  }}
+                />
+                {csvFileName && <p className="text-xs text-muted-foreground">{csvFileName}</p>}
+              </div>
+
+              {csvError && (
+                <div className="rounded-sm border border-destructive bg-destructive-soft p-3 text-sm text-destructive-soft-foreground">
+                  {csvError}
+                </div>
+              )}
+
+              {csvRows.length > 0 && (
+                <div className="space-y-2">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                    Preview — {csvRows.filter((r) => !r.error).length} valid / {csvRows.length} total
+                  </p>
+                  <div className="max-h-80 overflow-y-auto rounded-sm border border-border">
+                    <table className="w-full text-left text-sm">
+                      <thead className="bg-surface-low text-xs uppercase tracking-wider text-muted-foreground">
+                        <tr>
+                          <th className="px-3 py-2 font-semibold">Item</th>
+                          <th className="px-3 py-2 font-semibold">Qty</th>
+                          <th className="px-3 py-2 font-semibold">Expiry</th>
+                          <th className="px-3 py-2 font-semibold">Status</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-border">
+                        {csvRows.map((r, i) => (
+                          <tr key={i}>
+                            <td className="px-3 py-2">
+                              <div className="font-semibold">{r.item_name}</div>
+                              <div className="text-xs text-muted-foreground">{r.category}</div>
+                            </td>
+                            <td className="px-3 py-2 font-mono text-xs">{r.quantity}</td>
+                            <td className="px-3 py-2 text-xs">{r.expiry_date}</td>
+                            <td className="px-3 py-2">
+                              {r.error ? (
+                                <span className="text-xs font-semibold text-destructive">{r.error}</span>
+                              ) : (
+                                <span className="text-xs font-semibold text-primary">Ready</span>
+                              )}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              )}
+            </div>
+            <div className="flex gap-3 border-t border-border p-6">
+              <Button
+                type="button"
+                variant="outline"
+                className="h-12 flex-1 rounded-sm font-bold"
+                onClick={() => setCsvOpen(false)}
+              >
+                Cancel
+              </Button>
+              <Button
+                type="button"
+                disabled={importing || csvRows.filter((r) => !r.error).length === 0}
+                className="h-12 flex-1 rounded-sm font-bold"
+                onClick={onImportCsv}
+              >
+                {importing ? "Importing…" : `Import ${csvRows.filter((r) => !r.error).length} items`}
+              </Button>
+            </div>
           </aside>
         </div>
       )}
