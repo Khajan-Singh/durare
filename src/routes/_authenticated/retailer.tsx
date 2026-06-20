@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useRef, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { Plus, X, Lightbulb, MoreVertical, Sparkles, Leaf, Check, ChevronsUpDown, Upload, Download, Trash2 } from "lucide-react";
+import { Plus, X, Lightbulb, MoreVertical, Sparkles, Leaf, Check, ChevronsUpDown, Upload, Download, Trash2, CheckCircle2, Info } from "lucide-react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
@@ -14,9 +14,12 @@ import {
   addInventorySnapshot,
   deleteInventorySnapshot,
   fetchInventoryForStore,
+  fetchPickupsForStore,
   fetchStores,
   findOrCreateItem,
+  type Pickup,
 } from "@/lib/data";
+import { PickupDetailsPopover } from "@/components/pickup-details-popover";
 import { OVERALL_CATEGORIES, itemsForOverall, itemByName } from "@/lib/food-catalog";
 import { cn, daysUntil, formatDate } from "@/lib/utils";
 
@@ -73,6 +76,22 @@ function RetailerDashboard() {
     queryFn: () => fetchInventoryForStore(profile!.store_id!),
     enabled: !!profile?.store_id,
   });
+  const pickupsQuery = useQuery({
+    queryKey: ["pickups_for_store", profile?.store_id],
+    queryFn: () => fetchPickupsForStore(profile!.store_id!),
+    enabled: !!profile?.store_id,
+  });
+
+  // Latest pickup per item_id for this store. Completed rows are filtered out
+  // of the inventory list (they appear on the Deliveries tab); confirmed rows
+  // drive the "Claimed" column.
+  const pickupByItemId = new Map<string, Pickup>();
+  for (const p of pickupsQuery.data ?? []) {
+    const existing = pickupByItemId.get(p.item_id);
+    if (!existing || p.scheduled_date > existing.scheduled_date) {
+      pickupByItemId.set(p.item_id, p);
+    }
+  }
 
   const myStore = storesQuery.data?.find((s) => s.id === profile?.store_id);
 
@@ -100,12 +119,20 @@ function RetailerDashboard() {
     if (csvFileRef.current) csvFileRef.current.value = "";
   };
 
-  const rows = (inventoryQuery.data ?? []).filter((row) => {
-    if (filter === "all") return true;
-    if (filter === "near") return daysUntil(row.expiry_date) <= 2;
-    if (filter === "produce") return row.items?.category?.toLowerCase() === "produce";
-    return true;
-  });
+  const rows = (inventoryQuery.data ?? [])
+    .filter((row) => {
+      // Hide items that have already been delivered — they live on the
+      // Deliveries tab now.
+      const pk = pickupByItemId.get(row.item_id);
+      if (pk?.status === "completed") return false;
+      return true;
+    })
+    .filter((row) => {
+      if (filter === "all") return true;
+      if (filter === "near") return daysUntil(row.expiry_date) <= 2;
+      if (filter === "produce") return row.items?.category?.toLowerCase() === "produce";
+      return true;
+    });
 
   const onSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
