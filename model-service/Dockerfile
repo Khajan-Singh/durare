@@ -10,6 +10,14 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY . .
 
+# The trained model is too large to commit to the repo, so we fetch it from
+# the Lovable Assets CDN at image build time. Override MODEL_URL in Render
+# env vars if you host the model somewhere else.
+ARG MODEL_URL=https://durare.lovable.app/__l5e/assets-v1/6a4555ec-eb86-467c-b16e-7c7407df7925/xgboost_model.json
+RUN apt-get update && apt-get install -y --no-install-recommends curl \
+    && curl -fsSL "$MODEL_URL" -o /app/xgboost_model.json \
+    && rm -rf /var/lib/apt/lists/*
+
 ENV PORT=8000
 EXPOSE 8000
 

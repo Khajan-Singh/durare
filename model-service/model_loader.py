@@ -12,7 +12,7 @@ import xgboost as xgb
 
 HERE = Path(__file__).parent
 
-MODEL_LAYOUT = os.environ.get("MODEL_LAYOUT", "single_q50")  # single_q50 | three | multiquantile
+MODEL_LAYOUT = os.environ.get("MODEL_LAYOUT", "multiquantile")  # multiquantile | three
 MODEL_VERSION = os.environ.get("MODEL_VERSION", "v1")
 
 
