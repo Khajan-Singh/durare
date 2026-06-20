@@ -254,64 +254,6 @@ function RetailerDashboard() {
         </div>
       </header>
 
-      {/* Daily sales logging */}
-      <section className="card-elevated p-6">
-        <div className="flex items-center justify-between">
-          <div>
-            <h2 className="text-lg font-bold text-primary">Daily Sales Log</h2>
-            <p className="text-sm text-muted-foreground">
-              Record units sold per item per day. The forecasting model uses recent sales to predict surplus.
-            </p>
-          </div>
-          <Button variant="outline" className="rounded-lg font-semibold" onClick={() => setSalesOpen((v) => !v)}>
-            {salesOpen ? "Hide" : "Log Sales"}
-          </Button>
-        </div>
-        {salesOpen && (
-          <form onSubmit={onSubmitSale} className="mt-4 grid gap-3 md:grid-cols-5">
-            <div className="md:col-span-2">
-              <SearchableCombobox
-                label="Category"
-                placeholder="Pick category"
-                searchPlaceholder="Search…"
-                value={salesOverall}
-                options={OVERALL_CATEGORIES}
-                onChange={(v) => { setSalesOverall(v); setSalesItemName(""); }}
-              />
-            </div>
-            <div className="md:col-span-2">
-              <SearchableCombobox
-                label="Item"
-                placeholder={salesOverall ? "Pick item" : "Pick category first"}
-                searchPlaceholder="Search items…"
-                value={salesItemName}
-                options={salesOverall ? itemsForOverall(salesOverall).map((i) => i.name) : []}
-                disabled={!salesOverall}
-                onChange={setSalesItemName}
-              />
-            </div>
-            <div className="space-y-1.5">
-              <Label className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Units</Label>
-              <Input type="number" min={0} value={salesUnits} onChange={(e) => setSalesUnits(e.target.value)} className="h-12 rounded-lg" />
-            </div>
-            <div className="space-y-1.5 md:col-span-2">
-              <Label className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Date</Label>
-              <Input type="date" value={salesDate} onChange={(e) => setSalesDate(e.target.value)} className="h-12 rounded-lg" />
-            </div>
-            <div className="md:col-span-3 flex items-end">
-              <Button type="submit" disabled={savingSale} className="h-12 w-full rounded-lg font-bold">
-                {savingSale ? "Saving…" : "Log Sale"}
-              </Button>
-            </div>
-          </form>
-        )}
-        {salesQuery.data && salesQuery.data.length > 0 && (
-          <div className="mt-4 text-xs text-muted-foreground">
-            <span className="font-semibold text-foreground">{salesQuery.data.length}</span> recent sales entries logged.
-          </div>
-        )}
-      </section>
-
       <section className="card-elevated overflow-hidden">
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-border p-5">
           <div className="flex flex-wrap gap-2">
