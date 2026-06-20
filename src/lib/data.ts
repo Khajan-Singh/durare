@@ -6,6 +6,7 @@ export type Store = {
   lat: number;
   lng: number;
   type: string;
+  address?: string | null;
 };
 
 export type FoodBank = {
@@ -258,6 +259,7 @@ export async function createStore(input: {
   lng: number;
   type?: string;
   state?: string | null;
+  address?: string | null;
 }): Promise<Store> {
   const { data, error } = await supabase
     .from("stores")
@@ -267,6 +269,7 @@ export async function createStore(input: {
       lng: input.lng,
       type: input.type ?? "grocery",
       state: input.state ?? null,
+      address: input.address ?? null,
     })
     .select()
     .single();
@@ -278,10 +281,18 @@ export async function createFoodBank(input: {
   name: string;
   lat: number;
   lng: number;
+  address?: string | null;
 }): Promise<FoodBank> {
   const { data, error } = await supabase
     .from("food_banks")
-    .insert({ name: input.name, lat: input.lat, lng: input.lng, capacity: 0, cold_storage: false })
+    .insert({
+      name: input.name,
+      lat: input.lat,
+      lng: input.lng,
+      capacity: 0,
+      cold_storage: false,
+      address: input.address ?? null,
+    })
     .select()
     .single();
   if (error) throw error;

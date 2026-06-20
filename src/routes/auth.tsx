@@ -120,6 +120,7 @@ function AuthPage() {
           lat: location.lat,
           lng: location.lng,
           state: stateCode,
+          address: location.address,
         });
         newStoreId = s.id;
       } else {
@@ -127,6 +128,7 @@ function AuthPage() {
           name: orgName,
           lat: location.lat,
           lng: location.lng,
+          address: location.address,
         });
         newFoodBankId = f.id;
       }
