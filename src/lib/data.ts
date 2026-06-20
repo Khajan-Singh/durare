@@ -247,10 +247,17 @@ export async function createStore(input: {
   lat: number;
   lng: number;
   type?: string;
+  state?: string | null;
 }): Promise<Store> {
   const { data, error } = await supabase
     .from("stores")
-    .insert({ name: input.name, lat: input.lat, lng: input.lng, type: input.type ?? "grocery" })
+    .insert({
+      name: input.name,
+      lat: input.lat,
+      lng: input.lng,
+      type: input.type ?? "grocery",
+      state: input.state ?? null,
+    })
     .select()
     .single();
   if (error) throw error;
