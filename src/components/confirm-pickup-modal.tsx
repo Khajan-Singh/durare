@@ -58,7 +58,7 @@ export function ConfirmPickupModal({
               <Sparkles className="h-3 w-3" />
               AI Prediction
             </div>
-            <h2 className="mt-2 text-xl font-extrabold text-primary">
+            <h2 className="mt-2 text-xl font-bold text-primary">
               Confirm Predicted Pickup
             </h2>
           </div>
@@ -84,7 +84,7 @@ export function ConfirmPickupModal({
                 <Sparkles className="h-4 w-4" />
                 Prediction Confidence
               </div>
-              <span className="text-lg font-extrabold text-primary">{confidence}%</span>
+              <span className="text-lg font-bold text-primary">{confidence}%</span>
             </div>
             <div className="relative h-3 w-full overflow-hidden rounded-full bg-secondary">
               <div

@@ -110,7 +110,7 @@ export function PredictionCard({
           Predicted Surplus
         </p>
         <div className="flex items-baseline gap-2">
-          <span className={cn("text-[40px] font-extrabold leading-none", s.numText)}>{point}</span>
+          <span className={cn("text-[40px] font-bold leading-none", s.numText)}>{point}</span>
           <span className="text-base text-muted-foreground">units</span>
         </div>
       </div>

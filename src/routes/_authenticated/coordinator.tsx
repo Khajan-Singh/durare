@@ -160,7 +160,7 @@ function CoordinatorDashboard() {
     <div className="space-y-8">
       <header className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="text-4xl font-extrabold tracking-tight text-primary sm:text-5xl">
+          <h1 className="text-4xl font-bold tracking-tight text-primary sm:text-5xl">
             Predicted Pickup Plan
           </h1>
           <p className="mt-2 text-base text-muted-foreground">
@@ -230,7 +230,7 @@ function CoordinatorDashboard() {
           <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
             Within {radius} mi · next 72h
           </p>
-          <p className="mt-1 text-2xl font-extrabold text-primary">
+          <p className="mt-1 text-2xl font-bold text-primary">
             ~{totalUnits} units of surplus predicted
           </p>
         </div>
@@ -244,7 +244,7 @@ function CoordinatorDashboard() {
       {/* Retailers within radius */}
       <section className="space-y-3">
         <div className="flex items-center justify-between">
-          <h2 className="text-lg font-extrabold text-primary">
+          <h2 className="text-lg font-bold text-primary">
             Retailers within {radius} mi
             <span className="ml-2 text-sm font-semibold text-muted-foreground">
               ({nearbyStores.length})
@@ -376,7 +376,7 @@ function Stat({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-xl bg-card/80 p-3 text-center backdrop-blur">
       <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">{label}</p>
-      <p className="mt-0.5 text-xl font-extrabold text-primary">{value}</p>
+      <p className="mt-0.5 text-xl font-bold text-primary">{value}</p>
     </div>
   );
 }
@@ -385,7 +385,7 @@ function MiniStat({ label, value }: { label: string; value: string }) {
   return (
     <div className="rounded-lg bg-secondary/60 p-1.5">
       <p className="text-[9px] font-bold uppercase tracking-wider text-muted-foreground">{label}</p>
-      <p className="text-sm font-extrabold text-primary leading-tight">{value}</p>
+      <p className="text-sm font-bold text-primary leading-tight">{value}</p>
     </div>
   );
 }

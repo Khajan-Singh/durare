@@ -45,7 +45,7 @@ export function AppShell({
               <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-primary-foreground">
                 <Leaf className="h-4 w-4" />
               </div>
-              <span className="text-xl font-extrabold tracking-tight text-primary">Durare</span>
+              <span className="text-xl font-bold tracking-tight text-primary">Durare</span>
             </Link>
             <nav className="hidden items-center gap-6 md:flex">
               {links.map(({ to, label }) => {
