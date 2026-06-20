@@ -343,9 +343,41 @@ function RetailerDashboard() {
                         </span>
                       </td>
                       <td className="px-6 py-4 text-right">
-                        <button className="text-muted-foreground transition hover:text-primary">
-                          <MoreVertical className="h-4 w-4" />
-                        </button>
+                        <Popover>
+                          <PopoverTrigger asChild>
+                            <button
+                              type="button"
+                              className="rounded-sm p-1 text-muted-foreground transition hover:bg-surface-high hover:text-primary"
+                              aria-label="Item actions"
+                            >
+                              <MoreVertical className="h-4 w-4" />
+                            </button>
+                          </PopoverTrigger>
+                          <PopoverContent align="end" className="z-[70] w-44 p-1">
+                            <button
+                              type="button"
+                              onClick={async () => {
+                                if (!profile?.store_id) return;
+                                if (!confirm(`Remove "${row.items?.name}" from inventory? This also clears its forecasts for coordinators.`)) return;
+                                try {
+                                  await deleteInventorySnapshot({
+                                    id: row.id,
+                                    store_id: profile.store_id,
+                                    item_id: row.item_id,
+                                  });
+                                  toast.success("Item removed");
+                                  qc.invalidateQueries({ queryKey: ["inventory", profile.store_id] });
+                                  qc.invalidateQueries({ queryKey: ["predictions"] });
+                                } catch (err) {
+                                  toast.error(err instanceof Error ? err.message : "Could not remove");
+                                }
+                              }}
+                              className="flex w-full items-center gap-2 rounded-sm px-3 py-2 text-left text-sm font-semibold text-destructive transition hover:bg-destructive-soft"
+                            >
+                              <Trash2 className="h-4 w-4" /> Remove item
+                            </button>
+                          </PopoverContent>
+                        </Popover>
                       </td>
                     </tr>
                   );
