@@ -139,7 +139,7 @@ function RetailerDashboard() {
     <div className="space-y-8">
       <header className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
         <div>
-          <h1 className="text-3xl font-extrabold tracking-tight text-primary sm:text-4xl">Store Inventory Snapshot</h1>
+          <h1 className="text-3xl font-display font-medium tracking-tight text-primary sm:text-4xl">Store Inventory Snapshot</h1>
           <p className="mt-1 text-base text-muted-foreground">
             Foresight &amp; Stewardship for your perishable stock at{" "}
             <span className="font-semibold text-foreground">{myStore?.name ?? "your store"}</span>.
@@ -154,7 +154,7 @@ function RetailerDashboard() {
       <section className="card-elevated p-6">
         <div className="flex items-center justify-between">
           <div>
-            <h2 className="text-lg font-extrabold text-primary">Daily Sales Log</h2>
+            <h2 className="text-lg font-display font-medium text-primary">Daily Sales Log</h2>
             <p className="text-sm text-muted-foreground">
               Record units sold per item per day. The forecasting model uses recent sales to predict surplus.
             </p>
@@ -318,7 +318,7 @@ function RetailerDashboard() {
             <Sparkles className="h-6 w-6 text-warning" />
           </div>
           <div className="flex-1">
-            <h3 className="text-lg font-extrabold">Forecast Insight</h3>
+            <h3 className="text-lg font-display font-medium">Forecast Insight</h3>
             <p className="text-sm opacity-90">
               Items expiring in 2 days are surfaced to coordinators automatically. Keep entries fresh — better data,
               sharper predictions, less waste.
@@ -340,7 +340,7 @@ function RetailerDashboard() {
           <div className="absolute inset-0 bg-primary/40 backdrop-blur-sm" onClick={() => setDrawerOpen(false)} />
           <aside className="absolute right-0 top-0 flex h-full w-full max-w-md flex-col bg-card shadow-2xl">
             <div className="flex items-center justify-between border-b border-border bg-surface-low p-6">
-              <h2 className="text-xl font-extrabold text-primary">Add Inventory Item</h2>
+              <h2 className="text-xl font-display font-medium text-primary">Add Inventory Item</h2>
               <button
                 onClick={() => setDrawerOpen(false)}
                 className="rounded-full p-2 text-muted-foreground transition hover:bg-surface-high"

@@ -50,7 +50,7 @@ function Landing() {
       </header>
 
       <section className="relative mx-auto max-w-4xl px-6 pt-12 pb-12 text-center">
-        <h1 className="text-balance text-4xl font-extrabold tracking-tight text-primary sm:text-6xl">
+        <h1 className="text-balance text-4xl font-display font-medium tracking-tight text-primary sm:text-6xl">
           See the surplus <span className="italic font-serif text-warning-foreground">before</span> it's discarded.
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-balance text-lg text-muted-foreground">
@@ -73,7 +73,7 @@ function Landing() {
       </section>
 
       <section className="relative mx-auto max-w-5xl px-6 pb-10">
-        <div className="relative overflow-hidden rounded-3xl">
+        <div className="relative overflow-hidden rounded-lg">
           <div className="absolute inset-0 z-10 bg-gradient-to-t from-primary/60 via-primary/10 to-transparent" />
           <img
             alt="Crates of fresh produce in warm morning light"
