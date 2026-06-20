@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { CheckCircle2, Store as StoreIcon, Sparkles, Calendar } from "lucide-react";
+import { CheckCircle2, Store as StoreIcon, Sparkles, Calendar, Info } from "lucide-react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
@@ -11,6 +11,7 @@ import {
   markPickupCompleted,
 } from "@/lib/data";
 import { cn, formatDate, haversineMiles } from "@/lib/utils";
+import { PickupDetailsPopover } from "@/components/pickup-details-popover";
 
 export const Route = createFileRoute("/_authenticated/pickups")({
   component: PickupsPage,
@@ -34,12 +35,21 @@ function PickupsPage() {
       await markPickupCompleted(id);
       toast.success("Pickup marked complete");
       qc.invalidateQueries({ queryKey: ["pickups", profile?.food_bank_id] });
+      qc.invalidateQueries({ queryKey: ["pickups_for_store"] });
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Could not update pickup");
     }
   };
 
-  const rows = pickupsQuery.data ?? [];
+  const allRows = pickupsQuery.data ?? [];
+  const pending = allRows
+    .filter((r) => r.status !== "completed")
+    .sort((a, b) => a.scheduled_date.localeCompare(b.scheduled_date));
+  const completed = allRows
+    .filter((r) => r.status === "completed")
+    .sort((a, b) => b.scheduled_date.localeCompare(a.scheduled_date));
+  const rows = [...pending, ...completed];
+  const firstCompletedIndex = pending.length;
 
   return (
     <div className="space-y-8">
