@@ -2,3 +2,6 @@ __pycache__/
 *.pyc
 .env
 .venv/
+# Trained model is fetched from the Lovable Assets CDN during Docker build.
+xgboost_model.json
+xgboost_model_q*.json
