@@ -1,5 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useState } from "react";
+import { useRef, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { Plus, X, Lightbulb, MoreVertical, Sparkles, Leaf, Check, ChevronsUpDown, Upload, Download } from "lucide-react";
 import { toast } from "sonner";
@@ -91,6 +91,15 @@ function RetailerDashboard() {
   const [csvFileName, setCsvFileName] = useState("");
   const [csvError, setCsvError] = useState("");
   const [importing, setImporting] = useState(false);
+  const csvFileRef = useRef<HTMLInputElement>(null);
+
+  const closeCsvDrawer = () => {
+    setCsvOpen(false);
+    setCsvRows([]);
+    setCsvFileName("");
+    setCsvError("");
+    if (csvFileRef.current) csvFileRef.current.value = "";
+  };
 
   // Daily sales logging
   const [salesOpen, setSalesOpen] = useState(false);
@@ -559,12 +568,12 @@ function RetailerDashboard() {
       {/* CSV Upload Drawer */}
       {csvOpen && (
         <div className="fixed inset-0 z-[60]">
-          <div className="absolute inset-0 bg-primary/40 backdrop-blur-sm" onClick={() => setCsvOpen(false)} />
+          <div className="absolute inset-0 bg-primary/40 backdrop-blur-sm" onClick={closeCsvDrawer} />
           <aside className="absolute right-0 top-0 flex h-full w-full max-w-lg flex-col bg-card shadow-2xl">
             <div className="flex items-center justify-between border-b border-border bg-surface-low p-6">
               <h2 className="text-xl font-bold text-primary">Bulk Upload Inventory</h2>
               <button
-                onClick={() => setCsvOpen(false)}
+                onClick={closeCsvDrawer}
                 className="rounded-sm p-2 text-muted-foreground transition hover:bg-surface-high"
               >
                 <X className="h-5 w-5" />
@@ -587,18 +596,39 @@ function RetailerDashboard() {
                 </Button>
               </div>
 
-              <div className="space-y-1.5">
+              <div className="space-y-2">
                 <Label className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">CSV file</Label>
-                <Input
+                <div
+                  onClick={() => csvFileRef.current?.click()}
+                  onDragOver={(e) => e.preventDefault()}
+                  onDrop={(e) => {
+                    e.preventDefault();
+                    const f = e.dataTransfer.files?.[0];
+                    if (f) onCsvFile(f);
+                  }}
+                  className="flex cursor-pointer flex-col items-center justify-center gap-3 rounded-sm border-2 border-dashed border-primary/25 bg-primary/5 p-8 text-center transition hover:border-primary/40 hover:bg-primary/10"
+                >
+                  <Upload className="h-8 w-8 text-primary/50" />
+                  <p className="text-sm text-foreground">
+                    <span className="font-semibold text-primary">Choose a file</span> or drag it here
+                  </p>
+                  {csvFileName && (
+                    <p className="text-xs text-muted-foreground">
+                      Selected: <span className="font-medium text-foreground">{csvFileName}</span>
+                    </p>
+                  )}
+                </div>
+                <input
+                  ref={csvFileRef}
                   type="file"
                   accept=".csv,text/csv"
-                  className="h-12 rounded-sm"
+                  className="hidden"
                   onChange={(e) => {
                     const f = e.target.files?.[0];
                     if (f) onCsvFile(f);
+                    e.target.value = "";
                   }}
                 />
-                {csvFileName && <p className="text-xs text-muted-foreground">{csvFileName}</p>}
               </div>
 
               {csvError && (
@@ -651,7 +681,7 @@ function RetailerDashboard() {
                 type="button"
                 variant="outline"
                 className="h-12 flex-1 rounded-sm font-bold"
-                onClick={() => setCsvOpen(false)}
+                onClick={closeCsvDrawer}
               >
                 Cancel
               </Button>
