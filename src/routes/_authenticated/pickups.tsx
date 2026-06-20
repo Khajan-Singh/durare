@@ -45,7 +45,7 @@ function PickupsPage() {
     <div className="space-y-8">
       <header className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
         <div>
-          <h1 className="text-4xl font-extrabold tracking-tight text-primary sm:text-5xl">
+          <h1 className="text-4xl font-display font-medium tracking-tight text-primary sm:text-5xl">
             Scheduled Pickups
           </h1>
           <p className="mt-2 max-w-2xl text-base text-muted-foreground">

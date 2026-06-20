@@ -1,59 +1,88 @@
-## Predictions: store raw model output, derive display fields on read
+# De-Slop the Durare UI (warm green + light brown)
 
-The model now writes only **raw** forecast values; the app derives everything the UI shows. All derivation happens in one place — `src/lib/data.ts` — so components keep consuming the same `PredictionWithRefs` shape they do today.
+## What makes the current UI feel "AI slop"
 
-### 1. Schema migration (`predictions` table)
+From `prediction-card.tsx`, `app-shell.tsx`, `styles.css`:
 
-Add raw columns the model will write:
-- `sales_q10 numeric NOT NULL`
-- `sales_q50 numeric NOT NULL`
-- `sales_q90 numeric NOT NULL`
-- `qty_on_hand numeric NOT NULL`
-- `snapshot_date date NOT NULL`
-- `expiry_date date NOT NULL`
-- `category text`
-- `state text`
-- `attribution jsonb NOT NULL DEFAULT '{}'::jsonb`
+1. **One generic sans for everything** (Public Sans 400–800) — no editorial contrast.
+2. **Rounded-everything** — `rounded-full` on chips, ribbons, confidence bars, nav pills; `rounded-xl` on cards and CTAs. The universal "friendly SaaS pill" tic.
+3. **Soft pastel surfaces + drop shadows + radial glow** (`durare-glow`, `card-elevated`) — Figma-template gloss.
+4. **Whole-card tonal recoloring** (primary/warning/urgent dye the chip, band, button, border, ribbon) — screams instead of informs.
+5. **Decorative flourishes** — floating ribbons, sparkles icon next to "Why this forecast?", gradient CTAs.
+6. **Uppercase micro-labels with wide tracking everywhere** — Stripe-clone tic.
+7. **Boldness inflation** — `font-extrabold` on logo + numbers, `font-bold` on every tile, so no real hierarchy.
+8. **Symmetric same-size card grid** with no rhythm — every card identical.
 
-Drop reliance on the stored derived columns (`predicted_surplus_qty`, `confidence_low`, `confidence_high`, `target_date`, `drivers`):
-- Make them nullable so the model can stop writing them without breaking inserts.
-- Leave the columns in place for one migration (no data loss); the data layer ignores them.
+## Design direction — calm green + warm light brown, friendly not industrial
 
-No grant/RLS changes — existing policies still apply.
+Editorial-but-cozy. Warm paper surfaces, a soft humanist serif for headings (not a clinical grotesk), restrained rounding (gentle, not pill), one accent indicator instead of full-card dye, generous whitespace.
 
-### 2. Data layer (`src/lib/data.ts`)
+### Palette (replaces current tokens in `src/styles.css`)
+Warm cream paper + moss green + light walnut brown.
 
-- Add `RawPrediction` type matching the new columns.
-- `fetchPredictions()` selects raw columns + joins, then maps each row through a new `derivePrediction(raw)` that returns the existing `PredictionWithRefs` shape (so `prediction-card.tsx`, `confidence-bar.tsx`, coordinator dashboard, and confirm-pickup modal don't change).
-- `derivePrediction(raw)` computes, per the spec:
-  - `days_to_expiry = expiry_date − snapshot_date` (whole days)
-  - `predicted_surplus_qty = round(qty_on_hand − sales_q50)`
-  - `confidence_low = round(qty_on_hand − sales_q90)`
-  - `confidence_high = round(qty_on_hand − sales_q10)`
-  - `rel_width = (confidence_high − confidence_low) / max(predicted_surplus_qty, 1)`
-  - `buffer`: `<0.6 → 3`, `<1.2 → 2`, `else → 1`
-  - `target_date = expiry_date − buffer`, clamped to `[snapshot_date, expiry_date − 1]`
-  - `confidenceLabel`: high / moderate / low from `rel_width`
-  - `drivers`: assemble the four-part sentence (arithmetic line, causal clauses from `attribution.recent_trend` / `promo_active` / `window_days` only, confidence label, pickup rationale with formatted target date). Skip any causal clause whose attribution field is missing — never invent reasons.
-- All numeric display values rounded to whole units.
-- Existing `Prediction` / `PredictionWithRefs` types updated so `predicted_surplus_qty`, `confidence_low`, `confidence_high`, `target_date`, `drivers` come from the derivation, not the row.
+- `--background` cream `#FBF7F0`
+- `--surface-low` `#F3ECDF` (warm beige)
+- `--card` `#FFFDF8`
+- `--border` `#E4D9C5` (warm hairline)
+- `--foreground` deep cocoa `#2B221A`
+- `--muted-foreground` `#7A6A55`
+- `--primary` moss green `#3F6B4E` (calm, not forest-black)
+- `--primary-soft` `#D9E4D2`
+- `--accent` light walnut `#B08968`
+- `--accent-soft` `#E8D8C4`
+- `--warning` warm amber `#C8862A`, `--warning-soft` `#F1E1BE`
+- `--destructive` terracotta `#B5482E` (warmer than current red), `--destructive-soft` `#F2D6CA`
+- `--success` sage `#5C8A66`
 
-### 3. Model service (`model-service/`)
+Dark mode tokens adjusted to match (deep moss bg, cream foreground) but no separate redesign pass.
 
-Update `main.py` response contract to match the new table:
-- Output per row: `sales_q10`, `sales_q50`, `sales_q90`, `attribution` (JSON with `recent_trend`, `promo_active`, `window_days`), `model_version`.
-- Remove server-side derivation of `predicted_surplus_qty`, `confidence_low`, `confidence_high`, `target_date`, `days_to_expiry`, `drivers` — the app owns those now.
-- README updated to reflect the new contract and to document that quantiles are TOTAL sales over the snapshot→expiry window.
+### Type system (replace Public Sans)
+- **Display / headings:** `Fraunces` (variable humanist serif — warm, slightly soft, very friendly)
+- **UI / body:** `Inter Tight` (modern, neutral, pairs cleanly with Fraunces)
+- **Tabular numerals:** `JetBrains Mono` for the raw quantity in tiles, confidence endpoints, distances
+- Load via `<link>` tags in `src/routes/__root.tsx` (Tailwind v4 forbids URL `@import` in `src/styles.css`)
+- Register as `--font-display`, `--font-sans`, `--font-mono` in `@theme`
+- Headings use `font-display`; body/UI default to `font-sans`. Kill `font-extrabold` — hierarchy via family + size.
 
-### 4. Components
+### Radius — soften, don't industrialize
+- `--radius` from `0.875rem` (14px) → `0.5rem` (8px). Cards feel gentle, not pill-shaped or razor-edged.
+- Cards: `rounded-lg`
+- Buttons / inputs: `rounded-md`
+- Chips / tags: `rounded-md` (no more `rounded-full` chips)
+- Keep `rounded-full` ONLY for: avatars, the point-estimate marker dot, and icon-only circular buttons
+- Confidence bar: thinner (`h-2`) track with slightly rounded ends and a small vertical tick marker
 
-No changes. They already render `predicted_surplus_qty`, the confidence band, `target_date`, `days_to_expiry`, and `drivers` from `PredictionWithRefs`; only the source changes.
+### Surface & shadow
+- Remove `durare-glow` and the soft drop-shadow on `card-elevated`. Cards = warm white on cream, `1px` warm hairline border, no shadow (or a single very subtle `0 1px 0` warm shadow).
+- Replace whole-card tone-dyeing with a **3px left accent bar** (moss/amber/terracotta) + a small inline status tag in the header row. Background stays warm white regardless of urgency.
+- Remove the floating ribbon ("Urgent" / "Expiring Soon") — becomes an inline tag.
 
-### Worked-example sanity check (matches the spec)
+### Layout & rhythm (coordinator)
+- Featured "next pickup" card at top (richer detail) + dense list rows below for the rest. Asymmetric, not a uniform 3-col grid.
+- Inside each card: 12-col grid; quantity on the left in mono, meta on the right. Drop the centered two-tile pair.
+- Sentence-case labels in `text-muted-foreground` at normal tracking. Reserve uppercase for the single status tag.
 
-Raw: `qty=60, q10=30.5, q50=41.2, q90=49.8, snapshot=06-19, expiry=06-25`
-→ surplus 19, band 10–30, rel_width ≈ 1.03 → moderate → buffer 2 → target_date 06-23, days_to_expiry 6. ✓
+### Decoration to remove
+- Sparkles icon on "Why this forecast?" → plain chevron
+- All `bg-gradient-*`, `durare-glow`, decorative flourishes
+- Soft drop shadows on cards, buttons, marker dots
+- Ribbon tags
 
-### Open question
+### Files touched
+- `src/styles.css` — palette, font tokens, radius, drop `durare-glow`, simplify `card-elevated` to border-only, dark-mode parity
+- `src/routes/__root.tsx` — `<link>` tags for Fraunces + Inter Tight + JetBrains Mono (with `preconnect`)
+- `src/components/prediction-card.tsx` — remove ribbon, whole-card tone styling, `rounded-full`; add left accent bar, serif heading, mono numbers, inline status tag
+- `src/components/confidence-bar.tsx` — thinner track, tick marker, mono endpoints
+- `src/components/app-shell.tsx` — softer logo mark (`rounded-md`, not `rounded-xl`), remove `rounded-full` nav pills, lighter weight nav text, serif wordmark
+- `src/components/ui/button.tsx` — default `rounded-md`, no `shadow`
+- `src/components/ui/card.tsx` — `rounded-lg`, border-only, no shadow
+- `src/components/ui/badge.tsx` — `rounded-md` (was likely `rounded-full`)
+- `src/routes/_authenticated/coordinator.tsx` — featured + dense-row layout
 
-The current `predictions` columns `predicted_surplus_qty`, `confidence_low`, `confidence_high`, `target_date`, `drivers` are `NOT NULL`. Plan is to make them nullable now and drop them in a later cleanup migration. Say "drop them now" if you'd rather remove them in this same migration.
+## Out of scope
+- No changes to data flow, model wiring, predictions, routing logic
+- No new npm deps (fonts via `<link>`)
+- No dark-mode visual redesign beyond token parity
+
+## Validation
+Build, then open `/coordinator`, `/retailer`, `/pickups` in preview. Screenshot each. Confirm: no `rounded-full` outside the allowlist, no `font-extrabold` survivors, no `durare-glow`/ribbon/sparkles, fonts loaded (Fraunces visible on headings).
