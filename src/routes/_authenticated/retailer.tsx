@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { Plus, X, Lightbulb, MoreVertical, Sparkles, Leaf, Check, ChevronsUpDown } from "lucide-react";
+import { Plus, X, Lightbulb, MoreVertical, Sparkles, Leaf, Check, ChevronsUpDown, Upload, Download } from "lucide-react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
@@ -47,6 +47,13 @@ function RetailerDashboard() {
   const [expiry, setExpiry] = useState("");
   const [saving, setSaving] = useState(false);
   const [filter, setFilter] = useState<FilterKey>("all");
+
+  // CSV import
+  const [csvOpen, setCsvOpen] = useState(false);
+  const [csvRows, setCsvRows] = useState<ParsedCsvRow[]>([]);
+  const [csvFileName, setCsvFileName] = useState("");
+  const [csvError, setCsvError] = useState("");
+  const [importing, setImporting] = useState(false);
 
   // Daily sales logging
   const [salesOpen, setSalesOpen] = useState(false);
@@ -145,9 +152,18 @@ function RetailerDashboard() {
             <span className="font-semibold text-foreground">{myStore?.name ?? "your store"}</span>.
           </p>
         </div>
-        <Button className="h-12 gap-2 rounded-xl px-6 font-bold shadow-sm" onClick={() => setDrawerOpen(true)}>
-          <Plus className="h-4 w-4" /> Add Inventory Item
-        </Button>
+        <div className="flex flex-wrap gap-2">
+          <Button
+            variant="outline"
+            className="h-12 gap-2 rounded-sm px-5 font-bold"
+            onClick={() => setCsvOpen(true)}
+          >
+            <Upload className="h-4 w-4" /> Upload CSV
+          </Button>
+          <Button className="h-12 gap-2 rounded-sm px-6 font-bold shadow-sm" onClick={() => setDrawerOpen(true)}>
+            <Plus className="h-4 w-4" /> Add Inventory Item
+          </Button>
+        </div>
       </header>
 
       {/* Daily sales logging */}
