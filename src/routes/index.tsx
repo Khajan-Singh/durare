@@ -50,7 +50,7 @@ function Landing() {
       </header>
 
       <section className="relative mx-auto max-w-4xl px-6 pt-12 pb-12 text-center">
-        <h1 className="text-balance text-4xl font-extrabold tracking-tight text-primary sm:text-6xl">
+        <h1 className="text-balance text-4xl font-bold tracking-tight text-primary sm:text-6xl">
           See the surplus <span className="italic font-serif text-warning-foreground">before</span> it's discarded.
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-balance text-lg text-muted-foreground">
