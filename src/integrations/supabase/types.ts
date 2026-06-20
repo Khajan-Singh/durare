@@ -217,40 +217,67 @@ export type Database = {
       }
       predictions: {
         Row: {
-          confidence_high: number
-          confidence_low: number
+          attribution: Json
+          category: string | null
+          confidence_high: number | null
+          confidence_low: number | null
           created_at: string
           drivers: string | null
+          expiry_date: string | null
           id: string
           item_id: string
           model_version: string | null
-          predicted_surplus_qty: number
+          predicted_surplus_qty: number | null
+          qty_on_hand: number | null
+          sales_q10: number | null
+          sales_q50: number | null
+          sales_q90: number | null
+          snapshot_date: string | null
+          state: string | null
           store_id: string
-          target_date: string
+          target_date: string | null
         }
         Insert: {
-          confidence_high: number
-          confidence_low: number
+          attribution?: Json
+          category?: string | null
+          confidence_high?: number | null
+          confidence_low?: number | null
           created_at?: string
           drivers?: string | null
+          expiry_date?: string | null
           id?: string
           item_id: string
           model_version?: string | null
-          predicted_surplus_qty: number
+          predicted_surplus_qty?: number | null
+          qty_on_hand?: number | null
+          sales_q10?: number | null
+          sales_q50?: number | null
+          sales_q90?: number | null
+          snapshot_date?: string | null
+          state?: string | null
           store_id: string
-          target_date: string
+          target_date?: string | null
         }
         Update: {
-          confidence_high?: number
-          confidence_low?: number
+          attribution?: Json
+          category?: string | null
+          confidence_high?: number | null
+          confidence_low?: number | null
           created_at?: string
           drivers?: string | null
+          expiry_date?: string | null
           id?: string
           item_id?: string
           model_version?: string | null
-          predicted_surplus_qty?: number
+          predicted_surplus_qty?: number | null
+          qty_on_hand?: number | null
+          sales_q10?: number | null
+          sales_q50?: number | null
+          sales_q90?: number | null
+          snapshot_date?: string | null
+          state?: string | null
           store_id?: string
-          target_date?: string
+          target_date?: string | null
         }
         Relationships: [
           {

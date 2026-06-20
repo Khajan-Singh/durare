@@ -2,7 +2,12 @@
 
 FastAPI wrapper around the XGBoost surplus-forecast model. The Lovable app
 sends 8 simple inputs per row; this service derives the 17 training features
-internally and returns 7 prediction fields.
+internally and returns RAW quantile output (`sales_q10`, `sales_q50`,
+`sales_q90`) plus an `attribution` JSON. The Lovable app derives surplus,
+confidence band, target_date, days_to_expiry, and the "Why this forecast?"
+drivers on read — this service must never compute or fabricate them.
+
+`sales_qXX` are TOTAL units expected to sell over the snapshot→expiry window.
 
 ## What you need to put in this folder
 
@@ -74,17 +79,22 @@ Free tier sleeps after ~15 min idle (first request takes ~30s to wake).
 Response:
 ```json
 { "predictions": [{
-  "predicted_sales_q50": 41.2, "predicted_surplus_qty": 0.8,
-  "confidence_low": -5.0, "confidence_high": 6.6,
-  "target_date": "2026-06-25", "days_to_expiry": 7,
-  "drivers": "..."
+  "store_id": "...", "item_id": "fuji_apple", "category": "fresh_fruits",
+  "state": "CA", "snapshot_date": "2026-06-20", "expiry_date": "2026-06-27",
+  "qty_on_hand": 42,
+  "sales_q10": 30.5, "sales_q50": 41.2, "sales_q90": 49.8,
+  "attribution": {
+    "recent_trend": "down ~8%", "promo_active": false,
+    "window_days": "mix of weekday and weekend"
+  }
 }], "model_version": "v1" }
 ```
 
 ## Quantile-model options (set `MODEL_LAYOUT`)
 
-- `single_q50` (default) — one Booster predicting q50; q10/q90 approximated
-  with `RESIDUAL_STD` multiplier.
-- `three` — three Booster files for q10, q50, q90.
-- `multiquantile` — one Booster trained with multi-quantile output emitting
-  `[q10, q50, q90]` columns.
+- `multiquantile` (default) — one Booster trained with multi-quantile output
+  emitting `[q10, q50, q90]` columns.
+- `three` — three Booster files for q10, q50, q90 (`xgboost_model_q10.json`,
+  `xgboost_model_q50.json`, `xgboost_model_q90.json`).
+
+The model MUST emit three quantiles — there is no single-q50 fallback.
