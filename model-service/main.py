@@ -228,6 +228,15 @@ def predict(req: PredictRequest, x_api_key: str = Header(default="")) -> Predict
     features = [_build_features(r) for r in req.rows]
     q10, q50, q90 = _predict_quantiles(features)
 
+    # Model emits per-day sales rates; aggregate to the window length
+    # (snapshot_date -> expiry_date, inclusive of today => at least 1 day).
+    window_days = np.array(
+        [max(int(f["days_until_expiry"]), 1) for f in features], dtype=float
+    )
+    q10 = q10 * window_days
+    q50 = q50 * window_days
+    q90 = q90 * window_days
+
     out: list[PredictResult] = []
     for r, f, lo, mid, hi in zip(req.rows, features, q10, q50, q90):
         out.append(PredictResult(
