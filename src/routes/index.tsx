@@ -1,8 +1,9 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect } from "react";
-import { Leaf, ArrowRight, Sparkles, Truck, Gauge } from "lucide-react";
+import { ArrowRight, Sparkles, Truck, Gauge } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/use-auth";
+import logoAsset from "@/assets/durare-logo.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -37,9 +38,7 @@ function Landing() {
 
       <header className="relative mx-auto flex max-w-6xl items-center justify-between px-6 py-6">
         <div className="flex items-center gap-2">
-          <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-primary-foreground">
-            <Leaf className="h-4 w-4" />
-          </div>
+          <img src={logoAsset.url} alt="Durare" className="h-9 w-9 rounded-xl object-cover" />
           <div>
             <div className="text-base font-bold leading-none text-primary">Durare</div>
           </div>

@@ -130,7 +130,6 @@ function RetailerDashboard() {
     .filter((row) => {
       if (filter === "all") return true;
       if (filter === "near") return daysUntil(row.expiry_date) <= 2;
-      if (filter === "produce") return row.items?.category?.toLowerCase() === "produce";
       return true;
     });
 
@@ -289,9 +288,6 @@ function RetailerDashboard() {
             </FilterChip>
             <FilterChip active={filter === "near"} onClick={() => setFilter("near")}>
               Near Expiry
-            </FilterChip>
-            <FilterChip active={filter === "produce"} onClick={() => setFilter("produce")}>
-              Produce
             </FilterChip>
           </div>
           <div className="text-xs text-muted-foreground">
