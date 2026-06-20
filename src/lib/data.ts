@@ -313,6 +313,29 @@ export async function addInventorySnapshot(input: {
   if (error) throw error;
 }
 
+/**
+ * Delete an inventory snapshot and any predictions tied to the same
+ * (store, item) pair so the entry disappears from both the retailer
+ * inventory view and the coordinator forecast view.
+ */
+export async function deleteInventorySnapshot(snapshot: {
+  id: string;
+  store_id: string;
+  item_id: string;
+}) {
+  const { error: predErr } = await supabase
+    .from("predictions")
+    .delete()
+    .eq("store_id", snapshot.store_id)
+    .eq("item_id", snapshot.item_id);
+  if (predErr) throw predErr;
+  const { error } = await supabase
+    .from("inventory_snapshots")
+    .delete()
+    .eq("id", snapshot.id);
+  if (error) throw error;
+}
+
 export type DailySale = {
   id: string;
   store_id: string;
