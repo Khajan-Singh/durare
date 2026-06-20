@@ -1,6 +1,6 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { ArrowLeft, Leaf, Store as StoreIcon, Route as RouteIcon } from "lucide-react";
+import { ArrowLeft, Store as StoreIcon, Route as RouteIcon } from "lucide-react";
 import { toast } from "sonner";
 import { z } from "zod";
 
@@ -12,6 +12,7 @@ import { useAuth } from "@/hooks/use-auth";
 import { createFoodBank, createStore } from "@/lib/data";
 import { LocationPicker, type PickedLocation } from "@/components/location-picker";
 import { cn } from "@/lib/utils";
+import logoAsset from "@/assets/durare-logo.png.asset.json";
 
 export const Route = createFileRoute("/auth")({
   head: () => ({
@@ -157,9 +158,7 @@ function AuthPage() {
       <main className="relative z-10 w-full max-w-md">
         <div className="mb-10 text-center">
           <Link to="/" className="mb-4 inline-flex items-center gap-2">
-            <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-primary-foreground">
-              <Leaf className="h-4 w-4" />
-            </div>
+            <img src={logoAsset.url} alt="Durare" className="h-9 w-9 rounded-xl object-cover" />
             <span className="text-2xl font-bold tracking-tight text-primary">Durare</span>
           </Link>
           <p className="px-6 text-sm text-muted-foreground">

@@ -1,8 +1,9 @@
 import type { ReactNode } from "react";
+import { useState } from "react";
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import {
-  Leaf,
   LogOut,
+  Settings,
   LayoutDashboard,
   Truck,
   Boxes,
@@ -12,6 +13,8 @@ import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
 import type { Profile } from "@/hooks/use-auth";
 import { cn } from "@/lib/utils";
+import logoAsset from "@/assets/durare-logo.png.asset.json";
+import { SettingsDialog } from "@/components/settings-dialog";
 
 export function AppShell({
   children,
@@ -23,6 +26,7 @@ export function AppShell({
   const navigate = useNavigate();
   const path = useRouterState({ select: (s) => s.location.pathname });
   const isCoordinator = profile?.role === "coordinator";
+  const [settingsOpen, setSettingsOpen] = useState(false);
 
   const signOut = async () => {
     await supabase.auth.signOut();
@@ -46,9 +50,11 @@ export function AppShell({
         <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-4 sm:px-8">
           <div className="flex items-center gap-8">
             <Link to="/" className="flex items-center gap-2">
-              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-primary-foreground">
-                <Leaf className="h-4 w-4" />
-              </div>
+              <img
+                src={logoAsset.url}
+                alt="Durare"
+                className="h-9 w-9 rounded-xl object-cover"
+              />
               <span className="text-xl font-bold tracking-tight text-primary">Durare</span>
             </Link>
             <nav className="hidden items-center gap-6 md:flex">
@@ -81,6 +87,17 @@ export function AppShell({
                   {profile.role}
                 </div>
               </div>
+            )}
+            {profile && (
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={() => setSettingsOpen(true)}
+                aria-label="Account settings"
+                className="rounded-full"
+              >
+                <Settings className="h-4 w-4" />
+              </Button>
             )}
             <Button
               variant="ghost"
@@ -122,6 +139,14 @@ export function AppShell({
       <footer className="mx-auto max-w-7xl px-4 pb-28 pt-8 text-center text-xs text-muted-foreground sm:px-8 md:pb-12 md:pt-12">
         © {new Date().getFullYear()} Durare. Foresight &amp; Stewardship.
       </footer>
+
+      {profile && (
+        <SettingsDialog
+          open={settingsOpen}
+          onOpenChange={setSettingsOpen}
+          profile={profile}
+        />
+      )}
     </div>
   );
 }

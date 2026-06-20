@@ -495,3 +495,33 @@ export async function markPickupCompleted(id: string) {
     .eq("id", id);
   if (error) throw error;
 }
+
+export async function updateProfileName(id: string, display_name: string) {
+  const { error } = await supabase
+    .from("profiles")
+    .update({ display_name })
+    .eq("id", id);
+  if (error) throw error;
+}
+
+export async function updateStore(
+  id: string,
+  input: { name: string; address: string | null; lat: number; lng: number },
+) {
+  const { error } = await supabase
+    .from("stores")
+    .update(input)
+    .eq("id", id);
+  if (error) throw error;
+}
+
+export async function updateFoodBank(
+  id: string,
+  input: { name: string; address: string | null; lat: number; lng: number },
+) {
+  const { error } = await supabase
+    .from("food_banks")
+    .update(input)
+    .eq("id", id);
+  if (error) throw error;
+}

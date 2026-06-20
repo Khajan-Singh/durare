@@ -76,10 +76,10 @@ function PickupsPage() {
       <div className="hidden grid-cols-12 gap-4 px-6 text-[10px] font-bold uppercase tracking-widest text-muted-foreground md:grid">
         <div className="col-span-2">Status</div>
         <div className="col-span-3">Partner Store</div>
-        <div className="col-span-3">Rescue Item</div>
+        <div className="col-span-2">Rescue Item</div>
         <div className="col-span-1 text-right">Qty</div>
         <div className="col-span-1 text-center">Distance</div>
-        <div className="col-span-2 text-right">Action</div>
+        <div className="col-span-3 text-right">Action</div>
       </div>
 
       {pickupsQuery.isPending ? (
@@ -137,7 +137,7 @@ function PickupsPage() {
                     </p>
                   </div>
                 </div>
-                <div className="flex items-center gap-2 md:col-span-3">
+                <div className="flex items-center gap-2 md:col-span-2">
                   <span className="font-semibold text-primary">{row.items?.name}</span>
                 </div>
                 <div className="md:col-span-1 md:text-right">
@@ -148,7 +148,7 @@ function PickupsPage() {
                     {distance !== null ? `${distance.toFixed(1)} mi` : "—"}
                   </span>
                 </div>
-                <div className="flex items-center gap-2 md:col-span-2 md:justify-end">
+                <div className="flex flex-wrap items-center gap-2 md:col-span-3 md:justify-end">
                   <PickupDetailsPopover
                     pickup={row}
                     viewer="coordinator"
