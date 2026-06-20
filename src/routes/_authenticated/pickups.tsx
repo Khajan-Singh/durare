@@ -82,7 +82,7 @@ function PickupsPage() {
         <div className="col-span-2 text-right">Action</div>
       </div>
 
-      {pickupsQuery.isLoading ? (
+      {pickupsQuery.isPending ? (
         <div className="card-elevated p-10 text-center text-muted-foreground">Loading…</div>
       ) : rows.length === 0 ? (
         <div className="card-elevated p-12 text-center">

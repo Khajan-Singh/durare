@@ -75,23 +75,14 @@ export function PickupDetailsCard({
           icon={<Building2 className="h-4 w-4" />}
           title="Food bank"
           primary={pickup.food_banks?.name ?? "—"}
-          secondary={
-            pickup.food_banks?.address ??
-            (pickup.food_banks
-              ? `${pickup.food_banks.lat.toFixed(4)}, ${pickup.food_banks.lng.toFixed(4)}`
-              : null)
-          }
+          secondary={pickup.food_banks?.address ?? "Address not on file"}
         />
       ) : (
         <Section
           icon={<StoreIcon className="h-4 w-4" />}
           title="Retailer"
           primary={pickup.stores?.name ?? "—"}
-          secondary={
-            pickup.stores
-              ? `${pickup.stores.lat.toFixed(4)}, ${pickup.stores.lng.toFixed(4)}`
-              : null
-          }
+          secondary={pickup.stores?.address ?? "Address not on file"}
         />
       )}
 

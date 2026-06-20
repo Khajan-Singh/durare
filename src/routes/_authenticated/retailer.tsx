@@ -299,7 +299,7 @@ function RetailerDashboard() {
           </div>
         </div>
 
-        {inventoryQuery.isLoading ? (
+        {inventoryQuery.isPending ? (
           <div className="p-10 text-center text-muted-foreground">Loading…</div>
         ) : rows.length === 0 ? (
           <div className="p-12 text-center">
