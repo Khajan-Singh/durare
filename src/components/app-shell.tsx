@@ -120,7 +120,7 @@ export function AppShell({
       </nav>
 
       <footer className="mx-auto max-w-7xl px-4 pb-28 pt-8 text-center text-xs text-muted-foreground sm:px-8 md:pb-12 md:pt-12">
-        © {new Date().getFullYear()} Durare. Foresight & Stewardship.
+        © {new Date().getFullYear()} Durare. Foresight &amp; Stewardship.
       </footer>
     </div>
   );
