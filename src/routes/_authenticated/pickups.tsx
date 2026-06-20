@@ -92,7 +92,7 @@ function PickupsPage() {
         </div>
       ) : (
         <div className="space-y-4">
-          {rows.map((row) => {
+          {rows.map((row, idx) => {
             const distance =
               myBank && row.stores
                 ? haversineMiles(
@@ -102,10 +102,17 @@ function PickupsPage() {
                 : null;
             const completed = row.status === "completed";
             return (
-              <div
-                key={row.id}
-                className="card-elevated grid grid-cols-1 items-center gap-4 p-5 md:grid-cols-12"
-              >
+              <Fragment key={row.id}>
+                {completed && idx === firstCompletedIndex && pending.length > 0 && (
+                  <div className="flex items-center gap-3 px-2 pt-4">
+                    <div className="h-px flex-1 bg-border" />
+                    <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">
+                      Completed
+                    </span>
+                    <div className="h-px flex-1 bg-border" />
+                  </div>
+                )}
+                <div className="card-elevated grid grid-cols-1 items-center gap-4 p-5 md:grid-cols-12">
                 <div className="md:col-span-2">
                   <span
                     className={cn(
@@ -118,7 +125,7 @@ function PickupsPage() {
                     {row.status}
                   </span>
                 </div>
-                <div className="flex items-center gap-3 md:col-span-3">
+                <div className="flex items-center gap-3 md:col-span-2">
                   <div className="flex h-10 w-10 items-center justify-center rounded-full bg-warning-soft text-warning-foreground">
                     <StoreIcon className="h-5 w-5" />
                   </div>
@@ -141,7 +148,19 @@ function PickupsPage() {
                     {distance !== null ? `${distance.toFixed(1)} mi` : "—"}
                   </span>
                 </div>
-                <div className="flex md:col-span-2 md:justify-end">
+                <div className="flex items-center gap-2 md:col-span-3 md:justify-end">
+                  <PickupDetailsPopover
+                    pickup={row}
+                    viewer="coordinator"
+                    trigger={
+                      <button
+                        type="button"
+                        className="inline-flex items-center gap-1.5 rounded-md border border-input bg-background px-3 py-2 text-xs font-semibold text-primary transition hover:bg-accent"
+                      >
+                        <Info className="h-3.5 w-3.5" /> Info
+                      </button>
+                    }
+                  />
                   {!completed ? (
                     <Button
                       onClick={() => onComplete(row.id)}
@@ -158,7 +177,8 @@ function PickupsPage() {
                     </span>
                   )}
                 </div>
-              </div>
+                </div>
+              </Fragment>
             );
           })}
         </div>
