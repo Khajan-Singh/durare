@@ -555,6 +555,118 @@ function RetailerDashboard() {
           </aside>
         </div>
       )}
+
+      {/* CSV Upload Drawer */}
+      {csvOpen && (
+        <div className="fixed inset-0 z-[60]">
+          <div className="absolute inset-0 bg-primary/40 backdrop-blur-sm" onClick={() => setCsvOpen(false)} />
+          <aside className="absolute right-0 top-0 flex h-full w-full max-w-lg flex-col bg-card shadow-2xl">
+            <div className="flex items-center justify-between border-b border-border bg-surface-low p-6">
+              <h2 className="text-xl font-bold text-primary">Bulk Upload Inventory</h2>
+              <button
+                onClick={() => setCsvOpen(false)}
+                className="rounded-sm p-2 text-muted-foreground transition hover:bg-surface-high"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
+            <div className="flex-1 overflow-y-auto p-6 space-y-5">
+              <div className="rounded-sm border border-border bg-surface-low p-4 text-sm">
+                <p className="font-semibold text-foreground">Expected columns</p>
+                <p className="mt-1 font-mono text-xs text-muted-foreground">category, item_name, quantity, expiry_date</p>
+                <p className="mt-2 text-xs text-muted-foreground">
+                  Dates use YYYY-MM-DD. Category must match an existing app category (e.g. Produce, Bakery).
+                </p>
+                <Button
+                  type="button"
+                  variant="outline"
+                  className="mt-3 h-9 gap-2 rounded-sm font-semibold"
+                  onClick={downloadTemplate}
+                >
+                  <Download className="h-4 w-4" /> Download template
+                </Button>
+              </div>
+
+              <div className="space-y-1.5">
+                <Label className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">CSV file</Label>
+                <Input
+                  type="file"
+                  accept=".csv,text/csv"
+                  className="h-12 rounded-sm"
+                  onChange={(e) => {
+                    const f = e.target.files?.[0];
+                    if (f) onCsvFile(f);
+                  }}
+                />
+                {csvFileName && <p className="text-xs text-muted-foreground">{csvFileName}</p>}
+              </div>
+
+              {csvError && (
+                <div className="rounded-sm border border-destructive bg-destructive-soft p-3 text-sm text-destructive-soft-foreground">
+                  {csvError}
+                </div>
+              )}
+
+              {csvRows.length > 0 && (
+                <div className="space-y-2">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                    Preview — {csvRows.filter((r) => !r.error).length} valid / {csvRows.length} total
+                  </p>
+                  <div className="max-h-80 overflow-y-auto rounded-sm border border-border">
+                    <table className="w-full text-left text-sm">
+                      <thead className="bg-surface-low text-xs uppercase tracking-wider text-muted-foreground">
+                        <tr>
+                          <th className="px-3 py-2 font-semibold">Item</th>
+                          <th className="px-3 py-2 font-semibold">Qty</th>
+                          <th className="px-3 py-2 font-semibold">Expiry</th>
+                          <th className="px-3 py-2 font-semibold">Status</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-border">
+                        {csvRows.map((r, i) => (
+                          <tr key={i}>
+                            <td className="px-3 py-2">
+                              <div className="font-semibold">{r.item_name}</div>
+                              <div className="text-xs text-muted-foreground">{r.category}</div>
+                            </td>
+                            <td className="px-3 py-2 font-mono text-xs">{r.quantity}</td>
+                            <td className="px-3 py-2 text-xs">{r.expiry_date}</td>
+                            <td className="px-3 py-2">
+                              {r.error ? (
+                                <span className="text-xs font-semibold text-destructive">{r.error}</span>
+                              ) : (
+                                <span className="text-xs font-semibold text-primary">Ready</span>
+                              )}
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              )}
+            </div>
+            <div className="flex gap-3 border-t border-border p-6">
+              <Button
+                type="button"
+                variant="outline"
+                className="h-12 flex-1 rounded-sm font-bold"
+                onClick={() => setCsvOpen(false)}
+              >
+                Cancel
+              </Button>
+              <Button
+                type="button"
+                disabled={importing || csvRows.filter((r) => !r.error).length === 0}
+                className="h-12 flex-1 rounded-sm font-bold"
+                onClick={onImportCsv}
+              >
+                {importing ? "Importing…" : `Import ${csvRows.filter((r) => !r.error).length} items`}
+              </Button>
+            </div>
+          </aside>
+        </div>
+      )}
     </div>
   );
 }
