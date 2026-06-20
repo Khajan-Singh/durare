@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Fragment } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { CheckCircle2, Store as StoreIcon, Sparkles, Calendar, Info } from "lucide-react";
+import { CheckCircle2, Store as StoreIcon, Calendar, Info } from "lucide-react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
@@ -126,7 +126,7 @@ function PickupsPage() {
                     {row.status}
                   </span>
                 </div>
-                <div className="flex items-center gap-3 md:col-span-2">
+                <div className="flex items-center gap-3 md:col-span-3">
                   <div className="flex h-10 w-10 items-center justify-center rounded-full bg-warning-soft text-warning-foreground">
                     <StoreIcon className="h-5 w-5" />
                   </div>
@@ -139,7 +139,6 @@ function PickupsPage() {
                 </div>
                 <div className="flex items-center gap-2 md:col-span-3">
                   <span className="font-semibold text-primary">{row.items?.name}</span>
-                  <Sparkles className="h-3.5 w-3.5 text-warning" />
                 </div>
                 <div className="md:col-span-1 md:text-right">
                   <span className="font-mono font-semibold text-primary">{row.quantity}</span>
@@ -149,7 +148,7 @@ function PickupsPage() {
                     {distance !== null ? `${distance.toFixed(1)} mi` : "—"}
                   </span>
                 </div>
-                <div className="flex items-center gap-2 md:col-span-3 md:justify-end">
+                <div className="flex items-center gap-2 md:col-span-2 md:justify-end">
                   <PickupDetailsPopover
                     pickup={row}
                     viewer="coordinator"
