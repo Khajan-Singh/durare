@@ -1,15 +1,22 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { Plus, X, Lightbulb, MoreVertical, Sparkles, Leaf } from "lucide-react";
+import { Plus, X, Lightbulb, MoreVertical, Sparkles, Leaf, Check, ChevronsUpDown } from "lucide-react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from "@/components/ui/command";
 import { useAuth } from "@/hooks/use-auth";
-import { addInventorySnapshot, fetchInventoryForStore, fetchItems, fetchStores } from "@/lib/data";
+import {
+  addInventorySnapshot,
+  fetchInventoryForStore,
+  fetchStores,
+  findOrCreateItem,
+} from "@/lib/data";
+import { OVERALL_CATEGORIES, itemsFor, subcategoriesFor } from "@/lib/food-catalog";
 import { cn, daysUntil, formatDate } from "@/lib/utils";
 
 export const Route = createFileRoute("/_authenticated/retailer")({
@@ -23,7 +30,6 @@ function RetailerDashboard() {
   const qc = useQueryClient();
 
   const storesQuery = useQuery({ queryKey: ["stores"], queryFn: fetchStores });
-  const itemsQuery = useQuery({ queryKey: ["items"], queryFn: fetchItems });
   const inventoryQuery = useQuery({
     queryKey: ["inventory", profile?.store_id],
     queryFn: () => fetchInventoryForStore(profile!.store_id!),
@@ -33,7 +39,9 @@ function RetailerDashboard() {
   const myStore = storesQuery.data?.find((s) => s.id === profile?.store_id);
 
   const [drawerOpen, setDrawerOpen] = useState(false);
-  const [itemId, setItemId] = useState("");
+  const [overall, setOverall] = useState("");
+  const [subcategory, setSubcategory] = useState("");
+  const [itemName, setItemName] = useState("");
   const [qty, setQty] = useState("");
   const [expiry, setExpiry] = useState("");
   const [saving, setSaving] = useState(false);
@@ -52,17 +60,23 @@ function RetailerDashboard() {
       toast.error("No store linked to your account");
       return;
     }
-    if (!itemId || !qty || !expiry) return;
+    if (!overall || !subcategory || !itemName || !qty || !expiry) {
+      toast.error("Pick a category, sub-category, and item");
+      return;
+    }
     setSaving(true);
     try {
+      const item = await findOrCreateItem({ name: itemName, category: subcategory });
       await addInventorySnapshot({
         store_id: profile.store_id,
-        item_id: itemId,
+        item_id: item.id,
         qty_on_hand: Number(qty),
         expiry_date: expiry,
       });
       toast.success("Inventory updated");
-      setItemId("");
+      setOverall("");
+      setSubcategory("");
+      setItemName("");
       setQty("");
       setExpiry("");
       setDrawerOpen(false);
@@ -230,21 +244,39 @@ function RetailerDashboard() {
               </button>
             </div>
             <form onSubmit={onSubmit} className="flex-1 overflow-y-auto p-6 space-y-5">
-              <div className="space-y-1.5">
-                <Label className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Item</Label>
-                <Select value={itemId} onValueChange={setItemId}>
-                  <SelectTrigger className="h-12 rounded-lg">
-                    <SelectValue placeholder="Pick an item" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    {itemsQuery.data?.map((i) => (
-                      <SelectItem key={i.id} value={i.id}>
-                        {i.name} · {i.category}
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
-              </div>
+              <SearchableCombobox
+                label="Overall Category"
+                placeholder="Pick a category"
+                searchPlaceholder="Search categories…"
+                value={overall}
+                options={OVERALL_CATEGORIES}
+                onChange={(v) => {
+                  setOverall(v);
+                  setSubcategory("");
+                  setItemName("");
+                }}
+              />
+              <SearchableCombobox
+                label="Specific Category"
+                placeholder={overall ? "Pick a sub-category" : "Pick an overall category first"}
+                searchPlaceholder="Search sub-categories…"
+                value={subcategory}
+                options={overall ? subcategoriesFor(overall) : []}
+                disabled={!overall}
+                onChange={(v) => {
+                  setSubcategory(v);
+                  setItemName("");
+                }}
+              />
+              <SearchableCombobox
+                label="Item"
+                placeholder={subcategory ? "Pick an item" : "Pick a sub-category first"}
+                searchPlaceholder="Search items…"
+                value={itemName}
+                options={overall && subcategory ? itemsFor(overall, subcategory) : []}
+                disabled={!subcategory}
+                onChange={setItemName}
+              />
               <div className="grid grid-cols-2 gap-3">
                 <div className="space-y-1.5">
                   <Label className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
