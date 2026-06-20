@@ -1,0 +1,1 @@
+GRANT SELECT, INSERT, UPDATE, DELETE ON public.pickups TO authenticated; GRANT ALL ON public.pickups TO service_role;

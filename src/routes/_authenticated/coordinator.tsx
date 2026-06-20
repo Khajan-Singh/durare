@@ -185,12 +185,15 @@ function CoordinatorDashboard() {
           </p>
         </div>
         <div className="flex flex-wrap items-center gap-2">
+          <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+            Sort filters
+          </span>
           <SortPill icon={<Calendar className="h-4 w-4" />} label="Readiness" active={sort === "date"} onClick={() => setSort("date")} />
           <SortPill icon={<ArrowDownNarrowWide className="h-4 w-4" />} label="Quantity" active={sort === "qty"} onClick={() => setSort("qty")} />
           <SortPill icon={<Navigation className="h-4 w-4" />} label="Distance" active={sort === "distance"} onClick={() => setSort("distance")} />
           <Button
             variant="outline"
-            className="rounded-full"
+            className="rounded-md"
             disabled={runModel.isPending}
             onClick={() => {
               toast.message("Running forecasting model…");
@@ -360,10 +363,10 @@ function SortPill({
       type="button"
       onClick={onClick}
       className={cn(
-        "inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition",
+        "inline-flex items-center gap-1.5 whitespace-nowrap rounded-md border px-4 py-2 text-sm font-semibold transition",
         active
-          ? "bg-primary text-primary-foreground shadow-sm"
-          : "bg-surface-high text-primary hover:bg-secondary",
+          ? "border-primary bg-primary text-primary-foreground shadow-sm"
+          : "border-input bg-background text-primary hover:bg-accent hover:text-accent-foreground",
       )}
     >
       {icon}
