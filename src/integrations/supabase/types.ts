@@ -14,6 +14,41 @@ export type Database = {
   }
   public: {
     Tables: {
+      daily_sales: {
+        Row: {
+          catalog_item_id: string
+          created_at: string
+          id: string
+          sale_date: string
+          store_id: string
+          units_sold: number
+        }
+        Insert: {
+          catalog_item_id: string
+          created_at?: string
+          id?: string
+          sale_date?: string
+          store_id: string
+          units_sold: number
+        }
+        Update: {
+          catalog_item_id?: string
+          created_at?: string
+          id?: string
+          sale_date?: string
+          store_id?: string
+          units_sold?: number
+        }
+        Relationships: [
+          {
+            foreignKeyName: "daily_sales_store_id_fkey"
+            columns: ["store_id"]
+            isOneToOne: false
+            referencedRelation: "stores"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       food_banks: {
         Row: {
           capacity: number
@@ -46,30 +81,39 @@ export type Database = {
       }
       inventory_snapshots: {
         Row: {
+          catalog_category_id: string | null
+          catalog_item_id: string | null
           created_at: string
           date: string
           expiry_date: string
           id: string
           item_id: string
           qty_on_hand: number
+          shelf_life_days: number | null
           store_id: string
         }
         Insert: {
+          catalog_category_id?: string | null
+          catalog_item_id?: string | null
           created_at?: string
           date?: string
           expiry_date: string
           id?: string
           item_id: string
           qty_on_hand: number
+          shelf_life_days?: number | null
           store_id: string
         }
         Update: {
+          catalog_category_id?: string | null
+          catalog_item_id?: string | null
           created_at?: string
           date?: string
           expiry_date?: string
           id?: string
           item_id?: string
           qty_on_hand?: number
+          shelf_life_days?: number | null
           store_id?: string
         }
         Relationships: [
@@ -277,6 +321,7 @@ export type Database = {
           lat: number
           lng: number
           name: string
+          state: string | null
           type: string
         }
         Insert: {
@@ -285,6 +330,7 @@ export type Database = {
           lat: number
           lng: number
           name: string
+          state?: string | null
           type?: string
         }
         Update: {
@@ -293,6 +339,7 @@ export type Database = {
           lat?: number
           lng?: number
           name?: string
+          state?: string | null
           type?: string
         }
         Relationships: []
