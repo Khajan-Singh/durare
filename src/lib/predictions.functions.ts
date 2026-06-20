@@ -60,7 +60,17 @@ export const triggerModelRun = createServerFn({ method: "POST" })
       throw new Error("MODEL_SERVICE_URL or MODEL_SERVICE_API_KEY not configured");
     }
 
-    const { supabase } = context;
+    const { supabase, userId } = context;
+
+    // Server-side role check: only coordinators may trigger model runs.
+    const { data: isCoordinator, error: roleErr } = await supabase.rpc("has_role", {
+      _user_id: userId,
+      _role: "coordinator",
+    });
+    if (roleErr) throw roleErr;
+    if (!isCoordinator) {
+      throw new Error("Forbidden: coordinator role required");
+    }
 
     // Pull current inventory snapshots joined with store + item metadata.
     const { data: inv, error: invErr } = await supabase
@@ -131,7 +141,9 @@ export const triggerModelRun = createServerFn({ method: "POST" })
     }));
 
     if (inserts.length > 0) {
-      const { error: insErr } = await supabase.from("predictions").insert(inserts);
+      // Predictions inserts use the service role (RLS restricts INSERT to service_role only).
+      const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+      const { error: insErr } = await supabaseAdmin.from("predictions").insert(inserts);
       if (insErr) throw insErr;
     }
 
