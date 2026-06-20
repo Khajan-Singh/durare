@@ -221,7 +221,12 @@ export function derivePrediction(raw: RawPrediction): PredictionWithRefs {
 }
 
 export async function refreshPredictions(): Promise<PredictionWithRefs[]> {
-  // Placeholder for a future "trigger model run" call. For now, just re-query.
+  return fetchPredictions();
+}
+
+export async function runModelAndRefresh(): Promise<PredictionWithRefs[]> {
+  const { triggerModelRun } = await import("@/lib/predictions.functions");
+  await triggerModelRun();
   return fetchPredictions();
 }
 

@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { RefreshCw, Sparkles, Calendar, ArrowDownNarrowWide, Navigation, Store as StoreIcon, X } from "lucide-react";
 import { toast } from "sonner";
 
@@ -11,8 +11,9 @@ import { useAuth } from "@/hooks/use-auth";
 import {
   confirmPickup,
   fetchFoodBanks,
+  fetchPredictions,
   fetchStores,
-  refreshPredictions,
+  runModelAndRefresh,
   type PredictionWithRefs,
   type Store,
 } from "@/lib/data";
@@ -32,7 +33,18 @@ function CoordinatorDashboard() {
 
   const foodBanksQuery = useQuery({ queryKey: ["food_banks"], queryFn: fetchFoodBanks });
   const storesQuery = useQuery({ queryKey: ["stores"], queryFn: fetchStores });
-  const predictionsQuery = useQuery({ queryKey: ["predictions"], queryFn: refreshPredictions });
+  const predictionsQuery = useQuery({ queryKey: ["predictions"], queryFn: fetchPredictions });
+
+  const runModel = useMutation({
+    mutationFn: runModelAndRefresh,
+    onSuccess: (data) => {
+      qc.setQueryData(["predictions"], data);
+      toast.success(`Forecasts refreshed (${data.length} predictions).`);
+    },
+    onError: (err: unknown) => {
+      toast.error(err instanceof Error ? err.message : "Failed to run model");
+    },
+  });
 
   const myFoodBank = foodBanksQuery.data?.find((f) => f.id === profile?.food_bank_id) ?? null;
 
@@ -179,12 +191,14 @@ function CoordinatorDashboard() {
           <Button
             variant="outline"
             className="rounded-full"
+            disabled={runModel.isPending}
             onClick={() => {
-              qc.invalidateQueries({ queryKey: ["predictions"] });
-              toast.message("Refreshing forecasts…");
+              toast.message("Running forecasting model…");
+              runModel.mutate(undefined);
             }}
           >
-            <RefreshCw className="mr-2 h-4 w-4" /> Refresh
+            <RefreshCw className={cn("mr-2 h-4 w-4", runModel.isPending && "animate-spin")} />
+            {runModel.isPending ? "Running…" : "Refresh"}
           </Button>
         </div>
       </header>
