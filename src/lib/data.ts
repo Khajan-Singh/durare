@@ -31,6 +31,9 @@ export type InventorySnapshot = {
   date: string;
   qty_on_hand: number;
   expiry_date: string;
+  catalog_item_id: string | null;
+  catalog_category_id: string | null;
+  shelf_life_days: number | null;
   items?: Item | null;
 };
 
@@ -148,11 +151,46 @@ export async function addInventorySnapshot(input: {
   item_id: string;
   qty_on_hand: number;
   expiry_date: string;
+  catalog_item_id?: string;
+  catalog_category_id?: string;
+  shelf_life_days?: number;
 }) {
   const { error } = await supabase.from("inventory_snapshots").insert({
     ...input,
     date: new Date().toISOString().slice(0, 10),
   });
+  if (error) throw error;
+}
+
+export type DailySale = {
+  id: string;
+  store_id: string;
+  catalog_item_id: string;
+  sale_date: string;
+  units_sold: number;
+  created_at: string;
+};
+
+export async function fetchDailySalesForStore(storeId: string, limit = 200): Promise<DailySale[]> {
+  const { data, error } = await supabase
+    .from("daily_sales")
+    .select("*")
+    .eq("store_id", storeId)
+    .order("sale_date", { ascending: false })
+    .limit(limit);
+  if (error) throw error;
+  return (data ?? []) as DailySale[];
+}
+
+export async function logDailySale(input: {
+  store_id: string;
+  catalog_item_id: string;
+  sale_date: string;
+  units_sold: number;
+}) {
+  const { error } = await supabase
+    .from("daily_sales")
+    .upsert(input, { onConflict: "store_id,catalog_item_id,sale_date" });
   if (error) throw error;
 }
 
