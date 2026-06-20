@@ -148,31 +148,6 @@ function RetailerDashboard() {
     }
   };
 
-  const onSubmitSale = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!profile?.store_id) return toast.error("No store linked");
-    const entry = itemByName(salesOverall, salesItemName);
-    if (!entry) return toast.error("Pick a catalog item");
-    if (!salesUnits || !salesDate) return toast.error("Enter units and date");
-    setSavingSale(true);
-    try {
-      await logDailySale({
-        store_id: profile.store_id,
-        catalog_item_id: entry.item_id,
-        sale_date: salesDate,
-        units_sold: Number(salesUnits),
-      });
-      toast.success("Sale logged");
-      setSalesItemName("");
-      setSalesUnits("");
-      qc.invalidateQueries({ queryKey: ["daily_sales", profile.store_id] });
-    } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Could not save");
-    } finally {
-      setSavingSale(false);
-    }
-  };
-
   const downloadTemplate = () => {
     const blob = new Blob([CSV_TEMPLATE], { type: "text/csv;charset=utf-8" });
     const url = URL.createObjectURL(blob);
