@@ -24,22 +24,22 @@ export function ConfidenceBar({
   const bandWidth = `${Math.min(100, ((high - low) / max) * 100)}%`;
   return (
     <div className={cn("w-full", className)}>
-      <div className="relative h-3 w-full rounded-full bg-confidence-track overflow-hidden">
+      <div className="relative h-2 w-full rounded-sm bg-confidence-track overflow-hidden">
         <div
-          className="absolute top-0 h-full bg-confidence-band rounded-full"
+          className="absolute top-0 h-full bg-confidence-band rounded-sm"
           style={{ left: bandLeft, width: bandWidth }}
           aria-label={`Confidence range ${low} to ${high} units`}
         />
         <div
-          className="absolute top-1/2 -translate-y-1/2 h-5 w-1.5 rounded-full bg-confidence-point shadow-sm"
-          style={{ left: `calc(${pct(point)} - 3px)` }}
+          className="absolute top-1/2 -translate-y-1/2 h-4 w-0.5 bg-confidence-point"
+          style={{ left: `calc(${pct(point)} - 1px)` }}
           aria-label={`Point estimate ${point} units`}
         />
       </div>
-      <div className="mt-1.5 flex justify-between text-xs text-muted-foreground tabular-nums">
-        <span>~{low}</span>
-        <span className="font-medium text-foreground">~{point} units</span>
-        <span>~{high}</span>
+      <div className="mt-1.5 flex justify-between text-xs text-muted-foreground font-mono-tabular">
+        <span>{low}</span>
+        <span className="text-foreground">{point} units</span>
+        <span>{high}</span>
       </div>
     </div>
   );
