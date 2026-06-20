@@ -1,7 +1,8 @@
 # Durare Surplus Forecast Service
 
 FastAPI wrapper around the XGBoost surplus-forecast model. The Lovable app
-sends 8 simple inputs per row; this service derives the 17 training features
+sends the public inventory inputs per row plus optional model-native aliases
+for item, category, store, and shelf life; this service derives the 12 training features
 internally and returns RAW quantile output (`sales_q10`, `sales_q50`,
 `sales_q90`) plus an `attribution` JSON. The Lovable app derives surplus,
 confidence band, target_date, days_to_expiry, and the "Why this forecast?"
@@ -71,7 +72,10 @@ Free tier sleeps after ~15 min idle (first request takes ~30s to wake).
 { "rows": [{
   "store_id": "...", "item_id": "fuji_apple", "category": "fresh_fruits",
   "state": "CA", "snapshot_date": "2026-06-20", "expiry_date": "2026-06-27",
-  "qty_on_hand": 42, "is_promo": false,
+  "qty_on_hand": 42,
+  "model_store_id": "store_001", "model_item_id": "fuji_apple",
+  "model_category": "Fresh Fruits", "shelf_life_days": 7,
+  "is_promo": false,
   "sales_history": [{"date": "2026-06-19", "units": 10}]
 }]}
 ```
