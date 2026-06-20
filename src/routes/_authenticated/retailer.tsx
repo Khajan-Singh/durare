@@ -288,7 +288,7 @@ function RetailerDashboard() {
                       <td className="px-6 py-4">
                         <span
                           className={cn(
-                            "inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold",
+                            "inline-flex items-center gap-1.5 rounded-sm px-3 py-1 text-xs font-semibold",
                             styles.chip,
                           )}
                         >
