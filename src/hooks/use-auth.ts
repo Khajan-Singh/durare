@@ -47,8 +47,6 @@ export function useAuth() {
     });
 
     const onProfileUpdated = () => {
-      const uid = supabase.auth.getUser ? undefined : undefined;
-      void uid;
       supabase.auth.getUser().then(({ data }) => {
         if (data.user) loadProfile(data.user.id);
       });
