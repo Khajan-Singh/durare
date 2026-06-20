@@ -1,0 +1,1 @@
+CREATE POLICY "authenticated can insert predictions" ON public.predictions FOR INSERT TO authenticated WITH CHECK (true);
