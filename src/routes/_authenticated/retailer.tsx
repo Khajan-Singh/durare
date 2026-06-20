@@ -91,6 +91,15 @@ function RetailerDashboard() {
   const [csvFileName, setCsvFileName] = useState("");
   const [csvError, setCsvError] = useState("");
   const [importing, setImporting] = useState(false);
+  const csvFileRef = useRef<HTMLInputElement>(null);
+
+  const closeCsvDrawer = () => {
+    setCsvOpen(false);
+    setCsvRows([]);
+    setCsvFileName("");
+    setCsvError("");
+    if (csvFileRef.current) csvFileRef.current.value = "";
+  };
 
   // Daily sales logging
   const [salesOpen, setSalesOpen] = useState(false);
