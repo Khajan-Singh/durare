@@ -51,6 +51,7 @@ export type Database = {
       }
       food_banks: {
         Row: {
+          address: string | null
           capacity: number
           cold_storage: boolean
           created_at: string
@@ -60,6 +61,7 @@ export type Database = {
           name: string
         }
         Insert: {
+          address?: string | null
           capacity?: number
           cold_storage?: boolean
           created_at?: string
@@ -69,6 +71,7 @@ export type Database = {
           name: string
         }
         Update: {
+          address?: string | null
           capacity?: number
           cold_storage?: boolean
           created_at?: string
