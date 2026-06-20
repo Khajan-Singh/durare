@@ -179,6 +179,88 @@ function RetailerDashboard() {
     }
   };
 
+  const downloadTemplate = () => {
+    const blob = new Blob([CSV_TEMPLATE], { type: "text/csv;charset=utf-8" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "inventory-template.csv";
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const onCsvFile = async (file: File) => {
+    setCsvFileName(file.name);
+    setCsvError("");
+    setCsvRows([]);
+    const text = await file.text();
+    const rows = parseCsv(text);
+    if (rows.length === 0) { setCsvError("CSV is empty"); return; }
+    const header = rows[0].map((h) => h.trim().toLowerCase());
+    const expected = ["category", "item_name", "quantity", "expiry_date"];
+    if (expected.some((h, i) => header[i] !== h)) {
+      setCsvError(`Header must be: ${expected.join(",")}`);
+      return;
+    }
+    const parsed: ParsedCsvRow[] = rows.slice(1).map((r) => {
+      const row: ParsedCsvRow = {
+        category: (r[0] ?? "").trim(),
+        item_name: (r[1] ?? "").trim(),
+        quantity: (r[2] ?? "").trim(),
+        expiry_date: (r[3] ?? "").trim(),
+      };
+      if (!row.category || !row.item_name || !row.quantity || !row.expiry_date) {
+        row.error = "Missing field";
+      } else if (!OVERALL_CATEGORIES.includes(row.category)) {
+        row.error = `Unknown category "${row.category}"`;
+      } else if (!/^\d+$/.test(row.quantity) || Number(row.quantity) <= 0) {
+        row.error = "Quantity must be a positive integer";
+      } else if (isNaN(Date.parse(row.expiry_date))) {
+        row.error = "Invalid date (use YYYY-MM-DD)";
+      }
+      return row;
+    });
+    setCsvRows(parsed);
+  };
+
+  const onImportCsv = async () => {
+    if (!profile?.store_id) return toast.error("No store linked");
+    const valid = csvRows.filter((r) => !r.error);
+    if (valid.length === 0) return toast.error("No valid rows to import");
+    setImporting(true);
+    let ok = 0;
+    let fail = 0;
+    for (const r of valid) {
+      try {
+        const catalogEntry = itemByName(r.category, r.item_name);
+        const item = await findOrCreateItem({
+          name: r.item_name,
+          category: r.category,
+          shelf_life_days: catalogEntry?.shelf_life_days,
+        });
+        await addInventorySnapshot({
+          store_id: profile.store_id,
+          item_id: item.id,
+          qty_on_hand: Number(r.quantity),
+          expiry_date: r.expiry_date,
+          catalog_item_id: catalogEntry?.item_id,
+          catalog_category_id: catalogEntry?.category_id,
+          shelf_life_days: catalogEntry?.shelf_life_days,
+        });
+        ok++;
+      } catch {
+        fail++;
+      }
+    }
+    setImporting(false);
+    const skipped = csvRows.length - valid.length;
+    toast.success(`Imported ${ok} item${ok === 1 ? "" : "s"}${fail ? `, ${fail} failed` : ""}${skipped ? `, ${skipped} skipped` : ""}`);
+    qc.invalidateQueries({ queryKey: ["inventory", profile.store_id] });
+    setCsvOpen(false);
+    setCsvRows([]);
+    setCsvFileName("");
+  };
+
   return (
     <div className="space-y-8">
       <header className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
