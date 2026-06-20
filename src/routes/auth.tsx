@@ -15,10 +15,7 @@ import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/auth")({
   head: () => ({
-    meta: [
-      { title: "Sign in · Durare" },
-      { name: "description", content: "Sign in or create a Durare account." },
-    ],
+    meta: [{ title: "Sign in · Durare" }, { name: "description", content: "Sign in or create a Durare account." }],
   }),
   component: AuthPage,
 });
@@ -80,7 +77,6 @@ function AuthPage() {
     try {
       const { error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) throw error;
-      
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Something went wrong");
     } finally {
@@ -228,9 +224,7 @@ function AuthPage() {
                 </button>
                 <h1 className="text-2xl font-bold text-primary">Join Durare</h1>
               </div>
-              <p className="mb-6 text-sm text-muted-foreground">
-                Choose your role to get started with forecasting.
-              </p>
+              <p className="mb-6 text-sm text-muted-foreground">Choose your role to get started with forecasting.</p>
               <div className="space-y-3">
                 <RoleCard
                   icon={<StoreIcon className="h-5 w-5" />}
@@ -314,11 +308,7 @@ function AuthPage() {
                   <Input
                     value={orgName}
                     onChange={(e) => setOrgName(e.target.value)}
-                    placeholder={
-                      role === "retailer"
-                        ? "e.g. Whole Foods – Mission St"
-                        : "e.g. SF-Marin Food Bank"
-                    }
+                    placeholder={role === "retailer" ? "e.g. Whole Foods – Mission St" : "e.g. SF-Marin Food Bank"}
                     required
                     className="h-12 rounded-lg"
                   />
@@ -341,9 +331,8 @@ function AuthPage() {
           )}
         </div>
 
-
         <footer className="mt-8 text-center text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Durare Rescue Systems. Foresight &amp; Stewardship.
+          © {new Date().getFullYear()} Durare. Foresight &amp; Stewardship.
         </footer>
       </main>
     </div>
@@ -353,9 +342,7 @@ function AuthPage() {
 function Field({ label, children }: { label: string; children: React.ReactNode }) {
   return (
     <div className="space-y-1.5">
-      <Label className="text-xs font-medium uppercase tracking-wide text-muted-foreground">
-        {label}
-      </Label>
+      <Label className="text-xs font-medium uppercase tracking-wide text-muted-foreground">{label}</Label>
       {children}
     </div>
   );
@@ -381,9 +368,7 @@ function RoleCard({
       className="group w-full rounded-xl border border-border p-5 text-left transition active:scale-[0.98] hover:border-primary hover:bg-primary-soft/30"
     >
       <div className="flex items-start gap-4">
-        <div className={cn("rounded-lg p-3 transition-transform group-hover:scale-110", iconBg)}>
-          {icon}
-        </div>
+        <div className={cn("rounded-lg p-3 transition-transform group-hover:scale-110", iconBg)}>{icon}</div>
         <div>
           <h3 className="text-base font-bold text-primary">{title}</h3>
           <p className="mt-0.5 text-sm text-muted-foreground">{body}</p>
