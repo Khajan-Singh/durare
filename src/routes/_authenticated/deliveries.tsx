@@ -45,7 +45,7 @@ function DeliveriesPage() {
         </div>
       </header>
 
-      {pickupsQuery.isLoading ? (
+      {pickupsQuery.isPending ? (
         <div className="card-elevated p-10 text-center text-muted-foreground">Loading…</div>
       ) : rows.length === 0 ? (
         <div className="card-elevated p-12 text-center">

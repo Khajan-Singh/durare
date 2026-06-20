@@ -273,7 +273,7 @@ function CoordinatorDashboard() {
             </button>
           )}
         </div>
-        {storesQuery.isLoading ? (
+        {storesQuery.isPending ? (
           <div className="card-elevated p-6 text-sm text-muted-foreground">Loading retailers…</div>
         ) : nearbyStores.length === 0 ? (
           <div className="card-elevated p-6 text-sm text-muted-foreground">
@@ -328,7 +328,7 @@ function CoordinatorDashboard() {
         )}
       </section>
 
-      {predictionsQuery.isLoading ? (
+      {predictionsQuery.isPending ? (
         <SkeletonGrid />
       ) : rows.length === 0 ? (
         <EmptyState selectedStoreName={selectedStore?.store.name ?? null} />
