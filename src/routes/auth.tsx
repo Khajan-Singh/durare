@@ -92,11 +92,13 @@ function AuthPage() {
 
       let newStoreId: string | null = null;
       let newFoodBankId: string | null = null;
+      const stateCode = await reverseGeocodeState(location.lat, location.lng);
       if (role === "retailer") {
         const s = await createStore({
           name: orgName,
           lat: location.lat,
           lng: location.lng,
+          state: stateCode,
         });
         newStoreId = s.id;
       } else {
