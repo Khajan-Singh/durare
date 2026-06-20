@@ -10,6 +10,7 @@ import { ConfirmPickupModal } from "@/components/confirm-pickup-modal";
 import { useAuth } from "@/hooks/use-auth";
 import {
   confirmPickup,
+  fetchActivePickupKeys,
   fetchFoodBanks,
   fetchPredictions,
   fetchStores,
@@ -34,6 +35,10 @@ function CoordinatorDashboard() {
   const foodBanksQuery = useQuery({ queryKey: ["food_banks"], queryFn: fetchFoodBanks });
   const storesQuery = useQuery({ queryKey: ["stores"], queryFn: fetchStores });
   const predictionsQuery = useQuery({ queryKey: ["predictions"], queryFn: fetchPredictions });
+  const activePickupsQuery = useQuery({
+    queryKey: ["active_pickup_keys"],
+    queryFn: fetchActivePickupKeys,
+  });
 
   const runModel = useMutation({
     mutationFn: runModelAndRefresh,
@@ -56,7 +61,9 @@ function CoordinatorDashboard() {
 
   const rows = useMemo(() => {
     const preds = predictionsQuery.data ?? [];
-    const withDistance = preds.map((p) => ({
+    const claimed = activePickupsQuery.data ?? new Set<string>();
+    const available = preds.filter((p) => !claimed.has(`${p.store_id}|${p.item_id}`));
+    const withDistance = available.map((p) => ({
       p,
       distance: myFoodBank
         ? haversineMiles(
@@ -79,7 +86,7 @@ function CoordinatorDashboard() {
       }
       return a.p.target_date.localeCompare(b.p.target_date);
     });
-  }, [predictionsQuery.data, myFoodBank, sort, radius, selectedStoreId]);
+  }, [predictionsQuery.data, activePickupsQuery.data, myFoodBank, sort, radius, selectedStoreId]);
 
   // All retailers in the system, with per-store distance + prediction aggregates.
   // Includes stores with zero forecasts so coordinators can still see who's reachable.
@@ -93,8 +100,10 @@ function CoordinatorDashboard() {
   const allStoreRows = useMemo<StoreRow[]>(() => {
     const stores = storesQuery.data ?? [];
     const preds = predictionsQuery.data ?? [];
+    const claimed = activePickupsQuery.data ?? new Set<string>();
+    const available = preds.filter((p) => !claimed.has(`${p.store_id}|${p.item_id}`));
     return stores.map((store) => {
-      const storePreds = preds.filter((p) => p.store.id === store.id);
+      const storePreds = available.filter((p) => p.store.id === store.id);
       const distance = myFoodBank
         ? haversineMiles(
             { lat: myFoodBank.lat, lng: myFoodBank.lng },
@@ -112,7 +121,7 @@ function CoordinatorDashboard() {
         soonest,
       };
     });
-  }, [storesQuery.data, predictionsQuery.data, myFoodBank]);
+  }, [storesQuery.data, predictionsQuery.data, activePickupsQuery.data, myFoodBank]);
 
   const nearbyStores = useMemo(() => {
     return allStoreRows
@@ -149,6 +158,7 @@ function CoordinatorDashboard() {
       toast.success("Pickup confirmed");
       setSelected(null);
       qc.invalidateQueries({ queryKey: ["pickups"] });
+      qc.invalidateQueries({ queryKey: ["active_pickup_keys"] });
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Could not confirm pickup");
     } finally {
