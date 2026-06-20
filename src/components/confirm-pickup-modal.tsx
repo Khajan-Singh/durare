@@ -39,7 +39,7 @@ export function ConfirmPickupModal({
         onOpenChange(o);
       }}
     >
-      <DialogContent className="overflow-hidden p-0 sm:max-w-xl rounded-lg">
+      <DialogContent className="overflow-hidden p-0 sm:max-w-xl rounded-3xl">
         <DialogTitle className="sr-only">Confirm pickup</DialogTitle>
         <DialogDescription className="sr-only">
           Review the AI prediction details before scheduling this pickup.
@@ -58,7 +58,7 @@ export function ConfirmPickupModal({
               <Sparkles className="h-3 w-3" />
               AI Prediction
             </div>
-            <h2 className="mt-2 text-xl font-display font-medium text-primary">
+            <h2 className="mt-2 text-xl font-extrabold text-primary">
               Confirm Predicted Pickup
             </h2>
           </div>
@@ -66,11 +66,11 @@ export function ConfirmPickupModal({
 
         <div className="space-y-5 p-6 sm:p-8">
           <div className="grid grid-cols-2 gap-3">
-            <div className="rounded-lg border border-border bg-secondary p-4">
+            <div className="rounded-2xl border border-border bg-secondary p-4">
               <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">Partner</p>
               <p className="mt-1 font-bold text-primary">{prediction.store.name}</p>
             </div>
-            <div className="rounded-lg border border-border bg-secondary p-4">
+            <div className="rounded-2xl border border-border bg-secondary p-4">
               <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">Predicted Item</p>
               <p className="mt-1 font-bold text-primary">
                 {prediction.predicted_surplus_qty} units of {prediction.item.name}
@@ -78,13 +78,13 @@ export function ConfirmPickupModal({
             </div>
           </div>
 
-          <div className="rounded-lg border border-primary/10 bg-primary/5 p-5">
+          <div className="rounded-2xl border border-primary/10 bg-primary/5 p-5">
             <div className="mb-3 flex items-center justify-between">
               <div className="inline-flex items-center gap-2 font-bold text-primary">
                 <Sparkles className="h-4 w-4" />
                 Prediction Confidence
               </div>
-              <span className="text-lg font-display font-medium text-primary">{confidence}%</span>
+              <span className="text-lg font-extrabold text-primary">{confidence}%</span>
             </div>
             <div className="relative h-3 w-full overflow-hidden rounded-full bg-secondary">
               <div
@@ -98,7 +98,7 @@ export function ConfirmPickupModal({
             </p>
           </div>
 
-          <div className="flex items-start gap-4 rounded-lg border border-warning-soft bg-warning-soft/40 p-4">
+          <div className="flex items-start gap-4 rounded-2xl border border-warning-soft bg-warning-soft/40 p-4">
             <Info className="mt-0.5 h-5 w-5 shrink-0 text-warning-foreground" />
             <div className="text-sm leading-relaxed text-warning-foreground">
               <p className="mb-1 font-bold">AI recommends, human decides.</p>

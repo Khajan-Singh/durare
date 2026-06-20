@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { RefreshCw, Calendar, ArrowDownNarrowWide, Navigation, Store as StoreIcon, X, MapPin, ChevronRight } from "lucide-react";
+import { RefreshCw, Sparkles, Calendar, ArrowDownNarrowWide, Navigation, Store as StoreIcon, X } from "lucide-react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
@@ -160,13 +160,13 @@ function CoordinatorDashboard() {
     <div className="space-y-8">
       <header className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <h1 className="font-display text-4xl font-medium tracking-tight text-foreground sm:text-5xl">
-            Predicted pickup plan
+          <h1 className="text-4xl font-extrabold tracking-tight text-primary sm:text-5xl">
+            Predicted Pickup Plan
           </h1>
-          <p className="mt-2 max-w-2xl text-base text-muted-foreground">
+          <p className="mt-2 text-base text-muted-foreground">
             {selectedStore ? (
               <>
-                Viewing <span className="text-foreground">{selectedStore.store.name}</span>
+                Viewing <span className="font-semibold text-foreground">{selectedStore.store.name}</span>
                 {selectedStore.distance !== null && (
                   <> · {selectedStore.distance.toFixed(1)} mi from {myFoodBank?.name ?? "you"}</>
                 )}
@@ -177,7 +177,7 @@ function CoordinatorDashboard() {
                 {myFoodBank && (
                   <>
                     {" "}Distances measured from{" "}
-                    <span className="text-foreground">{myFoodBank.name}</span>.
+                    <span className="font-semibold text-foreground">{myFoodBank.name}</span>.
                   </>
                 )}
               </>
@@ -190,7 +190,7 @@ function CoordinatorDashboard() {
           <SortPill icon={<Navigation className="h-4 w-4" />} label="Distance" active={sort === "distance"} onClick={() => setSort("distance")} />
           <Button
             variant="outline"
-            className="rounded-md"
+            className="rounded-full"
             disabled={runModel.isPending}
             onClick={() => {
               toast.message("Running forecasting model…");
@@ -205,7 +205,9 @@ function CoordinatorDashboard() {
 
       {/* Radius selector */}
       <section className="flex flex-wrap items-center gap-2">
-        <span className="text-xs text-muted-foreground">Search radius</span>
+        <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+          Search radius
+        </span>
         {RADIUS_OPTIONS.map((r) => (
           <SortPill
             key={r}
@@ -223,15 +225,16 @@ function CoordinatorDashboard() {
       </section>
 
       {/* Summary strip */}
-      <section className="flex flex-col gap-4 rounded-lg border border-border bg-card p-6 md:flex-row md:items-end md:justify-between">
+      <section className="card-elevated durare-glow flex flex-col gap-4 p-6 md:flex-row md:items-center md:justify-between">
         <div>
-          <p className="text-xs text-muted-foreground">Within {radius} mi · next 72h</p>
-          <p className="mt-1 font-display text-3xl font-medium text-foreground">
-            <span className="font-mono-tabular">~{totalUnits}</span>{" "}
-            <span className="text-muted-foreground">units of surplus predicted</span>
+          <p className="text-[11px] font-semibold uppercase tracking-widest text-muted-foreground">
+            Within {radius} mi · next 72h
+          </p>
+          <p className="mt-1 text-2xl font-extrabold text-primary">
+            ~{totalUnits} units of surplus predicted
           </p>
         </div>
-        <div className="grid grid-cols-3 gap-6 sm:max-w-md">
+        <div className="grid grid-cols-3 gap-4 sm:max-w-md sm:flex-1">
           <Stat label="Forecasts" value={String(rows.length)} />
           <Stat label="Retailers" value={String(nearbyStores.length)} />
           <Stat label="Coverage" value="72h" />
@@ -241,9 +244,9 @@ function CoordinatorDashboard() {
       {/* Retailers within radius */}
       <section className="space-y-3">
         <div className="flex items-center justify-between">
-          <h2 className="font-display text-xl font-medium text-foreground">
+          <h2 className="text-lg font-extrabold text-primary">
             Retailers within {radius} mi
-            <span className="ml-2 text-sm text-muted-foreground">
+            <span className="ml-2 text-sm font-semibold text-muted-foreground">
               ({nearbyStores.length})
             </span>
           </h2>
@@ -251,16 +254,16 @@ function CoordinatorDashboard() {
             <button
               type="button"
               onClick={() => setSelectedStoreId(null)}
-              className="inline-flex items-center gap-1 rounded-md bg-secondary px-3 py-1 text-xs text-primary hover:bg-secondary/70"
+              className="inline-flex items-center gap-1 rounded-full bg-secondary px-3 py-1 text-xs font-semibold text-primary hover:bg-secondary/70"
             >
               <X className="h-3.5 w-3.5" /> Clear filter
             </button>
           )}
         </div>
         {storesQuery.isLoading ? (
-          <div className="rounded-lg border border-border bg-card p-6 text-sm text-muted-foreground">Loading retailers…</div>
+          <div className="card-elevated p-6 text-sm text-muted-foreground">Loading retailers…</div>
         ) : nearbyStores.length === 0 ? (
-          <div className="rounded-lg border border-border bg-card p-6 text-sm text-muted-foreground">
+          <div className="card-elevated p-6 text-sm text-muted-foreground">
             {(storesQuery.data ?? []).length === 0
               ? "No retailers registered yet."
               : `No retailers within ${radius} mi. Try a larger radius.`}
@@ -277,30 +280,30 @@ function CoordinatorDashboard() {
                     setSelectedStoreId((cur) => (cur === s.store.id ? null : s.store.id))
                   }
                   className={cn(
-                    "rounded-lg border p-4 text-left transition",
+                    "rounded-2xl border p-4 text-left transition",
                     active
-                      ? "border-primary bg-primary-soft/40"
-                      : "border-border bg-card hover:border-primary/60",
+                      ? "border-primary bg-primary-soft/40 shadow-sm"
+                      : "border-border bg-card/80 hover:border-primary/60 hover:bg-primary-soft/20",
                   )}
                 >
                   <div className="flex items-start justify-between gap-2">
                     <div className="flex items-center gap-2">
-                      <div className="rounded-md bg-primary-soft p-2 text-primary-soft-foreground">
+                      <div className="rounded-lg bg-primary-soft p-2 text-primary-soft-foreground">
                         <StoreIcon className="h-4 w-4" />
                       </div>
                       <div>
-                        <p className="text-sm font-medium text-foreground leading-tight">
+                        <p className="text-sm font-bold text-primary leading-tight">
                           {s.store.name}
                         </p>
                         {s.distance !== null && (
-                          <p className="text-xs text-muted-foreground font-mono-tabular">
+                          <p className="text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
                             {s.distance.toFixed(1)} mi away
                           </p>
                         )}
                       </div>
                     </div>
                   </div>
-                  <div className="mt-3 grid grid-cols-3 gap-2">
+                  <div className="mt-3 grid grid-cols-3 gap-2 text-center">
                     <MiniStat label="Forecasts" value={String(s.forecasts)} />
                     <MiniStat label="Units" value={String(s.units)} />
                     <MiniStat label="Soonest" value={s.soonest ? s.soonest.slice(5) : "—"} />
@@ -317,37 +320,17 @@ function CoordinatorDashboard() {
       ) : rows.length === 0 ? (
         <EmptyState selectedStoreName={selectedStore?.store.name ?? null} />
       ) : (
-        <section className="space-y-6">
-          {/* Featured: the soonest / first row gets the full card */}
-          <div>
-            <p className="mb-2 text-xs text-muted-foreground">Next pickup</p>
+        <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+          {rows.map(({ p, distance }) => (
             <PredictionCard
-              prediction={rows[0].p}
-              distanceMiles={rows[0].distance}
-              isNearest={rows[0].p.store.id === nearestStoreId}
-              onReview={() => setSelected(rows[0].p)}
+              key={p.id}
+              prediction={p}
+              distanceMiles={distance}
+              isNearest={p.store.id === nearestStoreId}
+              onReview={() => setSelected(p)}
             />
-          </div>
-
-          {rows.length > 1 && (
-            <div>
-              <p className="mb-2 text-xs text-muted-foreground">
-                {rows.length - 1} more forecast{rows.length - 1 === 1 ? "" : "s"}
-              </p>
-              <div className="divide-y divide-border overflow-hidden rounded-lg border border-border bg-card">
-                {rows.slice(1).map(({ p, distance }) => (
-                  <PredictionRow
-                    key={p.id}
-                    prediction={p}
-                    distanceMiles={distance}
-                    isNearest={p.store.id === nearestStoreId}
-                    onReview={() => setSelected(p)}
-                  />
-                ))}
-              </div>
-            </div>
-          )}
-        </section>
+          ))}
+        </div>
       )}
 
       <ConfirmPickupModal
@@ -377,10 +360,10 @@ function SortPill({
       type="button"
       onClick={onClick}
       className={cn(
-        "inline-flex items-center gap-1.5 whitespace-nowrap rounded-md px-3 py-1.5 text-sm font-medium transition",
+        "inline-flex items-center gap-1.5 whitespace-nowrap rounded-full px-4 py-2 text-sm font-semibold transition",
         active
-          ? "bg-primary text-primary-foreground"
-          : "border border-border bg-card text-foreground hover:bg-secondary",
+          ? "bg-primary text-primary-foreground shadow-sm"
+          : "bg-surface-high text-primary hover:bg-secondary",
       )}
     >
       {icon}
@@ -391,92 +374,27 @@ function SortPill({
 
 function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div>
-      <p className="text-xs text-muted-foreground">{label}</p>
-      <p className="mt-0.5 font-mono-tabular text-2xl text-foreground">{value}</p>
+    <div className="rounded-xl bg-card/80 p-3 text-center backdrop-blur">
+      <p className="text-[10px] font-bold uppercase tracking-wider text-muted-foreground">{label}</p>
+      <p className="mt-0.5 text-xl font-extrabold text-primary">{value}</p>
     </div>
   );
 }
 
 function MiniStat({ label, value }: { label: string; value: string }) {
   return (
-    <div>
-      <p className="text-[10px] text-muted-foreground">{label}</p>
-      <p className="font-mono-tabular text-sm text-foreground leading-tight">{value}</p>
+    <div className="rounded-lg bg-secondary/60 p-1.5">
+      <p className="text-[9px] font-bold uppercase tracking-wider text-muted-foreground">{label}</p>
+      <p className="text-sm font-extrabold text-primary leading-tight">{value}</p>
     </div>
-  );
-}
-
-function PredictionRow({
-  prediction,
-  distanceMiles,
-  isNearest,
-  onReview,
-}: {
-  prediction: PredictionWithRefs;
-  distanceMiles: number | null;
-  isNearest?: boolean;
-  onReview: () => void;
-}) {
-  const days = (() => {
-    const t = new Date(prediction.target_date).getTime();
-    return Math.ceil((t - Date.now()) / (1000 * 60 * 60 * 24));
-  })();
-  const tone = days <= 0 ? "bg-destructive" : days <= 1 ? "bg-warning" : "bg-primary";
-
-  return (
-    <button
-      type="button"
-      onClick={onReview}
-      className="group relative grid w-full grid-cols-12 items-center gap-4 px-5 py-4 text-left transition hover:bg-secondary/40"
-    >
-      <span className={cn("absolute inset-y-0 left-0 w-0.5", tone)} aria-hidden />
-      <div className="col-span-12 sm:col-span-4">
-        <p className="text-xs text-muted-foreground">{prediction.item.category}</p>
-        <p className="font-display text-base font-medium text-foreground leading-tight">
-          {prediction.item.name}
-        </p>
-        <p className="text-xs text-muted-foreground">{prediction.store.name}</p>
-      </div>
-      <div className="col-span-4 sm:col-span-2">
-        <p className="text-[10px] text-muted-foreground">Surplus</p>
-        <p className="font-mono-tabular text-lg text-foreground leading-tight">
-          {prediction.predicted_surplus_qty}
-          <span className="ml-1 text-xs text-muted-foreground">units</span>
-        </p>
-      </div>
-      <div className="col-span-4 sm:col-span-2">
-        <p className="text-[10px] text-muted-foreground">Range</p>
-        <p className="font-mono-tabular text-sm text-muted-foreground">
-          {prediction.confidence_low}–{prediction.confidence_high}
-        </p>
-      </div>
-      <div className="col-span-2 sm:col-span-2">
-        <p className="text-[10px] text-muted-foreground">Ready</p>
-        <p className="font-mono-tabular text-sm text-foreground">
-          {prediction.target_date.slice(5)}
-        </p>
-      </div>
-      <div className="col-span-2 sm:col-span-2 flex items-center justify-end gap-2">
-        {isNearest && (
-          <span className="hidden items-center gap-1 text-xs text-muted-foreground sm:inline-flex">
-            <MapPin className="h-3 w-3" /> Nearest
-          </span>
-        )}
-        <span className="font-mono-tabular text-sm text-foreground">
-          {distanceMiles !== null ? `${distanceMiles.toFixed(1)} mi` : "—"}
-        </span>
-        <ChevronRight className="h-4 w-4 text-muted-foreground transition group-hover:translate-x-0.5 group-hover:text-foreground" />
-      </div>
-    </button>
   );
 }
 
 function SkeletonGrid() {
   return (
-    <div className="space-y-2">
+    <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
       {Array.from({ length: 4 }).map((_, i) => (
-        <div key={i} className="h-16 animate-pulse rounded-lg border border-border bg-card/60" />
+        <div key={i} className="h-80 animate-pulse rounded-2xl border border-border bg-card/60" />
       ))}
     </div>
   );
@@ -484,11 +402,14 @@ function SkeletonGrid() {
 
 function EmptyState({ selectedStoreName }: { selectedStoreName: string | null }) {
   return (
-    <div className="rounded-lg border border-border bg-card p-12 text-center">
-      <h3 className="font-display text-xl font-medium text-foreground">
+    <div className="card-elevated flex flex-col items-center justify-center p-12 text-center">
+      <div className="mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-primary-soft text-primary-soft-foreground">
+        <Sparkles className="h-6 w-6" />
+      </div>
+      <h3 className="text-lg font-bold text-primary">
         {selectedStoreName ? `No active forecasts for ${selectedStoreName}` : "No surplus predicted yet"}
       </h3>
-      <p className="mx-auto mt-2 max-w-md text-sm text-muted-foreground">
+      <p className="mx-auto mt-1 max-w-md text-sm text-muted-foreground">
         {selectedStoreName
           ? "This retailer has no AI-predicted surplus right now. Check back, widen your radius, or select another retailer above."
           : "When the forecasting model publishes new predictions, the plan for the coming days will show up here."}

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { ChevronDown, MapPin } from "lucide-react";
+import { ChevronDown, MapPin, Sparkles } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import type { PredictionWithRefs } from "@/lib/data";
 import { cn, daysUntil, formatDate } from "@/lib/utils";
@@ -23,40 +23,47 @@ export function PredictionCard({
   const tone: Tone = days <= 0 ? "urgent" : days <= 1 ? "warning" : "primary";
 
   const toneStyles: Record<Tone, {
-    bar: string;
-    tagBg: string;
-    tagText: string;
+    border: string;
+    chipBg: string;
+    chipText: string;
+    numText: string;
+    bandTrack: string;
     bandFill: string;
     bandPoint: string;
     button: string;
-    label: string;
+    ribbon?: { bg: string; text: string };
   }> = {
     primary: {
-      bar: "bg-primary",
-      tagBg: "bg-primary-soft",
-      tagText: "text-primary-soft-foreground",
+      border: "border-border",
+      chipBg: "bg-secondary",
+      chipText: "text-secondary-foreground",
+      numText: "text-primary",
+      bandTrack: "bg-secondary",
       bandFill: "bg-primary-soft",
       bandPoint: "bg-primary",
       button: "bg-primary text-primary-foreground hover:bg-primary/90",
-      label: "On track",
     },
     warning: {
-      bar: "bg-warning",
-      tagBg: "bg-warning-soft",
-      tagText: "text-warning-soft-foreground",
-      bandFill: "bg-warning-soft",
+      border: "border-warning-soft",
+      chipBg: "bg-warning-soft",
+      chipText: "text-warning-soft-foreground",
+      numText: "text-warning-foreground",
+      bandTrack: "bg-warning-soft/60",
+      bandFill: "bg-warning/40",
       bandPoint: "bg-warning",
-      button: "bg-primary text-primary-foreground hover:bg-primary/90",
-      label: "Expiring soon",
+      button: "bg-warning text-warning-foreground hover:brightness-105",
+      ribbon: { bg: "bg-warning", text: "text-warning-foreground" },
     },
     urgent: {
-      bar: "bg-destructive",
-      tagBg: "bg-destructive-soft",
-      tagText: "text-destructive-soft-foreground",
+      border: "border-destructive-soft",
+      chipBg: "bg-destructive-soft",
+      chipText: "text-destructive-soft-foreground",
+      numText: "text-destructive",
+      bandTrack: "bg-destructive-soft/50",
       bandFill: "bg-destructive-soft",
       bandPoint: "bg-destructive",
-      button: "bg-destructive text-destructive-foreground hover:bg-destructive/90",
-      label: "Urgent",
+      button: "bg-destructive text-destructive-foreground hover:brightness-105",
+      ribbon: { bg: "bg-destructive", text: "text-destructive-foreground" },
     },
   };
   const s = toneStyles[tone];
@@ -69,95 +76,127 @@ export function PredictionCard({
   const pointPct = (point / max) * 100;
 
   return (
-    <div className="relative flex flex-col overflow-hidden rounded-lg border border-border bg-card">
-      {/* Left accent bar communicates urgency without dyeing the whole card */}
-      <div className={cn("absolute inset-y-0 left-0 w-1", s.bar)} aria-hidden />
-
-      <div className="flex flex-col p-6 pl-7">
-        <div className="mb-4 flex items-start justify-between gap-3">
-          <div className="min-w-0">
-            <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
-              <span>{prediction.item.category}</span>
-              <span aria-hidden>·</span>
-              <span
-                className={cn(
-                  "inline-flex items-center rounded-md px-2 py-0.5 text-[10px] font-medium uppercase tracking-wide",
-                  s.tagBg,
-                  s.tagText,
-                )}
-              >
-                {s.label}
-              </span>
-            </div>
-            <h3 className="mt-2 font-display text-2xl font-medium leading-tight text-foreground">
-              {prediction.item.name}
-            </h3>
-            <p className="mt-0.5 text-sm text-muted-foreground">{prediction.store.name}</p>
-          </div>
-          {isNearest && (
-            <div className="inline-flex items-center gap-1 rounded-md border border-border bg-secondary px-2 py-1 text-xs text-secondary-foreground">
-              <MapPin className="h-3.5 w-3.5" />
-              Nearest
-            </div>
+    <div className={cn("card-elevated relative flex flex-col p-6", "border-2", s.border)}>
+      {s.ribbon && (
+        <div
+          className={cn(
+            "absolute -top-3 right-6 rounded-full px-3 py-1 text-[10px] font-bold uppercase tracking-widest shadow-sm",
+            s.ribbon.bg,
+            s.ribbon.text,
           )}
+        >
+          {tone === "urgent" ? "Urgent" : "Expiring Soon"}
         </div>
+      )}
 
-        <div className="mb-5 flex items-baseline gap-3">
-          <span className="font-mono-tabular text-5xl font-medium leading-none text-foreground">
-            {point}
+      <div className="mb-4 flex items-start justify-between gap-3">
+        <div>
+          <span className={cn("inline-block rounded-md px-2 py-0.5 text-[11px] font-semibold uppercase tracking-wide", s.chipBg, s.chipText)}>
+            {prediction.item.category}
           </span>
-          <span className="text-sm text-muted-foreground">units predicted surplus</span>
+          <h3 className="mt-2 text-xl font-bold text-primary">{prediction.item.name}</h3>
+          <p className="text-sm text-muted-foreground">{prediction.store.name}</p>
         </div>
-
-        <div className="mb-6">
-          <div className="mb-2 flex justify-between text-xs text-muted-foreground">
-            <span>Confidence range</span>
-            <span className="font-mono-tabular text-foreground">
-              {prediction.confidence_low}–{prediction.confidence_high}
-            </span>
+        {isNearest && (
+          <div className="inline-flex items-center gap-1 rounded-full bg-primary-soft px-3 py-1 text-xs font-bold text-primary-soft-foreground">
+            <MapPin className="h-3.5 w-3.5" />
+            Nearest
           </div>
-          <div className="relative h-2 w-full overflow-hidden rounded-sm bg-confidence-track">
-            <div
-              className={cn("absolute top-0 h-full rounded-sm", s.bandFill)}
-              style={{ left: `${lowPct}%`, width: `${widthPct}%` }}
-            />
-            <div
-              className={cn("absolute top-1/2 -translate-y-1/2 h-4 w-0.5", s.bandPoint)}
-              style={{ left: `calc(${pointPct}% - 1px)` }}
-            />
-          </div>
-        </div>
-
-        <dl className="mb-5 grid grid-cols-2 gap-x-6 gap-y-1 text-sm">
-          <dt className="text-xs text-muted-foreground">Ready date</dt>
-          <dt className="text-xs text-muted-foreground">Distance</dt>
-          <dd className="font-mono-tabular text-foreground">{formatDate(prediction.target_date)}</dd>
-          <dd className="font-mono-tabular text-foreground">
-            {distanceMiles !== null ? `${distanceMiles.toFixed(1)} mi` : "—"}
-          </dd>
-        </dl>
-
-        <details
-          className="mb-5 border-t border-border pt-3"
-          open={open}
-          onToggle={(e) => setOpen((e.target as HTMLDetailsElement).open)}
-        >
-          <summary className="flex cursor-pointer list-none items-center justify-between text-sm text-muted-foreground transition hover:text-foreground">
-            <span>Why this forecast?</span>
-            <ChevronDown className={cn("h-4 w-4 transition-transform", open && "rotate-180")} />
-          </summary>
-          <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-            {prediction.drivers ?? "No driver explanation provided by the model."}
-          </p>
-        </details>
-
-        <Button
-          onClick={onReview}
-          className={cn("mt-auto h-11 w-full rounded-md text-sm font-medium", s.button)}
-        >
-          {tone === "urgent" ? "Route immediately" : tone === "warning" ? "Priority pickup" : "Review & confirm pickup"}
-        </Button>
+        )}
       </div>
+
+      <div className="mb-5">
+        <p className="mb-1 text-[11px] font-semibold uppercase tracking-wider text-muted-foreground">
+          Predicted Surplus
+        </p>
+        <div className="flex items-baseline gap-2">
+          <span className={cn("text-[40px] font-extrabold leading-none", s.numText)}>{point}</span>
+          <span className="text-base text-muted-foreground">units</span>
+        </div>
+      </div>
+
+      <div className="mb-5">
+        <div className="mb-2 flex justify-between text-xs text-muted-foreground">
+          <span>Confidence Range</span>
+          <span className="font-bold text-foreground">
+            {prediction.confidence_low}&ndash;{prediction.confidence_high}
+          </span>
+        </div>
+        <div className={cn("relative h-6 overflow-hidden rounded-full px-1", s.bandTrack)}>
+          <div
+            className={cn("absolute top-1 h-4 rounded-full", s.bandFill)}
+            style={{ left: `${lowPct}%`, width: `${widthPct}%` }}
+          />
+          <div
+            className={cn("absolute top-0 h-6 w-1.5 rounded-full shadow", s.bandPoint)}
+            style={{ left: `calc(${pointPct}% - 3px)` }}
+          />
+        </div>
+      </div>
+
+      <div className="mb-5 grid grid-cols-2 gap-3">
+        <Tile label="Ready Date" value={formatDate(prediction.target_date)} tone={tone === "urgent" ? "urgent" : "neutral"} />
+        <Tile
+          label="Distance"
+          value={distanceMiles !== null ? `${distanceMiles.toFixed(1)} mi` : "—"}
+        />
+      </div>
+
+      <details className="mb-5 group" open={open} onToggle={(e) => setOpen((e.target as HTMLDetailsElement).open)}>
+        <summary className="flex cursor-pointer list-none items-center justify-between rounded-lg px-2 py-2 text-sm text-primary transition hover:bg-secondary">
+          <span className="inline-flex items-center gap-2 font-semibold">
+            <Sparkles className="h-4 w-4 text-warning" />
+            Why this forecast?
+          </span>
+          <ChevronDown className={cn("h-4 w-4 transition-transform", open && "rotate-180")} />
+        </summary>
+        <div className="mt-2 rounded-lg bg-secondary p-3 text-sm italic text-muted-foreground">
+          {prediction.drivers ?? "No driver explanation provided by the model."}
+        </div>
+      </details>
+
+      <Button
+        onClick={onReview}
+        className={cn("mt-auto h-12 w-full rounded-xl text-sm font-bold shadow-sm", s.button)}
+      >
+        {tone === "urgent" ? "Route Immediately" : tone === "warning" ? "Priority Pickup" : "Review & Confirm Pickup"}
+      </Button>
+    </div>
+  );
+}
+
+function Tile({
+  label,
+  value,
+  tone = "neutral",
+}: {
+  label: string;
+  value: string;
+  tone?: "neutral" | "urgent";
+}) {
+  return (
+    <div
+      className={cn(
+        "rounded-lg p-3",
+        tone === "urgent" ? "bg-destructive-soft/40" : "bg-secondary",
+      )}
+    >
+      <p
+        className={cn(
+          "text-[11px] uppercase tracking-wide",
+          tone === "urgent" ? "text-destructive" : "text-muted-foreground",
+        )}
+      >
+        {label}
+      </p>
+      <p
+        className={cn(
+          "mt-0.5 font-bold",
+          tone === "urgent" ? "text-destructive" : "text-primary",
+        )}
+      >
+        {value}
+      </p>
     </div>
   );
 }

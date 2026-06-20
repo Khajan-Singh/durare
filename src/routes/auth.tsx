@@ -162,7 +162,7 @@ function AuthPage() {
             <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-primary-foreground">
               <Leaf className="h-4 w-4" />
             </div>
-            <span className="text-2xl font-display font-medium tracking-tight text-primary">Durare</span>
+            <span className="text-2xl font-extrabold tracking-tight text-primary">Durare</span>
           </Link>
           <p className="px-6 text-sm text-muted-foreground">
             Forecasting food rescue to eliminate waste before it happens.
@@ -172,7 +172,7 @@ function AuthPage() {
         <div className="card-elevated p-6 md:p-8">
           {mode === "signin" && (
             <section>
-              <h1 className="text-2xl font-display font-medium text-primary">Welcome back</h1>
+              <h1 className="text-2xl font-extrabold text-primary">Welcome back</h1>
               <form onSubmit={onSignIn} className="mt-6 space-y-4">
                 <Field label="Email Address">
                   <Input
@@ -224,7 +224,7 @@ function AuthPage() {
                 >
                   <ArrowLeft className="h-5 w-5" />
                 </button>
-                <h1 className="text-2xl font-display font-medium text-primary">Join Durare</h1>
+                <h1 className="text-2xl font-extrabold text-primary">Join Durare</h1>
               </div>
               <p className="mb-6 text-sm text-muted-foreground">
                 Choose your role to get started with forecasting.
@@ -274,7 +274,7 @@ function AuthPage() {
                 >
                   <ArrowLeft className="h-5 w-5" />
                 </button>
-                <h1 className="text-2xl font-display font-medium text-primary">
+                <h1 className="text-2xl font-extrabold text-primary">
                   {role === "retailer" ? "Retailer signup" : "Coordinator signup"}
                 </h1>
               </div>

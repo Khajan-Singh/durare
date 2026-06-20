@@ -38,16 +38,14 @@ export function AppShell({
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Top bar */}
-      <header className="sticky top-0 z-40 h-16 border-b border-border bg-background/85 backdrop-blur">
+      <header className="sticky top-0 z-40 h-20 border-b border-border bg-card/80 backdrop-blur">
         <div className="mx-auto flex h-full max-w-7xl items-center justify-between px-4 sm:px-8">
           <div className="flex items-center gap-8">
             <Link to="/" className="flex items-center gap-2">
-              <div className="flex h-8 w-8 items-center justify-center rounded-md bg-primary text-primary-foreground">
+              <div className="flex h-9 w-9 items-center justify-center rounded-xl bg-primary text-primary-foreground">
                 <Leaf className="h-4 w-4" />
               </div>
-              <span className="font-display text-2xl font-medium tracking-tight text-primary">
-                Durare
-              </span>
+              <span className="text-xl font-extrabold tracking-tight text-primary">Durare</span>
             </Link>
             <nav className="hidden items-center gap-6 md:flex">
               {links.map(({ to, label }) => {
@@ -57,7 +55,7 @@ export function AppShell({
                     key={to}
                     to={to}
                     className={cn(
-                      "pb-1 text-sm font-medium transition-colors",
+                      "pb-1 text-sm font-semibold transition-colors",
                       active
                         ? "border-b-2 border-primary text-primary"
                         : "text-muted-foreground hover:text-primary",
@@ -72,10 +70,10 @@ export function AppShell({
           <div className="flex items-center gap-3">
             {profile && (
               <div className="hidden text-right sm:block">
-                <div className="text-sm font-medium leading-tight text-foreground">
+                <div className="text-xs font-semibold leading-tight text-primary">
                   {profile.display_name ?? profile.email}
                 </div>
-                <div className="text-xs text-muted-foreground">
+                <div className="text-[10px] uppercase tracking-wider text-muted-foreground">
                   {profile.role}
                 </div>
               </div>
@@ -85,7 +83,7 @@ export function AppShell({
               size="icon"
               onClick={signOut}
               aria-label="Sign out"
-              className="rounded-md"
+              className="rounded-full"
             >
               <LogOut className="h-4 w-4" />
             </Button>
@@ -96,7 +94,7 @@ export function AppShell({
       <main className="mx-auto max-w-7xl px-4 pb-28 pt-8 sm:px-8 md:pb-12">{children}</main>
 
       {/* Mobile bottom nav */}
-      <nav className="fixed bottom-0 left-0 z-50 flex w-full items-center justify-around border-t border-border bg-background/95 px-4 py-2 backdrop-blur md:hidden">
+      <nav className="fixed bottom-0 left-0 z-50 flex w-full items-center justify-around border-t border-border bg-card/95 px-4 py-2 shadow-lg backdrop-blur md:hidden">
         {links.map(({ to, label, icon: Icon }) => {
           const active = path === to;
           return (
@@ -104,14 +102,14 @@ export function AppShell({
               key={to}
               to={to}
               className={cn(
-                "flex flex-col items-center gap-0.5 rounded-md px-4 py-1.5 text-xs transition",
+                "flex flex-col items-center gap-0.5 rounded-full px-4 py-1.5 text-xs transition",
                 active
-                  ? "text-primary"
+                  ? "bg-primary-soft text-primary-soft-foreground"
                   : "text-muted-foreground",
               )}
             >
               <Icon className="h-5 w-5" />
-              <span>{label}</span>
+              <span className="font-medium">{label}</span>
             </Link>
           );
         })}
