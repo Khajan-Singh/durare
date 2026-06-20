@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useRef, useState } from "react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
-import { Plus, X, Lightbulb, MoreVertical, Sparkles, Leaf, Check, ChevronsUpDown, Upload, Download } from "lucide-react";
+import { Plus, X, Lightbulb, MoreVertical, Sparkles, Leaf, Check, ChevronsUpDown, Upload, Download, Trash2 } from "lucide-react";
 import { toast } from "sonner";
 
 import { Button } from "@/components/ui/button";
@@ -12,11 +12,10 @@ import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, Command
 import { useAuth } from "@/hooks/use-auth";
 import {
   addInventorySnapshot,
+  deleteInventorySnapshot,
   fetchInventoryForStore,
   fetchStores,
   findOrCreateItem,
-  logDailySale,
-  fetchDailySalesForStore,
 } from "@/lib/data";
 import { OVERALL_CATEGORIES, itemsForOverall, itemByName } from "@/lib/food-catalog";
 import { cn, daysUntil, formatDate } from "@/lib/utils";
@@ -101,20 +100,6 @@ function RetailerDashboard() {
     if (csvFileRef.current) csvFileRef.current.value = "";
   };
 
-  // Daily sales logging
-  const [salesOpen, setSalesOpen] = useState(false);
-  const [salesOverall, setSalesOverall] = useState("");
-  const [salesItemName, setSalesItemName] = useState("");
-  const [salesUnits, setSalesUnits] = useState("");
-  const [salesDate, setSalesDate] = useState(new Date().toISOString().slice(0, 10));
-  const [savingSale, setSavingSale] = useState(false);
-
-  const salesQuery = useQuery({
-    queryKey: ["daily_sales", profile?.store_id],
-    queryFn: () => fetchDailySalesForStore(profile!.store_id!),
-    enabled: !!profile?.store_id,
-  });
-
   const rows = (inventoryQuery.data ?? []).filter((row) => {
     if (filter === "all") return true;
     if (filter === "near") return daysUntil(row.expiry_date) <= 2;
@@ -160,31 +145,6 @@ function RetailerDashboard() {
       toast.error(err instanceof Error ? err.message : "Could not save");
     } finally {
       setSaving(false);
-    }
-  };
-
-  const onSubmitSale = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!profile?.store_id) return toast.error("No store linked");
-    const entry = itemByName(salesOverall, salesItemName);
-    if (!entry) return toast.error("Pick a catalog item");
-    if (!salesUnits || !salesDate) return toast.error("Enter units and date");
-    setSavingSale(true);
-    try {
-      await logDailySale({
-        store_id: profile.store_id,
-        catalog_item_id: entry.item_id,
-        sale_date: salesDate,
-        units_sold: Number(salesUnits),
-      });
-      toast.success("Sale logged");
-      setSalesItemName("");
-      setSalesUnits("");
-      qc.invalidateQueries({ queryKey: ["daily_sales", profile.store_id] });
-    } catch (err) {
-      toast.error(err instanceof Error ? err.message : "Could not save");
-    } finally {
-      setSavingSale(false);
     }
   };
 
@@ -294,64 +254,6 @@ function RetailerDashboard() {
         </div>
       </header>
 
-      {/* Daily sales logging */}
-      <section className="card-elevated p-6">
-        <div className="flex items-center justify-between">
-          <div>
-            <h2 className="text-lg font-bold text-primary">Daily Sales Log</h2>
-            <p className="text-sm text-muted-foreground">
-              Record units sold per item per day. The forecasting model uses recent sales to predict surplus.
-            </p>
-          </div>
-          <Button variant="outline" className="rounded-lg font-semibold" onClick={() => setSalesOpen((v) => !v)}>
-            {salesOpen ? "Hide" : "Log Sales"}
-          </Button>
-        </div>
-        {salesOpen && (
-          <form onSubmit={onSubmitSale} className="mt-4 grid gap-3 md:grid-cols-5">
-            <div className="md:col-span-2">
-              <SearchableCombobox
-                label="Category"
-                placeholder="Pick category"
-                searchPlaceholder="Search…"
-                value={salesOverall}
-                options={OVERALL_CATEGORIES}
-                onChange={(v) => { setSalesOverall(v); setSalesItemName(""); }}
-              />
-            </div>
-            <div className="md:col-span-2">
-              <SearchableCombobox
-                label="Item"
-                placeholder={salesOverall ? "Pick item" : "Pick category first"}
-                searchPlaceholder="Search items…"
-                value={salesItemName}
-                options={salesOverall ? itemsForOverall(salesOverall).map((i) => i.name) : []}
-                disabled={!salesOverall}
-                onChange={setSalesItemName}
-              />
-            </div>
-            <div className="space-y-1.5">
-              <Label className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Units</Label>
-              <Input type="number" min={0} value={salesUnits} onChange={(e) => setSalesUnits(e.target.value)} className="h-12 rounded-lg" />
-            </div>
-            <div className="space-y-1.5 md:col-span-2">
-              <Label className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">Date</Label>
-              <Input type="date" value={salesDate} onChange={(e) => setSalesDate(e.target.value)} className="h-12 rounded-lg" />
-            </div>
-            <div className="md:col-span-3 flex items-end">
-              <Button type="submit" disabled={savingSale} className="h-12 w-full rounded-lg font-bold">
-                {savingSale ? "Saving…" : "Log Sale"}
-              </Button>
-            </div>
-          </form>
-        )}
-        {salesQuery.data && salesQuery.data.length > 0 && (
-          <div className="mt-4 text-xs text-muted-foreground">
-            <span className="font-semibold text-foreground">{salesQuery.data.length}</span> recent sales entries logged.
-          </div>
-        )}
-      </section>
-
       <section className="card-elevated overflow-hidden">
         <div className="flex flex-wrap items-center justify-between gap-4 border-b border-border p-5">
           <div className="flex flex-wrap gap-2">
@@ -441,9 +343,41 @@ function RetailerDashboard() {
                         </span>
                       </td>
                       <td className="px-6 py-4 text-right">
-                        <button className="text-muted-foreground transition hover:text-primary">
-                          <MoreVertical className="h-4 w-4" />
-                        </button>
+                        <Popover>
+                          <PopoverTrigger asChild>
+                            <button
+                              type="button"
+                              className="rounded-sm p-1 text-muted-foreground transition hover:bg-surface-high hover:text-primary"
+                              aria-label="Item actions"
+                            >
+                              <MoreVertical className="h-4 w-4" />
+                            </button>
+                          </PopoverTrigger>
+                          <PopoverContent align="end" className="z-[70] w-44 p-1">
+                            <button
+                              type="button"
+                              onClick={async () => {
+                                if (!profile?.store_id) return;
+                                if (!confirm(`Remove "${row.items?.name}" from inventory? This also clears its forecasts for coordinators.`)) return;
+                                try {
+                                  await deleteInventorySnapshot({
+                                    id: row.id,
+                                    store_id: profile.store_id,
+                                    item_id: row.item_id,
+                                  });
+                                  toast.success("Item removed");
+                                  qc.invalidateQueries({ queryKey: ["inventory", profile.store_id] });
+                                  qc.invalidateQueries({ queryKey: ["predictions"] });
+                                } catch (err) {
+                                  toast.error(err instanceof Error ? err.message : "Could not remove");
+                                }
+                              }}
+                              className="flex w-full items-center gap-2 rounded-sm px-3 py-2 text-left text-sm font-semibold text-destructive transition hover:bg-destructive-soft"
+                            >
+                              <Trash2 className="h-4 w-4" /> Remove item
+                            </button>
+                          </PopoverContent>
+                        </Popover>
                       </td>
                     </tr>
                   );
