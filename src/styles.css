@@ -2,12 +2,22 @@
 @source "../src";
 @import "tw-animate-css";
 
+@import "@fontsource/zilla-slab/400.css";
+@import "@fontsource/zilla-slab/500.css";
+@import "@fontsource/zilla-slab/600.css";
+@import "@fontsource/zilla-slab/700.css";
+
+@import "@fontsource/dm-sans/400.css";
+@import "@fontsource/dm-sans/500.css";
+@import "@fontsource/dm-sans/600.css";
+@import "@fontsource/dm-sans/700.css";
+
 @custom-variant dark (&:is(.dark *));
 
 /*
  * Durare design system — "Foresight & Stewardship".
  * Deep forest primary (#173124), warm cream surfaces, amber + red urgency.
- * Typography: Public Sans.
+ * Typography: Zilla Slab (display/headings) + DM Sans (body/interface).
  */
 
 @theme inline {
@@ -20,7 +30,8 @@
   --radius-2xl: calc(var(--radius) + 2px);
   --radius-3xl: calc(var(--radius) + 3px);
   --radius-4xl: calc(var(--radius) + 4px);
-  --font-sans: "Public Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-sans: "DM Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-display: "Zilla Slab", ui-serif, Georgia, "Times New Roman", serif;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
