@@ -356,3 +356,71 @@ function FilterChip({
     </button>
   );
 }
+
+function SearchableCombobox({
+  label,
+  placeholder,
+  searchPlaceholder,
+  value,
+  options,
+  disabled,
+  onChange,
+}: {
+  label: string;
+  placeholder: string;
+  searchPlaceholder: string;
+  value: string;
+  options: string[];
+  disabled?: boolean;
+  onChange: (v: string) => void;
+}) {
+  const [open, setOpen] = useState(false);
+  return (
+    <div className="space-y-1.5">
+      <Label className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+        {label}
+      </Label>
+      <Popover open={open} onOpenChange={setOpen}>
+        <PopoverTrigger asChild>
+          <button
+            type="button"
+            disabled={disabled}
+            className={cn(
+              "flex h-12 w-full items-center justify-between rounded-lg border border-input bg-transparent px-3 text-sm shadow-sm transition",
+              "focus:outline-none focus:ring-1 focus:ring-ring disabled:cursor-not-allowed disabled:opacity-50",
+              !value && "text-muted-foreground",
+            )}
+          >
+            <span className="truncate">{value || placeholder}</span>
+            <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
+          </button>
+        </PopoverTrigger>
+        <PopoverContent className="w-[--radix-popover-trigger-width] p-0" align="start">
+          <Command>
+            <CommandInput placeholder={searchPlaceholder} />
+            <CommandList>
+              <CommandEmpty>No matches.</CommandEmpty>
+              <CommandGroup>
+                {options.map((opt) => (
+                  <CommandItem
+                    key={opt}
+                    value={opt}
+                    onSelect={() => {
+                      onChange(opt);
+                      setOpen(false);
+                    }}
+                  >
+                    <Check
+                      className={cn("mr-2 h-4 w-4", value === opt ? "opacity-100" : "opacity-0")}
+                    />
+                    {opt}
+                  </CommandItem>
+                ))}
+              </CommandGroup>
+            </CommandList>
+          </Command>
+        </PopoverContent>
+      </Popover>
+    </div>
+  );
+}
