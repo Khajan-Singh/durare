@@ -33,6 +33,27 @@ const signupSchema = z.object({
   orgName: z.string().trim().min(1).max(120),
 });
 
+async function reverseGeocodeState(lat: number, lng: number): Promise<string | null> {
+  const key = import.meta.env.VITE_LOVABLE_CONNECTOR_GOOGLE_MAPS_BROWSER_KEY;
+  if (!key) return null;
+  try {
+    const url = `https://maps.googleapis.com/maps/api/geocode/json?latlng=${lat},${lng}&key=${key}`;
+    const resp = await fetch(url);
+    if (!resp.ok) return null;
+    const body = (await resp.json()) as {
+      results?: Array<{ address_components?: Array<{ short_name: string; types: string[] }> }>;
+    };
+    for (const result of body.results ?? []) {
+      for (const comp of result.address_components ?? []) {
+        if (comp.types.includes("administrative_area_level_1")) return comp.short_name;
+      }
+    }
+    return null;
+  } catch {
+    return null;
+  }
+}
+
 function AuthPage() {
   const navigate = useNavigate();
   const { user, profile, loading } = useAuth();
