@@ -1,0 +1,1240 @@
+item_name,item_name_clean,category_id,category_name,item_id,shelf_life_days,base_daily_demand,perishability_tag,seasonal_peak_month
+Fuji Apple,Fuji Apple,fresh_fruits,Fresh Fruits,fuji_apple,7,28.3,perishable,9
+Gala Apple,Gala Apple,fresh_fruits,Fresh Fruits,gala_apple,9,11.1,perishable,10
+Granny Smith Apple,Granny Smith Apple,fresh_fruits,Fresh Fruits,granny_smith_apple,8,12.3,perishable,2
+Honeycrisp Apple,Honeycrisp Apple,fresh_fruits,Fresh Fruits,honeycrisp_apple,5,22.5,perishable,8
+Ripe Banana,Ripe Banana,fresh_fruits,Fresh Fruits,ripe_banana,5,11.3,perishable,9
+Navel Orange,Navel Orange,fresh_fruits,Fresh Fruits,navel_orange,9,22.6,perishable,9
+Blood Orange,Blood Orange,fresh_fruits,Fresh Fruits,blood_orange,4,28.4,perishable,4
+Mandarin Clementines,Mandarin Clementines,fresh_fruits,Fresh Fruits,mandarin_clementines,8,26.4,perishable,4
+Red Seedless Grapes,Red Seedless Grapes,fresh_fruits,Fresh Fruits,red_seedless_grapes,8,25.4,perishable,6
+Green Seedless Grapes,Green Seedless Grapes,fresh_fruits,Fresh Fruits,green_seedless_grapes,6,11.2,perishable,1
+Strawberries,Strawberries,fresh_fruits,Fresh Fruits,strawberries,5,15.9,perishable,4
+Blueberries,Blueberries,fresh_fruits,Fresh Fruits,blueberries,5,32.4,perishable,11
+Raspberries,Raspberries,fresh_fruits,Fresh Fruits,raspberries,5,13.1,perishable,11
+Blackberries,Blackberries,fresh_fruits,Fresh Fruits,blackberries,6,23.3,perishable,12
+Watermelon,Watermelon,fresh_fruits,Fresh Fruits,watermelon,7,11.3,perishable,1
+Cantaloupe,Cantaloupe,fresh_fruits,Fresh Fruits,cantaloupe,7,33.5,perishable,8
+Honeydew Melon,Honeydew Melon,fresh_fruits,Fresh Fruits,honeydew_melon,9,14.3,perishable,1
+Ataulfo Mango,Ataulfo Mango,fresh_fruits,Fresh Fruits,ataulfo_mango,8,20.3,perishable,12
+Tommy Atkins Mango,Tommy Atkins Mango,fresh_fruits,Fresh Fruits,tommy_atkins_mango,7,23.7,perishable,7
+Bartlett Pear,Bartlett Pear,fresh_fruits,Fresh Fruits,bartlett_pear,9,28.0,perishable,9
+Bosc Pear,Bosc Pear,fresh_fruits,Fresh Fruits,bosc_pear,5,33.4,perishable,3
+Yellow Peach,Yellow Peach,fresh_fruits,Fresh Fruits,yellow_peach,4,28.4,perishable,8
+White Nectarine,White Nectarine,fresh_fruits,Fresh Fruits,white_nectarine,7,18.7,perishable,11
+Bing Cherries,Bing Cherries,fresh_fruits,Fresh Fruits,bing_cherries,4,11.9,perishable,6
+Black Plum,Black Plum,fresh_fruits,Fresh Fruits,black_plum,4,27.7,perishable,10
+Pineapple,Pineapple,fresh_fruits,Fresh Fruits,pineapple,7,34.3,perishable,5
+Papaya,Papaya,fresh_fruits,Fresh Fruits,papaya,6,10.4,perishable,3
+Kiwi,Kiwi,fresh_fruits,Fresh Fruits,kiwi,9,29.4,perishable,6
+Avocado,Avocado,fresh_fruits,Fresh Fruits,avocado,7,14.4,perishable,9
+Lemon,Lemon,fresh_fruits,Fresh Fruits,lemon,7,21.5,perishable,3
+Lime,Lime,fresh_fruits,Fresh Fruits,lime,6,23.1,perishable,7
+Grapefruit,Grapefruit,fresh_fruits,Fresh Fruits,grapefruit,5,25.4,perishable,6
+Broccoli Crown,Broccoli Crown,fresh_vegetables,Fresh Vegetables,broccoli_crown,4,34.7,perishable,11
+Cauliflower,Cauliflower,fresh_vegetables,Fresh Vegetables,cauliflower,5,27.2,perishable,7
+Baby Carrots,Baby Carrots,fresh_vegetables,Fresh Vegetables,baby_carrots,8,19.8,perishable,1
+Whole Carrots,Whole Carrots,fresh_vegetables,Fresh Vegetables,whole_carrots,5,27.9,perishable,1
+Russet Potato,Russet Potato,fresh_vegetables,Fresh Vegetables,russet_potato,6,21.7,perishable,7
+Yukon Gold Potato,Yukon Gold Potato,fresh_vegetables,Fresh Vegetables,yukon_gold_potato,4,20.3,perishable,5
+Sweet Potato,Sweet Potato,fresh_vegetables,Fresh Vegetables,sweet_potato,8,19.1,perishable,1
+Red Onion,Red Onion,fresh_vegetables,Fresh Vegetables,red_onion,4,22.3,perishable,4
+Yellow Onion,Yellow Onion,fresh_vegetables,Fresh Vegetables,yellow_onion,5,17.0,perishable,5
+Shallots,Shallots,fresh_vegetables,Fresh Vegetables,shallots,9,16.1,perishable,8
+Garlic,Garlic,fresh_vegetables,Fresh Vegetables,garlic,7,13.7,perishable,3
+Cherry Tomatoes,Cherry Tomatoes,fresh_vegetables,Fresh Vegetables,cherry_tomatoes,9,21.0,perishable,10
+Beefsteak Tomato,Beefsteak Tomato,fresh_vegetables,Fresh Vegetables,beefsteak_tomato,7,17.3,perishable,9
+Roma Tomato,Roma Tomato,fresh_vegetables,Fresh Vegetables,roma_tomato,8,30.9,perishable,8
+English Cucumber,English Cucumber,fresh_vegetables,Fresh Vegetables,english_cucumber,4,31.2,perishable,9
+Persian Cucumbers,Persian Cucumbers,fresh_vegetables,Fresh Vegetables,persian_cucumbers,7,18.6,perishable,8
+Zucchini,Zucchini,fresh_vegetables,Fresh Vegetables,zucchini,7,25.5,perishable,2
+Yellow Squash,Yellow Squash,fresh_vegetables,Fresh Vegetables,yellow_squash,9,32.6,perishable,8
+Green Bell Pepper,Green Bell Pepper,fresh_vegetables,Fresh Vegetables,green_bell_pepper,6,19.0,perishable,3
+Red Bell Pepper,Red Bell Pepper,fresh_vegetables,Fresh Vegetables,red_bell_pepper,7,23.9,perishable,4
+Jalapeño,Jalapeño,fresh_vegetables,Fresh Vegetables,jalape_o,4,21.1,perishable,10
+Serrano Pepper,Serrano Pepper,fresh_vegetables,Fresh Vegetables,serrano_pepper,6,26.3,perishable,5
+Celery,Celery,fresh_vegetables,Fresh Vegetables,celery,5,34.0,perishable,10
+Asparagus,Asparagus,fresh_vegetables,Fresh Vegetables,asparagus,4,13.5,perishable,11
+Green Beans,Green Beans,fresh_vegetables,Fresh Vegetables,green_beans,8,34.1,perishable,3
+Snow Peas,Snow Peas,fresh_vegetables,Fresh Vegetables,snow_peas,6,26.6,perishable,12
+Sugar Snap Peas,Sugar Snap Peas,fresh_vegetables,Fresh Vegetables,sugar_snap_peas,9,29.9,perishable,6
+Corn On The Cob,Corn On The Cob,fresh_vegetables,Fresh Vegetables,corn_on_the_cob,7,25.9,perishable,3
+Eggplant,Eggplant,fresh_vegetables,Fresh Vegetables,eggplant,7,31.8,perishable,4
+Brussels Sprouts,Brussels Sprouts,fresh_vegetables,Fresh Vegetables,brussels_sprouts,7,18.2,perishable,1
+Baby Spinach,Baby Spinach,leafy_greens,Leafy Greens,baby_spinach,23,8.0,medium_shelf,3
+Arugula,Arugula,leafy_greens,Leafy Greens,arugula,13,4.8,medium_shelf,12
+Romaine Lettuce,Romaine Lettuce,leafy_greens,Leafy Greens,romaine_lettuce,18,6.6,medium_shelf,2
+Iceberg Lettuce,Iceberg Lettuce,leafy_greens,Leafy Greens,iceberg_lettuce,14,7.8,medium_shelf,11
+Butterhead Lettuce,Butterhead Lettuce,leafy_greens,Leafy Greens,butterhead_lettuce,18,4.4,medium_shelf,8
+Spring Mix,Spring Mix,leafy_greens,Leafy Greens,spring_mix,11,3.4,medium_shelf,8
+Kale,Kale,leafy_greens,Leafy Greens,kale,29,8.5,medium_shelf,11
+Lacinato Kale,Lacinato Kale,leafy_greens,Leafy Greens,lacinato_kale,14,8.7,medium_shelf,10
+Swiss Chard,Swiss Chard,leafy_greens,Leafy Greens,swiss_chard,23,7.7,medium_shelf,7
+Collard Greens,Collard Greens,leafy_greens,Leafy Greens,collard_greens,16,5.3,medium_shelf,8
+Mustard Greens,Mustard Greens,leafy_greens,Leafy Greens,mustard_greens,27,7.6,medium_shelf,12
+Bok Choy,Bok Choy,leafy_greens,Leafy Greens,bok_choy,23,3.6,medium_shelf,11
+Napa Cabbage,Napa Cabbage,leafy_greens,Leafy Greens,napa_cabbage,12,7.6,medium_shelf,5
+Green Cabbage,Green Cabbage,leafy_greens,Leafy Greens,green_cabbage,26,7.0,medium_shelf,3
+Red Cabbage,Red Cabbage,leafy_greens,Leafy Greens,red_cabbage,28,7.3,medium_shelf,1
+Endive,Endive,leafy_greens,Leafy Greens,endive,28,6.1,medium_shelf,6
+Radicchio,Radicchio,leafy_greens,Leafy Greens,radicchio,21,4.6,medium_shelf,8
+Watercress,Watercress,leafy_greens,Leafy Greens,watercress,12,8.1,medium_shelf,9
+Basil,Basil,fresh_herbs,Fresh Herbs,basil,5,21.6,perishable,12
+Cilantro,Cilantro,fresh_herbs,Fresh Herbs,cilantro,9,28.6,perishable,3
+Flat Leaf Parsley,Flat Leaf Parsley,fresh_herbs,Fresh Herbs,flat_leaf_parsley,7,19.1,perishable,6
+Curly Parsley,Curly Parsley,fresh_herbs,Fresh Herbs,curly_parsley,5,12.2,perishable,9
+Dill,Dill,fresh_herbs,Fresh Herbs,dill,9,23.6,perishable,2
+Tarragon,Tarragon,fresh_herbs,Fresh Herbs,tarragon,7,25.6,perishable,4
+Thyme,Thyme,fresh_herbs,Fresh Herbs,thyme,7,33.0,perishable,9
+Rosemary,Rosemary,fresh_herbs,Fresh Herbs,rosemary,6,32.2,perishable,9
+Sage,Sage,fresh_herbs,Fresh Herbs,sage,6,11.4,perishable,3
+Oregano,Oregano,fresh_herbs,Fresh Herbs,oregano,5,29.3,perishable,10
+Mint,Mint,fresh_herbs,Fresh Herbs,mint,4,16.5,perishable,11
+Chives,Chives,fresh_herbs,Fresh Herbs,chives,9,27.4,perishable,6
+Lemongrass,Lemongrass,fresh_herbs,Fresh Herbs,lemongrass,6,19.5,perishable,4
+Ginger Root,Ginger Root,fresh_herbs,Fresh Herbs,ginger_root,7,18.1,perishable,12
+Turmeric Root,Turmeric Root,fresh_herbs,Fresh Herbs,turmeric_root,5,22.2,perishable,4
+White Button Mushrooms,White Button Mushrooms,mushrooms,Mushrooms,white_button_mushrooms,25,6.7,medium_shelf,8
+Cremini Mushrooms,Cremini Mushrooms,mushrooms,Mushrooms,cremini_mushrooms,10,7.9,medium_shelf,5
+Portobello Mushrooms,Portobello Mushrooms,mushrooms,Mushrooms,portobello_mushrooms,17,7.5,medium_shelf,10
+Shiitake Mushrooms,Shiitake Mushrooms,mushrooms,Mushrooms,shiitake_mushrooms,10,7.7,medium_shelf,8
+Oyster Mushrooms,Oyster Mushrooms,mushrooms,Mushrooms,oyster_mushrooms,12,5.7,medium_shelf,1
+Maitake Mushrooms,Maitake Mushrooms,mushrooms,Mushrooms,maitake_mushrooms,29,7.7,medium_shelf,1
+Enoki Mushrooms,Enoki Mushrooms,mushrooms,Mushrooms,enoki_mushrooms,23,5.4,medium_shelf,2
+Lion'S Mane Mushrooms,Lion'S Mane Mushrooms,mushrooms,Mushrooms,lion_s_mane_mushrooms,18,7.3,medium_shelf,12
+Whole Milk,Whole Milk,milk,Milk,whole_milk,14,15.8,short_shelf,9
+2% Reduced Fat Milk,2% Reduced Fat Milk,milk,Milk,2_reduced_fat_milk,19,17.6,short_shelf,4
+1% Low Fat Milk,1% Low Fat Milk,milk,Milk,1_low_fat_milk,11,8.3,short_shelf,12
+Skim Milk,Skim Milk,milk,Milk,skim_milk,15,16.5,short_shelf,4
+Organic Whole Milk,Organic Whole Milk,milk,Milk,organic_whole_milk,16,11.7,short_shelf,8
+Lactose Free Whole Milk,Lactose Free Whole Milk,milk,Milk,lactose_free_whole_milk,11,14.6,short_shelf,6
+Fairlife Whole Milk,Fairlife Whole Milk,milk,Milk,fairlife_whole_milk,14,9.3,short_shelf,11
+Half And Half,Half And Half,milk,Milk,half_and_half,17,19.2,short_shelf,6
+Heavy Whipping Cream,Heavy Whipping Cream,milk,Milk,heavy_whipping_cream,19,23.2,short_shelf,1
+Light Cream,Light Cream,milk,Milk,light_cream,9,14.0,short_shelf,5
+Buttermilk,Buttermilk,milk,Milk,buttermilk,20,9.8,short_shelf,11
+Chobani Plain Greek Yogurt,Chobani Plain Greek Yogurt,yogurt,Yogurt,chobani_plain_greek_yogurt,7,18.5,short_shelf,5
+Chobani Strawberry Greek Yogurt,Chobani Strawberry Greek Yogurt,yogurt,Yogurt,chobani_strawberry_greek_yogurt,17,10.2,short_shelf,11
+Fage 0% Plain Greek Yogurt,Fage 0% Plain Greek Yogurt,yogurt,Yogurt,fage_0_plain_greek_yogurt,18,23.2,short_shelf,1
+Fage 2% Plain Greek Yogurt,Fage 2% Plain Greek Yogurt,yogurt,Yogurt,fage_2_plain_greek_yogurt,8,10.1,short_shelf,8
+Siggi'S Vanilla Skyr,Siggi'S Vanilla Skyr,yogurt,Yogurt,siggi_s_vanilla_skyr,12,14.2,short_shelf,2
+Oikos Triple Zero Vanilla,Oikos Triple Zero Vanilla,yogurt,Yogurt,oikos_triple_zero_vanilla,18,16.4,short_shelf,6
+Stonyfield Organic Whole Milk Yogurt,Stonyfield Organic Whole Milk Yogurt,yogurt,Yogurt,stonyfield_organic_whole_milk_yogurt,7,10.0,short_shelf,7
+Yoplait Original Strawberry,Yoplait Original Strawberry,yogurt,Yogurt,yoplait_original_strawberry,15,13.4,short_shelf,9
+Noosa Honey Yoghurt,Noosa Honey Yoghurt,yogurt,Yogurt,noosa_honey_yoghurt,18,12.7,short_shelf,9
+Two Good Strawberry Greek Yogurt,Two Good Strawberry Greek Yogurt,yogurt,Yogurt,two_good_strawberry_greek_yogurt,14,20.1,short_shelf,3
+Activia Probiotic Peach Yogurt,Activia Probiotic Peach Yogurt,yogurt,Yogurt,activia_probiotic_peach_yogurt,17,24.8,short_shelf,9
+Kite Hill Almond Milk Yogurt,Kite Hill Almond Milk Yogurt,yogurt,Yogurt,kite_hill_almond_milk_yogurt,10,14.2,short_shelf,9
+Sargento Mild Cheddar Slices,Sargento Mild Cheddar Slices,cheese,Cheese,sargento_mild_cheddar_slices,9,21.4,short_shelf,1
+Kraft Sharp Cheddar Block,Kraft Sharp Cheddar Block,cheese,Cheese,kraft_sharp_cheddar_block,12,10.4,short_shelf,9
+Tillamook Extra Sharp White Cheddar,Tillamook Extra Sharp White Cheddar,cheese,Cheese,tillamook_extra_sharp_white_cheddar,9,17.9,short_shelf,12
+Cabot Vermont Cheddar,Cabot Vermont Cheddar,cheese,Cheese,cabot_vermont_cheddar,11,15.4,short_shelf,7
+BelGioioso Fresh Mozzarella,BelGioioso Fresh Mozzarella,cheese,Cheese,belgioioso_fresh_mozzarella,20,12.9,short_shelf,3
+Galbani Whole Milk Mozzarella,Galbani Whole Milk Mozzarella,cheese,Cheese,galbani_whole_milk_mozzarella,15,22.0,short_shelf,4
+Boar'S Head Swiss,Boar'S Head Swiss,cheese,Cheese,boar_s_head_swiss,11,20.7,short_shelf,10
+Jarlsberg Swiss,Jarlsberg Swiss,cheese,Cheese,jarlsberg_swiss,10,10.3,short_shelf,1
+Laughing Cow Cream Cheese Wedges,Laughing Cow Cream Cheese Wedges,cheese,Cheese,laughing_cow_cream_cheese_wedges,20,13.0,short_shelf,3
+Philadelphia Original Cream Cheese,Philadelphia Original Cream Cheese,cheese,Cheese,philadelphia_original_cream_cheese,13,21.9,short_shelf,3
+Boursin Garlic Herb,Boursin Garlic Herb,cheese,Cheese,boursin_garlic_herb,20,24.9,short_shelf,3
+Président Brie,Président Brie,cheese,Cheese,pr_sident_brie,14,18.4,short_shelf,11
+Manchego Aged,Manchego Aged,cheese,Cheese,manchego_aged,14,22.8,short_shelf,2
+Parmigiano Reggiano Wedge,Parmigiano Reggiano Wedge,cheese,Cheese,parmigiano_reggiano_wedge,19,24.7,short_shelf,3
+Pecorino Romano,Pecorino Romano,cheese,Cheese,pecorino_romano,17,20.6,short_shelf,11
+Feta Crumbled,Feta Crumbled,cheese,Cheese,feta_crumbled,15,19.0,short_shelf,1
+Cotija,Cotija,cheese,Cheese,cotija,12,11.8,short_shelf,4
+Queso Fresco,Queso Fresco,cheese,Cheese,queso_fresco,19,14.3,short_shelf,3
+Land O Lakes Unsalted Butter,Land O Lakes Unsalted Butter,butter,Butter,land_o_lakes_unsalted_butter,18,7.4,medium_shelf,10
+Kerrygold Pure Irish Butter,Kerrygold Pure Irish Butter,butter,Butter,kerrygold_pure_irish_butter,28,9.5,medium_shelf,7
+Plugrá European Style Butter,Plugrá European Style Butter,butter,Butter,plugr_european_style_butter,11,5.1,medium_shelf,2
+Challenge Salted Butter,Challenge Salted Butter,butter,Butter,challenge_salted_butter,18,5.8,medium_shelf,8
+Organic Valley Salted Butter,Organic Valley Salted Butter,butter,Butter,organic_valley_salted_butter,20,3.2,medium_shelf,11
+Country Crock Plant Butter,Country Crock Plant Butter,butter,Butter,country_crock_plant_butter,29,7.9,medium_shelf,11
+I Can'T Believe It'S Not Butter,I Can'T Believe It'S Not Butter,butter,Butter,i_can_t_believe_it_s_not_butter,15,6.1,medium_shelf,12
+Earth Balance Vegan Butter,Earth Balance Vegan Butter,butter,Butter,earth_balance_vegan_butter,26,8.6,medium_shelf,11
+Large White Eggs 12ct,Large White Eggs 12ct,eggs,Eggs,large_white_eggs_12ct,23,4.6,medium_shelf,11
+Large Brown Eggs 12ct,Large Brown Eggs 12ct,eggs,Eggs,large_brown_eggs_12ct,24,7.6,medium_shelf,12
+Jumbo Eggs 12ct,Jumbo Eggs 12ct,eggs,Eggs,jumbo_eggs_12ct,22,7.7,medium_shelf,8
+Cage Free Large Eggs,Cage Free Large Eggs,eggs,Eggs,cage_free_large_eggs,29,6.3,medium_shelf,11
+Free Range Eggs,Free Range Eggs,eggs,Eggs,free_range_eggs,16,4.3,medium_shelf,4
+Pasture Raised Eggs,Pasture Raised Eggs,eggs,Eggs,pasture_raised_eggs,17,5.8,medium_shelf,6
+Organic Large Brown Eggs,Organic Large Brown Eggs,eggs,Eggs,organic_large_brown_eggs,14,8.2,medium_shelf,4
+Pete And Gerry'S Organic Eggs,Pete And Gerry'S Organic Eggs,eggs,Eggs,pete_and_gerry_s_organic_eggs,11,4.3,medium_shelf,2
+Vital Farms Pasture Raised Eggs,Vital Farms Pasture Raised Eggs,eggs,Eggs,vital_farms_pasture_raised_eggs,14,3.6,medium_shelf,1
+Egg Whites Liquid Carton,Egg Whites Liquid Carton,eggs,Eggs,egg_whites_liquid_carton,28,6.2,medium_shelf,12
+80/20 Ground Beef,80/20 Ground Beef,beef,Beef,80_20_ground_beef,8,8.5,perishable,9
+90/10 Lean Ground Beef,90/10 Lean Ground Beef,beef,Beef,90_10_lean_ground_beef,3,17.0,perishable,3
+Ground Sirloin,Ground Sirloin,beef,Beef,ground_sirloin,7,17.3,perishable,5
+Ribeye Steak,Ribeye Steak,beef,Beef,ribeye_steak,6,19.2,perishable,8
+New York Strip Steak,New York Strip Steak,beef,Beef,new_york_strip_steak,7,17.6,perishable,2
+Sirloin Steak,Sirloin Steak,beef,Beef,sirloin_steak,7,14.7,perishable,4
+Flank Steak,Flank Steak,beef,Beef,flank_steak,5,7.8,perishable,2
+Skirt Steak,Skirt Steak,beef,Beef,skirt_steak,9,17.3,perishable,10
+Chuck Roast,Chuck Roast,beef,Beef,chuck_roast,6,15.9,perishable,5
+Beef Brisket,Beef Brisket,beef,Beef,beef_brisket,7,16.2,perishable,3
+Short Ribs,Short Ribs,beef,Beef,short_ribs,7,15.5,perishable,3
+Top Round Roast,Top Round Roast,beef,Beef,top_round_roast,4,17.5,perishable,6
+Beef Stew Meat,Beef Stew Meat,beef,Beef,beef_stew_meat,3,9.5,perishable,9
+T-Bone Steak,T-Bone Steak,beef,Beef,t_bone_steak,5,15.1,perishable,3
+Pork Tenderloin,Pork Tenderloin,pork,Pork,pork_tenderloin,8,12.8,perishable,3
+Pork Loin Chops,Pork Loin Chops,pork,Pork,pork_loin_chops,8,10.1,perishable,11
+Baby Back Ribs,Baby Back Ribs,pork,Pork,baby_back_ribs,8,9.9,perishable,1
+St Louis Ribs,St Louis Ribs,pork,Pork,st_louis_ribs,3,7.3,perishable,8
+Ground Pork,Ground Pork,pork,Pork,ground_pork,9,12.4,perishable,1
+Pork Shoulder,Pork Shoulder,pork,Pork,pork_shoulder,8,10.5,perishable,8
+Pork Belly,Pork Belly,pork,Pork,pork_belly,9,11.3,perishable,4
+Italian Sausage Links,Italian Sausage Links,pork,Pork,italian_sausage_links,6,17.8,perishable,4
+Breakfast Sausage Patties,Breakfast Sausage Patties,pork,Pork,breakfast_sausage_patties,9,15.2,perishable,7
+Bratwurst,Bratwurst,pork,Pork,bratwurst,3,15.2,perishable,3
+Chorizo,Chorizo,pork,Pork,chorizo,3,19.8,perishable,9
+Boneless Skinless Chicken Breasts,Boneless Skinless Chicken Breasts,poultry,Poultry,boneless_skinless_chicken_breasts,3,8.3,perishable,11
+Bone-In Chicken Thighs,Bone-In Chicken Thighs,poultry,Poultry,bone_in_chicken_thighs,4,12.6,perishable,6
+Chicken Drumsticks,Chicken Drumsticks,poultry,Poultry,chicken_drumsticks,4,6.4,perishable,10
+Whole Chicken,Whole Chicken,poultry,Poultry,whole_chicken,4,10.9,perishable,10
+Ground Turkey,Ground Turkey,poultry,Poultry,ground_turkey,6,19.3,perishable,9
+Turkey Breast,Turkey Breast,poultry,Poultry,turkey_breast,3,6.3,perishable,10
+Turkey Thighs,Turkey Thighs,poultry,Poultry,turkey_thighs,7,16.4,perishable,12
+Whole Turkey,Whole Turkey,poultry,Poultry,whole_turkey,4,18.0,perishable,3
+Duck Breast,Duck Breast,poultry,Poultry,duck_breast,7,12.6,perishable,7
+Cornish Hen,Cornish Hen,poultry,Poultry,cornish_hen,3,17.0,perishable,12
+Air Chilled Chicken Breasts,Air Chilled Chicken Breasts,poultry,Poultry,air_chilled_chicken_breasts,5,11.6,perishable,3
+Organic Chicken Thighs,Organic Chicken Thighs,poultry,Poultry,organic_chicken_thighs,9,10.3,perishable,5
+Atlantic Salmon Fillet,Atlantic Salmon Fillet,seafood,Seafood,atlantic_salmon_fillet,6,12.6,perishable,8
+Wild Caught Sockeye Salmon,Wild Caught Sockeye Salmon,seafood,Seafood,wild_caught_sockeye_salmon,8,7.9,perishable,2
+Tilapia Fillet,Tilapia Fillet,seafood,Seafood,tilapia_fillet,7,9.6,perishable,4
+Cod Fillet,Cod Fillet,seafood,Seafood,cod_fillet,7,9.6,perishable,4
+Halibut Fillet,Halibut Fillet,seafood,Seafood,halibut_fillet,4,19.8,perishable,7
+Mahi Mahi,Mahi Mahi,seafood,Seafood,mahi_mahi,7,10.0,perishable,7
+Swordfish Steak,Swordfish Steak,seafood,Seafood,swordfish_steak,3,8.4,perishable,6
+Large Shrimp 21/25,Large Shrimp 21/25,seafood,Seafood,large_shrimp_21_25,8,19.1,perishable,10
+Jumbo Shrimp 16/20,Jumbo Shrimp 16/20,seafood,Seafood,jumbo_shrimp_16_20,9,7.1,perishable,7
+Sea Scallops,Sea Scallops,seafood,Seafood,sea_scallops,8,19.5,perishable,9
+Littleneck Clams,Littleneck Clams,seafood,Seafood,littleneck_clams,3,17.8,perishable,12
+Mussels,Mussels,seafood,Seafood,mussels,5,14.7,perishable,7
+Lobster Tail,Lobster Tail,seafood,Seafood,lobster_tail,5,11.4,perishable,10
+Dungeness Crab,Dungeness Crab,seafood,Seafood,dungeness_crab,3,8.0,perishable,6
+Ahi Tuna Steak,Ahi Tuna Steak,seafood,Seafood,ahi_tuna_steak,7,6.6,perishable,5
+Rainbow Trout,Rainbow Trout,seafood,Seafood,rainbow_trout,8,6.6,perishable,1
+Boar'S Head Honey Turkey,Boar'S Head Honey Turkey,deli_meat,Deli Meat,boar_s_head_honey_turkey,5,10.2,perishable,10
+Boar'S Head Roast Beef,Boar'S Head Roast Beef,deli_meat,Deli Meat,boar_s_head_roast_beef,9,11.1,perishable,2
+Applegate Natural Turkey Breast,Applegate Natural Turkey Breast,deli_meat,Deli Meat,applegate_natural_turkey_breast,8,18.9,perishable,11
+Oscar Mayer Deli Fresh Turkey,Oscar Mayer Deli Fresh Turkey,deli_meat,Deli Meat,oscar_mayer_deli_fresh_turkey,3,13.0,perishable,2
+Hillshire Farm Smoked Ham,Hillshire Farm Smoked Ham,deli_meat,Deli Meat,hillshire_farm_smoked_ham,8,19.9,perishable,10
+Columbus Italian Dry Salami,Columbus Italian Dry Salami,deli_meat,Deli Meat,columbus_italian_dry_salami,9,15.8,perishable,12
+Genoa Salami,Genoa Salami,deli_meat,Deli Meat,genoa_salami,4,7.2,perishable,7
+Pepperoni Slices,Pepperoni Slices,deli_meat,Deli Meat,pepperoni_slices,7,13.3,perishable,10
+Prosciutto Di Parma,Prosciutto Di Parma,deli_meat,Deli Meat,prosciutto_di_parma,7,7.4,perishable,11
+Black Forest Ham,Black Forest Ham,deli_meat,Deli Meat,black_forest_ham,7,5.6,perishable,11
+Mortadella,Mortadella,deli_meat,Deli Meat,mortadella,3,19.2,perishable,6
+Wonder Classic White Bread,Wonder Classic White Bread,bread,Bread,wonder_classic_white_bread,5,12.7,perishable,11
+Dave'S Killer Bread 21 Whole Grains,Dave'S Killer Bread 21 Whole Grains,bread,Bread,dave_s_killer_bread_21_whole_grains,5,10.7,perishable,2
+Nature'S Own Honey Wheat,Nature'S Own Honey Wheat,bread,Bread,nature_s_own_honey_wheat,6,9.4,perishable,2
+Pepperidge Farm Sourdough,Pepperidge Farm Sourdough,bread,Bread,pepperidge_farm_sourdough,6,17.1,perishable,4
+Arnold Country White,Arnold Country White,bread,Bread,arnold_country_white,4,14.5,perishable,12
+Sara Lee Artesano,Sara Lee Artesano,bread,Bread,sara_lee_artesano,5,8.2,perishable,8
+Franz Mountain White,Franz Mountain White,bread,Bread,franz_mountain_white,6,18.0,perishable,3
+Oroweat Whole Wheat,Oroweat Whole Wheat,bread,Bread,oroweat_whole_wheat,6,11.6,perishable,5
+Ezekiel 4:9 Sprouted Bread,Ezekiel 4:9 Sprouted Bread,bread,Bread,ezekiel_4_9_sprouted_bread,3,18.9,perishable,1
+La Brea Bakery Take & Bake Baguette,La Brea Bakery Take & Bake Baguette,bread,Bread,la_brea_bakery_take_bake_baguette,3,14.8,perishable,6
+Whole Foods 365 Multigrain,Whole Foods 365 Multigrain,bread,Bread,whole_foods_365_multigrain,5,15.5,perishable,8
+Butter Croissant,Butter Croissant,pastry,Pastry,butter_croissant,3,14.4,perishable,5
+Chocolate Croissant,Chocolate Croissant,pastry,Pastry,chocolate_croissant,5,17.5,perishable,7
+Almond Croissant,Almond Croissant,pastry,Pastry,almond_croissant,6,21.9,perishable,3
+Blueberry Muffin,Blueberry Muffin,pastry,Pastry,blueberry_muffin,4,19.2,perishable,1
+Bran Muffin,Bran Muffin,pastry,Pastry,bran_muffin,4,9.0,perishable,2
+Chocolate Chip Muffin,Chocolate Chip Muffin,pastry,Pastry,chocolate_chip_muffin,4,14.9,perishable,9
+Glazed Donut,Glazed Donut,pastry,Pastry,glazed_donut,5,11.3,perishable,1
+Cinnamon Roll,Cinnamon Roll,pastry,Pastry,cinnamon_roll,3,9.4,perishable,3
+Danish Pastry,Danish Pastry,pastry,Pastry,danish_pastry,4,10.7,perishable,9
+Scone,Scone,pastry,Pastry,scone,3,11.5,perishable,10
+Kouign Amann,Kouign Amann,pastry,Pastry,kouign_amann,5,21.4,perishable,4
+Pain Au Chocolat,Pain Au Chocolat,pastry,Pastry,pain_au_chocolat,6,18.4,perishable,6
+Chocolate Layer Cake,Chocolate Layer Cake,cake,Cake,chocolate_layer_cake,4,19.9,perishable,6
+Vanilla Birthday Cake,Vanilla Birthday Cake,cake,Cake,vanilla_birthday_cake,4,17.8,perishable,10
+Carrot Cake,Carrot Cake,cake,Cake,carrot_cake,5,12.4,perishable,12
+Red Velvet Cake,Red Velvet Cake,cake,Cake,red_velvet_cake,3,13.5,perishable,11
+Cheesecake Slice,Cheesecake Slice,cake,Cake,cheesecake_slice,3,14.2,perishable,8
+Tiramisu,Tiramisu,cake,Cake,tiramisu,4,12.1,perishable,9
+Lemon Pound Cake,Lemon Pound Cake,cake,Cake,lemon_pound_cake,4,13.9,perishable,10
+Angel Food Cake,Angel Food Cake,cake,Cake,angel_food_cake,3,18.8,perishable,11
+Tres Leches Cake,Tres Leches Cake,cake,Cake,tres_leches_cake,6,9.1,perishable,10
+Bundt Cake,Bundt Cake,cake,Cake,bundt_cake,5,11.9,perishable,9
+Thomas' Plain Bagels,Thomas' Plain Bagels,bagels,Bagels,thomas_plain_bagels,15,6.4,medium_shelf,12
+Thomas' Everything Bagels,Thomas' Everything Bagels,bagels,Bagels,thomas_everything_bagels,11,7.7,medium_shelf,5
+Thomas' Blueberry Bagels,Thomas' Blueberry Bagels,bagels,Bagels,thomas_blueberry_bagels,25,7.5,medium_shelf,1
+Dave'S Killer Bagels Epic Everything,Dave'S Killer Bagels Epic Everything,bagels,Bagels,dave_s_killer_bagels_epic_everything,12,8.1,medium_shelf,6
+Pepperidge Farm Bagel Thins,Pepperidge Farm Bagel Thins,bagels,Bagels,pepperidge_farm_bagel_thins,12,3.7,medium_shelf,5
+Lender'S Sesame Bagels,Lender'S Sesame Bagels,bagels,Bagels,lender_s_sesame_bagels,12,4.3,medium_shelf,1
+New York Style Poppy Seed Bagel,New York Style Poppy Seed Bagel,bagels,Bagels,new_york_style_poppy_seed_bagel,11,5.2,medium_shelf,12
+Asiago Cheese Bagel,Asiago Cheese Bagel,bagels,Bagels,asiago_cheese_bagel,28,5.0,medium_shelf,12
+Birds Eye Frozen Broccoli,Birds Eye Frozen Broccoli,frozen_vegetables,Frozen Vegetables,birds_eye_frozen_broccoli,5,28.9,perishable,6
+Birds Eye Frozen Mixed Vegetables,Birds Eye Frozen Mixed Vegetables,frozen_vegetables,Frozen Vegetables,birds_eye_frozen_mixed_vegetables,5,34.8,perishable,9
+Green Giant Frozen Peas,Green Giant Frozen Peas,frozen_vegetables,Frozen Vegetables,green_giant_frozen_peas,8,27.1,perishable,12
+Green Giant Corn,Green Giant Corn,frozen_vegetables,Frozen Vegetables,green_giant_corn,7,10.8,perishable,6
+Cascadian Farm Edamame,Cascadian Farm Edamame,frozen_vegetables,Frozen Vegetables,cascadian_farm_edamame,5,17.4,perishable,3
+Alexia Sweet Potato Fries,Alexia Sweet Potato Fries,frozen_vegetables,Frozen Vegetables,alexia_sweet_potato_fries,6,30.1,perishable,2
+Ore-Ida Golden Fries,Ore-Ida Golden Fries,frozen_vegetables,Frozen Vegetables,ore_ida_golden_fries,9,33.1,perishable,1
+Birds Eye Riced Cauliflower,Birds Eye Riced Cauliflower,frozen_vegetables,Frozen Vegetables,birds_eye_riced_cauliflower,6,24.9,perishable,1
+Frozen Spinach,Frozen Spinach,frozen_vegetables,Frozen Vegetables,frozen_spinach,8,18.7,perishable,11
+Frozen Stir Fry Blend,Frozen Stir Fry Blend,frozen_vegetables,Frozen Vegetables,frozen_stir_fry_blend,4,18.9,perishable,9
+Amy'S Cheese Enchiladas,Amy'S Cheese Enchiladas,frozen_meals,Frozen Meals,amy_s_cheese_enchiladas,290,10.6,long_shelf,5
+Amy'S Black Bean Burrito,Amy'S Black Bean Burrito,frozen_meals,Frozen Meals,amy_s_black_bean_burrito,303,13.4,long_shelf,12
+Lean Cuisine Chicken Tikka Masala,Lean Cuisine Chicken Tikka Masala,frozen_meals,Frozen Meals,lean_cuisine_chicken_tikka_masala,317,7.1,long_shelf,7
+Healthy Choice Power Bowl,Healthy Choice Power Bowl,frozen_meals,Frozen Meals,healthy_choice_power_bowl,275,5.3,long_shelf,5
+Stouffer'S Lasagna,Stouffer'S Lasagna,frozen_meals,Frozen Meals,stouffer_s_lasagna,191,3.0,long_shelf,12
+Stouffer'S Mac And Cheese,Stouffer'S Mac And Cheese,frozen_meals,Frozen Meals,stouffer_s_mac_and_cheese,107,4.6,long_shelf,9
+Marie Callender'S Pot Pie,Marie Callender'S Pot Pie,frozen_meals,Frozen Meals,marie_callender_s_pot_pie,232,13.2,long_shelf,3
+Trader Joe'S Mandarin Orange Chicken,Trader Joe'S Mandarin Orange Chicken,frozen_meals,Frozen Meals,trader_joe_s_mandarin_orange_chicken,298,10.5,long_shelf,9
+Devour Buffalo Chicken Mac,Devour Buffalo Chicken Mac,frozen_meals,Frozen Meals,devour_buffalo_chicken_mac,142,14.9,long_shelf,12
+Saffron Road Lamb Saag,Saffron Road Lamb Saag,frozen_meals,Frozen Meals,saffron_road_lamb_saag,163,3.8,long_shelf,5
+Evol Truffle Parmesan Mac,Evol Truffle Parmesan Mac,frozen_meals,Frozen Meals,evol_truffle_parmesan_mac,237,7.4,long_shelf,5
+Rao'S Chicken Parmigiana,Rao'S Chicken Parmigiana,frozen_meals,Frozen Meals,rao_s_chicken_parmigiana,295,12.5,long_shelf,7
+DiGiorno Rising Crust Pepperoni,DiGiorno Rising Crust Pepperoni,frozen_pizza,Frozen Pizza,digiorno_rising_crust_pepperoni,336,10.9,long_shelf,3
+DiGiorno Four Cheese,DiGiorno Four Cheese,frozen_pizza,Frozen Pizza,digiorno_four_cheese,124,3.8,long_shelf,12
+Red Baron Classic Pepperoni,Red Baron Classic Pepperoni,frozen_pizza,Frozen Pizza,red_baron_classic_pepperoni,140,7.8,long_shelf,3
+Tombstone Original Sausage,Tombstone Original Sausage,frozen_pizza,Frozen Pizza,tombstone_original_sausage,309,10.7,long_shelf,10
+Newman'S Own Thin Crust Margherita,Newman'S Own Thin Crust Margherita,frozen_pizza,Frozen Pizza,newman_s_own_thin_crust_margherita,267,11.3,long_shelf,7
+Amy'S Cheese Pizza,Amy'S Cheese Pizza,frozen_pizza,Frozen Pizza,amy_s_cheese_pizza,288,8.4,long_shelf,8
+California Pizza Kitchen BBQ Chicken,California Pizza Kitchen BBQ Chicken,frozen_pizza,Frozen Pizza,california_pizza_kitchen_bbq_chicken,364,5.3,long_shelf,6
+Screamin' Sicilian Bessie'S Revenge,Screamin' Sicilian Bessie'S Revenge,frozen_pizza,Frozen Pizza,screamin_sicilian_bessie_s_revenge,348,14.6,long_shelf,9
+Freschetta Brick Oven 5 Cheese,Freschetta Brick Oven 5 Cheese,frozen_pizza,Frozen Pizza,freschetta_brick_oven_5_cheese,321,8.6,long_shelf,11
+Caulipower Veggie Pizza,Caulipower Veggie Pizza,frozen_pizza,Frozen Pizza,caulipower_veggie_pizza,303,11.6,long_shelf,7
+Ben & Jerry'S Chocolate Chip Cookie Dough,Ben & Jerry'S Chocolate Chip Cookie Dough,ice_cream,Ice Cream,ben_jerry_s_chocolate_chip_cookie_dough,12,17.1,short_shelf,1
+Ben & Jerry'S Cherry Garcia,Ben & Jerry'S Cherry Garcia,ice_cream,Ice Cream,ben_jerry_s_cherry_garcia,15,9.4,short_shelf,9
+Häagen-Dazs Vanilla,Häagen-Dazs Vanilla,ice_cream,Ice Cream,h_agen_dazs_vanilla,9,12.0,short_shelf,1
+Häagen-Dazs Strawberry,Häagen-Dazs Strawberry,ice_cream,Ice Cream,h_agen_dazs_strawberry,17,9.1,short_shelf,7
+Breyers Natural Vanilla,Breyers Natural Vanilla,ice_cream,Ice Cream,breyers_natural_vanilla,17,11.2,short_shelf,2
+Tillamook Mudslide,Tillamook Mudslide,ice_cream,Ice Cream,tillamook_mudslide,17,11.4,short_shelf,10
+Talenti Gelato Sea Salt Caramel,Talenti Gelato Sea Salt Caramel,ice_cream,Ice Cream,talenti_gelato_sea_salt_caramel,13,15.1,short_shelf,8
+Arctic Zero Chocolate,Arctic Zero Chocolate,ice_cream,Ice Cream,arctic_zero_chocolate,12,13.5,short_shelf,8
+So Delicious Dairy Free Coconut Milk,So Delicious Dairy Free Coconut Milk,ice_cream,Ice Cream,so_delicious_dairy_free_coconut_milk,12,14.2,short_shelf,10
+Oat Dream Oatmilk Ice Cream,Oat Dream Oatmilk Ice Cream,ice_cream,Ice Cream,oat_dream_oatmilk_ice_cream,7,21.9,short_shelf,3
+Lay'S Classic Potato Chips,Lay'S Classic Potato Chips,chips,Chips,lay_s_classic_potato_chips,241,5.4,long_shelf,6
+Lay'S Wavy Original,Lay'S Wavy Original,chips,Chips,lay_s_wavy_original,187,7.1,long_shelf,3
+Ruffles Original,Ruffles Original,chips,Chips,ruffles_original,159,21.2,long_shelf,8
+Pringles Original,Pringles Original,chips,Chips,pringles_original,188,15.7,long_shelf,5
+Pringles Sour Cream & Onion,Pringles Sour Cream & Onion,chips,Chips,pringles_sour_cream_onion,219,13.8,long_shelf,8
+Doritos Nacho Cheese,Doritos Nacho Cheese,chips,Chips,doritos_nacho_cheese,158,10.3,long_shelf,8
+Doritos Cool Ranch,Doritos Cool Ranch,chips,Chips,doritos_cool_ranch,239,15.8,long_shelf,1
+Tostitos Scoops,Tostitos Scoops,chips,Chips,tostitos_scoops,255,9.4,long_shelf,3
+Kettle Brand Sea Salt,Kettle Brand Sea Salt,chips,Chips,kettle_brand_sea_salt,159,22.2,long_shelf,3
+Cape Cod Original,Cape Cod Original,chips,Chips,cape_cod_original,114,21.5,long_shelf,5
+Siete Lime Grain Free,Siete Lime Grain Free,chips,Chips,siete_lime_grain_free,226,11.4,long_shelf,12
+Popchips Original,Popchips Original,chips,Chips,popchips_original,268,5.5,long_shelf,6
+Baked Lay'S Original,Baked Lay'S Original,chips,Chips,baked_lay_s_original,116,22.8,long_shelf,4
+Ritz Original Crackers,Ritz Original Crackers,crackers,Crackers,ritz_original_crackers,218,11.0,long_shelf,11
+Triscuit Original,Triscuit Original,crackers,Crackers,triscuit_original,238,18.1,long_shelf,12
+Wheat Thins Original,Wheat Thins Original,crackers,Crackers,wheat_thins_original,255,22.2,long_shelf,4
+Cheez-It Original,Cheez-It Original,crackers,Crackers,cheez_it_original,112,21.0,long_shelf,6
+Goldfish Cheddar,Goldfish Cheddar,crackers,Crackers,goldfish_cheddar,106,22.3,long_shelf,2
+Keebler Club Crackers,Keebler Club Crackers,crackers,Crackers,keebler_club_crackers,267,14.8,long_shelf,3
+Carr'S Table Water Crackers,Carr'S Table Water Crackers,crackers,Crackers,carr_s_table_water_crackers,111,21.8,long_shelf,7
+Wasa Crispbread Sourdough,Wasa Crispbread Sourdough,crackers,Crackers,wasa_crispbread_sourdough,121,14.2,long_shelf,1
+Stacy'S Pita Chips Sea Salt,Stacy'S Pita Chips Sea Salt,crackers,Crackers,stacy_s_pita_chips_sea_salt,193,10.3,long_shelf,9
+Simple Mills Almond Flour Crackers,Simple Mills Almond Flour Crackers,crackers,Crackers,simple_mills_almond_flour_crackers,170,14.6,long_shelf,3
+Mary'S Gone Crackers Original,Mary'S Gone Crackers Original,crackers,Crackers,mary_s_gone_crackers_original,225,11.7,long_shelf,7
+Snickers Bar,Snickers Bar,candy,Candy,snickers_bar,124,20.3,long_shelf,4
+Twix Bar,Twix Bar,candy,Candy,twix_bar,254,21.6,long_shelf,3
+Kit Kat,Kit Kat,candy,Candy,kit_kat,129,7.8,long_shelf,6
+Reese'S Peanut Butter Cups,Reese'S Peanut Butter Cups,candy,Candy,reese_s_peanut_butter_cups,228,8.3,long_shelf,9
+M&M'S Milk Chocolate,M&M'S Milk Chocolate,candy,Candy,m_m_s_milk_chocolate,102,12.7,long_shelf,6
+M&M'S Peanut,M&M'S Peanut,candy,Candy,m_m_s_peanut,175,14.3,long_shelf,9
+Starburst Original,Starburst Original,candy,Candy,starburst_original,95,24.1,long_shelf,7
+Skittles Original,Skittles Original,candy,Candy,skittles_original,146,23.8,long_shelf,10
+Haribo Goldbears,Haribo Goldbears,candy,Candy,haribo_goldbears,146,24.3,long_shelf,6
+Trolli Sour Brite Crawlers,Trolli Sour Brite Crawlers,candy,Candy,trolli_sour_brite_crawlers,219,19.6,long_shelf,8
+Jolly Rancher Hard Candy,Jolly Rancher Hard Candy,candy,Candy,jolly_rancher_hard_candy,171,18.5,long_shelf,1
+Werther'S Original,Werther'S Original,candy,Candy,werther_s_original,100,10.4,long_shelf,3
+Lifesavers Wint-O-Green,Lifesavers Wint-O-Green,candy,Candy,lifesavers_wint_o_green,269,12.5,long_shelf,4
+Lindt Excellence 70% Dark,Lindt Excellence 70% Dark,chocolate,Chocolate,lindt_excellence_70_dark,249,5.1,long_shelf,7
+Lindt Lindor Milk Chocolate Truffles,Lindt Lindor Milk Chocolate Truffles,chocolate,Chocolate,lindt_lindor_milk_chocolate_truffles,254,21.7,long_shelf,12
+Ghirardelli Intense Dark 72%,Ghirardelli Intense Dark 72%,chocolate,Chocolate,ghirardelli_intense_dark_72,134,10.5,long_shelf,2
+Ghirardelli Milk Chocolate Sea Salt,Ghirardelli Milk Chocolate Sea Salt,chocolate,Chocolate,ghirardelli_milk_chocolate_sea_salt,160,6.6,long_shelf,1
+Green & Black'S Organic Dark 70%,Green & Black'S Organic Dark 70%,chocolate,Chocolate,green_black_s_organic_dark_70,130,11.3,long_shelf,8
+Theo Pure 85% Dark Chocolate,Theo Pure 85% Dark Chocolate,chocolate,Chocolate,theo_pure_85_dark_chocolate,112,11.5,long_shelf,9
+Endangered Species Dark Chocolate,Endangered Species Dark Chocolate,chocolate,Chocolate,endangered_species_dark_chocolate,95,19.5,long_shelf,11
+Tony'S Chocolonely Milk Chocolate,Tony'S Chocolonely Milk Chocolate,chocolate,Chocolate,tony_s_chocolonely_milk_chocolate,180,5.1,long_shelf,6
+Hershey'S Milk Chocolate Bar,Hershey'S Milk Chocolate Bar,chocolate,Chocolate,hershey_s_milk_chocolate_bar,112,9.6,long_shelf,10
+Hershey'S Cookies'N'Creme,Hershey'S Cookies'N'Creme,chocolate,Chocolate,hershey_s_cookies_n_creme,121,22.9,long_shelf,9
+Oreo Original,Oreo Original,cookies,Cookies,oreo_original,244,22.1,long_shelf,1
+Oreo Double Stuf,Oreo Double Stuf,cookies,Cookies,oreo_double_stuf,177,17.6,long_shelf,4
+Chips Ahoy! Original,Chips Ahoy! Original,cookies,Cookies,chips_ahoy_original,123,16.2,long_shelf,9
+Pepperidge Farm Milano,Pepperidge Farm Milano,cookies,Cookies,pepperidge_farm_milano,210,9.5,long_shelf,5
+Pepperidge Farm Sausalito,Pepperidge Farm Sausalito,cookies,Cookies,pepperidge_farm_sausalito,137,22.5,long_shelf,8
+Nilla Wafers,Nilla Wafers,cookies,Cookies,nilla_wafers,184,20.2,long_shelf,7
+Lorna Doone Shortbread,Lorna Doone Shortbread,cookies,Cookies,lorna_doone_shortbread,140,15.3,long_shelf,8
+Biscoff Cookies,Biscoff Cookies,cookies,Cookies,biscoff_cookies,182,8.2,long_shelf,11
+Tate'S Chocolate Chip,Tate'S Chocolate Chip,cookies,Cookies,tate_s_chocolate_chip,203,9.3,long_shelf,11
+Partake Chocolate Chip (Allergen Free),Partake Chocolate Chip (Allergen Free),cookies,Cookies,partake_chocolate_chip_allergen_free,186,12.6,long_shelf,4
+Trader Joe'S Joe-Joe'S,Trader Joe'S Joe-Joe'S,cookies,Cookies,trader_joe_s_joe_joe_s,161,11.6,long_shelf,6
+Kind Dark Chocolate Nuts & Sea Salt,Kind Dark Chocolate Nuts & Sea Salt,granola_bars,Granola Bars,kind_dark_chocolate_nuts_sea_salt,25,3.4,medium_shelf,2
+Kind Almond & Coconut,Kind Almond & Coconut,granola_bars,Granola Bars,kind_almond_coconut,27,5.8,medium_shelf,10
+Clif Bar Chocolate Chip,Clif Bar Chocolate Chip,granola_bars,Granola Bars,clif_bar_chocolate_chip,13,6.1,medium_shelf,1
+Clif Bar Crunchy Peanut Butter,Clif Bar Crunchy Peanut Butter,granola_bars,Granola Bars,clif_bar_crunchy_peanut_butter,12,5.0,medium_shelf,6
+Lärabar Apple Pie,Lärabar Apple Pie,granola_bars,Granola Bars,l_rabar_apple_pie,12,5.7,medium_shelf,11
+Lärabar Peanut Butter Cookie,Lärabar Peanut Butter Cookie,granola_bars,Granola Bars,l_rabar_peanut_butter_cookie,29,5.3,medium_shelf,12
+RxBar Chocolate Sea Salt,RxBar Chocolate Sea Salt,granola_bars,Granola Bars,rxbar_chocolate_sea_salt,28,5.6,medium_shelf,4
+RxBar Blueberry,RxBar Blueberry,granola_bars,Granola Bars,rxbar_blueberry,14,7.3,medium_shelf,12
+Nature Valley Oats & Honey,Nature Valley Oats & Honey,granola_bars,Granola Bars,nature_valley_oats_honey,29,6.5,medium_shelf,2
+Quaker Chewy Chocolate Chip,Quaker Chewy Chocolate Chip,granola_bars,Granola Bars,quaker_chewy_chocolate_chip,14,4.4,medium_shelf,9
+Perfect Bar Dark Chocolate Chip Peanut Butter,Perfect Bar Dark Chocolate Chip Peanut Butter,granola_bars,Granola Bars,perfect_bar_dark_chocolate_chip_peanut_butter,20,8.6,medium_shelf,8
+Orville Redenbacher'S Movie Theater Butter,Orville Redenbacher'S Movie Theater Butter,popcorn,Popcorn,orville_redenbacher_s_movie_theater_butter,19,6.6,medium_shelf,10
+Act II Butter Lovers,Act II Butter Lovers,popcorn,Popcorn,act_ii_butter_lovers,28,6.2,medium_shelf,11
+Skinny Pop Original,Skinny Pop Original,popcorn,Popcorn,skinny_pop_original,10,8.0,medium_shelf,6
+Skinny Pop White Cheddar,Skinny Pop White Cheddar,popcorn,Popcorn,skinny_pop_white_cheddar,16,8.3,medium_shelf,8
+Boom Chicka Pop Sea Salt,Boom Chicka Pop Sea Salt,popcorn,Popcorn,boom_chicka_pop_sea_salt,21,8.9,medium_shelf,9
+Angie'S Boomchickapop Sweet & Salty Kettle,Angie'S Boomchickapop Sweet & Salty Kettle,popcorn,Popcorn,angie_s_boomchickapop_sweet_salty_kettle,11,8.7,medium_shelf,2
+Smartfood White Cheddar,Smartfood White Cheddar,popcorn,Popcorn,smartfood_white_cheddar,14,7.7,medium_shelf,8
+Pop Secret Homestyle,Pop Secret Homestyle,popcorn,Popcorn,pop_secret_homestyle,19,8.0,medium_shelf,5
+Planters Dry Roasted Peanuts,Planters Dry Roasted Peanuts,nuts_seeds,Nuts & Seeds,planters_dry_roasted_peanuts,27,4.1,medium_shelf,5
+Planters Mixed Nuts,Planters Mixed Nuts,nuts_seeds,Nuts & Seeds,planters_mixed_nuts,25,7.9,medium_shelf,4
+Blue Diamond Almonds Sea Salt,Blue Diamond Almonds Sea Salt,nuts_seeds,Nuts & Seeds,blue_diamond_almonds_sea_salt,26,4.8,medium_shelf,6
+Wonderful Pistachios No Shell,Wonderful Pistachios No Shell,nuts_seeds,Nuts & Seeds,wonderful_pistachios_no_shell,25,4.8,medium_shelf,1
+Fisher Walnuts,Fisher Walnuts,nuts_seeds,Nuts & Seeds,fisher_walnuts,24,3.8,medium_shelf,8
+Diamond Pecans,Diamond Pecans,nuts_seeds,Nuts & Seeds,diamond_pecans,26,5.8,medium_shelf,12
+Cashew Halves & Pieces,Cashew Halves & Pieces,nuts_seeds,Nuts & Seeds,cashew_halves_pieces,23,3.1,medium_shelf,6
+Sunflower Seeds,Sunflower Seeds,nuts_seeds,Nuts & Seeds,sunflower_seeds,24,7.6,medium_shelf,6
+Pepitas,Pepitas,nuts_seeds,Nuts & Seeds,pepitas,16,8.2,medium_shelf,6
+Trader Joe'S Roasted Almonds,Trader Joe'S Roasted Almonds,nuts_seeds,Nuts & Seeds,trader_joe_s_roasted_almonds,13,8.4,medium_shelf,2
+Justin'S Honey Peanut Butter Packs,Justin'S Honey Peanut Butter Packs,nuts_seeds,Nuts & Seeds,justin_s_honey_peanut_butter_packs,25,3.9,medium_shelf,7
+Evian Natural Spring Water,Evian Natural Spring Water,water,Water,evian_natural_spring_water,160,15.0,long_shelf,11
+Fiji Natural Artesian Water,Fiji Natural Artesian Water,water,Water,fiji_natural_artesian_water,345,17.7,long_shelf,11
+Smartwater Still,Smartwater Still,water,Water,smartwater_still,266,6.5,long_shelf,12
+Dasani Purified Water,Dasani Purified Water,water,Water,dasani_purified_water,200,8.7,long_shelf,3
+Poland Spring Sparkling,Poland Spring Sparkling,water,Water,poland_spring_sparkling,349,9.7,long_shelf,10
+LaCroix Sparkling Lime,LaCroix Sparkling Lime,water,Water,lacroix_sparkling_lime,158,12.5,long_shelf,7
+LaCroix Sparkling Coconut,LaCroix Sparkling Coconut,water,Water,lacroix_sparkling_coconut,246,8.4,long_shelf,4
+Spindrift Lemon Sparkling,Spindrift Lemon Sparkling,water,Water,spindrift_lemon_sparkling,142,13.5,long_shelf,10
+Topo Chico Mineral Water,Topo Chico Mineral Water,water,Water,topo_chico_mineral_water,356,10.8,long_shelf,3
+Liquid Death Mountain Water,Liquid Death Mountain Water,water,Water,liquid_death_mountain_water,260,15.2,long_shelf,6
+Tropicana Pure Premium Orange Juice,Tropicana Pure Premium Orange Juice,juice,Juice,tropicana_pure_premium_orange_juice,316,13.4,long_shelf,7
+Simply Orange,Simply Orange,juice,Juice,simply_orange,189,15.6,long_shelf,7
+Minute Maid Lemonade,Minute Maid Lemonade,juice,Juice,minute_maid_lemonade,316,9.4,long_shelf,8
+Welch'S Concord Grape Juice,Welch'S Concord Grape Juice,juice,Juice,welch_s_concord_grape_juice,292,15.9,long_shelf,2
+Ocean Spray Cranberry Juice Cocktail,Ocean Spray Cranberry Juice Cocktail,juice,Juice,ocean_spray_cranberry_juice_cocktail,277,16.3,long_shelf,11
+Naked Juice Green Machine,Naked Juice Green Machine,juice,Juice,naked_juice_green_machine,352,16.1,long_shelf,3
+Odwalla Orange Juice,Odwalla Orange Juice,juice,Juice,odwalla_orange_juice,226,7.0,long_shelf,12
+Bolthouse Farms Carrot Juice,Bolthouse Farms Carrot Juice,juice,Juice,bolthouse_farms_carrot_juice,221,19.2,long_shelf,12
+Apple & Eve Apple Juice,Apple & Eve Apple Juice,juice,Juice,apple_eve_apple_juice,289,14.1,long_shelf,11
+Juicy Juice Berry,Juicy Juice Berry,juice,Juice,juicy_juice_berry,324,9.8,long_shelf,4
+Coca-Cola Classic,Coca-Cola Classic,soda,Soda,coca_cola_classic,202,12.1,long_shelf,5
+Coca-Cola Zero Sugar,Coca-Cola Zero Sugar,soda,Soda,coca_cola_zero_sugar,284,13.2,long_shelf,10
+Diet Coke,Diet Coke,soda,Soda,diet_coke,171,13.2,long_shelf,8
+Pepsi Original,Pepsi Original,soda,Soda,pepsi_original,255,9.5,long_shelf,12
+Pepsi Zero Sugar,Pepsi Zero Sugar,soda,Soda,pepsi_zero_sugar,308,9.7,long_shelf,2
+Dr Pepper,Dr Pepper,soda,Soda,dr_pepper,136,11.1,long_shelf,8
+Dr Pepper Zero,Dr Pepper Zero,soda,Soda,dr_pepper_zero,298,16.9,long_shelf,7
+Sprite,Sprite,soda,Soda,sprite,123,12.1,long_shelf,12
+Mountain Dew,Mountain Dew,soda,Soda,mountain_dew,354,6.5,long_shelf,1
+Fanta Orange,Fanta Orange,soda,Soda,fanta_orange,234,12.3,long_shelf,6
+7UP,7UP,soda,Soda,7up,220,8.8,long_shelf,2
+Canada Dry Ginger Ale,Canada Dry Ginger Ale,soda,Soda,canada_dry_ginger_ale,296,6.2,long_shelf,10
+A&W Root Beer,A&W Root Beer,soda,Soda,a_w_root_beer,248,19.7,long_shelf,2
+Barq'S Root Beer,Barq'S Root Beer,soda,Soda,barq_s_root_beer,299,10.1,long_shelf,12
+Starbucks Pike Place Ground Coffee,Starbucks Pike Place Ground Coffee,coffee,Coffee,starbucks_pike_place_ground_coffee,140,13.5,long_shelf,4
+Starbucks Blonde Roast,Starbucks Blonde Roast,coffee,Coffee,starbucks_blonde_roast,257,11.0,long_shelf,6
+Folgers Classic Roast,Folgers Classic Roast,coffee,Coffee,folgers_classic_roast,256,6.7,long_shelf,4
+Maxwell House Original,Maxwell House Original,coffee,Coffee,maxwell_house_original,348,18.6,long_shelf,5
+Death Wish Coffee Ground,Death Wish Coffee Ground,coffee,Coffee,death_wish_coffee_ground,129,19.1,long_shelf,9
+Lavazza Super Crema Espresso,Lavazza Super Crema Espresso,coffee,Coffee,lavazza_super_crema_espresso,230,8.6,long_shelf,5
+Peet'S Major Dickason'S Blend,Peet'S Major Dickason'S Blend,coffee,Coffee,peet_s_major_dickason_s_blend,274,11.9,long_shelf,1
+Eight O'Clock Original Blend,Eight O'Clock Original Blend,coffee,Coffee,eight_o_clock_original_blend,254,11.2,long_shelf,2
+Stok Cold Brew Coffee,Stok Cold Brew Coffee,coffee,Coffee,stok_cold_brew_coffee,138,8.3,long_shelf,2
+Chameleon Organic Cold Brew,Chameleon Organic Cold Brew,coffee,Coffee,chameleon_organic_cold_brew,265,15.3,long_shelf,12
+La Colombe Draft Latte,La Colombe Draft Latte,coffee,Coffee,la_colombe_draft_latte,174,16.9,long_shelf,8
+Lipton Yellow Label Tea Bags,Lipton Yellow Label Tea Bags,tea,Tea,lipton_yellow_label_tea_bags,167,16.6,long_shelf,12
+Bigelow Classic Green Tea,Bigelow Classic Green Tea,tea,Tea,bigelow_classic_green_tea,335,15.5,long_shelf,9
+Celestial Seasonings Sleepytime,Celestial Seasonings Sleepytime,tea,Tea,celestial_seasonings_sleepytime,168,6.2,long_shelf,9
+Tazo Chai Tea Bags,Tazo Chai Tea Bags,tea,Tea,tazo_chai_tea_bags,231,9.2,long_shelf,9
+Yogi Honey Lavender Stress Relief,Yogi Honey Lavender Stress Relief,tea,Tea,yogi_honey_lavender_stress_relief,303,13.2,long_shelf,11
+Traditional Medicinals Throat Coat,Traditional Medicinals Throat Coat,tea,Tea,traditional_medicinals_throat_coat,293,15.8,long_shelf,9
+Harney & Sons Hot Cinnamon Spice,Harney & Sons Hot Cinnamon Spice,tea,Tea,harney_sons_hot_cinnamon_spice,255,11.4,long_shelf,6
+Twinings English Breakfast,Twinings English Breakfast,tea,Tea,twinings_english_breakfast,317,12.3,long_shelf,8
+Gold Peak Sweet Tea,Gold Peak Sweet Tea,tea,Tea,gold_peak_sweet_tea,234,17.8,long_shelf,5
+Pure Leaf Unsweetened Green Tea,Pure Leaf Unsweetened Green Tea,tea,Tea,pure_leaf_unsweetened_green_tea,271,6.3,long_shelf,7
+Snapple Peach Tea,Snapple Peach Tea,tea,Tea,snapple_peach_tea,320,9.8,long_shelf,2
+Gatorade Thirst Quencher Fruit Punch,Gatorade Thirst Quencher Fruit Punch,sports_drinks,Sports Drinks,gatorade_thirst_quencher_fruit_punch,286,10.1,long_shelf,9
+Gatorade Cool Blue,Gatorade Cool Blue,sports_drinks,Sports Drinks,gatorade_cool_blue,277,19.9,long_shelf,1
+Powerade Mountain Berry Blast,Powerade Mountain Berry Blast,sports_drinks,Sports Drinks,powerade_mountain_berry_blast,219,9.2,long_shelf,1
+Powerade Zero Fruit Punch,Powerade Zero Fruit Punch,sports_drinks,Sports Drinks,powerade_zero_fruit_punch,256,6.7,long_shelf,3
+Bodyarmor Lyte Peach Mango,Bodyarmor Lyte Peach Mango,sports_drinks,Sports Drinks,bodyarmor_lyte_peach_mango,217,11.8,long_shelf,3
+Liquid IV Hydration Lemon Lime,Liquid IV Hydration Lemon Lime,sports_drinks,Sports Drinks,liquid_iv_hydration_lemon_lime,302,15.1,long_shelf,10
+Nuun Sport Lemon Lime,Nuun Sport Lemon Lime,sports_drinks,Sports Drinks,nuun_sport_lemon_lime,213,8.1,long_shelf,9
+Propel Lemon Water,Propel Lemon Water,sports_drinks,Sports Drinks,propel_lemon_water,234,17.8,long_shelf,3
+Red Bull Original,Red Bull Original,energy_drinks,Energy Drinks,red_bull_original,305,8.8,long_shelf,3
+Red Bull Sugar Free,Red Bull Sugar Free,energy_drinks,Energy Drinks,red_bull_sugar_free,243,15.9,long_shelf,5
+Monster Energy Original,Monster Energy Original,energy_drinks,Energy Drinks,monster_energy_original,202,8.3,long_shelf,7
+Monster Ultra White,Monster Ultra White,energy_drinks,Energy Drinks,monster_ultra_white,322,18.3,long_shelf,9
+Celsius Live Fit Sparkling Orange,Celsius Live Fit Sparkling Orange,energy_drinks,Energy Drinks,celsius_live_fit_sparkling_orange,213,8.8,long_shelf,4
+Reign Total Body Fuel Lemon HDZ,Reign Total Body Fuel Lemon HDZ,energy_drinks,Energy Drinks,reign_total_body_fuel_lemon_hdz,326,16.2,long_shelf,9
+Bang Energy Cotton Candy,Bang Energy Cotton Candy,energy_drinks,Energy Drinks,bang_energy_cotton_candy,312,17.7,long_shelf,6
+Rockstar Original,Rockstar Original,energy_drinks,Energy Drinks,rockstar_original,229,9.6,long_shelf,1
+NOS High Performance Energy,NOS High Performance Energy,energy_drinks,Energy Drinks,nos_high_performance_energy,294,7.3,long_shelf,11
+Oatly Oat Milk Original,Oatly Oat Milk Original,plant_based_milk,Plant-Based Milk,oatly_oat_milk_original,7,18.0,short_shelf,4
+Oatly Oat Milk Barista Edition,Oatly Oat Milk Barista Edition,plant_based_milk,Plant-Based Milk,oatly_oat_milk_barista_edition,12,16.5,short_shelf,8
+Silk Oat Yeah Plain,Silk Oat Yeah Plain,plant_based_milk,Plant-Based Milk,silk_oat_yeah_plain,19,16.1,short_shelf,4
+Planet Oat Extra Creamy Oatmilk,Planet Oat Extra Creamy Oatmilk,plant_based_milk,Plant-Based Milk,planet_oat_extra_creamy_oatmilk,15,21.3,short_shelf,6
+Califia Farms Oat Barista Blend,Califia Farms Oat Barista Blend,plant_based_milk,Plant-Based Milk,califia_farms_oat_barista_blend,14,15.9,short_shelf,8
+Almond Breeze Original Unsweetened,Almond Breeze Original Unsweetened,plant_based_milk,Plant-Based Milk,almond_breeze_original_unsweetened,16,16.4,short_shelf,4
+Silk Unsweetened Almond Milk,Silk Unsweetened Almond Milk,plant_based_milk,Plant-Based Milk,silk_unsweetened_almond_milk,16,16.3,short_shelf,1
+Ripple Unsweetened Pea Milk,Ripple Unsweetened Pea Milk,plant_based_milk,Plant-Based Milk,ripple_unsweetened_pea_milk,15,15.7,short_shelf,10
+So Delicious Organic Coconut Milk,So Delicious Organic Coconut Milk,plant_based_milk,Plant-Based Milk,so_delicious_organic_coconut_milk,12,14.9,short_shelf,2
+Elmhurst Unsweetened Oat Milk,Elmhurst Unsweetened Oat Milk,plant_based_milk,Plant-Based Milk,elmhurst_unsweetened_oat_milk,9,10.7,short_shelf,8
+Del Monte Sweet Peas,Del Monte Sweet Peas,canned_vegetables,Canned Vegetables,del_monte_sweet_peas,5,17.4,perishable,8
+Green Giant Cut Green Beans,Green Giant Cut Green Beans,canned_vegetables,Canned Vegetables,green_giant_cut_green_beans,5,16.6,perishable,6
+Del Monte Golden Corn,Del Monte Golden Corn,canned_vegetables,Canned Vegetables,del_monte_golden_corn,6,16.2,perishable,3
+Hunt'S Diced Tomatoes,Hunt'S Diced Tomatoes,canned_vegetables,Canned Vegetables,hunt_s_diced_tomatoes,9,29.6,perishable,11
+Ro*Tel Original Diced Tomatoes & Green Chilies,Ro*Tel Original Diced Tomatoes & Green Chilies,canned_vegetables,Canned Vegetables,ro_tel_original_diced_tomatoes_green_chilies,6,12.9,perishable,5
+Muir Glen Organic Fire Roasted Tomatoes,Muir Glen Organic Fire Roasted Tomatoes,canned_vegetables,Canned Vegetables,muir_glen_organic_fire_roasted_tomatoes,6,15.1,perishable,9
+Libby'S 100% Pure Pumpkin,Libby'S 100% Pure Pumpkin,canned_vegetables,Canned Vegetables,libby_s_100_pure_pumpkin,6,23.2,perishable,11
+Bush'S Best Original Baked Beans,Bush'S Best Original Baked Beans,canned_vegetables,Canned Vegetables,bush_s_best_original_baked_beans,7,17.8,perishable,12
+Goya Black Beans,Goya Black Beans,canned_vegetables,Canned Vegetables,goya_black_beans,9,16.0,perishable,10
+Amy'S Organic Lentil Soup,Amy'S Organic Lentil Soup,canned_vegetables,Canned Vegetables,amy_s_organic_lentil_soup,9,19.3,perishable,8
+StarKist Chunk Light Tuna In Water,StarKist Chunk Light Tuna In Water,canned_fish,Canned Fish,starkist_chunk_light_tuna_in_water,5,12.5,perishable,12
+StarKist Solid White Albacore,StarKist Solid White Albacore,canned_fish,Canned Fish,starkist_solid_white_albacore,4,15.1,perishable,11
+Bumble Bee Chunk Light Tuna,Bumble Bee Chunk Light Tuna,canned_fish,Canned Fish,bumble_bee_chunk_light_tuna,9,19.6,perishable,1
+Wild Planet Wild Albacore Tuna,Wild Planet Wild Albacore Tuna,canned_fish,Canned Fish,wild_planet_wild_albacore_tuna,6,17.8,perishable,7
+Chicken Of The Sea Pink Salmon,Chicken Of The Sea Pink Salmon,canned_fish,Canned Fish,chicken_of_the_sea_pink_salmon,7,11.4,perishable,4
+Crown Prince Smoked Oysters,Crown Prince Smoked Oysters,canned_fish,Canned Fish,crown_prince_smoked_oysters,3,11.8,perishable,9
+Bar Harbor Clam Chowder,Bar Harbor Clam Chowder,canned_fish,Canned Fish,bar_harbor_clam_chowder,9,11.2,perishable,2
+Bumble Bee Lemon Pepper Tuna Pouch,Bumble Bee Lemon Pepper Tuna Pouch,canned_fish,Canned Fish,bumble_bee_lemon_pepper_tuna_pouch,5,8.6,perishable,11
+Rao'S Homemade Marinara Sauce,Rao'S Homemade Marinara Sauce,sauces,Sauces,rao_s_homemade_marinara_sauce,451,9.6,long_shelf,12
+Prego Traditional Italian Sauce,Prego Traditional Italian Sauce,sauces,Sauces,prego_traditional_italian_sauce,288,2.5,long_shelf,2
+Classico Tomato Basil,Classico Tomato Basil,sauces,Sauces,classico_tomato_basil,411,3.6,long_shelf,10
+Barilla Roasted Garlic Sauce,Barilla Roasted Garlic Sauce,sauces,Sauces,barilla_roasted_garlic_sauce,635,7.3,long_shelf,6
+Newman'S Own Vodka Sauce,Newman'S Own Vodka Sauce,sauces,Sauces,newman_s_own_vodka_sauce,635,6.7,long_shelf,12
+Bertolli Alfredo Sauce,Bertolli Alfredo Sauce,sauces,Sauces,bertolli_alfredo_sauce,440,4.2,long_shelf,8
+Kinder'S Teriyaki Sauce,Kinder'S Teriyaki Sauce,sauces,Sauces,kinder_s_teriyaki_sauce,602,9.5,long_shelf,12
+San-J Tamari Soy Sauce,San-J Tamari Soy Sauce,sauces,Sauces,san_j_tamari_soy_sauce,431,5.3,long_shelf,1
+Huy Fong Sriracha,Huy Fong Sriracha,sauces,Sauces,huy_fong_sriracha,385,6.8,long_shelf,8
+Frank'S RedHot Original,Frank'S RedHot Original,sauces,Sauces,frank_s_redhot_original,480,2.7,long_shelf,10
+Heinz Tomato Ketchup,Heinz Tomato Ketchup,condiments,Condiments,heinz_tomato_ketchup,290,9.1,long_shelf,1
+French'S Classic Yellow Mustard,French'S Classic Yellow Mustard,condiments,Condiments,french_s_classic_yellow_mustard,354,2.8,long_shelf,9
+Grey Poupon Dijon Mustard,Grey Poupon Dijon Mustard,condiments,Condiments,grey_poupon_dijon_mustard,568,5.2,long_shelf,11
+Hellmann'S Real Mayonnaise,Hellmann'S Real Mayonnaise,condiments,Condiments,hellmann_s_real_mayonnaise,603,9.1,long_shelf,12
+Best Foods Light Mayonnaise,Best Foods Light Mayonnaise,condiments,Condiments,best_foods_light_mayonnaise,211,9.6,long_shelf,7
+Miracle Whip Original,Miracle Whip Original,condiments,Condiments,miracle_whip_original,583,9.2,long_shelf,5
+Primal Kitchen Avocado Oil Mayo,Primal Kitchen Avocado Oil Mayo,condiments,Condiments,primal_kitchen_avocado_oil_mayo,629,8.6,long_shelf,11
+Annie'S Organic Ketchup,Annie'S Organic Ketchup,condiments,Condiments,annie_s_organic_ketchup,424,3.9,long_shelf,6
+Sir Kensington'S Classic Ketchup,Sir Kensington'S Classic Ketchup,condiments,Condiments,sir_kensington_s_classic_ketchup,214,2.3,long_shelf,4
+Cholula Original Hot Sauce,Cholula Original Hot Sauce,condiments,Condiments,cholula_original_hot_sauce,555,5.6,long_shelf,11
+Tabasco Original Red Sauce,Tabasco Original Red Sauce,condiments,Condiments,tabasco_original_red_sauce,315,2.5,long_shelf,10
+Sweet Baby Ray'S Barbecue Sauce,Sweet Baby Ray'S Barbecue Sauce,condiments,Condiments,sweet_baby_ray_s_barbecue_sauce,533,9.7,long_shelf,5
+Vlasic Original Dill Pickles,Vlasic Original Dill Pickles,pickles_olives,Pickles & Olives,vlasic_original_dill_pickles,387,2.1,long_shelf,1
+Claussen Kosher Dill Spears,Claussen Kosher Dill Spears,pickles_olives,Pickles & Olives,claussen_kosher_dill_spears,530,4.6,long_shelf,11
+Mt. Olive Bread And Butter Chips,Mt. Olive Bread And Butter Chips,pickles_olives,Pickles & Olives,mt_olive_bread_and_butter_chips,321,3.6,long_shelf,3
+Wickles Original Pickles,Wickles Original Pickles,pickles_olives,Pickles & Olives,wickles_original_pickles,442,2.1,long_shelf,6
+Mezzetta Castelvetrano Whole Olives,Mezzetta Castelvetrano Whole Olives,pickles_olives,Pickles & Olives,mezzetta_castelvetrano_whole_olives,468,6.0,long_shelf,1
+Lindsay Pitted Ripe Olives,Lindsay Pitted Ripe Olives,pickles_olives,Pickles & Olives,lindsay_pitted_ripe_olives,527,2.6,long_shelf,5
+Mario Green Salad Olives,Mario Green Salad Olives,pickles_olives,Pickles & Olives,mario_green_salad_olives,291,9.2,long_shelf,11
+DeLallo Marinated Artichoke Hearts,DeLallo Marinated Artichoke Hearts,pickles_olives,Pickles & Olives,delallo_marinated_artichoke_hearts,709,7.5,long_shelf,4
+Peperoncini,Peperoncini,pickles_olives,Pickles & Olives,peperoncini,339,5.0,long_shelf,1
+Peppadew Piquanté Peppers,Peppadew Piquanté Peppers,pickles_olives,Pickles & Olives,peppadew_piquant_peppers,348,8.7,long_shelf,3
+Campbell'S Tomato Soup,Campbell'S Tomato Soup,soups,Soups,campbell_s_tomato_soup,15,8.6,medium_shelf,3
+Campbell'S Chicken Noodle Soup,Campbell'S Chicken Noodle Soup,soups,Soups,campbell_s_chicken_noodle_soup,11,5.3,medium_shelf,6
+Progresso Chicken Noodle,Progresso Chicken Noodle,soups,Soups,progresso_chicken_noodle,18,8.9,medium_shelf,2
+Progresso Light Vegetable,Progresso Light Vegetable,soups,Soups,progresso_light_vegetable,25,9.5,medium_shelf,2
+Amy'S Chunky Tomato Bisque,Amy'S Chunky Tomato Bisque,soups,Soups,amy_s_chunky_tomato_bisque,24,7.3,medium_shelf,4
+Pacific Foods Organic Creamy Tomato,Pacific Foods Organic Creamy Tomato,soups,Soups,pacific_foods_organic_creamy_tomato,13,5.5,medium_shelf,10
+Wolfgang Puck Chicken & Dumpling,Wolfgang Puck Chicken & Dumpling,soups,Soups,wolfgang_puck_chicken_dumpling,12,9.3,medium_shelf,4
+Kettle & Fire Bone Broth Chicken,Kettle & Fire Bone Broth Chicken,soups,Soups,kettle_fire_bone_broth_chicken,16,9.6,medium_shelf,12
+Imagine Organic Butternut Squash Soup,Imagine Organic Butternut Squash Soup,soups,Soups,imagine_organic_butternut_squash_soup,25,5.4,medium_shelf,9
+College Inn Chicken Broth,College Inn Chicken Broth,soups,Soups,college_inn_chicken_broth,19,3.6,medium_shelf,2
+Barilla Spaghetti,Barilla Spaghetti,pasta,Pasta,barilla_spaghetti,512,10.8,long_shelf,5
+Barilla Penne Rigate,Barilla Penne Rigate,pasta,Pasta,barilla_penne_rigate,416,9.0,long_shelf,1
+Barilla Rotini,Barilla Rotini,pasta,Pasta,barilla_rotini,403,5.1,long_shelf,3
+Barilla Farfalle,Barilla Farfalle,pasta,Pasta,barilla_farfalle,456,8.1,long_shelf,1
+De Cecco Rigatoni,De Cecco Rigatoni,pasta,Pasta,de_cecco_rigatoni,450,5.8,long_shelf,5
+De Cecco Fusilli,De Cecco Fusilli,pasta,Pasta,de_cecco_fusilli,303,11.3,long_shelf,12
+Banza Chickpea Penne,Banza Chickpea Penne,pasta,Pasta,banza_chickpea_penne,272,6.1,long_shelf,12
+Explore Cuisine Edamame Fettuccine,Explore Cuisine Edamame Fettuccine,pasta,Pasta,explore_cuisine_edamame_fettuccine,337,4.8,long_shelf,1
+Jovial Gluten-Free Brown Rice Penne,Jovial Gluten-Free Brown Rice Penne,pasta,Pasta,jovial_gluten_free_brown_rice_penne,356,3.4,long_shelf,4
+Tinkyada Brown Rice Spaghetti,Tinkyada Brown Rice Spaghetti,pasta,Pasta,tinkyada_brown_rice_spaghetti,231,6.1,long_shelf,9
+Rao'S Homemade Penne,Rao'S Homemade Penne,pasta,Pasta,rao_s_homemade_penne,338,11.9,long_shelf,9
+Ancient Harvest Quinoa Pasta Rotelle,Ancient Harvest Quinoa Pasta Rotelle,pasta,Pasta,ancient_harvest_quinoa_pasta_rotelle,410,5.0,long_shelf,4
+Lundberg Organic Long Grain White Rice,Lundberg Organic Long Grain White Rice,rice,Rice,lundberg_organic_long_grain_white_rice,228,7.1,long_shelf,6
+Nishiki Medium Grain Rice,Nishiki Medium Grain Rice,rice,Rice,nishiki_medium_grain_rice,229,11.7,long_shelf,3
+Uncle Ben'S Original Converted Rice,Uncle Ben'S Original Converted Rice,rice,Rice,uncle_ben_s_original_converted_rice,242,3.1,long_shelf,7
+Mahatma Long Grain Rice,Mahatma Long Grain Rice,rice,Rice,mahatma_long_grain_rice,281,5.7,long_shelf,3
+RiceSelect Texmati Long Grain Brown Rice,RiceSelect Texmati Long Grain Brown Rice,rice,Rice,riceselect_texmati_long_grain_brown_rice,526,10.4,long_shelf,3
+Lotus Foods Jasmine Rice,Lotus Foods Jasmine Rice,rice,Rice,lotus_foods_jasmine_rice,189,3.9,long_shelf,9
+Dynasty Jasmine Rice,Dynasty Jasmine Rice,rice,Rice,dynasty_jasmine_rice,246,11.4,long_shelf,2
+Botan Calrose Rice,Botan Calrose Rice,rice,Rice,botan_calrose_rice,239,10.5,long_shelf,1
+Success Boil-In-Bag Brown Rice,Success Boil-In-Bag Brown Rice,rice,Rice,success_boil_in_bag_brown_rice,350,4.3,long_shelf,6
+Ben'S Original Ready Rice Roasted Chicken,Ben'S Original Ready Rice Roasted Chicken,rice,Rice,ben_s_original_ready_rice_roasted_chicken,185,8.3,long_shelf,11
+Cheerios Original,Cheerios Original,cereal,Cereal,cheerios_original,344,8.0,long_shelf,5
+Honey Nut Cheerios,Honey Nut Cheerios,cereal,Cereal,honey_nut_cheerios,238,9.2,long_shelf,7
+Frosted Flakes,Frosted Flakes,cereal,Cereal,frosted_flakes,277,5.8,long_shelf,3
+Kellogg'S Raisin Bran,Kellogg'S Raisin Bran,cereal,Cereal,kellogg_s_raisin_bran,465,6.5,long_shelf,3
+Special K Original,Special K Original,cereal,Cereal,special_k_original,246,5.2,long_shelf,2
+Life Original,Life Original,cereal,Cereal,life_original,402,5.6,long_shelf,3
+Cap'N Crunch Original,Cap'N Crunch Original,cereal,Cereal,cap_n_crunch_original,326,4.6,long_shelf,8
+Froot Loops,Froot Loops,cereal,Cereal,froot_loops,330,11.1,long_shelf,8
+Cocoa Puffs,Cocoa Puffs,cereal,Cereal,cocoa_puffs,474,11.0,long_shelf,4
+Kashi Go Lean,Kashi Go Lean,cereal,Cereal,kashi_go_lean,237,6.2,long_shelf,8
+Nature'S Path Flax Plus,Nature'S Path Flax Plus,cereal,Cereal,nature_s_path_flax_plus,512,9.2,long_shelf,5
+Bob'S Red Mill Muesli,Bob'S Red Mill Muesli,cereal,Cereal,bob_s_red_mill_muesli,501,7.4,long_shelf,4
+Granola With Oats Honey & Raisins,Granola With Oats Honey & Raisins,cereal,Cereal,granola_with_oats_honey_raisins,420,5.5,long_shelf,2
+Quaker Old Fashioned Oats,Quaker Old Fashioned Oats,oats,Oats,quaker_old_fashioned_oats,10,5.4,medium_shelf,5
+Quaker Quick 1-Minute Oats,Quaker Quick 1-Minute Oats,oats,Oats,quaker_quick_1_minute_oats,23,9.8,medium_shelf,4
+Bob'S Red Mill Organic Rolled Oats,Bob'S Red Mill Organic Rolled Oats,oats,Oats,bob_s_red_mill_organic_rolled_oats,22,5.4,medium_shelf,6
+Bob'S Red Mill Steel Cut Oats,Bob'S Red Mill Steel Cut Oats,oats,Oats,bob_s_red_mill_steel_cut_oats,25,7.1,medium_shelf,11
+Nature'S Path Organic Instant Oatmeal,Nature'S Path Organic Instant Oatmeal,oats,Oats,nature_s_path_organic_instant_oatmeal,14,9.6,medium_shelf,11
+Better Oats Instant Oatmeal Maple Brown Sugar,Better Oats Instant Oatmeal Maple Brown Sugar,oats,Oats,better_oats_instant_oatmeal_maple_brown_sugar,29,5.1,medium_shelf,3
+Trader Joe'S Rolled Oats,Trader Joe'S Rolled Oats,oats,Oats,trader_joe_s_rolled_oats,27,8.7,medium_shelf,7
+King Arthur All-Purpose Flour,King Arthur All-Purpose Flour,flour,Flour,king_arthur_all_purpose_flour,221,4.0,long_shelf,2
+King Arthur Bread Flour,King Arthur Bread Flour,flour,Flour,king_arthur_bread_flour,293,9.6,long_shelf,11
+Gold Medal All-Purpose Flour,Gold Medal All-Purpose Flour,flour,Flour,gold_medal_all_purpose_flour,191,10.3,long_shelf,5
+Bob'S Red Mill Whole Wheat Flour,Bob'S Red Mill Whole Wheat Flour,flour,Flour,bob_s_red_mill_whole_wheat_flour,479,10.5,long_shelf,8
+Arrowhead Mills Organic Whole Grain Spelt Flour,Arrowhead Mills Organic Whole Grain Spelt Flour,flour,Flour,arrowhead_mills_organic_whole_grain_spelt_flour,509,11.8,long_shelf,11
+Bob'S Red Mill Almond Flour,Bob'S Red Mill Almond Flour,flour,Flour,bob_s_red_mill_almond_flour,536,9.4,long_shelf,7
+Anthony'S Coconut Flour,Anthony'S Coconut Flour,flour,Flour,anthony_s_coconut_flour,400,11.8,long_shelf,11
+Cup4Cup Multipurpose Gluten Free Flour,Cup4Cup Multipurpose Gluten Free Flour,flour,Flour,cup4cup_multipurpose_gluten_free_flour,419,5.5,long_shelf,6
+Ancient Harvest Organic Quinoa,Ancient Harvest Organic Quinoa,quinoa_grains,Quinoa & Grains,ancient_harvest_organic_quinoa,424,7.7,long_shelf,12
+Bob'S Red Mill Tri-Color Quinoa,Bob'S Red Mill Tri-Color Quinoa,quinoa_grains,Quinoa & Grains,bob_s_red_mill_tri_color_quinoa,385,4.9,long_shelf,9
+Goya Dried Lentils,Goya Dried Lentils,quinoa_grains,Quinoa & Grains,goya_dried_lentils,522,3.8,long_shelf,8
+Bob'S Red Mill Red Lentils,Bob'S Red Mill Red Lentils,quinoa_grains,Quinoa & Grains,bob_s_red_mill_red_lentils,398,7.0,long_shelf,6
+Arrowhead Mills Organic Buckwheat Groats,Arrowhead Mills Organic Buckwheat Groats,quinoa_grains,Quinoa & Grains,arrowhead_mills_organic_buckwheat_groats,300,9.5,long_shelf,12
+Bob'S Red Mill Farro,Bob'S Red Mill Farro,quinoa_grains,Quinoa & Grains,bob_s_red_mill_farro,364,10.0,long_shelf,9
+Seeds Of Change Organic Quinoa & Brown Rice,Seeds Of Change Organic Quinoa & Brown Rice,quinoa_grains,Quinoa & Grains,seeds_of_change_organic_quinoa_brown_rice,186,3.2,long_shelf,7
+Near East Pearled Couscous,Near East Pearled Couscous,quinoa_grains,Quinoa & Grains,near_east_pearled_couscous,440,11.5,long_shelf,3
+Bob'S Red Mill Millet,Bob'S Red Mill Millet,quinoa_grains,Quinoa & Grains,bob_s_red_mill_millet,429,5.2,long_shelf,11
+Pocono Cream Of Buckwheat,Pocono Cream Of Buckwheat,quinoa_grains,Quinoa & Grains,pocono_cream_of_buckwheat,331,5.6,long_shelf,4
+Jif Creamy Peanut Butter,Jif Creamy Peanut Butter,peanut_butter,Peanut Butter,jif_creamy_peanut_butter,27,8.8,medium_shelf,2
+Jif Crunchy Peanut Butter,Jif Crunchy Peanut Butter,peanut_butter,Peanut Butter,jif_crunchy_peanut_butter,25,9.3,medium_shelf,11
+Skippy Creamy Peanut Butter,Skippy Creamy Peanut Butter,peanut_butter,Peanut Butter,skippy_creamy_peanut_butter,16,8.2,medium_shelf,9
+Peter Pan Creamy Honey Roast,Peter Pan Creamy Honey Roast,peanut_butter,Peanut Butter,peter_pan_creamy_honey_roast,11,5.3,medium_shelf,5
+Justin'S Classic Almond Butter,Justin'S Classic Almond Butter,peanut_butter,Peanut Butter,justin_s_classic_almond_butter,12,6.2,medium_shelf,7
+Barney Butter Smooth Almond Butter,Barney Butter Smooth Almond Butter,peanut_butter,Peanut Butter,barney_butter_smooth_almond_butter,13,8.8,medium_shelf,11
+Once Again Organic Sunflower Seed Butter,Once Again Organic Sunflower Seed Butter,peanut_butter,Peanut Butter,once_again_organic_sunflower_seed_butter,16,5.5,medium_shelf,4
+Wowbutter Soy Nut Butter,Wowbutter Soy Nut Butter,peanut_butter,Peanut Butter,wowbutter_soy_nut_butter,18,8.6,medium_shelf,12
+Smucker'S Natural Creamy Peanut Butter,Smucker'S Natural Creamy Peanut Butter,peanut_butter,Peanut Butter,smucker_s_natural_creamy_peanut_butter,28,8.5,medium_shelf,2
+Crazy Richard'S Peanut Butter,Crazy Richard'S Peanut Butter,peanut_butter,Peanut Butter,crazy_richard_s_peanut_butter,15,6.3,medium_shelf,7
+Smucker'S Strawberry Jam,Smucker'S Strawberry Jam,jams_jellies,Jams & Jellies,smucker_s_strawberry_jam,27,9.3,medium_shelf,9
+Smucker'S Grape Jelly,Smucker'S Grape Jelly,jams_jellies,Jams & Jellies,smucker_s_grape_jelly,23,5.7,medium_shelf,2
+Welch'S Grape Jam,Welch'S Grape Jam,jams_jellies,Jams & Jellies,welch_s_grape_jam,27,8.2,medium_shelf,4
+Bonne Maman Strawberry Preserves,Bonne Maman Strawberry Preserves,jams_jellies,Jams & Jellies,bonne_maman_strawberry_preserves,18,7.5,medium_shelf,10
+Bonne Maman Apricot Preserves,Bonne Maman Apricot Preserves,jams_jellies,Jams & Jellies,bonne_maman_apricot_preserves,10,5.3,medium_shelf,8
+Crofter'S Organic Superfruit Spread,Crofter'S Organic Superfruit Spread,jams_jellies,Jams & Jellies,crofter_s_organic_superfruit_spread,25,6.7,medium_shelf,8
+Polaner All Fruit Strawberry,Polaner All Fruit Strawberry,jams_jellies,Jams & Jellies,polaner_all_fruit_strawberry,14,7.2,medium_shelf,9
+Hero Raspberry Jam,Hero Raspberry Jam,jams_jellies,Jams & Jellies,hero_raspberry_jam,12,6.8,medium_shelf,4
+Nutella Hazelnut Spread,Nutella Hazelnut Spread,jams_jellies,Jams & Jellies,nutella_hazelnut_spread,25,3.8,medium_shelf,1
+Justin'S Chocolate Almond Butter,Justin'S Chocolate Almond Butter,jams_jellies,Jams & Jellies,justin_s_chocolate_almond_butter,23,9.9,medium_shelf,11
+Gerber 1St Foods Sweet Potato Puree,Gerber 1St Foods Sweet Potato Puree,baby_food,Baby Food,gerber_1st_foods_sweet_potato_puree,219,7.8,long_shelf,2
+Gerber 1St Foods Pea Puree,Gerber 1St Foods Pea Puree,baby_food,Baby Food,gerber_1st_foods_pea_puree,229,2.2,long_shelf,6
+Happy Baby Organics Clearly Crafted Sweet Potato,Happy Baby Organics Clearly Crafted Sweet Potato,baby_food,Baby Food,happy_baby_organics_clearly_crafted_sweet_potato,353,7.7,long_shelf,11
+Happy Baby Puffs Sweet Potato,Happy Baby Puffs Sweet Potato,baby_food,Baby Food,happy_baby_puffs_sweet_potato,229,5.2,long_shelf,1
+Plum Organics Stage 2 Apple Butternut,Plum Organics Stage 2 Apple Butternut,baby_food,Baby Food,plum_organics_stage_2_apple_butternut,309,2.8,long_shelf,9
+Earth'S Best Organic Banana Mango,Earth'S Best Organic Banana Mango,baby_food,Baby Food,earth_s_best_organic_banana_mango,203,6.9,long_shelf,1
+Beech-Nut Naturals Apple,Beech-Nut Naturals Apple,baby_food,Baby Food,beech_nut_naturals_apple,330,4.6,long_shelf,2
+Sprout Organic Power Pak,Sprout Organic Power Pak,baby_food,Baby Food,sprout_organic_power_pak,201,6.3,long_shelf,3
+Once Upon A Farm Mighty Morning,Once Upon A Farm Mighty Morning,baby_food,Baby Food,once_upon_a_farm_mighty_morning,275,7.0,long_shelf,5
+Similac Advance Infant Formula,Similac Advance Infant Formula,baby_formula,Baby Formula,similac_advance_infant_formula,186,5.2,long_shelf,8
+Enfamil Neuropro Infant Formula,Enfamil Neuropro Infant Formula,baby_formula,Baby Formula,enfamil_neuropro_infant_formula,281,2.3,long_shelf,5
+Gerber Good Start Gentle,Gerber Good Start Gentle,baby_formula,Baby Formula,gerber_good_start_gentle,336,6.9,long_shelf,10
+Earth'S Best Organic Infant Formula,Earth'S Best Organic Infant Formula,baby_formula,Baby Formula,earth_s_best_organic_infant_formula,195,6.2,long_shelf,1
+Similac Pro-Sensitive Non-Gmo,Similac Pro-Sensitive Non-Gmo,baby_formula,Baby Formula,similac_pro_sensitive_non_gmo,230,7.5,long_shelf,2
+Enfamil Gentlease,Enfamil Gentlease,baby_formula,Baby Formula,enfamil_gentlease,321,3.6,long_shelf,3
+Parent'S Choice Advantage Infant Formula,Parent'S Choice Advantage Infant Formula,baby_formula,Baby Formula,parent_s_choice_advantage_infant_formula,292,6.7,long_shelf,1
+Hidden Valley Original Ranch,Hidden Valley Original Ranch,salad_dressing,Salad Dressing,hidden_valley_original_ranch,5,31.8,perishable,4
+Ken'S Steakhouse Caesar,Ken'S Steakhouse Caesar,salad_dressing,Salad Dressing,ken_s_steakhouse_caesar,7,18.9,perishable,8
+Newman'S Own Balsamic Vinaigrette,Newman'S Own Balsamic Vinaigrette,salad_dressing,Salad Dressing,newman_s_own_balsamic_vinaigrette,6,20.3,perishable,9
+Primal Kitchen Avocado Oil Ranch,Primal Kitchen Avocado Oil Ranch,salad_dressing,Salad Dressing,primal_kitchen_avocado_oil_ranch,9,18.3,perishable,5
+Kraft Thousand Island,Kraft Thousand Island,salad_dressing,Salad Dressing,kraft_thousand_island,5,10.1,perishable,4
+Wish-Bone Italian,Wish-Bone Italian,salad_dressing,Salad Dressing,wish_bone_italian,8,15.8,perishable,6
+Annie'S Organic Goddess Dressing,Annie'S Organic Goddess Dressing,salad_dressing,Salad Dressing,annie_s_organic_goddess_dressing,7,18.3,perishable,7
+Tessemae'S Lemon Garlic,Tessemae'S Lemon Garlic,salad_dressing,Salad Dressing,tessemae_s_lemon_garlic,8,12.7,perishable,10
+Bolthouse Farms Yogurt Dressing Ranch,Bolthouse Farms Yogurt Dressing Ranch,salad_dressing,Salad Dressing,bolthouse_farms_yogurt_dressing_ranch,6,29.1,perishable,2
+Brianna'S Blush Wine Vinaigrette,Brianna'S Blush Wine Vinaigrette,salad_dressing,Salad Dressing,brianna_s_blush_wine_vinaigrette,8,20.7,perishable,12
+Sabra Classic Hummus,Sabra Classic Hummus,hummus_dips,Hummus & Dips,sabra_classic_hummus,23,7.0,medium_shelf,5
+Sabra Roasted Red Pepper Hummus,Sabra Roasted Red Pepper Hummus,hummus_dips,Hummus & Dips,sabra_roasted_red_pepper_hummus,17,5.0,medium_shelf,12
+Cedar'S Original Hummus,Cedar'S Original Hummus,hummus_dips,Hummus & Dips,cedar_s_original_hummus,10,5.5,medium_shelf,4
+Hope Foods Organic Original Hummus,Hope Foods Organic Original Hummus,hummus_dips,Hummus & Dips,hope_foods_organic_original_hummus,29,8.3,medium_shelf,10
+Ithaca Lemon Dill Hummus,Ithaca Lemon Dill Hummus,hummus_dips,Hummus & Dips,ithaca_lemon_dill_hummus,24,6.3,medium_shelf,6
+Good Foods Chunky Guacamole,Good Foods Chunky Guacamole,hummus_dips,Hummus & Dips,good_foods_chunky_guacamole,14,7.2,medium_shelf,1
+Wholly Guacamole Classic,Wholly Guacamole Classic,hummus_dips,Hummus & Dips,wholly_guacamole_classic,24,6.0,medium_shelf,1
+Tribe Mediterranean Hummus,Tribe Mediterranean Hummus,hummus_dips,Hummus & Dips,tribe_mediterranean_hummus,15,6.9,medium_shelf,2
+Heluva Good French Onion Dip,Heluva Good French Onion Dip,hummus_dips,Hummus & Dips,heluva_good_french_onion_dip,19,9.3,medium_shelf,8
+Tostitos Chunky Salsa Medium,Tostitos Chunky Salsa Medium,hummus_dips,Hummus & Dips,tostitos_chunky_salsa_medium,27,4.9,medium_shelf,8
+Crisco Pure Vegetable Oil,Crisco Pure Vegetable Oil,cooking_oil,Cooking Oil,crisco_pure_vegetable_oil,18,6.6,medium_shelf,2
+Wesson Canola Oil,Wesson Canola Oil,cooking_oil,Cooking Oil,wesson_canola_oil,15,7.8,medium_shelf,12
+Spectrum Naturals Organic Refined Coconut Oil,Spectrum Naturals Organic Refined Coconut Oil,cooking_oil,Cooking Oil,spectrum_naturals_organic_refined_coconut_oil,16,3.6,medium_shelf,4
+California Olive Ranch Everyday Extra Virgin Olive Oil,California Olive Ranch Everyday Extra Virgin Olive Oil,cooking_oil,Cooking Oil,california_olive_ranch_everyday_extra_virgin_olive_oil,11,9.7,medium_shelf,1
+Primal Kitchen Extra Virgin Avocado Oil,Primal Kitchen Extra Virgin Avocado Oil,cooking_oil,Cooking Oil,primal_kitchen_extra_virgin_avocado_oil,14,6.5,medium_shelf,7
+La Tourangelle Toasted Sesame Oil,La Tourangelle Toasted Sesame Oil,cooking_oil,Cooking Oil,la_tourangelle_toasted_sesame_oil,15,4.7,medium_shelf,7
+Chosen Foods Avocado Oil Spray,Chosen Foods Avocado Oil Spray,cooking_oil,Cooking Oil,chosen_foods_avocado_oil_spray,13,8.3,medium_shelf,2
+Pam Original Cooking Spray,Pam Original Cooking Spray,cooking_oil,Cooking Oil,pam_original_cooking_spray,11,8.7,medium_shelf,5
+Heinz Apple Cider Vinegar,Heinz Apple Cider Vinegar,vinegar,Vinegar,heinz_apple_cider_vinegar,19,7.4,medium_shelf,8
+Bragg Organic Apple Cider Vinegar,Bragg Organic Apple Cider Vinegar,vinegar,Vinegar,bragg_organic_apple_cider_vinegar,14,9.4,medium_shelf,5
+Pompeian Organic Red Wine Vinegar,Pompeian Organic Red Wine Vinegar,vinegar,Vinegar,pompeian_organic_red_wine_vinegar,24,3.6,medium_shelf,5
+Colavita White Balsamic Vinegar,Colavita White Balsamic Vinegar,vinegar,Vinegar,colavita_white_balsamic_vinegar,28,6.7,medium_shelf,4
+Modena Balsamic Vinegar Of Modena,Modena Balsamic Vinegar Of Modena,vinegar,Vinegar,modena_balsamic_vinegar_of_modena,15,8.2,medium_shelf,5
+Marukan Rice Vinegar,Marukan Rice Vinegar,vinegar,Vinegar,marukan_rice_vinegar,21,9.4,medium_shelf,4
+Eden Organic Brown Rice Vinegar,Eden Organic Brown Rice Vinegar,vinegar,Vinegar,eden_organic_brown_rice_vinegar,20,7.5,medium_shelf,3
+Heinz White Vinegar,Heinz White Vinegar,vinegar,Vinegar,heinz_white_vinegar,11,7.2,medium_shelf,3
+McCormick Black Pepper,McCormick Black Pepper,spices,Spices,mccormick_black_pepper,12,5.7,medium_shelf,2
+McCormick Garlic Powder,McCormick Garlic Powder,spices,Spices,mccormick_garlic_powder,27,7.0,medium_shelf,2
+McCormick Onion Powder,McCormick Onion Powder,spices,Spices,mccormick_onion_powder,19,6.9,medium_shelf,4
+McCormick Paprika,McCormick Paprika,spices,Spices,mccormick_paprika,26,9.3,medium_shelf,7
+McCormick Cumin,McCormick Cumin,spices,Spices,mccormick_cumin,11,8.8,medium_shelf,1
+McCormick Chili Powder,McCormick Chili Powder,spices,Spices,mccormick_chili_powder,21,8.2,medium_shelf,6
+McCormick Oregano,McCormick Oregano,spices,Spices,mccormick_oregano,27,9.5,medium_shelf,8
+McCormick Cinnamon,McCormick Cinnamon,spices,Spices,mccormick_cinnamon,27,3.5,medium_shelf,9
+McCormick Turmeric,McCormick Turmeric,spices,Spices,mccormick_turmeric,10,8.4,medium_shelf,6
+Lawry'S Seasoned Salt,Lawry'S Seasoned Salt,spices,Spices,lawry_s_seasoned_salt,20,6.2,medium_shelf,8
+Morton Iodized Salt,Morton Iodized Salt,spices,Spices,morton_iodized_salt,17,8.3,medium_shelf,7
+Diamond Crystal Kosher Salt,Diamond Crystal Kosher Salt,spices,Spices,diamond_crystal_kosher_salt,25,5.1,medium_shelf,12
+Morton Sea Salt,Morton Sea Salt,spices,Spices,morton_sea_salt,11,6.3,medium_shelf,11
+Domino Granulated White Sugar,Domino Granulated White Sugar,baking_supplies,Baking Supplies,domino_granulated_white_sugar,15,8.8,medium_shelf,5
+C&H Pure Cane Sugar,C&H Pure Cane Sugar,baking_supplies,Baking Supplies,c_h_pure_cane_sugar,26,3.2,medium_shelf,1
+Domino Light Brown Sugar,Domino Light Brown Sugar,baking_supplies,Baking Supplies,domino_light_brown_sugar,19,5.0,medium_shelf,11
+Domino Powdered Sugar,Domino Powdered Sugar,baking_supplies,Baking Supplies,domino_powdered_sugar,19,6.4,medium_shelf,1
+Imperial Pure Cane Sugar,Imperial Pure Cane Sugar,baking_supplies,Baking Supplies,imperial_pure_cane_sugar,29,9.0,medium_shelf,5
+Clabber Girl Baking Powder,Clabber Girl Baking Powder,baking_supplies,Baking Supplies,clabber_girl_baking_powder,16,4.9,medium_shelf,3
+Arm & Hammer Baking Soda,Arm & Hammer Baking Soda,baking_supplies,Baking Supplies,arm_hammer_baking_soda,10,8.8,medium_shelf,8
+Fleischmann'S Rapid Rise Yeast,Fleischmann'S Rapid Rise Yeast,baking_supplies,Baking Supplies,fleischmann_s_rapid_rise_yeast,17,4.7,medium_shelf,1
+Toll House Semi-Sweet Chocolate Chips,Toll House Semi-Sweet Chocolate Chips,baking_supplies,Baking Supplies,toll_house_semi_sweet_chocolate_chips,13,5.1,medium_shelf,10
+Guittard Dark Chocolate Chips,Guittard Dark Chocolate Chips,baking_supplies,Baking Supplies,guittard_dark_chocolate_chips,11,6.9,medium_shelf,8
+Pure Vanilla Extract,Pure Vanilla Extract,baking_supplies,Baking Supplies,pure_vanilla_extract,21,7.6,medium_shelf,5
+Mccormick Cream Of Tartar,Mccormick Cream Of Tartar,baking_supplies,Baking Supplies,mccormick_cream_of_tartar,29,9.2,medium_shelf,1
+Beyond Burger Patties,Beyond Burger Patties,plant_based_meat,Plant-Based Meat,beyond_burger_patties,7,18.2,perishable,6
+Beyond Sausage Brat Original,Beyond Sausage Brat Original,plant_based_meat,Plant-Based Meat,beyond_sausage_brat_original,7,8.8,perishable,7
+Impossible Burger Ground,Impossible Burger Ground,plant_based_meat,Plant-Based Meat,impossible_burger_ground,5,16.2,perishable,8
+Impossible Sausage Links,Impossible Sausage Links,plant_based_meat,Plant-Based Meat,impossible_sausage_links,6,14.5,perishable,5
+Lightlife Smart Dogs,Lightlife Smart Dogs,plant_based_meat,Plant-Based Meat,lightlife_smart_dogs,8,10.8,perishable,2
+Tofurky Italian Sausage,Tofurky Italian Sausage,plant_based_meat,Plant-Based Meat,tofurky_italian_sausage,7,16.6,perishable,3
+MorningStar Farms Veggie Burgers,MorningStar Farms Veggie Burgers,plant_based_meat,Plant-Based Meat,morningstar_farms_veggie_burgers,8,18.5,perishable,7
+Boca Original Vegan Burger,Boca Original Vegan Burger,plant_based_meat,Plant-Based Meat,boca_original_vegan_burger,6,12.2,perishable,3
+Field Roast Smoked Apple Sage Sausage,Field Roast Smoked Apple Sage Sausage,plant_based_meat,Plant-Based Meat,field_roast_smoked_apple_sage_sausage,4,18.7,perishable,2
+Gardein Ultimate Plant-Based Burger,Gardein Ultimate Plant-Based Burger,plant_based_meat,Plant-Based Meat,gardein_ultimate_plant_based_burger,7,6.9,perishable,5
+Nasoya Extra Firm Tofu,Nasoya Extra Firm Tofu,tofu_tempeh,Tofu & Tempeh,nasoya_extra_firm_tofu,19,4.2,medium_shelf,3
+Nasoya Silken Tofu,Nasoya Silken Tofu,tofu_tempeh,Tofu & Tempeh,nasoya_silken_tofu,13,8.3,medium_shelf,5
+House Foods Firm Tofu,House Foods Firm Tofu,tofu_tempeh,Tofu & Tempeh,house_foods_firm_tofu,22,5.1,medium_shelf,8
+Mori-Nu Silken Tofu Firm,Mori-Nu Silken Tofu Firm,tofu_tempeh,Tofu & Tempeh,mori_nu_silken_tofu_firm,26,7.1,medium_shelf,2
+Lightlife Original Tempeh,Lightlife Original Tempeh,tofu_tempeh,Tofu & Tempeh,lightlife_original_tempeh,12,6.5,medium_shelf,12
+Lightlife Three Grain Tempeh,Lightlife Three Grain Tempeh,tofu_tempeh,Tofu & Tempeh,lightlife_three_grain_tempeh,20,4.0,medium_shelf,2
+Trader Joe'S Organic High Protein Tofu,Trader Joe'S Organic High Protein Tofu,tofu_tempeh,Tofu & Tempeh,trader_joe_s_organic_high_protein_tofu,24,8.3,medium_shelf,12
+Optimum Nutrition Gold Standard Whey Vanilla,Optimum Nutrition Gold Standard Whey Vanilla,protein_supplements,Protein Supplements,optimum_nutrition_gold_standard_whey_vanilla,18,8.2,medium_shelf,5
+Garden Of Life Sport Organic Vanilla,Garden Of Life Sport Organic Vanilla,protein_supplements,Protein Supplements,garden_of_life_sport_organic_vanilla,15,4.0,medium_shelf,4
+Orgain Organic Protein Powder Chocolate,Orgain Organic Protein Powder Chocolate,protein_supplements,Protein Supplements,orgain_organic_protein_powder_chocolate,17,4.8,medium_shelf,9
+Vega Sport Premium Protein Vanilla,Vega Sport Premium Protein Vanilla,protein_supplements,Protein Supplements,vega_sport_premium_protein_vanilla,20,8.6,medium_shelf,2
+Premier Protein Chocolate Shake,Premier Protein Chocolate Shake,protein_supplements,Protein Supplements,premier_protein_chocolate_shake,23,9.4,medium_shelf,8
+Fairlife Core Power 26G Protein,Fairlife Core Power 26G Protein,protein_supplements,Protein Supplements,fairlife_core_power_26g_protein,21,9.1,medium_shelf,7
+OWYN Only What You Need Plant Protein Shake,OWYN Only What You Need Plant Protein Shake,protein_supplements,Protein Supplements,owyn_only_what_you_need_plant_protein_shake,12,6.5,medium_shelf,10
+Fresh Express Caesar Salad Kit,Fresh Express Caesar Salad Kit,prepared_salads,Prepared Salads,fresh_express_caesar_salad_kit,8,19.2,perishable,6
+Fresh Express Southwest Salad Kit,Fresh Express Southwest Salad Kit,prepared_salads,Prepared Salads,fresh_express_southwest_salad_kit,9,21.1,perishable,3
+Dole Chopped Sesame Asian Salad Kit,Dole Chopped Sesame Asian Salad Kit,prepared_salads,Prepared Salads,dole_chopped_sesame_asian_salad_kit,4,14.4,perishable,5
+Taylor Farms Chopped Asian Salad,Taylor Farms Chopped Asian Salad,prepared_salads,Prepared Salads,taylor_farms_chopped_asian_salad,5,22.4,perishable,2
+Eat Smart Vegetable Crunch Salad,Eat Smart Vegetable Crunch Salad,prepared_salads,Prepared Salads,eat_smart_vegetable_crunch_salad,5,15.8,perishable,10
+Gotham Greens Classic Caesar,Gotham Greens Classic Caesar,prepared_salads,Prepared Salads,gotham_greens_classic_caesar,9,14.0,perishable,2
+Ready Pac Bistro Chef Salad,Ready Pac Bistro Chef Salad,prepared_salads,Prepared Salads,ready_pac_bistro_chef_salad,9,19.5,perishable,9
+Rotisserie Chicken,Rotisserie Chicken,prepared_meals,Prepared Meals,rotisserie_chicken,10,3.4,medium_shelf,5
+Pulled Pork,Pulled Pork,prepared_meals,Prepared Meals,pulled_pork,16,6.3,medium_shelf,7
+Macaroni And Cheese,Macaroni And Cheese,prepared_meals,Prepared Meals,macaroni_and_cheese,13,7.9,medium_shelf,5
+Mashed Potatoes,Mashed Potatoes,prepared_meals,Prepared Meals,mashed_potatoes,19,7.6,medium_shelf,8
+Chicken Soup,Chicken Soup,prepared_meals,Prepared Meals,chicken_soup,28,9.8,medium_shelf,10
+Beef Pot Roast,Beef Pot Roast,prepared_meals,Prepared Meals,beef_pot_roast,11,9.2,medium_shelf,7
+Sushi Rolls Assorted,Sushi Rolls Assorted,prepared_meals,Prepared Meals,sushi_rolls_assorted,13,7.4,medium_shelf,7
+Spring Rolls,Spring Rolls,prepared_meals,Prepared Meals,spring_rolls,19,9.3,medium_shelf,9
+Tamales,Tamales,prepared_meals,Prepared Meals,tamales,20,6.1,medium_shelf,6
+Enchiladas,Enchiladas,prepared_meals,Prepared Meals,enchiladas,24,8.6,medium_shelf,12
+Mozzarella Sticks,Mozzarella Sticks,appetizers,Appetizers,mozzarella_sticks,18,5.0,medium_shelf,2
+Jalapeño Poppers,Jalapeño Poppers,appetizers,Appetizers,jalape_o_poppers,12,6.7,medium_shelf,12
+Mini Quiche,Mini Quiche,appetizers,Appetizers,mini_quiche,17,9.9,medium_shelf,3
+Spinach Artichoke Dip,Spinach Artichoke Dip,appetizers,Appetizers,spinach_artichoke_dip,29,7.2,medium_shelf,12
+Stuffed Mushrooms,Stuffed Mushrooms,appetizers,Appetizers,stuffed_mushrooms,25,6.5,medium_shelf,8
+Bruschetta,Bruschetta,appetizers,Appetizers,bruschetta,12,8.5,medium_shelf,11
+Pigs In A Blanket,Pigs In A Blanket,appetizers,Appetizers,pigs_in_a_blanket,26,5.2,medium_shelf,1
+Chicken Wings,Chicken Wings,appetizers,Appetizers,chicken_wings,16,8.8,medium_shelf,2
+Crab Rangoon,Crab Rangoon,appetizers,Appetizers,crab_rangoon,25,3.1,medium_shelf,2
+Spring Roll,Spring Roll,appetizers,Appetizers,spring_roll,10,4.7,medium_shelf,6
+Soy Sauce Packets,Soy Sauce Packets,asian_foods,Asian Foods,soy_sauce_packets,27,4.2,medium_shelf,1
+Hoisin Sauce,Hoisin Sauce,asian_foods,Asian Foods,hoisin_sauce,13,4.8,medium_shelf,10
+Oyster Sauce,Oyster Sauce,asian_foods,Asian Foods,oyster_sauce,19,9.6,medium_shelf,11
+Miso Paste,Miso Paste,asian_foods,Asian Foods,miso_paste,23,3.2,medium_shelf,4
+Rice Wine Vinegar,Rice Wine Vinegar,asian_foods,Asian Foods,rice_wine_vinegar,20,5.1,medium_shelf,4
+Sesame Oil,Sesame Oil,asian_foods,Asian Foods,sesame_oil,13,7.0,medium_shelf,8
+Ponzu Sauce,Ponzu Sauce,asian_foods,Asian Foods,ponzu_sauce,12,7.9,medium_shelf,11
+Gochujang Paste,Gochujang Paste,asian_foods,Asian Foods,gochujang_paste,15,8.4,medium_shelf,1
+Thai Fish Sauce,Thai Fish Sauce,asian_foods,Asian Foods,thai_fish_sauce,11,5.7,medium_shelf,7
+Sambal Oelek,Sambal Oelek,asian_foods,Asian Foods,sambal_oelek,14,4.5,medium_shelf,3
+Tahini,Tahini,asian_foods,Asian Foods,tahini,12,9.0,medium_shelf,6
+Za'atar Spice Blend,Za'atar Spice Blend,asian_foods,Asian Foods,za_atar_spice_blend,19,3.9,medium_shelf,5
+Wholly Guacamole Mini Cups,Wholly Guacamole Mini Cups,avocado_products,Avocado Products,wholly_guacamole_mini_cups,17,3.5,medium_shelf,5
+Good Foods Plant Based Queso,Good Foods Plant Based Queso,avocado_products,Avocado Products,good_foods_plant_based_queso,21,4.6,medium_shelf,1
+Primal Kitchen Guacamole,Primal Kitchen Guacamole,avocado_products,Avocado Products,primal_kitchen_guacamole,15,6.4,medium_shelf,11
+Chosen Foods Avocado Spread,Chosen Foods Avocado Spread,avocado_products,Avocado Products,chosen_foods_avocado_spread,10,9.6,medium_shelf,6
+Hope Organic Avocado Hummus,Hope Organic Avocado Hummus,avocado_products,Avocado Products,hope_organic_avocado_hummus,16,8.1,medium_shelf,11
+Clio Avocado Greek Yogurt,Clio Avocado Greek Yogurt,avocado_products,Avocado Products,clio_avocado_greek_yogurt,25,6.9,medium_shelf,3
+Bolthouse Green Goodness,Bolthouse Green Goodness,avocado_products,Avocado Products,bolthouse_green_goodness,15,6.6,medium_shelf,11
+Naked Green Machine Boosted,Naked Green Machine Boosted,avocado_products,Avocado Products,naked_green_machine_boosted,18,7.9,medium_shelf,11
+Jack Link's Original Beef Jerky,Jack Link's Original Beef Jerky,beef_jerky,Beef Jerky,jack_link_s_original_beef_jerky,8,14.4,perishable,10
+Jack Link's Teriyaki,Jack Link's Teriyaki,beef_jerky,Beef Jerky,jack_link_s_teriyaki,5,10.0,perishable,4
+Krave Sweet Chipotle,Krave Sweet Chipotle,beef_jerky,Beef Jerky,krave_sweet_chipotle,9,6.4,perishable,9
+Old Spice Beef Sticks,Old Spice Beef Sticks,beef_jerky,Beef Jerky,old_spice_beef_sticks,9,8.0,perishable,5
+Chomps Original Beef,Chomps Original Beef,beef_jerky,Beef Jerky,chomps_original_beef,5,16.7,perishable,12
+Country Archer Peppered Beef,Country Archer Peppered Beef,beef_jerky,Beef Jerky,country_archer_peppered_beef,8,14.5,perishable,10
+Epic Venison Sea Salt Pepper,Epic Venison Sea Salt Pepper,beef_jerky,Beef Jerky,epic_venison_sea_salt_pepper,4,17.0,perishable,5
+Perky Jerky Turkey,Perky Jerky Turkey,beef_jerky,Beef Jerky,perky_jerky_turkey,3,5.7,perishable,7
+Tillamook Country Smoker,Tillamook Country Smoker,beef_jerky,Beef Jerky,tillamook_country_smoker,6,18.5,perishable,12
+Driscoll's Strawberries,Driscoll's Strawberries,berries,Berries,driscoll_s_strawberries,22,5.7,medium_shelf,1
+Driscoll's Blueberries,Driscoll's Blueberries,berries,Berries,driscoll_s_blueberries,28,9.5,medium_shelf,3
+Driscoll's Raspberries,Driscoll's Raspberries,berries,Berries,driscoll_s_raspberries,12,7.2,medium_shelf,3
+Driscoll's Blackberries,Driscoll's Blackberries,berries,Berries,driscoll_s_blackberries,24,6.8,medium_shelf,1
+Organic Strawberries Pint,Organic Strawberries Pint,berries,Berries,organic_strawberries_pint,19,8.7,medium_shelf,8
+Frozen Wild Blueberries,Frozen Wild Blueberries,berries,Berries,frozen_wild_blueberries,12,7.4,medium_shelf,9
+Açaí Pulp Pack,Açaí Pulp Pack,berries,Berries,a_a_pulp_pack,29,7.7,medium_shelf,3
+Goji Berries Dried,Goji Berries Dried,berries,Berries,goji_berries_dried,23,4.1,medium_shelf,9
+Mulberries Dried,Mulberries Dried,berries,Berries,mulberries_dried,12,7.2,medium_shelf,3
+La Tortilla Factory Low Carb Tortillas,La Tortilla Factory Low Carb Tortillas,bread_alternatives,Bread Alternatives,la_tortilla_factory_low_carb_tortillas,6,13.0,perishable,11
+Ole Xtreme Wellness Tortillas,Ole Xtreme Wellness Tortillas,bread_alternatives,Bread Alternatives,ole_xtreme_wellness_tortillas,3,9.1,perishable,8
+Mission Zero Net Carb Tortillas,Mission Zero Net Carb Tortillas,bread_alternatives,Bread Alternatives,mission_zero_net_carb_tortillas,3,9.9,perishable,6
+Siete Almond Flour Tortillas,Siete Almond Flour Tortillas,bread_alternatives,Bread Alternatives,siete_almond_flour_tortillas,4,14.7,perishable,6
+Siete Cassava Tortillas,Siete Cassava Tortillas,bread_alternatives,Bread Alternatives,siete_cassava_tortillas,6,11.7,perishable,3
+Naan Bread,Naan Bread,bread_alternatives,Bread Alternatives,naan_bread,3,18.7,perishable,4
+Pita Bread,Pita Bread,bread_alternatives,Bread Alternatives,pita_bread,6,9.7,perishable,4
+Lavash Flatbread,Lavash Flatbread,bread_alternatives,Bread Alternatives,lavash_flatbread,5,8.2,perishable,7
+Corn Tortillas,Corn Tortillas,bread_alternatives,Bread Alternatives,corn_tortillas,3,22.0,perishable,6
+Flour Tortillas,Flour Tortillas,bread_alternatives,Bread Alternatives,flour_tortillas,5,12.4,perishable,8
+Jimmy Dean Original Sausage Links,Jimmy Dean Original Sausage Links,breakfast_meats,Breakfast Meats,jimmy_dean_original_sausage_links,6,12.6,perishable,10
+Jimmy Dean Maple Sausage Patties,Jimmy Dean Maple Sausage Patties,breakfast_meats,Breakfast Meats,jimmy_dean_maple_sausage_patties,6,8.2,perishable,1
+Hillshire Farm Turkey Smoked Sausage,Hillshire Farm Turkey Smoked Sausage,breakfast_meats,Breakfast Meats,hillshire_farm_turkey_smoked_sausage,8,8.1,perishable,10
+Aidells Chicken Apple Sausage,Aidells Chicken Apple Sausage,breakfast_meats,Breakfast Meats,aidells_chicken_apple_sausage,7,11.0,perishable,4
+Jones Dairy Farm All Natural Pork Sausage,Jones Dairy Farm All Natural Pork Sausage,breakfast_meats,Breakfast Meats,jones_dairy_farm_all_natural_pork_sausage,9,16.8,perishable,2
+Trader Joe's Uncured Chicken Sausage,Trader Joe's Uncured Chicken Sausage,breakfast_meats,Breakfast Meats,trader_joe_s_uncured_chicken_sausage,4,5.6,perishable,4
+Bob Evans Original Pork Sausage,Bob Evans Original Pork Sausage,breakfast_meats,Breakfast Meats,bob_evans_original_pork_sausage,8,17.6,perishable,10
+Farmer John Classic Bacon,Farmer John Classic Bacon,breakfast_meats,Breakfast Meats,farmer_john_classic_bacon,5,19.9,perishable,11
+Bush's Best Cannellini Beans,Bush's Best Cannellini Beans,canned_beans,Canned Beans,bush_s_best_cannellini_beans,610,6.5,long_shelf,10
+Goya Chickpeas,Goya Chickpeas,canned_beans,Canned Beans,goya_chickpeas,670,4.9,long_shelf,1
+Goya Kidney Beans,Goya Kidney Beans,canned_beans,Canned Beans,goya_kidney_beans,725,3.9,long_shelf,2
+S&W Pinto Beans,S&W Pinto Beans,canned_beans,Canned Beans,s_w_pinto_beans,326,3.5,long_shelf,5
+365 Black Beans Organic,365 Black Beans Organic,canned_beans,Canned Beans,365_black_beans_organic,429,4.6,long_shelf,1
+Amy's Organic Vegetarian Baked Beans,Amy's Organic Vegetarian Baked Beans,canned_beans,Canned Beans,amy_s_organic_vegetarian_baked_beans,698,8.8,long_shelf,3
+Eden Organic Adzuki Beans,Eden Organic Adzuki Beans,canned_beans,Canned Beans,eden_organic_adzuki_beans,700,2.0,long_shelf,4
+Bob's Red Mill Lentils Green,Bob's Red Mill Lentils Green,canned_beans,Canned Beans,bob_s_red_mill_lentils_green,385,8.3,long_shelf,9
+Westbrae Natural Navy Beans,Westbrae Natural Navy Beans,canned_beans,Canned Beans,westbrae_natural_navy_beans,697,7.3,long_shelf,8
+Violife Just Like Parmesan,Violife Just Like Parmesan,cheese_alternatives,Cheese Alternatives,violife_just_like_parmesan,12,8.3,short_shelf,10
+Daiya Cheddar Style Shreds,Daiya Cheddar Style Shreds,cheese_alternatives,Cheese Alternatives,daiya_cheddar_style_shreds,12,9.2,short_shelf,1
+Follow Your Heart Provolone Slices,Follow Your Heart Provolone Slices,cheese_alternatives,Cheese Alternatives,follow_your_heart_provolone_slices,17,20.5,short_shelf,1
+Kite Hill Ricotta,Kite Hill Ricotta,cheese_alternatives,Cheese Alternatives,kite_hill_ricotta,13,19.4,short_shelf,9
+Miyoko's Liquid Pizza Mozzarella,Miyoko's Liquid Pizza Mozzarella,cheese_alternatives,Cheese Alternatives,miyoko_s_liquid_pizza_mozzarella,13,13.3,short_shelf,11
+Good Planet Pepper Jack Slices,Good Planet Pepper Jack Slices,cheese_alternatives,Cheese Alternatives,good_planet_pepper_jack_slices,12,22.6,short_shelf,8
+Treeline Treenut Cheese,Treeline Treenut Cheese,cheese_alternatives,Cheese Alternatives,treeline_treenut_cheese,13,11.6,short_shelf,9
+Parmela Creamery Sharp Cheddar,Parmela Creamery Sharp Cheddar,cheese_alternatives,Cheese Alternatives,parmela_creamery_sharp_cheddar,8,15.3,short_shelf,12
+Nutella Hazelnut Cocoa Spread,Nutella Hazelnut Cocoa Spread,chocolate_spreads,Chocolate Spreads,nutella_hazelnut_cocoa_spread,100,7.3,long_shelf,3
+Justin's Chocolate Hazelnut Butter,Justin's Chocolate Hazelnut Butter,chocolate_spreads,Chocolate Spreads,justin_s_chocolate_hazelnut_butter,225,17.9,long_shelf,9
+Nocciolata Organic Hazelnut Spread,Nocciolata Organic Hazelnut Spread,chocolate_spreads,Chocolate Spreads,nocciolata_organic_hazelnut_spread,191,6.7,long_shelf,11
+Artisana Organics Raw Cacao Walnut Butter,Artisana Organics Raw Cacao Walnut Butter,chocolate_spreads,Chocolate Spreads,artisana_organics_raw_cacao_walnut_butter,210,8.6,long_shelf,11
+Trader Joe's Cocoa Almond Spread,Trader Joe's Cocoa Almond Spread,chocolate_spreads,Chocolate Spreads,trader_joe_s_cocoa_almond_spread,234,20.3,long_shelf,4
+Pip & Nut Chocolate Almond Butter,Pip & Nut Chocolate Almond Butter,chocolate_spreads,Chocolate Spreads,pip_nut_chocolate_almond_butter,131,15.0,long_shelf,1
+Julie's Organic Dark Chocolate Fudge,Julie's Organic Dark Chocolate Fudge,chocolate_spreads,Chocolate Spreads,julie_s_organic_dark_chocolate_fudge,132,18.2,long_shelf,10
+International Delight French Vanilla,International Delight French Vanilla,coffee_creamers,Coffee Creamers,international_delight_french_vanilla,10,20.5,short_shelf,2
+Coffee-Mate Original Liquid,Coffee-Mate Original Liquid,coffee_creamers,Coffee Creamers,coffee_mate_original_liquid,11,18.3,short_shelf,1
+Coffee-Mate Natural Bliss Oat Milk,Coffee-Mate Natural Bliss Oat Milk,coffee_creamers,Coffee Creamers,coffee_mate_natural_bliss_oat_milk,17,11.4,short_shelf,8
+Califia Better Half Coconut Cream,Califia Better Half Coconut Cream,coffee_creamers,Coffee Creamers,califia_better_half_coconut_cream,12,19.9,short_shelf,6
+Nutpods Original Dairy-Free,Nutpods Original Dairy-Free,coffee_creamers,Coffee Creamers,nutpods_original_dairy_free,11,10.0,short_shelf,9
+Chobani Oat Barista Edition,Chobani Oat Barista Edition,coffee_creamers,Coffee Creamers,chobani_oat_barista_edition,15,12.6,short_shelf,7
+Laird Superfood Creamer,Laird Superfood Creamer,coffee_creamers,Coffee Creamers,laird_superfood_creamer,9,15.6,short_shelf,3
+So Delicious Coconut Milk Creamer,So Delicious Coconut Milk Creamer,coffee_creamers,Coffee Creamers,so_delicious_coconut_milk_creamer,8,9.9,short_shelf,11
+Daisy Low Fat Cottage Cheese,Daisy Low Fat Cottage Cheese,cottage_cheese,Cottage Cheese,daisy_low_fat_cottage_cheese,16,9.8,short_shelf,6
+Good Culture Whole Milk Cottage Cheese,Good Culture Whole Milk Cottage Cheese,cottage_cheese,Cottage Cheese,good_culture_whole_milk_cottage_cheese,17,19.1,short_shelf,11
+Friendship Dairy Cottage Cheese,Friendship Dairy Cottage Cheese,cottage_cheese,Cottage Cheese,friendship_dairy_cottage_cheese,11,20.6,short_shelf,8
+Breakstone's 2% Milkfat Cottage Cheese,Breakstone's 2% Milkfat Cottage Cheese,cottage_cheese,Cottage Cheese,breakstone_s_2_milkfat_cottage_cheese,15,14.3,short_shelf,7
+Hood Cottage Cheese,Hood Cottage Cheese,cottage_cheese,Cottage Cheese,hood_cottage_cheese,7,14.6,short_shelf,4
+Muuna Plain Cottage Cheese,Muuna Plain Cottage Cheese,cottage_cheese,Cottage Cheese,muuna_plain_cottage_cheese,12,11.5,short_shelf,1
+Lactaid Cottage Cheese,Lactaid Cottage Cheese,cottage_cheese,Cottage Cheese,lactaid_cottage_cheese,15,16.9,short_shelf,1
+Nancy's Organic Cottage Cheese,Nancy's Organic Cottage Cheese,cottage_cheese,Cottage Cheese,nancy_s_organic_cottage_cheese,10,17.9,short_shelf,6
+Ak-Mak Sesame Crackers,Ak-Mak Sesame Crackers,crackers_specialty,Crackers Specialty,ak_mak_sesame_crackers,152,23.7,long_shelf,6
+Finn Crisp Original,Finn Crisp Original,crackers_specialty,Crackers Specialty,finn_crisp_original,199,5.8,long_shelf,5
+Ryvita Multigrain Crispbread,Ryvita Multigrain Crispbread,crackers_specialty,Crackers Specialty,ryvita_multigrain_crispbread,196,23.2,long_shelf,11
+Kavli Whole Grain Crispbread,Kavli Whole Grain Crispbread,crackers_specialty,Crackers Specialty,kavli_whole_grain_crispbread,117,24.8,long_shelf,12
+Lesley Stowe Raincoast Crisps,Lesley Stowe Raincoast Crisps,crackers_specialty,Crackers Specialty,lesley_stowe_raincoast_crisps,217,11.9,long_shelf,2
+Rustic Bakery Olive Oil Flatbread,Rustic Bakery Olive Oil Flatbread,crackers_specialty,Crackers Specialty,rustic_bakery_olive_oil_flatbread,104,19.5,long_shelf,9
+Effie's Oatcakes,Effie's Oatcakes,crackers_specialty,Crackers Specialty,effie_s_oatcakes,264,21.5,long_shelf,9
+La Panzanella Mini Croccantini,La Panzanella Mini Croccantini,crackers_specialty,Crackers Specialty,la_panzanella_mini_croccantini,126,18.0,long_shelf,5
+Milton's Craft Bakers Thin & Crispy,Milton's Craft Bakers Thin & Crispy,crackers_specialty,Crackers Specialty,milton_s_craft_bakers_thin_crispy,135,10.8,long_shelf,5
+Sunsweet Prunes,Sunsweet Prunes,dried_fruit,Dried Fruit,sunsweet_prunes,5,25.6,perishable,5
+Sun-Maid California Raisins,Sun-Maid California Raisins,dried_fruit,Dried Fruit,sun_maid_california_raisins,9,31.9,perishable,5
+Ocean Spray Craisins Original,Ocean Spray Craisins Original,dried_fruit,Dried Fruit,ocean_spray_craisins_original,5,12.7,perishable,10
+Made In Nature Organic Apricots,Made In Nature Organic Apricots,dried_fruit,Dried Fruit,made_in_nature_organic_apricots,7,22.0,perishable,11
+Mariani Premium Dried Mangoes,Mariani Premium Dried Mangoes,dried_fruit,Dried Fruit,mariani_premium_dried_mangoes,9,10.6,perishable,2
+Bare Baked Crunchy Apple Chips,Bare Baked Crunchy Apple Chips,dried_fruit,Dried Fruit,bare_baked_crunchy_apple_chips,9,31.1,perishable,2
+Peeled Snacks Pineapple,Peeled Snacks Pineapple,dried_fruit,Dried Fruit,peeled_snacks_pineapple,4,29.5,perishable,10
+Enjoy Life Plentils Garlic Parmesan,Enjoy Life Plentils Garlic Parmesan,dried_fruit,Dried Fruit,enjoy_life_plentils_garlic_parmesan,7,11.2,perishable,2
+Natierra Himalania Goji Berries,Natierra Himalania Goji Berries,dried_fruit,Dried Fruit,natierra_himalania_goji_berries,7,28.6,perishable,9
+Trader Joe's Gyoza Chicken,Trader Joe's Gyoza Chicken,dumplings_wontons,Dumplings & Wontons,trader_joe_s_gyoza_chicken,24,7.8,medium_shelf,1
+Feel Good Foods Pork Dumplings,Feel Good Foods Pork Dumplings,dumplings_wontons,Dumplings & Wontons,feel_good_foods_pork_dumplings,16,3.9,medium_shelf,6
+Bibigo Mini Wontons,Bibigo Mini Wontons,dumplings_wontons,Dumplings & Wontons,bibigo_mini_wontons,16,6.7,medium_shelf,1
+Ling Ling Potstickers Pork Vegetable,Ling Ling Potstickers Pork Vegetable,dumplings_wontons,Dumplings & Wontons,ling_ling_potstickers_pork_vegetable,10,7.8,medium_shelf,9
+CJ Korean BBQ Mandu,CJ Korean BBQ Mandu,dumplings_wontons,Dumplings & Wontons,cj_korean_bbq_mandu,10,5.3,medium_shelf,7
+Annie Chun's Soup Bowls,Annie Chun's Soup Bowls,dumplings_wontons,Dumplings & Wontons,annie_chun_s_soup_bowls,21,6.5,medium_shelf,5
+Nasoya Vegan Tofu Vegetable Dumplings,Nasoya Vegan Tofu Vegetable Dumplings,dumplings_wontons,Dumplings & Wontons,nasoya_vegan_tofu_vegetable_dumplings,11,9.8,medium_shelf,9
+Pagoda Mini Crab Rangoon,Pagoda Mini Crab Rangoon,dumplings_wontons,Dumplings & Wontons,pagoda_mini_crab_rangoon,14,7.4,medium_shelf,2
+Good Catch Plant-Based Tuna,Good Catch Plant-Based Tuna,fish_alternatives,Fish Alternatives,good_catch_plant_based_tuna,5,12.5,perishable,8
+Sophie's Kitchen Vegan Shrimp,Sophie's Kitchen Vegan Shrimp,fish_alternatives,Fish Alternatives,sophie_s_kitchen_vegan_shrimp,3,6.0,perishable,6
+Ocean Hugger Foods Ahimi Tomato Tuna,Ocean Hugger Foods Ahimi Tomato Tuna,fish_alternatives,Fish Alternatives,ocean_hugger_foods_ahimi_tomato_tuna,3,6.8,perishable,6
+Gardein Golden Fishless Filet,Gardein Golden Fishless Filet,fish_alternatives,Fish Alternatives,gardein_golden_fishless_filet,9,17.8,perishable,1
+New Wave Shrimp,New Wave Shrimp,fish_alternatives,Fish Alternatives,new_wave_shrimp,6,16.1,perishable,11
+Atlantic Natural Foods Loma Linda Tuno,Atlantic Natural Foods Loma Linda Tuno,fish_alternatives,Fish Alternatives,atlantic_natural_foods_loma_linda_tuno,4,17.5,perishable,2
+Vganic Hearts Of Palm Calamari,Vganic Hearts Of Palm Calamari,fish_alternatives,Fish Alternatives,vganic_hearts_of_palm_calamari,7,13.7,perishable,4
+Amy's Bean & Rice Burrito,Amy's Bean & Rice Burrito,frozen_burritos,Frozen Burritos,amy_s_bean_rice_burrito,92,9.9,long_shelf,6
+Amy's Bean & Cheese Burrito,Amy's Bean & Cheese Burrito,frozen_burritos,Frozen Burritos,amy_s_bean_cheese_burrito,157,9.4,long_shelf,9
+El Monterey Bean & Cheese Burrito,El Monterey Bean & Cheese Burrito,frozen_burritos,Frozen Burritos,el_monterey_bean_cheese_burrito,354,11.8,long_shelf,10
+Don Miguel Red Hot Beef Burrito,Don Miguel Red Hot Beef Burrito,frozen_burritos,Frozen Burritos,don_miguel_red_hot_beef_burrito,336,7.0,long_shelf,2
+Evol Egg Sausage Cheddar Burrito,Evol Egg Sausage Cheddar Burrito,frozen_burritos,Frozen Burritos,evol_egg_sausage_cheddar_burrito,264,9.0,long_shelf,3
+Trader Joe's Breakfast Burrito,Trader Joe's Breakfast Burrito,frozen_burritos,Frozen Burritos,trader_joe_s_breakfast_burrito,115,8.6,long_shelf,5
+Blake's All Natural Chicken Burrito,Blake's All Natural Chicken Burrito,frozen_burritos,Frozen Burritos,blake_s_all_natural_chicken_burrito,177,10.9,long_shelf,7
+Cedarlane Low Fat Garden Veggie Burrito,Cedarlane Low Fat Garden Veggie Burrito,frozen_burritos,Frozen Burritos,cedarlane_low_fat_garden_veggie_burrito,97,5.6,long_shelf,2
+Eggo Buttermilk Waffles,Eggo Buttermilk Waffles,frozen_breakfast,Frozen Breakfast,eggo_buttermilk_waffles,150,3.3,long_shelf,12
+Kashi Go Blueberry Waffles,Kashi Go Blueberry Waffles,frozen_breakfast,Frozen Breakfast,kashi_go_blueberry_waffles,96,4.1,long_shelf,4
+Van's Light & Crispy Waffles,Van's Light & Crispy Waffles,frozen_breakfast,Frozen Breakfast,van_s_light_crispy_waffles,124,5.2,long_shelf,10
+Jimmy Dean Egg Cheese Croissant,Jimmy Dean Egg Cheese Croissant,frozen_breakfast,Frozen Breakfast,jimmy_dean_egg_cheese_croissant,264,13.3,long_shelf,10
+Sausage Egg & Cheese McGriddles,Sausage Egg & Cheese McGriddles,frozen_breakfast,Frozen Breakfast,sausage_egg_cheese_mcgriddles,117,11.6,long_shelf,11
+Amy's Tofu Scramble Breakfast Wrap,Amy's Tofu Scramble Breakfast Wrap,frozen_breakfast,Frozen Breakfast,amy_s_tofu_scramble_breakfast_wrap,132,12.0,long_shelf,11
+Udi's Gluten Free Blueberry Oat Muffins,Udi's Gluten Free Blueberry Oat Muffins,frozen_breakfast,Frozen Breakfast,udi_s_gluten_free_blueberry_oat_muffins,338,8.3,long_shelf,9
+Pillsbury Frozen Pancakes,Pillsbury Frozen Pancakes,frozen_breakfast,Frozen Breakfast,pillsbury_frozen_pancakes,182,4.2,long_shelf,4
+Dole Frozen Strawberries,Dole Frozen Strawberries,frozen_fruit,Frozen Fruit,dole_frozen_strawberries,5,21.6,perishable,8
+Dole Frozen Mango Chunks,Dole Frozen Mango Chunks,frozen_fruit,Frozen Fruit,dole_frozen_mango_chunks,4,31.6,perishable,3
+Wyman's Wild Blueberries,Wyman's Wild Blueberries,frozen_fruit,Frozen Fruit,wyman_s_wild_blueberries,8,22.7,perishable,7
+Cascadian Farm Organic Berry Medley,Cascadian Farm Organic Berry Medley,frozen_fruit,Frozen Fruit,cascadian_farm_organic_berry_medley,8,25.8,perishable,3
+Earthbound Farm Organic Berry Trio,Earthbound Farm Organic Berry Trio,frozen_fruit,Frozen Fruit,earthbound_farm_organic_berry_trio,7,19.4,perishable,8
+Nature's Promise Frozen Cherries,Nature's Promise Frozen Cherries,frozen_fruit,Frozen Fruit,nature_s_promise_frozen_cherries,7,13.8,perishable,9
+Trader Joe's Frozen Açaí Purée,Trader Joe's Frozen Açaí Purée,frozen_fruit,Frozen Fruit,trader_joe_s_frozen_a_a_pur_e,4,25.7,perishable,6
+Good Food Made Simple Berry Smoothie Blend,Good Food Made Simple Berry Smoothie Blend,frozen_fruit,Frozen Fruit,good_food_made_simple_berry_smoothie_blend,5,22.1,perishable,10
+Eggo Homestyle Waffles,Eggo Homestyle Waffles,frozen_waffles,Frozen Waffles,eggo_homestyle_waffles,250,7.1,long_shelf,5
+Eggo Nutri-Grain Whole Wheat,Eggo Nutri-Grain Whole Wheat,frozen_waffles,Frozen Waffles,eggo_nutri_grain_whole_wheat,351,6.1,long_shelf,7
+Nature's Own Buttermilk Waffles,Nature's Own Buttermilk Waffles,frozen_waffles,Frozen Waffles,nature_s_own_buttermilk_waffles,314,11.4,long_shelf,3
+Van's Ancient Grains Waffles,Van's Ancient Grains Waffles,frozen_waffles,Frozen Waffles,van_s_ancient_grains_waffles,266,6.8,long_shelf,5
+Kodiak Cakes Frozen Waffles,Kodiak Cakes Frozen Waffles,frozen_waffles,Frozen Waffles,kodiak_cakes_frozen_waffles,232,9.9,long_shelf,1
+Birch Benders Paleo Frozen Waffles,Birch Benders Paleo Frozen Waffles,frozen_waffles,Frozen Waffles,birch_benders_paleo_frozen_waffles,94,6.1,long_shelf,12
+Kashi 7 Grain Waffles,Kashi 7 Grain Waffles,frozen_waffles,Frozen Waffles,kashi_7_grain_waffles,334,12.0,long_shelf,5
+Udi's Gluten Free Classic French Dinner Rolls,Udi's Gluten Free Classic French Dinner Rolls,gluten_free_products,Gluten Free Products,udi_s_gluten_free_classic_french_dinner_rolls,11,5.6,medium_shelf,9
+Canyon Bakehouse 7-Grain Gluten Free Bread,Canyon Bakehouse 7-Grain Gluten Free Bread,gluten_free_products,Gluten Free Products,canyon_bakehouse_7_grain_gluten_free_bread,12,6.3,medium_shelf,10
+Schär Gluten-Free Table Crackers,Schär Gluten-Free Table Crackers,gluten_free_products,Gluten Free Products,sch_r_gluten_free_table_crackers,23,9.5,medium_shelf,7
+Bob's Red Mill Gluten Free Oatmeal,Bob's Red Mill Gluten Free Oatmeal,gluten_free_products,Gluten Free Products,bob_s_red_mill_gluten_free_oatmeal,26,8.0,medium_shelf,7
+Pamela's Products Pancake Mix,Pamela's Products Pancake Mix,gluten_free_products,Gluten Free Products,pamela_s_products_pancake_mix,25,8.2,medium_shelf,10
+King Arthur Gluten Free Flour,King Arthur Gluten Free Flour,gluten_free_products,Gluten Free Products,king_arthur_gluten_free_flour,19,5.4,medium_shelf,2
+Simple Mills Almond Flour Pizza Dough,Simple Mills Almond Flour Pizza Dough,gluten_free_products,Gluten Free Products,simple_mills_almond_flour_pizza_dough,13,8.9,medium_shelf,2
+Enjoy Life Soft Baked Ovals Double Chocolate,Enjoy Life Soft Baked Ovals Double Chocolate,gluten_free_products,Gluten Free Products,enjoy_life_soft_baked_ovals_double_chocolate,10,5.7,medium_shelf,10
+Heinz Classic Sweet & Thick BBQ Sauce,Heinz Classic Sweet & Thick BBQ Sauce,grilling_items,Grilling Items,heinz_classic_sweet_thick_bbq_sauce,27,9.9,medium_shelf,11
+KC Masterpiece Original BBQ Sauce,KC Masterpiece Original BBQ Sauce,grilling_items,Grilling Items,kc_masterpiece_original_bbq_sauce,29,9.3,medium_shelf,1
+Bull's-Eye Original BBQ Sauce,Bull's-Eye Original BBQ Sauce,grilling_items,Grilling Items,bull_s_eye_original_bbq_sauce,14,7.6,medium_shelf,7
+Stubb's Smoky Mesquite Bar-B-Q Sauce,Stubb's Smoky Mesquite Bar-B-Q Sauce,grilling_items,Grilling Items,stubb_s_smoky_mesquite_bar_b_q_sauce,27,8.8,medium_shelf,12
+Traeger Fin & Feather Rub,Traeger Fin & Feather Rub,grilling_items,Grilling Items,traeger_fin_feather_rub,18,6.8,medium_shelf,6
+McCormick Grill Mates Montreal Steak,McCormick Grill Mates Montreal Steak,grilling_items,Grilling Items,mccormick_grill_mates_montreal_steak,16,8.1,medium_shelf,8
+Weber Kick'n Chicken Seasoning,Weber Kick'n Chicken Seasoning,grilling_items,Grilling Items,weber_kick_n_chicken_seasoning,20,3.9,medium_shelf,5
+Tone's Rosemary Garlic,Tone's Rosemary Garlic,grilling_items,Grilling Items,tone_s_rosemary_garlic,10,9.9,medium_shelf,7
+Bragg Nutritional Yeast Seasoning,Bragg Nutritional Yeast Seasoning,health_foods,Health Foods,bragg_nutritional_yeast_seasoning,18,8.6,medium_shelf,5
+Bob's Red Mill Hemp Seeds,Bob's Red Mill Hemp Seeds,health_foods,Health Foods,bob_s_red_mill_hemp_seeds,13,4.0,medium_shelf,5
+Navitas Organics Chia Seeds,Navitas Organics Chia Seeds,health_foods,Health Foods,navitas_organics_chia_seeds,24,4.7,medium_shelf,10
+Trader Joe's Organic Flaxseed,Trader Joe's Organic Flaxseed,health_foods,Health Foods,trader_joe_s_organic_flaxseed,20,7.0,medium_shelf,10
+Manitoba Harvest Hemp Hearts,Manitoba Harvest Hemp Hearts,health_foods,Health Foods,manitoba_harvest_hemp_hearts,27,8.3,medium_shelf,3
+Sunfood Organic Spirulina Powder,Sunfood Organic Spirulina Powder,health_foods,Health Foods,sunfood_organic_spirulina_powder,27,4.0,medium_shelf,1
+Vital Proteins Collagen Peptides,Vital Proteins Collagen Peptides,health_foods,Health Foods,vital_proteins_collagen_peptides,16,9.7,medium_shelf,12
+Garden of Life Raw Organic Protein,Garden of Life Raw Organic Protein,health_foods,Health Foods,garden_of_life_raw_organic_protein,15,5.4,medium_shelf,1
+Nathan's Famous Beef Franks,Nathan's Famous Beef Franks,hot_dogs,Hot Dogs,nathan_s_famous_beef_franks,28,10.0,medium_shelf,7
+Oscar Mayer Classic Beef Uncured Hot Dogs,Oscar Mayer Classic Beef Uncured Hot Dogs,hot_dogs,Hot Dogs,oscar_mayer_classic_beef_uncured_hot_dogs,20,8.3,medium_shelf,7
+Ball Park Beef Franks,Ball Park Beef Franks,hot_dogs,Hot Dogs,ball_park_beef_franks,11,6.4,medium_shelf,8
+Hebrew National Beef Franks,Hebrew National Beef Franks,hot_dogs,Hot Dogs,hebrew_national_beef_franks,10,5.5,medium_shelf,4
+Applegate Natural Uncured Beef Hot Dog,Applegate Natural Uncured Beef Hot Dog,hot_dogs,Hot Dogs,applegate_natural_uncured_beef_hot_dog,29,3.7,medium_shelf,2
+Sabrett All Beef Skinless Frankfurters,Sabrett All Beef Skinless Frankfurters,hot_dogs,Hot Dogs,sabrett_all_beef_skinless_frankfurters,21,3.6,medium_shelf,5
+Smart Dogs Lightlife,Smart Dogs Lightlife,hot_dogs,Hot Dogs,smart_dogs_lightlife,11,7.4,medium_shelf,12
+Field Roast Frankfurters,Field Roast Frankfurters,hot_dogs,Hot Dogs,field_roast_frankfurters,20,8.4,medium_shelf,7
+Klondike Original Bar,Klondike Original Bar,ice_cream_novelties,Ice Cream Novelties,klondike_original_bar,14,23.4,short_shelf,6
+Drumstick Vanilla,Drumstick Vanilla,ice_cream_novelties,Ice Cream Novelties,drumstick_vanilla,13,14.2,short_shelf,1
+Good Humor Strawberry Shortcake Bar,Good Humor Strawberry Shortcake Bar,ice_cream_novelties,Ice Cream Novelties,good_humor_strawberry_shortcake_bar,20,23.9,short_shelf,12
+Creamsicle Orange And Cream Bar,Creamsicle Orange And Cream Bar,ice_cream_novelties,Ice Cream Novelties,creamsicle_orange_and_cream_bar,20,13.0,short_shelf,12
+Magnum Classic Bar,Magnum Classic Bar,ice_cream_novelties,Ice Cream Novelties,magnum_classic_bar,8,24.0,short_shelf,1
+Popsicle Fudgsicle Original,Popsicle Fudgsicle Original,ice_cream_novelties,Ice Cream Novelties,popsicle_fudgsicle_original,9,23.6,short_shelf,9
+Edy's Fruit Bars Strawberry,Edy's Fruit Bars Strawberry,ice_cream_novelties,Ice Cream Novelties,edy_s_fruit_bars_strawberry,12,10.6,short_shelf,10
+Luigi's Real Italian Ice Cherry,Luigi's Real Italian Ice Cherry,ice_cream_novelties,Ice Cream Novelties,luigi_s_real_italian_ice_cherry,18,22.6,short_shelf,2
+Tasty Bite Channa Masala,Tasty Bite Channa Masala,indian_foods,Indian Foods,tasty_bite_channa_masala,22,7.9,medium_shelf,5
+Tasty Bite Palak Paneer,Tasty Bite Palak Paneer,indian_foods,Indian Foods,tasty_bite_palak_paneer,24,7.9,medium_shelf,9
+Amy's Indian Mattar Tofu,Amy's Indian Mattar Tofu,indian_foods,Indian Foods,amy_s_indian_mattar_tofu,21,8.9,medium_shelf,11
+Deep Indian Kitchen Chicken Tikka Masala,Deep Indian Kitchen Chicken Tikka Masala,indian_foods,Indian Foods,deep_indian_kitchen_chicken_tikka_masala,14,6.8,medium_shelf,7
+Ashoka Ready To Eat Dal Makhani,Ashoka Ready To Eat Dal Makhani,indian_foods,Indian Foods,ashoka_ready_to_eat_dal_makhani,26,6.5,medium_shelf,4
+Kitchens Of India Dal Bukhara,Kitchens Of India Dal Bukhara,indian_foods,Indian Foods,kitchens_of_india_dal_bukhara,10,5.6,medium_shelf,9
+Maya Kaimal Butter Chicken Simmer Sauce,Maya Kaimal Butter Chicken Simmer Sauce,indian_foods,Indian Foods,maya_kaimal_butter_chicken_simmer_sauce,23,9.1,medium_shelf,5
+Patak's Korma Curry Paste,Patak's Korma Curry Paste,indian_foods,Indian Foods,patak_s_korma_curry_paste,13,9.3,medium_shelf,9
+Kikkoman Teriyaki Marinade,Kikkoman Teriyaki Marinade,international_sauces,International Sauces,kikkoman_teriyaki_marinade,439,3.3,long_shelf,1
+Lee Kum Kee Panda Oyster Sauce,Lee Kum Kee Panda Oyster Sauce,international_sauces,International Sauces,lee_kum_kee_panda_oyster_sauce,716,8.2,long_shelf,12
+Prego Italian Sauce Flavored With Meat,Prego Italian Sauce Flavored With Meat,international_sauces,International Sauces,prego_italian_sauce_flavored_with_meat,476,4.2,long_shelf,4
+Ragu Old World Style Traditional,Ragu Old World Style Traditional,international_sauces,International Sauces,ragu_old_world_style_traditional,211,3.5,long_shelf,2
+La Choy Soy Sauce,La Choy Soy Sauce,international_sauces,International Sauces,la_choy_soy_sauce,415,3.6,long_shelf,2
+A.1. Original Steak Sauce,A.1. Original Steak Sauce,international_sauces,International Sauces,a_1_original_steak_sauce,543,6.6,long_shelf,12
+Worcestershire Sauce Lea & Perrins,Worcestershire Sauce Lea & Perrins,international_sauces,International Sauces,worcestershire_sauce_lea_perrins,211,4.2,long_shelf,12
+Maggi Seasoning Sauce,Maggi Seasoning Sauce,international_sauces,International Sauces,maggi_seasoning_sauce,318,3.9,long_shelf,6
+Quest Protein Bar Chocolate Chip Cookie Dough,Quest Protein Bar Chocolate Chip Cookie Dough,keto_products,Keto Products,quest_protein_bar_chocolate_chip_cookie_dough,10,3.7,medium_shelf,10
+Kind Keto Almond Butter Dark Chocolate,Kind Keto Almond Butter Dark Chocolate,keto_products,Keto Products,kind_keto_almond_butter_dark_chocolate,20,5.3,medium_shelf,3
+Atkins Endulge Chocolate Caramel Mousse,Atkins Endulge Chocolate Caramel Mousse,keto_products,Keto Products,atkins_endulge_chocolate_caramel_mousse,17,8.4,medium_shelf,12
+Lily's Dark Chocolate Bar,Lily's Dark Chocolate Bar,keto_products,Keto Products,lily_s_dark_chocolate_bar,20,3.2,medium_shelf,5
+ChocZero Milk Chocolate Bark,ChocZero Milk Chocolate Bark,keto_products,Keto Products,choczero_milk_chocolate_bark,15,6.4,medium_shelf,8
+SlimFast Keto Fat Bomb Peanut Butter Cup,SlimFast Keto Fat Bomb Peanut Butter Cup,keto_products,Keto Products,slimfast_keto_fat_bomb_peanut_butter_cup,23,7.2,medium_shelf,5
+Ratio Keto Friendly Yogurt,Ratio Keto Friendly Yogurt,keto_products,Keto Products,ratio_keto_friendly_yogurt,13,3.3,medium_shelf,2
+HighKey Grain Free Granola,HighKey Grain Free Granola,keto_products,Keto Products,highkey_grain_free_granola,28,5.1,medium_shelf,11
+Goya Sofrito Tomato Cooking Base,Goya Sofrito Tomato Cooking Base,latin_foods,Latin Foods,goya_sofrito_tomato_cooking_base,29,9.3,medium_shelf,10
+La Preferida Enchilada Sauce,La Preferida Enchilada Sauce,latin_foods,Latin Foods,la_preferida_enchilada_sauce,19,10.0,medium_shelf,7
+Old El Paso Taco Seasoning,Old El Paso Taco Seasoning,latin_foods,Latin Foods,old_el_paso_taco_seasoning,19,9.0,medium_shelf,12
+Ortega Taco Shells,Ortega Taco Shells,latin_foods,Latin Foods,ortega_taco_shells,27,4.2,medium_shelf,1
+Mission Tostadas,Mission Tostadas,latin_foods,Latin Foods,mission_tostadas,15,8.3,medium_shelf,6
+Goya Sazon Seasoning,Goya Sazon Seasoning,latin_foods,Latin Foods,goya_sazon_seasoning,26,6.2,medium_shelf,9
+Knorr Caldo De Tomate,Knorr Caldo De Tomate,latin_foods,Latin Foods,knorr_caldo_de_tomate,15,4.2,medium_shelf,5
+Iberia Yellow Rice Mix,Iberia Yellow Rice Mix,latin_foods,Latin Foods,iberia_yellow_rice_mix,24,6.4,medium_shelf,6
+Conchita Plantain Chips,Conchita Plantain Chips,latin_foods,Latin Foods,conchita_plantain_chips,16,9.5,medium_shelf,3
+Country Time Pink Lemonade,Country Time Pink Lemonade,lemonade,Lemonade,country_time_pink_lemonade,22,9.1,medium_shelf,10
+Minute Maid Pink Lemonade,Minute Maid Pink Lemonade,lemonade,Lemonade,minute_maid_pink_lemonade,28,5.7,medium_shelf,4
+Simply Lemonade With Raspberry,Simply Lemonade With Raspberry,lemonade,Lemonade,simply_lemonade_with_raspberry,11,3.4,medium_shelf,1
+Newman's Own Virgin Lemonade,Newman's Own Virgin Lemonade,lemonade,Lemonade,newman_s_own_virgin_lemonade,26,9.3,medium_shelf,3
+Honest Kids Organic Lemonade,Honest Kids Organic Lemonade,lemonade,Lemonade,honest_kids_organic_lemonade,20,9.9,medium_shelf,11
+Hubert's Original Lemonade,Hubert's Original Lemonade,lemonade,Lemonade,hubert_s_original_lemonade,17,6.6,medium_shelf,7
+Mike's Hard Lemonade,Mike's Hard Lemonade,lemonade,Lemonade,mike_s_hard_lemonade,17,4.6,medium_shelf,11
+Reeds Craft Ginger Beer,Reeds Craft Ginger Beer,lemonade,Lemonade,reeds_craft_ginger_beer,11,6.8,medium_shelf,7
+Lunchables Nachos Cheese Dip Salsa,Lunchables Nachos Cheese Dip Salsa,lunch_kits,Lunch Kits,lunchables_nachos_cheese_dip_salsa,15,7.9,medium_shelf,1
+Lunchables Pizza With Pepperoni,Lunchables Pizza With Pepperoni,lunch_kits,Lunch Kits,lunchables_pizza_with_pepperoni,22,6.4,medium_shelf,10
+Lunchables Turkey Cheddar Crackers,Lunchables Turkey Cheddar Crackers,lunch_kits,Lunch Kits,lunchables_turkey_cheddar_crackers,11,5.5,medium_shelf,6
+Lunchables Ham Cheddar Crackers,Lunchables Ham Cheddar Crackers,lunch_kits,Lunch Kits,lunchables_ham_cheddar_crackers,23,4.7,medium_shelf,2
+Armour Lunchmakers,Armour Lunchmakers,lunch_kits,Lunch Kits,armour_lunchmakers,29,5.1,medium_shelf,2
+Oscar Mayer P3 Portable Protein,Oscar Mayer P3 Portable Protein,lunch_kits,Lunch Kits,oscar_mayer_p3_portable_protein,29,3.3,medium_shelf,1
+Sargento Balanced Breaks,Sargento Balanced Breaks,lunch_kits,Lunch Kits,sargento_balanced_breaks,27,4.8,medium_shelf,7
+Hormel Natural Choice Snack Pack,Hormel Natural Choice Snack Pack,lunch_kits,Lunch Kits,hormel_natural_choice_snack_pack,26,9.7,medium_shelf,9
+Pure Vermont Maple Syrup Grade A,Pure Vermont Maple Syrup Grade A,maple_syrup,Maple Syrup,pure_vermont_maple_syrup_grade_a,13,3.1,medium_shelf,2
+Trader Joe's 100% Pure Maple Syrup,Trader Joe's 100% Pure Maple Syrup,maple_syrup,Maple Syrup,trader_joe_s_100_pure_maple_syrup,29,8.1,medium_shelf,7
+Coombs Family Farms Organic Maple Syrup,Coombs Family Farms Organic Maple Syrup,maple_syrup,Maple Syrup,coombs_family_farms_organic_maple_syrup,14,8.5,medium_shelf,11
+Anderson's Pure Maple Syrup,Anderson's Pure Maple Syrup,maple_syrup,Maple Syrup,anderson_s_pure_maple_syrup,27,5.8,medium_shelf,11
+Log Cabin Original Syrup,Log Cabin Original Syrup,maple_syrup,Maple Syrup,log_cabin_original_syrup,27,7.2,medium_shelf,3
+Mrs. Butterworth's Original Syrup,Mrs. Butterworth's Original Syrup,maple_syrup,Maple Syrup,mrs_butterworth_s_original_syrup,22,4.5,medium_shelf,4
+Hungry Jack Lite Syrup,Hungry Jack Lite Syrup,maple_syrup,Maple Syrup,hungry_jack_lite_syrup,20,7.7,medium_shelf,9
+Maple Grove Farms Sugar Free,Maple Grove Farms Sugar Free,maple_syrup,Maple Syrup,maple_grove_farms_sugar_free,14,8.0,medium_shelf,10
+Taylor Farms Stir Fry Kit,Taylor Farms Stir Fry Kit,meal_prep_kits,Meal Prep Kits,taylor_farms_stir_fry_kit,20,8.1,medium_shelf,8
+Mann's Nourish Bowl Tuscan Style,Mann's Nourish Bowl Tuscan Style,meal_prep_kits,Meal Prep Kits,mann_s_nourish_bowl_tuscan_style,15,6.4,medium_shelf,8
+Ready Pac Bistro Bowl,Ready Pac Bistro Bowl,meal_prep_kits,Meal Prep Kits,ready_pac_bistro_bowl,12,9.8,medium_shelf,4
+Eat Smart 5-Minute Salad,Eat Smart 5-Minute Salad,meal_prep_kits,Meal Prep Kits,eat_smart_5_minute_salad,12,9.1,medium_shelf,12
+Trader Joe's Shaved Brussels Sprouts,Trader Joe's Shaved Brussels Sprouts,meal_prep_kits,Meal Prep Kits,trader_joe_s_shaved_brussels_sprouts,26,7.0,medium_shelf,3
+Good & Gather Fajita Kit,Good & Gather Fajita Kit,meal_prep_kits,Meal Prep Kits,good_gather_fajita_kit,28,7.8,medium_shelf,8
+Dole Power Up Bowls Grain Bowl,Dole Power Up Bowls Grain Bowl,meal_prep_kits,Meal Prep Kits,dole_power_up_bowls_grain_bowl,12,4.9,medium_shelf,11
+Reser's Main Street Bistro Quinoa Bowl,Reser's Main Street Bistro Quinoa Bowl,meal_prep_kits,Meal Prep Kits,reser_s_main_street_bistro_quinoa_bowl,10,9.6,medium_shelf,8
+Quorn Meatless Pieces,Quorn Meatless Pieces,meat_substitutes,Meat Substitutes,quorn_meatless_pieces,4,14.7,perishable,1
+Quorn Fishless Sticks,Quorn Fishless Sticks,meat_substitutes,Meat Substitutes,quorn_fishless_sticks,3,18.4,perishable,3
+Lightlife Smart Ground Original,Lightlife Smart Ground Original,meat_substitutes,Meat Substitutes,lightlife_smart_ground_original,4,9.3,perishable,4
+Yves Meatless Ground,Yves Meatless Ground,meat_substitutes,Meat Substitutes,yves_meatless_ground,7,19.7,perishable,12
+Trader Joe's Chicken-less Mandarin Orange Morsels,Trader Joe's Chicken-less Mandarin Orange Morsels,meat_substitutes,Meat Substitutes,trader_joe_s_chicken_less_mandarin_orange_morsels,5,6.6,perishable,4
+Daring Original Chicken Pieces,Daring Original Chicken Pieces,meat_substitutes,Meat Substitutes,daring_original_chicken_pieces,6,13.0,perishable,3
+Abbot's Butcher Ground Chorizo,Abbot's Butcher Ground Chorizo,meat_substitutes,Meat Substitutes,abbot_s_butcher_ground_chorizo,4,6.7,perishable,8
+Meati Classic Cutlet,Meati Classic Cutlet,meat_substitutes,Meat Substitutes,meati_classic_cutlet,7,7.8,perishable,6
+Cacique Oaxaca Cheese,Cacique Oaxaca Cheese,mexican_cheese,Mexican Cheese,cacique_oaxaca_cheese,11,21.0,short_shelf,5
+Cacique Manchego Cheese,Cacique Manchego Cheese,mexican_cheese,Mexican Cheese,cacique_manchego_cheese,12,9.1,short_shelf,2
+Cacique Cotija Cheese Crumbles,Cacique Cotija Cheese Crumbles,mexican_cheese,Mexican Cheese,cacique_cotija_cheese_crumbles,13,14.5,short_shelf,2
+Cacique Queso Fresco,Cacique Queso Fresco,mexican_cheese,Mexican Cheese,cacique_queso_fresco,19,11.3,short_shelf,4
+El Mexicano Queso Blanco,El Mexicano Queso Blanco,mexican_cheese,Mexican Cheese,el_mexicano_queso_blanco,10,22.5,short_shelf,7
+Borden Mexican 4 Cheese Blend,Borden Mexican 4 Cheese Blend,mexican_cheese,Mexican Cheese,borden_mexican_4_cheese_blend,17,9.4,short_shelf,1
+Kraft Mexican Style Four Cheese,Kraft Mexican Style Four Cheese,mexican_cheese,Mexican Cheese,kraft_mexican_style_four_cheese,11,13.7,short_shelf,9
+Tillamook Mexican Style Blend,Tillamook Mexican Style Blend,mexican_cheese,Mexican Cheese,tillamook_mexican_style_blend,19,22.6,short_shelf,4
+Maruchan Ramen Chicken Flavor,Maruchan Ramen Chicken Flavor,noodles,Noodles,maruchan_ramen_chicken_flavor,17,7.8,medium_shelf,9
+Nissin Top Ramen Soy Sauce,Nissin Top Ramen Soy Sauce,noodles,Noodles,nissin_top_ramen_soy_sauce,20,7.9,medium_shelf,8
+Nissin Cup Noodles Shrimp,Nissin Cup Noodles Shrimp,noodles,Noodles,nissin_cup_noodles_shrimp,27,9.9,medium_shelf,6
+Annie Chun's Pad Thai Noodles,Annie Chun's Pad Thai Noodles,noodles,Noodles,annie_chun_s_pad_thai_noodles,23,3.2,medium_shelf,8
+Lotus Foods Ramen Millet Brown Rice,Lotus Foods Ramen Millet Brown Rice,noodles,Noodles,lotus_foods_ramen_millet_brown_rice,11,7.7,medium_shelf,4
+Miracle Noodle Angel Hair,Miracle Noodle Angel Hair,noodles,Noodles,miracle_noodle_angel_hair,12,8.2,medium_shelf,3
+King Soba Brown Rice Noodles,King Soba Brown Rice Noodles,noodles,Noodles,king_soba_brown_rice_noodles,29,8.2,medium_shelf,1
+Thai Kitchen Stir Fry Rice Noodles,Thai Kitchen Stir Fry Rice Noodles,noodles,Noodles,thai_kitchen_stir_fry_rice_noodles,10,8.0,medium_shelf,7
+Elmhurst Milked Almonds,Elmhurst Milked Almonds,nut_milks,Nut Milks,elmhurst_milked_almonds,11,9.2,short_shelf,7
+Three Trees Organic Almond Milk,Three Trees Organic Almond Milk,nut_milks,Nut Milks,three_trees_organic_almond_milk,20,9.4,short_shelf,2
+Malk Organic Almond Milk,Malk Organic Almond Milk,nut_milks,Nut Milks,malk_organic_almond_milk,7,21.1,short_shelf,8
+JOI Oat Milk Concentrate,JOI Oat Milk Concentrate,nut_milks,Nut Milks,joi_oat_milk_concentrate,9,18.4,short_shelf,3
+Forager Project Organic Oat Drinkable Yogurt,Forager Project Organic Oat Drinkable Yogurt,nut_milks,Nut Milks,forager_project_organic_oat_drinkable_yogurt,9,12.5,short_shelf,6
+Sunflower Dream Unsweetened,Sunflower Dream Unsweetened,nut_milks,Nut Milks,sunflower_dream_unsweetened,8,8.2,short_shelf,6
+Tempt Hemp Milk,Tempt Hemp Milk,nut_milks,Nut Milks,tempt_hemp_milk,13,17.1,short_shelf,12
+Pacific Foods Hemp Original,Pacific Foods Hemp Original,nut_milks,Nut Milks,pacific_foods_hemp_original,15,9.5,short_shelf,8
+Earthbound Farm Organic Baby Spinach,Earthbound Farm Organic Baby Spinach,organic_produce,Organic Produce,earthbound_farm_organic_baby_spinach,5,28.7,perishable,3
+Organic Girl 100% Organic Baby Arugula,Organic Girl 100% Organic Baby Arugula,organic_produce,Organic Produce,organic_girl_100_organic_baby_arugula,4,18.5,perishable,4
+Cal-Organic Farms Carrots,Cal-Organic Farms Carrots,organic_produce,Organic Produce,cal_organic_farms_carrots,8,30.2,perishable,10
+Organic Valley Celery,Organic Valley Celery,organic_produce,Organic Produce,organic_valley_celery,8,12.4,perishable,2
+Driscoll's Organic Strawberries,Driscoll's Organic Strawberries,organic_produce,Organic Produce,driscoll_s_organic_strawberries,7,22.3,perishable,9
+Dole Organic Bananas,Dole Organic Bananas,organic_produce,Organic Produce,dole_organic_bananas,4,12.5,perishable,5
+Earthbound Farm Organic Kale,Earthbound Farm Organic Kale,organic_produce,Organic Produce,earthbound_farm_organic_kale,7,29.5,perishable,11
+Mann's Organic Broccoli Florets,Mann's Organic Broccoli Florets,organic_produce,Organic Produce,mann_s_organic_broccoli_florets,7,24.0,perishable,5
+Kodiak Cakes Power Cakes Buttermilk,Kodiak Cakes Power Cakes Buttermilk,pancake_mix,Pancake Mix,kodiak_cakes_power_cakes_buttermilk,4,11.3,perishable,12
+Hungry Jack Easy Fluffy Pancake Mix,Hungry Jack Easy Fluffy Pancake Mix,pancake_mix,Pancake Mix,hungry_jack_easy_fluffy_pancake_mix,6,21.5,perishable,2
+Aunt Jemima Original Pancake Mix,Aunt Jemima Original Pancake Mix,pancake_mix,Pancake Mix,aunt_jemima_original_pancake_mix,4,17.5,perishable,3
+Bob's Red Mill Gluten Free Pancake Mix,Bob's Red Mill Gluten Free Pancake Mix,pancake_mix,Pancake Mix,bob_s_red_mill_gluten_free_pancake_mix,5,12.7,perishable,6
+Simple Mills Pancake Waffle Mix,Simple Mills Pancake Waffle Mix,pancake_mix,Pancake Mix,simple_mills_pancake_waffle_mix,3,20.0,perishable,12
+Birch Benders Classic Pancake Mix,Birch Benders Classic Pancake Mix,pancake_mix,Pancake Mix,birch_benders_classic_pancake_mix,5,13.3,perishable,11
+King Arthur Classic Pancake Mix,King Arthur Classic Pancake Mix,pancake_mix,Pancake Mix,king_arthur_classic_pancake_mix,6,21.2,perishable,5
+Stonewall Kitchen Farmhouse Pancake Mix,Stonewall Kitchen Farmhouse Pancake Mix,pancake_mix,Pancake Mix,stonewall_kitchen_farmhouse_pancake_mix,5,12.2,perishable,11
+Rao's Homemade Arrabbiata,Rao's Homemade Arrabbiata,pasta_sauce,Pasta Sauce,rao_s_homemade_arrabbiata,321,9.9,long_shelf,9
+Victoria White Linen Marinara,Victoria White Linen Marinara,pasta_sauce,Pasta Sauce,victoria_white_linen_marinara,725,2.5,long_shelf,12
+Carbone Marinara Sauce,Carbone Marinara Sauce,pasta_sauce,Pasta Sauce,carbone_marinara_sauce,575,7.9,long_shelf,12
+Michael Angelo's Four Cheese Sauce,Michael Angelo's Four Cheese Sauce,pasta_sauce,Pasta Sauce,michael_angelo_s_four_cheese_sauce,413,4.3,long_shelf,10
+Cucina Antica Tomato Basil,Cucina Antica Tomato Basil,pasta_sauce,Pasta Sauce,cucina_antica_tomato_basil,408,5.4,long_shelf,8
+Muir Glen Organic Tomato Basil Pasta Sauce,Muir Glen Organic Tomato Basil Pasta Sauce,pasta_sauce,Pasta Sauce,muir_glen_organic_tomato_basil_pasta_sauce,608,7.1,long_shelf,5
+Monte Bene Tomato Basil,Monte Bene Tomato Basil,pasta_sauce,Pasta Sauce,monte_bene_tomato_basil,276,2.4,long_shelf,7
+Organicgirl Pizza Sauce,Organicgirl Pizza Sauce,pasta_sauce,Pasta Sauce,organicgirl_pizza_sauce,531,3.8,long_shelf,10
+Barilla Basil Pesto,Barilla Basil Pesto,pesto,Pesto,barilla_basil_pesto,24,3.7,medium_shelf,1
+DeLallo Traditional Basil Pesto,DeLallo Traditional Basil Pesto,pesto,Pesto,delallo_traditional_basil_pesto,20,8.2,medium_shelf,5
+Sacla' Classic Basil Pesto,Sacla' Classic Basil Pesto,pesto,Pesto,sacla_classic_basil_pesto,27,4.5,medium_shelf,8
+Kirkland Signature Basil Pesto,Kirkland Signature Basil Pesto,pesto,Pesto,kirkland_signature_basil_pesto,19,6.5,medium_shelf,10
+Trader Joe's Vegan Kale Cashew Pesto,Trader Joe's Vegan Kale Cashew Pesto,pesto,Pesto,trader_joe_s_vegan_kale_cashew_pesto,19,5.3,medium_shelf,3
+Buitoni Pesto With Basil,Buitoni Pesto With Basil,pesto,Pesto,buitoni_pesto_with_basil,15,4.7,medium_shelf,4
+Seggiano Raw Basil Pesto,Seggiano Raw Basil Pesto,pesto,Pesto,seggiano_raw_basil_pesto,28,9.5,medium_shelf,5
+Amore Sun-Dried Tomato Paste,Amore Sun-Dried Tomato Paste,pesto,Pesto,amore_sun_dried_tomato_paste,16,6.6,medium_shelf,10
+Rick's Picks Classic Slices,Rick's Picks Classic Slices,pickled_products,Pickled Products,rick_s_picks_classic_slices,562,7.2,long_shelf,5
+Grillo's Pickles Italian Dill Spears,Grillo's Pickles Italian Dill Spears,pickled_products,Pickled Products,grillo_s_pickles_italian_dill_spears,405,7.6,long_shelf,2
+Bubbies Kosher Dill Pickles,Bubbies Kosher Dill Pickles,pickled_products,Pickled Products,bubbies_kosher_dill_pickles,694,8.6,long_shelf,12
+Wickles Wicked Pickle Chips,Wickles Wicked Pickle Chips,pickled_products,Pickled Products,wickles_wicked_pickle_chips,701,4.1,long_shelf,5
+Trader Joe's Bread And Butter Chips,Trader Joe's Bread And Butter Chips,pickled_products,Pickled Products,trader_joe_s_bread_and_butter_chips,196,2.6,long_shelf,8
+Mt Olive Sweet Relish,Mt Olive Sweet Relish,pickled_products,Pickled Products,mt_olive_sweet_relish,726,5.7,long_shelf,5
+Vlasic Bread And Butter Chips,Vlasic Bread And Butter Chips,pickled_products,Pickled Products,vlasic_bread_and_butter_chips,512,3.4,long_shelf,9
+B&G Hot Sandwich Pickles,B&G Hot Sandwich Pickles,pickled_products,Pickled Products,b_g_hot_sandwich_pickles,220,2.2,long_shelf,10
+Kite Hill Greek Style Artisan Almond Milk Yogurt,Kite Hill Greek Style Artisan Almond Milk Yogurt,plant_protein,Plant Protein,kite_hill_greek_style_artisan_almond_milk_yogurt,19,9.4,medium_shelf,3
+Forager Project Organic Dairy-Free Yogurt,Forager Project Organic Dairy-Free Yogurt,plant_protein,Plant Protein,forager_project_organic_dairy_free_yogurt,10,7.4,medium_shelf,2
+So Delicious Unsweetened Coconut Yogurt,So Delicious Unsweetened Coconut Yogurt,plant_protein,Plant Protein,so_delicious_unsweetened_coconut_yogurt,20,5.9,medium_shelf,4
+Silk Almondmilk Yogurt Alternative,Silk Almondmilk Yogurt Alternative,plant_protein,Plant Protein,silk_almondmilk_yogurt_alternative,13,4.0,medium_shelf,2
+Chobani Non-Dairy Coconut Yogurt,Chobani Non-Dairy Coconut Yogurt,plant_protein,Plant Protein,chobani_non_dairy_coconut_yogurt,17,8.3,medium_shelf,11
+Nancy's Organic Oat Milk Yogurt,Nancy's Organic Oat Milk Yogurt,plant_protein,Plant Protein,nancy_s_organic_oat_milk_yogurt,16,6.7,medium_shelf,12
+Lavva Pili Nut Yogurt,Lavva Pili Nut Yogurt,plant_protein,Plant Protein,lavva_pili_nut_yogurt,22,4.2,medium_shelf,2
+GT's Cocoyo Living Coconut Yogurt,GT's Cocoyo Living Coconut Yogurt,plant_protein,Plant Protein,gt_s_cocoyo_living_coconut_yogurt,26,9.9,medium_shelf,4
+Snyder's Of Hanover Honey Mustard,Snyder's Of Hanover Honey Mustard,pretzels,Pretzels,snyder_s_of_hanover_honey_mustard,28,9.7,medium_shelf,12
+Snyder's Mini Pretzels,Snyder's Mini Pretzels,pretzels,Pretzels,snyder_s_mini_pretzels,16,9.5,medium_shelf,8
+Rold Gold Classic Tiny Twists,Rold Gold Classic Tiny Twists,pretzels,Pretzels,rold_gold_classic_tiny_twists,21,8.8,medium_shelf,6
+Utz Sourdough Pretzels,Utz Sourdough Pretzels,pretzels,Pretzels,utz_sourdough_pretzels,10,6.7,medium_shelf,2
+Newman's Own Organic Pretzels,Newman's Own Organic Pretzels,pretzels,Pretzels,newman_s_own_organic_pretzels,17,5.1,medium_shelf,5
+Quinn Snacks Sea Salt Pretzels,Quinn Snacks Sea Salt Pretzels,pretzels,Pretzels,quinn_snacks_sea_salt_pretzels,29,7.6,medium_shelf,5
+Unique Pretzel Extra Dark Splits,Unique Pretzel Extra Dark Splits,pretzels,Pretzels,unique_pretzel_extra_dark_splits,12,4.1,medium_shelf,7
+Auntie Anne's Pretzel Nuggets,Auntie Anne's Pretzel Nuggets,pretzels,Pretzels,auntie_anne_s_pretzel_nuggets,27,7.3,medium_shelf,8
+Jell-O Chocolate Instant Pudding,Jell-O Chocolate Instant Pudding,pudding,Pudding,jell_o_chocolate_instant_pudding,23,3.5,medium_shelf,6
+Jell-O Vanilla Instant Pudding,Jell-O Vanilla Instant Pudding,pudding,Pudding,jell_o_vanilla_instant_pudding,15,3.1,medium_shelf,3
+Kozy Shack Rice Pudding,Kozy Shack Rice Pudding,pudding,Pudding,kozy_shack_rice_pudding,25,8.0,medium_shelf,6
+Snack Pack Chocolate Pudding,Snack Pack Chocolate Pudding,pudding,Pudding,snack_pack_chocolate_pudding,15,5.4,medium_shelf,8
+Zen Matcha Chia Pudding,Zen Matcha Chia Pudding,pudding,Pudding,zen_matcha_chia_pudding,27,7.9,medium_shelf,6
+Chia Pod Mango Chia Pudding,Chia Pod Mango Chia Pudding,pudding,Pudding,chia_pod_mango_chia_pudding,11,8.5,medium_shelf,11
+Cadia Organic Tapioca Pudding,Cadia Organic Tapioca Pudding,pudding,Pudding,cadia_organic_tapioca_pudding,12,8.8,medium_shelf,9
+Del Monte Fruit Cup Diced Peaches,Del Monte Fruit Cup Diced Peaches,pudding,Pudding,del_monte_fruit_cup_diced_peaches,25,7.3,medium_shelf,11
+Quaker Rice Cakes Apple Cinnamon,Quaker Rice Cakes Apple Cinnamon,rice_cakes,Rice Cakes,quaker_rice_cakes_apple_cinnamon,4,19.9,perishable,4
+Quaker Rice Cakes Butter Popcorn,Quaker Rice Cakes Butter Popcorn,rice_cakes,Rice Cakes,quaker_rice_cakes_butter_popcorn,3,17.2,perishable,6
+Lundberg Organic Rice Cakes Sea Salt,Lundberg Organic Rice Cakes Sea Salt,rice_cakes,Rice Cakes,lundberg_organic_rice_cakes_sea_salt,5,21.0,perishable,2
+Thims Mini Arrowroot Puffs,Thims Mini Arrowroot Puffs,rice_cakes,Rice Cakes,thims_mini_arrowroot_puffs,4,20.6,perishable,12
+PopCorners White Cheddar,PopCorners White Cheddar,rice_cakes,Rice Cakes,popcorners_white_cheddar,5,8.6,perishable,6
+Good Thins Corn Original,Good Thins Corn Original,rice_cakes,Rice Cakes,good_thins_corn_original,5,11.7,perishable,10
+Ryvita Sesame Rye Crispbread,Ryvita Sesame Rye Crispbread,rice_cakes,Rice Cakes,ryvita_sesame_rye_crispbread,6,13.4,perishable,2
+Trader Joe's Baked Cheese Bites,Trader Joe's Baked Cheese Bites,rice_cakes,Rice Cakes,trader_joe_s_baked_cheese_bites,3,11.5,perishable,9
+Tostitos Chunky Salsa Mild,Tostitos Chunky Salsa Mild,salsa,Salsa,tostitos_chunky_salsa_mild,21,4.2,medium_shelf,6
+Tostitos Restaurant Style Salsa,Tostitos Restaurant Style Salsa,salsa,Salsa,tostitos_restaurant_style_salsa,29,9.1,medium_shelf,11
+Newman's Own Medium Chunky Salsa,Newman's Own Medium Chunky Salsa,salsa,Salsa,newman_s_own_medium_chunky_salsa,19,3.2,medium_shelf,6
+Green Mountain Gringo Original,Green Mountain Gringo Original,salsa,Salsa,green_mountain_gringo_original,25,4.3,medium_shelf,2
+Frontera Grill Red Tomato Salsa,Frontera Grill Red Tomato Salsa,salsa,Salsa,frontera_grill_red_tomato_salsa,11,8.3,medium_shelf,10
+Desert Pepper Trading Corn Black Bean Salsa,Desert Pepper Trading Corn Black Bean Salsa,salsa,Salsa,desert_pepper_trading_corn_black_bean_salsa,27,4.6,medium_shelf,9
+Pace Picante Sauce Medium,Pace Picante Sauce Medium,salsa,Salsa,pace_picante_sauce_medium,21,4.8,medium_shelf,2
+Herdez Salsa Verde,Herdez Salsa Verde,salsa,Salsa,herdez_salsa_verde,27,9.8,medium_shelf,2
+Trader Joe's Salsa Especial,Trader Joe's Salsa Especial,salsa,Salsa,trader_joe_s_salsa_especial,25,8.3,medium_shelf,5
+Fishwife Atlantic Smoked Salmon,Fishwife Atlantic Smoked Salmon,seafood_snacks,Seafood Snacks,fishwife_atlantic_smoked_salmon,9,11.7,perishable,9
+King Oscar Sardines In Olive Oil,King Oscar Sardines In Olive Oil,seafood_snacks,Seafood Snacks,king_oscar_sardines_in_olive_oil,3,7.0,perishable,10
+Season Sardines In Water,Season Sardines In Water,seafood_snacks,Seafood Snacks,season_sardines_in_water,8,9.0,perishable,1
+Bar Harbor Lobster Bisque,Bar Harbor Lobster Bisque,seafood_snacks,Seafood Snacks,bar_harbor_lobster_bisque,4,19.7,perishable,5
+Vital Choice Wild Salmon,Vital Choice Wild Salmon,seafood_snacks,Seafood Snacks,vital_choice_wild_salmon,4,16.9,perishable,12
+Safe Catch Ahi Tuna,Safe Catch Ahi Tuna,seafood_snacks,Seafood Snacks,safe_catch_ahi_tuna,5,6.0,perishable,11
+Tonnino Tuna Fillets,Tonnino Tuna Fillets,seafood_snacks,Seafood Snacks,tonnino_tuna_fillets,7,15.6,perishable,1
+Wild Planet Skipjack Tuna,Wild Planet Skipjack Tuna,seafood_snacks,Seafood Snacks,wild_planet_skipjack_tuna,7,10.6,perishable,9
+Daisy Brand Sour Cream,Daisy Brand Sour Cream,sour_cream,Sour Cream,daisy_brand_sour_cream,20,20.2,short_shelf,11
+Breakstone's All Natural Sour Cream,Breakstone's All Natural Sour Cream,sour_cream,Sour Cream,breakstone_s_all_natural_sour_cream,7,13.0,short_shelf,1
+Knudsen Hampshire Sour Cream,Knudsen Hampshire Sour Cream,sour_cream,Sour Cream,knudsen_hampshire_sour_cream,9,10.2,short_shelf,5
+Tillamook Sour Cream,Tillamook Sour Cream,sour_cream,Sour Cream,tillamook_sour_cream,12,8.3,short_shelf,5
+Organic Valley Organic Sour Cream,Organic Valley Organic Sour Cream,sour_cream,Sour Cream,organic_valley_organic_sour_cream,18,13.0,short_shelf,10
+Trader Joe's Light Sour Cream,Trader Joe's Light Sour Cream,sour_cream,Sour Cream,trader_joe_s_light_sour_cream,14,22.6,short_shelf,10
+Tofutti Sour Supreme,Tofutti Sour Supreme,sour_cream,Sour Cream,tofutti_sour_supreme,14,23.2,short_shelf,7
+Forager Project Organic Sour Cream,Forager Project Organic Sour Cream,sour_cream,Sour Cream,forager_project_organic_sour_cream,17,19.6,short_shelf,7
+LaCroix Lime,LaCroix Lime,sparkling_water,Sparkling Water,lacroix_lime,280,16.5,long_shelf,2
+LaCroix Passionfruit,LaCroix Passionfruit,sparkling_water,Sparkling Water,lacroix_passionfruit,191,8.7,long_shelf,9
+Spindrift Grapefruit,Spindrift Grapefruit,sparkling_water,Sparkling Water,spindrift_grapefruit,141,11.0,long_shelf,6
+Bubly Watermelon,Bubly Watermelon,sparkling_water,Sparkling Water,bubly_watermelon,233,18.6,long_shelf,12
+Bubly Strawberry,Bubly Strawberry,sparkling_water,Sparkling Water,bubly_strawberry,335,19.8,long_shelf,1
+Polar Cranberry Lime Seltzer,Polar Cranberry Lime Seltzer,sparkling_water,Sparkling Water,polar_cranberry_lime_seltzer,266,12.2,long_shelf,9
+Waterloo Lemon Sparkling Water,Waterloo Lemon Sparkling Water,sparkling_water,Sparkling Water,waterloo_lemon_sparkling_water,133,16.9,long_shelf,7
+Nixie Peach Ginger Sparkling Water,Nixie Peach Ginger Sparkling Water,sparkling_water,Sparkling Water,nixie_peach_ginger_sparkling_water,227,19.1,long_shelf,7
+Perrier Flavored Sparkling Water,Perrier Flavored Sparkling Water,sparkling_water,Sparkling Water,perrier_flavored_sparkling_water,214,20.0,long_shelf,12
+Boursin Garlic & Fine Herbs,Boursin Garlic & Fine Herbs,spreads,Spreads,boursin_garlic_fine_herbs,21,5.1,medium_shelf,11
+Kite Hill Chive Cream Cheese,Kite Hill Chive Cream Cheese,spreads,Spreads,kite_hill_chive_cream_cheese,21,7.6,medium_shelf,5
+Miyoko's Creamery European Style Cultured Butter,Miyoko's Creamery European Style Cultured Butter,spreads,Spreads,miyoko_s_creamery_european_style_cultured_butter,29,5.7,medium_shelf,6
+Violife Just Like Cream Cheese,Violife Just Like Cream Cheese,spreads,Spreads,violife_just_like_cream_cheese,16,6.3,medium_shelf,5
+Trader Joe's Whipped Cream Cheese,Trader Joe's Whipped Cream Cheese,spreads,Spreads,trader_joe_s_whipped_cream_cheese,18,6.2,medium_shelf,1
+Philadelphia Chive & Onion,Philadelphia Chive & Onion,spreads,Spreads,philadelphia_chive_onion,22,4.9,medium_shelf,4
+Tofutti Better Than Cream Cheese,Tofutti Better Than Cream Cheese,spreads,Spreads,tofutti_better_than_cream_cheese,27,3.1,medium_shelf,4
+Go Veggie Lactose Free Cream Cheese,Go Veggie Lactose Free Cream Cheese,spreads,Spreads,go_veggie_lactose_free_cream_cheese,24,8.4,medium_shelf,7
+A.1. Classic Steak Sauce,A.1. Classic Steak Sauce,steak_sauce,Steak Sauce,a_1_classic_steak_sauce,235,15.7,long_shelf,8
+Lea & Perrins Worcestershire,Lea & Perrins Worcestershire,steak_sauce,Steak Sauce,lea_perrins_worcestershire,319,17.8,long_shelf,12
+Grey Poupon Country Dijon,Grey Poupon Country Dijon,steak_sauce,Steak Sauce,grey_poupon_country_dijon,238,8.1,long_shelf,12
+Heinz 57 Sauce,Heinz 57 Sauce,steak_sauce,Steak Sauce,heinz_57_sauce,356,9.3,long_shelf,9
+Stubb's Beef Marinade,Stubb's Beef Marinade,steak_sauce,Steak Sauce,stubb_s_beef_marinade,189,14.3,long_shelf,8
+Allegro Game Tame Marinade,Allegro Game Tame Marinade,steak_sauce,Steak Sauce,allegro_game_tame_marinade,151,19.1,long_shelf,4
+Dale's Seasoning Original,Dale's Seasoning Original,steak_sauce,Steak Sauce,dale_s_seasoning_original,323,12.6,long_shelf,4
+Moore's Original Marinade,Moore's Original Marinade,steak_sauce,Steak Sauce,moore_s_original_marinade,192,8.8,long_shelf,6
+Nature Made Vitamin C,Nature Made Vitamin C,supplements,Supplements,nature_made_vitamin_c,26,7.2,medium_shelf,12
+Nature Made Fish Oil,Nature Made Fish Oil,supplements,Supplements,nature_made_fish_oil,22,9.7,medium_shelf,10
+Spring Valley Vitamin D3,Spring Valley Vitamin D3,supplements,Supplements,spring_valley_vitamin_d3,20,9.1,medium_shelf,5
+SmartyPants Adult Complete,SmartyPants Adult Complete,supplements,Supplements,smartypants_adult_complete,11,9.3,medium_shelf,7
+Gummy Vitamins Centrum,Gummy Vitamins Centrum,supplements,Supplements,gummy_vitamins_centrum,25,5.9,medium_shelf,3
+One A Day Men's Multivitamin,One A Day Men's Multivitamin,supplements,Supplements,one_a_day_men_s_multivitamin,11,4.8,medium_shelf,2
+Garden of Life Vitamin Code Women,Garden of Life Vitamin Code Women,supplements,Supplements,garden_of_life_vitamin_code_women,29,9.1,medium_shelf,7
+MegaFood Multi For Women,MegaFood Multi For Women,supplements,Supplements,megafood_multi_for_women,27,8.5,medium_shelf,4
+Hershey's Chocolate Syrup,Hershey's Chocolate Syrup,syrups_toppings,Syrups & Toppings,hershey_s_chocolate_syrup,16,9.0,medium_shelf,5
+Hershey's Caramel Syrup,Hershey's Caramel Syrup,syrups_toppings,Syrups & Toppings,hershey_s_caramel_syrup,12,5.7,medium_shelf,11
+Smucker's Strawberry Ice Cream Topping,Smucker's Strawberry Ice Cream Topping,syrups_toppings,Syrups & Toppings,smucker_s_strawberry_ice_cream_topping,27,5.0,medium_shelf,2
+Ghirardelli Chocolate Sauce,Ghirardelli Chocolate Sauce,syrups_toppings,Syrups & Toppings,ghirardelli_chocolate_sauce,19,4.7,medium_shelf,8
+Torani Vanilla Syrup,Torani Vanilla Syrup,syrups_toppings,Syrups & Toppings,torani_vanilla_syrup,12,9.1,medium_shelf,9
+Monin Caramel Syrup,Monin Caramel Syrup,syrups_toppings,Syrups & Toppings,monin_caramel_syrup,19,9.4,medium_shelf,6
+Jordan's Skinny Syrups,Jordan's Skinny Syrups,syrups_toppings,Syrups & Toppings,jordan_s_skinny_syrups,14,5.6,medium_shelf,9
+DaVinci Gourmet Classic Hazelnut,DaVinci Gourmet Classic Hazelnut,syrups_toppings,Syrups & Toppings,davinci_gourmet_classic_hazelnut,18,9.1,medium_shelf,2
+Tostitos Original Restaurant Style,Tostitos Original Restaurant Style,tortilla_chips,Tortilla Chips,tostitos_original_restaurant_style,205,12.6,long_shelf,12
+Santitas White Corn Tortilla Chips,Santitas White Corn Tortilla Chips,tortilla_chips,Tortilla Chips,santitas_white_corn_tortilla_chips,254,14.0,long_shelf,12
+Mission Strips Tortilla Chips,Mission Strips Tortilla Chips,tortilla_chips,Tortilla Chips,mission_strips_tortilla_chips,234,16.3,long_shelf,2
+Food Should Taste Good Multigrain,Food Should Taste Good Multigrain,tortilla_chips,Tortilla Chips,food_should_taste_good_multigrain,118,9.4,long_shelf,7
+Garden of Eatin' Yellow Corn Chips,Garden of Eatin' Yellow Corn Chips,tortilla_chips,Tortilla Chips,garden_of_eatin_yellow_corn_chips,175,10.3,long_shelf,11
+Late July Organic Sea Salt Tortilla Chips,Late July Organic Sea Salt Tortilla Chips,tortilla_chips,Tortilla Chips,late_july_organic_sea_salt_tortilla_chips,178,10.3,long_shelf,2
+On The Border Café Style,On The Border Café Style,tortilla_chips,Tortilla Chips,on_the_border_caf_style,268,10.2,long_shelf,10
+Xochitl Chips Sea Salt,Xochitl Chips Sea Salt,tortilla_chips,Tortilla Chips,xochitl_chips_sea_salt,105,15.3,long_shelf,6
+Planters Trail Mix Nut & Chocolate,Planters Trail Mix Nut & Chocolate,trail_mix,Trail Mix,planters_trail_mix_nut_chocolate,20,3.7,medium_shelf,4
+Sahale Snacks Glazed Pecans,Sahale Snacks Glazed Pecans,trail_mix,Trail Mix,sahale_snacks_glazed_pecans,28,8.5,medium_shelf,12
+Blue Diamond Bold Variety Trail Mix,Blue Diamond Bold Variety Trail Mix,trail_mix,Trail Mix,blue_diamond_bold_variety_trail_mix,17,4.2,medium_shelf,6
+Good & Gather Tropical Trail Mix,Good & Gather Tropical Trail Mix,trail_mix,Trail Mix,good_gather_tropical_trail_mix,15,6.1,medium_shelf,3
+Sun-Maid Trail Mix Fruity,Sun-Maid Trail Mix Fruity,trail_mix,Trail Mix,sun_maid_trail_mix_fruity,21,7.5,medium_shelf,8
+Archer Farms Simply Balanced Trail Mix,Archer Farms Simply Balanced Trail Mix,trail_mix,Trail Mix,archer_farms_simply_balanced_trail_mix,16,4.0,medium_shelf,8
+Nut Harvest Natural Almonds Trail Mix,Nut Harvest Natural Almonds Trail Mix,trail_mix,Trail Mix,nut_harvest_natural_almonds_trail_mix,28,5.9,medium_shelf,4
+KIND Healthy Grains Trail Mix,KIND Healthy Grains Trail Mix,trail_mix,Trail Mix,kind_healthy_grains_trail_mix,11,6.9,medium_shelf,9
+Hippeas Chickpea Puffs White Cheddar,Hippeas Chickpea Puffs White Cheddar,vegan_snacks,Vegan Snacks,hippeas_chickpea_puffs_white_cheddar,127,16.0,long_shelf,2
+Biena Chickpea Snacks Sea Salt,Biena Chickpea Snacks Sea Salt,vegan_snacks,Vegan Snacks,biena_chickpea_snacks_sea_salt,105,22.9,long_shelf,8
+RW Garcia Sweet Potato Crackers,RW Garcia Sweet Potato Crackers,vegan_snacks,Vegan Snacks,rw_garcia_sweet_potato_crackers,218,20.7,long_shelf,11
+Beanfields Bean Chips Nacho,Beanfields Bean Chips Nacho,vegan_snacks,Vegan Snacks,beanfields_bean_chips_nacho,142,7.4,long_shelf,10
+Krave Jerky Black Cherry Barbecue,Krave Jerky Black Cherry Barbecue,vegan_snacks,Vegan Snacks,krave_jerky_black_cherry_barbecue,252,21.7,long_shelf,2
+LesserEvil Paleo Puffs,LesserEvil Paleo Puffs,vegan_snacks,Vegan Snacks,lesserevil_paleo_puffs,250,16.0,long_shelf,10
+Forager Project Grain-Free Granola,Forager Project Grain-Free Granola,vegan_snacks,Vegan Snacks,forager_project_grain_free_granola,258,18.6,long_shelf,6
+Natures Heart Super Seeds Mix,Natures Heart Super Seeds Mix,vegan_snacks,Vegan Snacks,natures_heart_super_seeds_mix,136,8.2,long_shelf,2
+Reddi Wip Original,Reddi Wip Original,whipped_cream,Whipped Cream,reddi_wip_original,7,16.0,short_shelf,6
+Reddi Wip Extra Creamy,Reddi Wip Extra Creamy,whipped_cream,Whipped Cream,reddi_wip_extra_creamy,12,19.9,short_shelf,4
+Cool Whip Original,Cool Whip Original,whipped_cream,Whipped Cream,cool_whip_original,20,21.6,short_shelf,11
+Cool Whip Lite,Cool Whip Lite,whipped_cream,Whipped Cream,cool_whip_lite,17,21.7,short_shelf,5
+So Delicious CocoWhip,So Delicious CocoWhip,whipped_cream,Whipped Cream,so_delicious_cocowhip,7,11.7,short_shelf,7
+Trader Joe's Coconut Whipped Topping,Trader Joe's Coconut Whipped Topping,whipped_cream,Whipped Cream,trader_joe_s_coconut_whipped_topping,16,22.2,short_shelf,8
+Truwhip Original,Truwhip Original,whipped_cream,Whipped Cream,truwhip_original,19,17.7,short_shelf,6
+Natural by Nature Whipped Cream,Natural by Nature Whipped Cream,whipped_cream,Whipped Cream,natural_by_nature_whipped_cream,20,19.4,short_shelf,2
+Martinelli's Sparkling Cider,Martinelli's Sparkling Cider,wine_spirits_accompaniments,Wine & Spirits Accompaniments,martinelli_s_sparkling_cider,24,9.0,medium_shelf,12
+Welch's Sparkling Grape Juice Cocktail,Welch's Sparkling Grape Juice Cocktail,wine_spirits_accompaniments,Wine & Spirits Accompaniments,welch_s_sparkling_grape_juice_cocktail,27,5.8,medium_shelf,4
+S.Pellegrino Sparkling Natural Mineral Water,S.Pellegrino Sparkling Natural Mineral Water,wine_spirits_accompaniments,Wine & Spirits Accompaniments,s_pellegrino_sparkling_natural_mineral_water,26,9.4,medium_shelf,5
+Perrier Carbonated Mineral Water,Perrier Carbonated Mineral Water,wine_spirits_accompaniments,Wine & Spirits Accompaniments,perrier_carbonated_mineral_water,17,9.2,medium_shelf,5
+Q Mixers Ginger Beer,Q Mixers Ginger Beer,wine_spirits_accompaniments,Wine & Spirits Accompaniments,q_mixers_ginger_beer,11,8.7,medium_shelf,9
+Fever-Tree Elderflower Tonic,Fever-Tree Elderflower Tonic,wine_spirits_accompaniments,Wine & Spirits Accompaniments,fever_tree_elderflower_tonic,24,5.7,medium_shelf,1
+Cawston Press Sparkling Apple,Cawston Press Sparkling Apple,wine_spirits_accompaniments,Wine & Spirits Accompaniments,cawston_press_sparkling_apple,12,6.7,medium_shelf,3
+Bruce Cost Ginger Ale,Bruce Cost Ginger Ale,wine_spirits_accompaniments,Wine & Spirits Accompaniments,bruce_cost_ginger_ale,17,4.2,medium_shelf,11
+Mission Spinach Herb Wraps,Mission Spinach Herb Wraps,wraps,Wraps,mission_spinach_herb_wraps,29,8.3,medium_shelf,10
+Ole Xtreme Wellness Spinach & Herbs,Ole Xtreme Wellness Spinach & Herbs,wraps,Wraps,ole_xtreme_wellness_spinach_herbs,21,9.2,medium_shelf,7
+Flatout Light Original Flatbread,Flatout Light Original Flatbread,wraps,Wraps,flatout_light_original_flatbread,20,4.1,medium_shelf,10
+Joseph's Lavash Bread,Joseph's Lavash Bread,wraps,Wraps,joseph_s_lavash_bread,28,8.2,medium_shelf,5
+La Tortilla Factory Smart & Delicious,La Tortilla Factory Smart & Delicious,wraps,Wraps,la_tortilla_factory_smart_delicious,15,7.9,medium_shelf,10
+Tumaro's Multigrain Wraps,Tumaro's Multigrain Wraps,wraps,Wraps,tumaro_s_multigrain_wraps,29,3.3,medium_shelf,10
+Crepini Egg Thins,Crepini Egg Thins,wraps,Wraps,crepini_egg_thins,28,9.4,medium_shelf,6
+Trader Joe's Whole Wheat Lavash,Trader Joe's Whole Wheat Lavash,wraps,Wraps,trader_joe_s_whole_wheat_lavash,17,6.4,medium_shelf,9
+Stonyfield Organic YoKids Squeezers,Stonyfield Organic YoKids Squeezers,yogurt_drinks,Yogurt Drinks,stonyfield_organic_yokids_squeezers,11,12.6,short_shelf,3
+Danimals Smoothie Strawberry Explosion,Danimals Smoothie Strawberry Explosion,yogurt_drinks,Yogurt Drinks,danimals_smoothie_strawberry_explosion,8,8.5,short_shelf,4
+Chobani Drink Peach,Chobani Drink Peach,yogurt_drinks,Yogurt Drinks,chobani_drink_peach,19,21.3,short_shelf,8
+Activia Probiotic Dailies Mixed Berry,Activia Probiotic Dailies Mixed Berry,yogurt_drinks,Yogurt Drinks,activia_probiotic_dailies_mixed_berry,9,13.7,short_shelf,1
+Good Belly Mango Coconut Juice Drink,Good Belly Mango Coconut Juice Drink,yogurt_drinks,Yogurt Drinks,good_belly_mango_coconut_juice_drink,7,16.7,short_shelf,11
+Kefir Lifeway Strawberry,Kefir Lifeway Strawberry,yogurt_drinks,Yogurt Drinks,kefir_lifeway_strawberry,19,11.3,short_shelf,10
+Yoo-hoo Chocolate Drink,Yoo-hoo Chocolate Drink,yogurt_drinks,Yogurt Drinks,yoo_hoo_chocolate_drink,15,18.3,short_shelf,4
+Evolve Protein Shake Chocolate,Evolve Protein Shake Chocolate,yogurt_drinks,Yogurt Drinks,evolve_protein_shake_chocolate,16,14.8,short_shelf,4

@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: durare-model
+    runtime: docker
+    plan: free
+    rootDir: model-service
+    healthCheckPath: /health
+    envVars:
+      - key: API_KEY
+        sync: false
+      - key: MODEL_LAYOUT
+        value: single_q50
+      - key: MODEL_VERSION
+        value: v1
+      - key: SAFETY_BUFFER_DAYS
+        value: "2"
+      - key: RESIDUAL_STD
+        value: "0.35"
