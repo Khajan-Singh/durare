@@ -1,5 +1,6 @@
 import { createServerFn } from "@tanstack/react-start";
 import { requireSupabaseAuth } from "@/integrations/supabase/auth-middleware";
+import type { Json } from "@/integrations/supabase/types";
 
 type PredictRow = {
   store_id: string;
@@ -17,7 +18,7 @@ type PredictResult = PredictRow & {
   sales_q10: number;
   sales_q50: number;
   sales_q90: number;
-  attribution: Record<string, unknown>;
+  attribution: Json;
 };
 
 type PredictResponse = {
