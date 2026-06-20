@@ -1,10 +1,8 @@
 import type { ReactNode } from "react";
 import { Link, useNavigate, useRouterState } from "@tanstack/react-router";
 import {
-  Bell,
   Leaf,
   LogOut,
-  Search,
   LayoutDashboard,
   Truck,
   Boxes,
@@ -70,18 +68,6 @@ export function AppShell({
             </nav>
           </div>
           <div className="flex items-center gap-3">
-            <div className="hidden items-center gap-2 rounded-full border border-border bg-secondary px-4 py-2 sm:flex">
-              <Search className="h-4 w-4 text-muted-foreground" />
-              <input
-                type="text"
-                placeholder="Search…"
-                className="w-40 bg-transparent text-sm outline-none placeholder:text-muted-foreground"
-              />
-            </div>
-            <button className="relative rounded-full p-2 text-muted-foreground transition hover:bg-secondary hover:text-primary">
-              <Bell className="h-5 w-5" />
-              <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-warning" />
-            </button>
             {profile && (
               <div className="hidden text-right sm:block">
                 <div className="text-xs font-semibold leading-tight text-primary">
