@@ -102,7 +102,7 @@ function Landing() {
       </section>
 
       <footer className="mx-auto max-w-5xl px-6 pb-12 text-center text-xs text-muted-foreground">
-        © {new Date().getFullYear()} Durare. Foresight & Stewardship.
+        © {new Date().getFullYear()} Durare. Foresight &amp; Stewardship.
       </footer>
     </div>
   );
