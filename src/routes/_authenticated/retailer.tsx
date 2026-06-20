@@ -596,18 +596,39 @@ function RetailerDashboard() {
                 </Button>
               </div>
 
-              <div className="space-y-1.5">
+              <div className="space-y-2">
                 <Label className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">CSV file</Label>
-                <Input
+                <div
+                  onClick={() => csvFileRef.current?.click()}
+                  onDragOver={(e) => e.preventDefault()}
+                  onDrop={(e) => {
+                    e.preventDefault();
+                    const f = e.dataTransfer.files?.[0];
+                    if (f) onCsvFile(f);
+                  }}
+                  className="flex cursor-pointer flex-col items-center justify-center gap-3 rounded-sm border-2 border-dashed border-primary/25 bg-primary/5 p-8 text-center transition hover:border-primary/40 hover:bg-primary/10"
+                >
+                  <Upload className="h-8 w-8 text-primary/50" />
+                  <p className="text-sm text-foreground">
+                    <span className="font-semibold text-primary">Choose a file</span> or drag it here
+                  </p>
+                  {csvFileName && (
+                    <p className="text-xs text-muted-foreground">
+                      Selected: <span className="font-medium text-foreground">{csvFileName}</span>
+                    </p>
+                  )}
+                </div>
+                <input
+                  ref={csvFileRef}
                   type="file"
                   accept=".csv,text/csv"
-                  className="h-12 rounded-sm"
+                  className="hidden"
                   onChange={(e) => {
                     const f = e.target.files?.[0];
                     if (f) onCsvFile(f);
+                    e.target.value = "";
                   }}
                 />
-                {csvFileName && <p className="text-xs text-muted-foreground">{csvFileName}</p>}
               </div>
 
               {csvError && (
