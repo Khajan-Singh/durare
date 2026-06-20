@@ -568,7 +568,7 @@ function RetailerDashboard() {
       {/* CSV Upload Drawer */}
       {csvOpen && (
         <div className="fixed inset-0 z-[60]">
-          <div className="absolute inset-0 bg-primary/40 backdrop-blur-sm" onClick={() => setCsvOpen(false)} />
+          <div className="absolute inset-0 bg-primary/40 backdrop-blur-sm" onClick={closeCsvDrawer} />
           <aside className="absolute right-0 top-0 flex h-full w-full max-w-lg flex-col bg-card shadow-2xl">
             <div className="flex items-center justify-between border-b border-border bg-surface-low p-6">
               <h2 className="text-xl font-bold text-primary">Bulk Upload Inventory</h2>
