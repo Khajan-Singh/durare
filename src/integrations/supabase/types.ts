@@ -346,6 +346,7 @@ export type Database = {
       }
       stores: {
         Row: {
+          address: string | null
           created_at: string
           id: string
           lat: number
@@ -355,6 +356,7 @@ export type Database = {
           type: string
         }
         Insert: {
+          address?: string | null
           created_at?: string
           id?: string
           lat: number
@@ -364,6 +366,7 @@ export type Database = {
           type?: string
         }
         Update: {
+          address?: string | null
           created_at?: string
           id?: string
           lat?: number
