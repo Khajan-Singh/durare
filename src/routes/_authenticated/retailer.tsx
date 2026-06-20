@@ -27,6 +27,43 @@ export const Route = createFileRoute("/_authenticated/retailer")({
 
 type FilterKey = "all" | "near" | "produce";
 
+type ParsedCsvRow = {
+  category: string;
+  item_name: string;
+  quantity: string;
+  expiry_date: string;
+  error?: string;
+};
+
+const CSV_TEMPLATE = `category,item_name,quantity,expiry_date
+Produce,Bananas,12,2026-06-25
+Bakery,Sourdough Loaf,4,2026-06-22
+`;
+
+function parseCsv(text: string): string[][] {
+  const rows: string[][] = [];
+  let cur: string[] = [];
+  let field = "";
+  let inQuotes = false;
+  for (let i = 0; i < text.length; i++) {
+    const c = text[i];
+    if (inQuotes) {
+      if (c === '"') {
+        if (text[i + 1] === '"') { field += '"'; i++; } else { inQuotes = false; }
+      } else field += c;
+    } else if (c === '"') inQuotes = true;
+    else if (c === ",") { cur.push(field); field = ""; }
+    else if (c === "\n" || c === "\r") {
+      if (c === "\r" && text[i + 1] === "\n") i++;
+      cur.push(field); field = "";
+      if (cur.some((v) => v.trim() !== "")) rows.push(cur);
+      cur = [];
+    } else field += c;
+  }
+  if (field !== "" || cur.length) { cur.push(field); if (cur.some((v) => v.trim() !== "")) rows.push(cur); }
+  return rows;
+}
+
 function RetailerDashboard() {
   const { profile } = useAuth();
   const qc = useQueryClient();
