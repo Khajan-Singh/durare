@@ -80,7 +80,7 @@ function AuthPage() {
     try {
       const { error } = await supabase.auth.signInWithPassword({ email, password });
       if (error) throw error;
-      toast.success("Welcome back");
+      
     } catch (err) {
       toast.error(err instanceof Error ? err.message : "Something went wrong");
     } finally {
