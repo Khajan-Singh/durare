@@ -660,7 +660,7 @@ function RetailerDashboard() {
                 type="button"
                 variant="outline"
                 className="h-12 flex-1 rounded-sm font-bold"
-                onClick={() => setCsvOpen(false)}
+                onClick={closeCsvDrawer}
               >
                 Cancel
               </Button>
