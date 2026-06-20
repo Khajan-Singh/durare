@@ -332,7 +332,7 @@ function AuthPage() {
         </div>
 
         <footer className="mt-8 text-center text-xs text-muted-foreground">
-          © {new Date().getFullYear()} Durare. Foresight & Stewardship.
+          © {new Date().getFullYear()} Durare. Foresight &amp; Stewardship.
         </footer>
       </main>
     </div>
