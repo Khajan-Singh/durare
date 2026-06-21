@@ -8,9 +8,9 @@ import logoAsset from "@/assets/durare-logo.png.asset.json";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Durare — Predict surplus, rescue food" },
+      { title: "Durare - Predict surplus, rescue food" },
       { name: "description", content: "Forecast donatable grocery surplus and help food banks plan pickups before food is wasted." },
-      { property: "og:title", content: "Durare — Predict surplus, rescue food" },
+      { property: "og:title", content: "Durare - Predict surplus, rescue food" },
       { property: "og:description", content: "AI forecasts. Human decisions. Less waste." },
     ],
   }),
