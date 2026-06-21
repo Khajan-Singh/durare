@@ -1,6 +1,16 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect } from "react";
-import { ArrowRight, Sparkles, Truck, Gauge, ClipboardList, Brain, CheckCircle2, Store, HeartHandshake } from "lucide-react";
+import {
+  ArrowRight,
+  Sparkles,
+  Truck,
+  Gauge,
+  ClipboardList,
+  Brain,
+  CheckCircle2,
+  Store,
+  HeartHandshake,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/use-auth";
 import logoAsset from "@/assets/durare-logo.png.asset.json";
@@ -10,7 +20,10 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "Durare - Predict surplus, rescue food" },
-      { name: "description", content: "Forecast donatable grocery surplus and help food banks plan pickups before food is wasted." },
+      {
+        name: "description",
+        content: "Forecast donatable grocery surplus and help food banks plan pickups before food is wasted.",
+      },
       { property: "og:title", content: "Durare - Predict surplus, rescue food" },
       { property: "og:description", content: "AI forecasts. Human decisions. Less waste." },
     ],
@@ -45,7 +58,9 @@ function Landing() {
           </div>
         </div>
         <Link to="/auth">
-          <Button variant="ghost" className="rounded-full">Sign in</Button>
+          <Button variant="ghost" className="rounded-full">
+            Sign in
+          </Button>
         </Link>
       </header>
 
@@ -54,9 +69,8 @@ function Landing() {
           See the surplus <span className="italic font-serif text-warning-foreground">before</span> it's discarded.
         </h1>
         <p className="mx-auto mt-6 max-w-2xl text-balance text-lg text-muted-foreground">
-          Durare forecasts donatable grocery surplus days in advance, so food-bank
-          coordinators can plan pickups with confidence and rescue food that would
-          otherwise be thrown away.
+          Durare forecasts donatable grocery surplus days in advance, so food-bank coordinators can plan pickups with
+          confidence and rescue food that would otherwise be thrown away.
         </p>
         <div className="mt-8 flex flex-wrap justify-center gap-3">
           <Link to="/auth">
@@ -72,7 +86,9 @@ function Landing() {
         </div>
 
         <p className="mx-auto mt-8 max-w-2xl rounded-2xl border border-success/30 bg-success/10 px-5 py-3 text-lg italic font-serif text-foreground">
-          Wasted food is one of the biggest sources of landfill methane. Every rescued crate is a meal delivered and emissions avoided.
+          Wasted food is one of the biggest sources of landfill methane. Every ~1.2 lbs rescued is one meal, and keeping
+          organic food out of a landfill avoids roughly half a ton of CO₂ per ton. So, a single week's surplus at one
+          store can provide [X] meals and [Y] kg of avoided emissions.
         </p>
 
         <div className="mt-5 flex flex-wrap items-center justify-center gap-2 text-xs text-muted-foreground">
