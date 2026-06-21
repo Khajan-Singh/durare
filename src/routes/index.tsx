@@ -87,7 +87,7 @@ function Landing() {
 
         <p className="mx-auto mt-8 max-w-2xl rounded-2xl border border-success/30 bg-success/10 px-5 py-3 text-lg italic font-serif text-foreground">
           Wasted food is one of the biggest sources of landfill methane. Every ~1.2 lbs rescued is one meal, and keeping
-          organic food out of a landfill avoids roughly half a ton of CO₂ per ton. So, a single week's surplus at one
+          organic food out of a landfill avoids roughly half a ton of CO₂ per ton. A single week's surplus at one
           store can provide [X] meals and [Y] kg of avoided emissions.
         </p>
 
