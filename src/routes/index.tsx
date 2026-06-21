@@ -71,7 +71,7 @@ function Landing() {
           </a>
         </div>
 
-        <p className="mx-auto mt-8 max-w-2xl rounded-2xl border border-success/20 bg-success-soft/40 px-5 py-3 text-sm text-success-foreground">
+        <p className="mx-auto mt-8 max-w-2xl rounded-2xl border border-success/30 bg-success/10 px-5 py-3 text-sm text-foreground">
           <Leaf className="mr-2 inline h-4 w-4 -translate-y-0.5" />
           Wasted food is one of the biggest sources of landfill methane. Every rescued crate is a meal delivered and emissions avoided.
         </p>
