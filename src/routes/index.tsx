@@ -85,9 +85,9 @@ function Landing() {
           </a>
         </div>
 
-        <p className="mx-auto mt-8 max-w-2xl rounded-2xl border border-success/30 bg-success/10 px-5 py-3 text-lg italic font-serif text-foreground">
-          Wasted food is one of the biggest sources of landfill methane. Every ~1.2 lbs rescued is one meal, and keeping
-          organic food out of a landfill avoids roughly half a ton of CO₂ per ton. A single week's surplus at one
+        <p className="mx-auto mt-8 max-w-3xl rounded-2xl border border-success/30 bg-success/10 px-5 py-3 text-lg italic font-serif text-foreground">
+          Wasted food is one of the biggest sources of landfill methane. Every <strong>~1.2 lbs rescued is one meal</strong>, and keeping
+          organic food out of a landfill avoids roughly <strong>half a ton of CO₂ per ton</strong>. A single week's surplus at one
           store can provide [X] meals and [Y] kg of avoided emissions.
         </p>
 
