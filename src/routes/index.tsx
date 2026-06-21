@@ -1,9 +1,10 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect } from "react";
-import { ArrowRight, Sparkles, Truck, Gauge } from "lucide-react";
+import { ArrowRight, Sparkles, Truck, Gauge, ClipboardList, Brain, CheckCircle2, Leaf, Store, HeartHandshake } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/use-auth";
 import logoAsset from "@/assets/durare-logo.png.asset.json";
+import heroProduce from "@/assets/hero-produce.jpg.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -69,20 +70,65 @@ function Landing() {
             </Button>
           </a>
         </div>
+
+        <p className="mx-auto mt-8 max-w-2xl rounded-2xl border border-success/30 bg-success/10 px-5 py-3 text-sm text-foreground">
+          <Leaf className="mr-2 inline h-4 w-4 -translate-y-0.5" />
+          Wasted food is one of the biggest sources of landfill methane. Every rescued crate is a meal delivered and emissions avoided.
+        </p>
+
+        <div className="mt-5 flex flex-wrap items-center justify-center gap-2 text-xs text-muted-foreground">
+          <span className="inline-flex items-center gap-1.5 rounded-full border bg-card px-3 py-1">
+            <Store className="h-3.5 w-3.5" /> For retailers
+          </span>
+          <span className="text-muted-foreground/50">·</span>
+          <span className="inline-flex items-center gap-1.5 rounded-full border bg-card px-3 py-1">
+            <HeartHandshake className="h-3.5 w-3.5" /> For food banks
+          </span>
+        </div>
       </section>
 
       <section className="relative mx-auto max-w-5xl px-6 pb-10">
         <div className="relative overflow-hidden rounded-3xl">
           <div className="absolute inset-0 z-10 bg-gradient-to-t from-primary/60 via-primary/10 to-transparent" />
           <img
-            alt="Crates of fresh produce in warm morning light"
+            alt="Volunteers sorting fresh produce at a food bank"
             className="h-72 w-full object-cover sm:h-96"
-            src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjtcsyno2EElynUaCpJN0pAqVXh_qlo3Rd7H_0bw3KXUVI_r4slCt6vQ97TCC_qyJMA1k_u6SrkqpI2ddJusCrGIYCeMBtdWe3LNiC8aXylQUWGdWbYN53eDVlmRObkB6_GPVMPQ7dEgZuvFXIWKSZ9LYRocJRvwLJJSyprAW0DW6rnCz3kGxBM4-qpxqijv2L6Tl2gdeYlqnX9q1ysE-bJWEAx4qzrLMPqH0FNBNVzI1HulelWZu5sHx2I_krj-jMsoH5XwqfM7A"
+            src={heroProduce.url}
           />
         </div>
       </section>
 
-      <section id="how" className="relative mx-auto grid max-w-5xl grid-cols-1 gap-4 px-6 pb-24 sm:grid-cols-3">
+      <section id="how" className="relative mx-auto max-w-5xl px-6 pb-16">
+        <div className="mb-8 text-center">
+          <div className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">How it works</div>
+          <h2 className="mt-2 text-2xl font-bold text-primary sm:text-3xl">From shelf to rescue, in three steps</h2>
+        </div>
+        <div className="relative grid grid-cols-1 gap-4 sm:grid-cols-3">
+          <Step
+            n="1"
+            kind="Input"
+            icon={<ClipboardList className="h-5 w-5" />}
+            title="Retailers log inventory"
+            body="Stores record what's on hand and when it expires — the raw signal of upcoming surplus."
+          />
+          <Step
+            n="2"
+            kind="AI"
+            icon={<Brain className="h-5 w-5" />}
+            title="Durare forecasts surplus"
+            body="An XGBoost model predicts donatable units days ahead, with a confidence range and plain-language drivers."
+          />
+          <Step
+            n="3"
+            kind="Action"
+            icon={<CheckCircle2 className="h-5 w-5" />}
+            title="Coordinators confirm pickups"
+            body="Food-bank coordinators triage forecasts, plan routes, and confirm rescues before food is wasted."
+          />
+        </div>
+      </section>
+
+      <section className="relative mx-auto grid max-w-5xl grid-cols-1 gap-4 px-6 pb-24 sm:grid-cols-3">
         <Feature
           icon={<Gauge className="h-5 w-5" />}
           title="Forecast, not guesswork"
@@ -114,6 +160,35 @@ function Feature({ icon, title, body }: { icon: React.ReactNode; title: string; 
         {icon}
       </div>
       <div className="font-bold text-primary">{title}</div>
+      <p className="mt-1 text-sm text-muted-foreground">{body}</p>
+    </div>
+  );
+}
+
+function Step({
+  n,
+  kind,
+  icon,
+  title,
+  body,
+}: {
+  n: string;
+  kind: "Input" | "AI" | "Action";
+  icon: React.ReactNode;
+  title: string;
+  body: string;
+}) {
+  return (
+    <div className="card-elevated relative p-5">
+      <div className="flex items-center justify-between">
+        <div className="inline-flex h-10 w-10 items-center justify-center rounded-xl bg-primary-soft text-primary-soft-foreground">
+          {icon}
+        </div>
+        <span className="text-xs font-semibold uppercase tracking-widest text-muted-foreground">
+          {n} · {kind}
+        </span>
+      </div>
+      <div className="mt-4 font-bold text-primary">{title}</div>
       <p className="mt-1 text-sm text-muted-foreground">{body}</p>
     </div>
   );
