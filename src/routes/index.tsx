@@ -90,7 +90,7 @@ function Landing() {
           <strong>~1.2 lbs rescued is one meal</strong>, and keeping organic food out of a landfill avoids roughly{" "}
           <strong>half a ton of CO₂ per ton</strong>. A single week's surplus at one store can provide
           <strong> ~1200 meals</strong> and
-          <strong>~3200 kg of avoided emissions</strong>.
+          <strong>~3200 kg</strong> of avoided emissions.
         </p>
 
         <div className="mt-5 flex flex-wrap items-center justify-center gap-2 text-xs text-muted-foreground">
