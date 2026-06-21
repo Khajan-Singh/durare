@@ -1,6 +1,6 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect } from "react";
-import { ArrowRight, Sparkles, Truck, Gauge, ClipboardList, Brain, CheckCircle2, Leaf, Store, HeartHandshake } from "lucide-react";
+import { ArrowRight, Sparkles, Truck, Gauge, ClipboardList, Brain, CheckCircle2, Store, HeartHandshake } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/use-auth";
 import logoAsset from "@/assets/durare-logo.png.asset.json";
@@ -71,8 +71,7 @@ function Landing() {
           </a>
         </div>
 
-        <p className="mx-auto mt-8 max-w-2xl rounded-2xl border border-success/30 bg-success/10 px-5 py-3 text-sm text-foreground">
-          <Leaf className="mr-2 inline h-4 w-4 -translate-y-0.5" />
+        <p className="mx-auto mt-8 max-w-2xl rounded-2xl border border-success/30 bg-success/10 px-5 py-3 text-lg italic font-serif text-foreground">
           Wasted food is one of the biggest sources of landfill methane. Every rescued crate is a meal delivered and emissions avoided.
         </p>
 
