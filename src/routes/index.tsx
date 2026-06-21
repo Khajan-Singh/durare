@@ -85,10 +85,11 @@ function Landing() {
           </a>
         </div>
 
-        <p className="mx-auto mt-8 max-w-3xl rounded-2xl border border-success/30 bg-success/10 px-5 py-3 text-lg italic font-serif text-foreground">
-          Wasted food is one of the biggest sources of landfill methane. Every <strong>~1.2 lbs rescued is one meal</strong>, and keeping
-          organic food out of a landfill avoids roughly <strong>half a ton of CO₂ per ton</strong>. A single week's surplus at one
-          store can provide [X] meals and [Y] kg of avoided emissions.
+        <p className="mx-auto mt-8 max-w-4xl rounded-2xl border border-success/30 bg-success/10 px-5 py-3 text-lg italic font-serif text-foreground">
+          Wasted food is one of the biggest sources of landfill methane. Every{" "}
+          <strong>~1.2 lbs rescued is one meal</strong>, and keeping organic food out of a landfill avoids roughly{" "}
+          <strong>half a ton of CO₂ per ton</strong>. A single week's surplus at one store can provide [X] meals and [Y]
+          kg of avoided emissions.
         </p>
 
         <div className="mt-5 flex flex-wrap items-center justify-center gap-2 text-xs text-muted-foreground">
