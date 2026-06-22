@@ -1,4 +1,4 @@
-# Durare - Predict Surplus, Rescue Food
+# Durare - Predict Surplus & Rescue Food
 
 Durare is a two-sided web application that helps grocery retailers and food-bank
 coordinators rescue donatable surplus **before** it is discarded. Retailers log
