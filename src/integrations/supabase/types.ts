@@ -383,6 +383,10 @@ export type Database = {
     }
     Functions: {
       current_user_food_bank: { Args: never; Returns: string }
+      current_user_role: {
+        Args: never
+        Returns: Database["public"]["Enums"]["app_role"]
+      }
       current_user_store: { Args: never; Returns: string }
       has_role: {
         Args: {
